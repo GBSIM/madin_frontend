@@ -1,9 +1,11 @@
 import './Browse.css';
 
+import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
+
 export default function Browse() {
     return (
         <div className='page'>
-            Browse page
+            <DesktopHeader></DesktopHeader>
         </div>
     )
 }

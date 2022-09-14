@@ -1,9 +1,11 @@
 import './About.css';
 
+import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
+
 export default function About() {
     return (
         <div className='page'>
-            About page
+            <DesktopHeader></DesktopHeader>
         </div>
     )
 }

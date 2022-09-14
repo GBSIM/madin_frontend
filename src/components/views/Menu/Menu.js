@@ -1,9 +1,11 @@
 import './Menu.css';
 
+import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
+
 export default function Menu() {
     return (
         <div className='page'>
-            Menu page
+            <DesktopHeader></DesktopHeader>
         </div>
     )
 }
