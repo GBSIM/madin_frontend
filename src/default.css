@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+	background: rgba(0,0,0,0);
+}
+html {
+	font-family: 'Apple SD Gothic Neo', Roboto, 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;
+	color: #fff;
+	background: #fff;
+	line-height: 1.2;
+	word-wrap: break-word;
+}
+body {
+	background: rgba(0,0,0,0);
+	-webkit-font-smoothing: antialiased;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+div, span, article, section, header, footer, aside, p, ul, li, fieldset, legend, label, a, nav, form {
+	box-sizing: border-box;
+	/* content-box */
+}
+ol, ul, li {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	border: 0;
+}
+a {
+	display: inline-block;
+}
+button {
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.grid-container {
+	padding: 10px;
+	background: lightgray;
+}
+.grid-item {
+	padding: 10px;
+	border: 3px solid rgb(50,50,40);
+	color: white;
+	background: #ff6937;
+}
+
+h1 {
+	font-size: 28px;
+	margin: 0;
+}
+
+h2 {
+	font-size: 24px;
+	margin: 0;
+}
+
+h3 {
+	font-size: 20px;
+	margin: 0;
+}
+
+h4 {
+	font-size: 16px;
+	margin: 0;
+}
+
+span {
+	font-size: 16px;
+	margin: 0;
+}
+
+
+.main-contents {	
+	min-height: 1000px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	align-items: center;
+	padding-top: 20px;
+	padding-bottom: 100px;
+}
+
+.content-box {
+	width: min(500px, 100%);
+	background: rgba(0,0,0,0);
+	border: 1px solid rgba(245, 245, 244, 1);
+	box-shadow: 0px 3px 5px 0px rgba(248, 248, 248, 1);
+	padding-bottom: 50px;
+	border-radius: 10px;
+}
+
+.content-box-title {
+	color: #333;
+	margin: 0;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.sub-contents-right {
+	position: fixed;
+	top: 80px;
+	right: calc(50% - 250px - 360px - (50% - 250px - 360px) / 2);
+	width: 360px;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	z-index: 0;
+}
+
+.container-center-align {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-right-align {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.subcontents-profile-image {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}
+
+.subcontents-profile-name {
+	margin: 0;
+	color: #696969;
+}
+
+@media (max-width: 1300px) {
+	.sub-contents-right {
+		display: none;
+	}
+}
+
+@media (max-width: 1024px) {
+	h1 {
+		font-size: 26px;
+	}
+	h2 {
+		font-size: 22px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	span {
+		font-size: 16px;
+	}
+	
+}
+
+@media (max-width: 600px) {
+	.content-box {
+		border-radius: 0px;
+		box-shadow: none;
+		border: 1px solid #DCDCDC;
+		border-left: none;
+		border-right: none;
+		width: 100%;
+	}
+	.content-box.top {
+		border-top: none;
+	}
+	.main-contents {
+		padding-top: 0px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	h2 {
+		font-size: 20px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	span {
+		font-size: 14px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	h2 {
+		font-size: 20px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	span {
+		font-size: 14px;
+	}
+	
+}
