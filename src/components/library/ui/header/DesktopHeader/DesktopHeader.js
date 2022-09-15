@@ -8,7 +8,7 @@ export default function DesktopHeader() {
         <div className="desktop-header-container">
             <div className='desktop-header'>
                 <div className='desktop-header-logo-container'>
-                    <LogoButton></LogoButton>
+                    <LogoButton width={'90px'}></LogoButton>
                 </div>
                 <div className='desktop-header-space'></div>
                 <div className='desktop-header-navbar-container'>
