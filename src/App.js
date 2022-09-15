@@ -29,6 +29,18 @@ function App() {
     } 
   }
 
+  if (window.location.pathname === "/about") {
+    dispatch(changePage('about'));
+  } else if (window.location.pathname === "/browse") {
+    dispatch(changePage('browse'));
+  } else if (window.location.pathname === "/menu") {
+    dispatch(changePage('menu'));
+  } else if (window.location.pathname === "/order") {
+    dispatch(changePage('order'));
+  } else {
+    dispatch(changePage('about'));
+  }
+
   return (
     <Router>
       <div>
