@@ -11,6 +11,7 @@ export default function Browse() {
     const dispatch = useDispatch();
     const browseOptionChangeEvent = (option) => {
         dispatch(changeBrowseOption(option));
+        window.scrollTo(0,0);
     }
 
     return (
