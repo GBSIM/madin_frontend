@@ -1,0 +1,52 @@
+.order-guide-frame-container {
+    width: 100%;    
+    height: 300px;
+    border-bottom: 1px solid #D2D2D2;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-guide-container {
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.order-guide-contents-container {
+    width: 100%;
+    max-width: 1440px;
+    padding-left: 10%;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.order-option-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px 15px 0px;
+}
+
+.order-guide-title {
+    color: #141414;
+}
+
+.order-guide-contents {
+    color: #959595;
+    font-weight: 400;
+}
+
+.order-menu-frame-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.order-menu-container {
+    width: 100%;
+    max-width: 1440px;
+}
