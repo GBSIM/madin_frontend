@@ -17,7 +17,7 @@ export default function Order() {
     const personalBuyContents = <h3 className='order-guide-contents'>원하는 디저트를 장바구니에 넣고 결제하면<br></br>원하는 날짜에 배달해드려요.</h3>;
 
     const groupBuyTitle = <h2 className='order-guide-title'>맛있는 디저트로 감사의 마음을 전하세요.</h2>;
-    const groupBUyContents = <h3 className='order-guide-contents'>원하는 메뉴를<br></br>개수만큼 자유롭게 골라보세요.</h3>;
+    const groupBUyContents = <h3 className='order-guide-contents'>원하는 메뉴를<br></br>필요한 개수만큼 자유롭게 골라보세요.</h3>;
 
     let orderGuideTitle;
     let orderGuideContents;
