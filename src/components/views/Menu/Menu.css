@@ -35,7 +35,12 @@
     height: 90%;
     border-top-left-radius: 1000px;
     border-bottom-left-radius: 1000px;
-    background: #eee;
+    overflow: hidden;
+}
+
+.menu-picture {
+    width: 100%;
+    height: auto;
 }
 
 .menu-picture-button-container {

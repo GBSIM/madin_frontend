@@ -35,7 +35,9 @@ export default function Menu() {
                         <OrangeButton height='50px' width='180px' text='주문하러가기' borderRadius='5px'></OrangeButton>
                     </div>
                     <div className='menu-picture-frame-container'>
-                        <div className='menu-picture-container'></div>
+                        <div className='menu-picture-container'>
+                            <img className='menu-picture' src={require('../../library/images/lemon_madeliene.jpeg')}></img>
+                        </div>
                         <div className='menu-picture-button-container'>
                             <PictureButton type='left'></PictureButton>
                             <PictureButton type='right'></PictureButton>
