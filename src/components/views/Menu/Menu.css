@@ -1,0 +1,40 @@
+.menu-frame-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.menu-container {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 60px);
+}
+
+.menu-contents-container {
+    flex: 1;
+    height: 100%;
+    padding-left: 15%;
+    padding-top: 10%;
+}
+
+.menu-picture-container {
+    flex: 1;
+    height: 100%;
+}
+
+.menu-title {
+    font-size: 40px;
+    color: #141414;
+    font-family: 'Courgette', cursive;
+}
+
+.menu-subtitle {
+    color: #8E8E8E;
+}
+
+.menu-contents {
+    color: #595959;
+}
