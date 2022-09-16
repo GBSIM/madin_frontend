@@ -1,8 +1,20 @@
 import './Menu.css';
 
+import { useSelector,useDispatch } from "react-redux";
+import { changeMenuType } from '../../../_reducers/menu';
+
 import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
+import OrangeButton from '../../library/ui/unit/OrangeButton/OrangeButton';
+import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
+import PictureButton from '../../library/ui/unit/PictureButton/PictureButton';
 
 export default function Menu() {
+    const {menuType} = useSelector(state => state.menu);
+    const dispatch = useDispatch();
+    const menuTypeChangeEvent = (option) => {
+        dispatch(changeMenuType(option));
+    }
+
     return (
         <div className='page'>
             <DesktopHeader></DesktopHeader>
@@ -19,11 +31,21 @@ export default function Menu() {
                         <span className='menu-contents'>마딘의 첫 오픈부터 지금까지</span>
                         <div style={{height:'5px'}}></div>
                         <span className='menu-contents'>가장 많이 사랑 받는 디저트입니다.</span>
+                        <div style={{height:'70px'}}></div>
+                        <OrangeButton height='50px' width='180px' text='주문하러가기' borderRadius='5px'></OrangeButton>
                     </div>
-                    <div className='menu-picture-container'></div>
+                    <div className='menu-picture-frame-container'>
+                        <div className='menu-picture-container'></div>
+                        <div className='menu-picture-button-container'>
+                            <PictureButton type='left'></PictureButton>
+                            <PictureButton type='right'></PictureButton>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+            <div className='menu-type-container'>
+                <OptionButton state={menuType} option1={'디저트'} option2={'음료'} clickEvent={menuTypeChangeEvent}></OptionButton>
+            </div>
         </div>
     )
 }
