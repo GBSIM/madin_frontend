@@ -24,12 +24,12 @@ export default function About() {
                             </div>
                             <div className='about-contact-content-container'>
                                 <span className='about-subtitle'>TEL</span>
-                                <span className='about-text'>0507-1356-477</span>
+                                <span className='about-text'>0507-1356-4770</span>
                             </div>
                         </div>
                     </div>
                     <div className='about-madin-information'>
-                        <h3 className='about-title'>Madin information</h3>
+                        <h3 className='about-title'>Information</h3>
                         <div className='about-madin-information-row-container'>
                             <div className='about-madin-information-row'>
                                 <span className='about-madin-information-text'>법인명(상호): 마딘베이커리</span>
