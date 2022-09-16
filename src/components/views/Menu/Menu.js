@@ -2,6 +2,8 @@ import './Menu.css';
 
 import { useSelector,useDispatch } from "react-redux";
 import { changeMenuType } from '../../../_reducers/menu';
+import { changePage } from '../../../_reducers/nav';
+import { useNavigate } from 'react-router-dom';
 
 import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
 import OrangeButton from '../../library/ui/unit/OrangeButton/OrangeButton';
@@ -13,6 +15,12 @@ export default function Menu() {
     const dispatch = useDispatch();
     const menuTypeChangeEvent = (option) => {
         dispatch(changeMenuType(option));
+    }
+    const navigate = useNavigate();
+    const moveToOrder = () => {
+        dispatch(changePage('order'));
+        navigate('/order');
+        window.scrollTo(0,0);
     }
 
     return (
@@ -32,7 +40,7 @@ export default function Menu() {
                         <div style={{height:'5px'}}></div>
                         <span className='menu-contents'>가장 많이 사랑 받는 디저트입니다.</span>
                         <div style={{height:'70px'}}></div>
-                        <OrangeButton height='50px' width='180px' text='주문하러가기' borderRadius='5px'></OrangeButton>
+                        <OrangeButton height='50px' width='180px' text='주문하러가기' borderRadius='5px' clickEvent={moveToOrder}></OrangeButton>
                     </div>
                     <div className='menu-picture-frame-container'>
                         <div className='menu-picture-container'>
