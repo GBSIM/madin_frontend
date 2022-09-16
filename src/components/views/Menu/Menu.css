@@ -19,7 +19,7 @@
     flex: 1;
     height: 100%;
     padding-left: 15%;
-    padding-top: 5%;
+    padding-top: 3%;
     max-width: calc(1920px / 2);
     max-width: 50%;
 }
@@ -32,7 +32,7 @@
 
 .menu-picture-container {
     width: 100%;
-    height: 90%;
+    height: calc(100% - 60px);
     border-top-left-radius: 1000px;
     border-bottom-left-radius: 1000px;
     overflow: hidden;
@@ -46,7 +46,6 @@
 .menu-picture-button-container {
     width: 100%;
     min-height: 60px;
-    height: 10%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

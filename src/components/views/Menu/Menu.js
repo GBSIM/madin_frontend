@@ -39,7 +39,7 @@ export default function Menu() {
                         <span className='menu-contents'>마딘의 첫 오픈부터 지금까지</span>
                         <div style={{height:'5px'}}></div>
                         <span className='menu-contents'>가장 많이 사랑 받는 디저트입니다.</span>
-                        <div style={{height:'70px'}}></div>
+                        <div style={{height:'60px'}}></div>
                         <OrangeButton height='50px' width='180px' text='주문하러가기' borderRadius='5px' clickEvent={moveToOrder}></OrangeButton>
                     </div>
                     <div className='menu-picture-frame-container'>
