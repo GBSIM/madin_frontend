@@ -15,6 +15,15 @@
     min-height: 964px;
 }
 
+@media (max-width: 1024px) {
+    .about-image {
+        height: 100%;
+        width: auto;
+        min-width: 1538px;
+        min-height: 773px;
+    }
+}
+
 .about-information-container {
     width: 100%;
     display: flex;
