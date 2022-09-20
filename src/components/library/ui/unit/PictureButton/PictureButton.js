@@ -5,7 +5,7 @@ export default function PictureButton(props) {
         return (
             <div className='picture-button-container'>
                 <button className='picture-button'>
-                    <img className='picture-button-image left' src={require('../../../icons/arrow-left-white.png')}></img>
+                    <img className='picture-button-image left' src={require('../../../icons/arrow_left_white.png')}></img>
                 </button>
             </div>
         )
@@ -13,7 +13,7 @@ export default function PictureButton(props) {
         return (
             <div className='picture-button-container'>
                 <button className='picture-button'>
-                    <img className='picture-button-image right' src={require('../../../icons/arrow-right-white.png')}></img>
+                    <img className='picture-button-image right' src={require('../../../icons/arrow_right_white.png')}></img>
                 </button>
             </div>
         )

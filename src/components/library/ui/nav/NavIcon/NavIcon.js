@@ -10,7 +10,7 @@ export default function NavIcon(props) {
     } else {
         return (
             <button className='nav-icon' onClick={() => props.navEvent(props.pageName)}>
-                <img src={props.onImage} className='nav-icon-image'></img>
+                <img src={props.offImage} className='nav-icon-image'></img>
             </button>
         )
     }
