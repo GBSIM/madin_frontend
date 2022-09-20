@@ -58,12 +58,6 @@
     align-items: center;
 }
 
-@media (max-width: 800px) {
-    .about-information-container {
-        display: none;
-    }
-}
-
 .about-information {
     display: flex;
     flex-direction: row;
@@ -96,6 +90,12 @@
     min-width: 400px;
 }
 
+@media (max-width: 800px) {
+   .about-contact {
+    min-width: 300px;
+   } 
+}
+
 .about-contact-container {
     display: flex;
     flex-direction: row;
@@ -120,10 +120,16 @@
     min-width: 400px;
 }
 
+@media (max-width: 800px) {
+    .about-madin-information {
+        min-width: 300px;
+    }
+}
+
 .about-madin-information-row-container {
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
+    row-gap: 10px;
 }
 
 .about-madin-information-row {
@@ -131,6 +137,14 @@
     flex-direction: row;
     align-items: center;
     column-gap: 20px;
+}
+
+@media (max-width: 500px) {
+    .about-madin-information-row {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 10px;
+    }
 }
 
 .about-madin-information-text {
@@ -143,4 +157,10 @@
     background: #808080;
     width: 1px;
     height: 16px;
+}
+
+@media (max-width: 500px) {
+    .about-madin-information-divider {
+        display: none;
+    }
 }
