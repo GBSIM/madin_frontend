@@ -58,6 +58,12 @@
     align-items: center;
 }
 
+@media (max-width: 800px) {
+    .about-information-container {
+        margin-bottom: 60px;
+    }
+}
+
 .about-information {
     display: flex;
     flex-direction: row;
