@@ -20,6 +20,8 @@ function App() {
     console.log("뒤로가기");
     if (window.location.pathname === "/") {
       dispatch(changePage('about'));
+    } else if (window.location.pathname === "/about") {
+      dispatch(changePage('about'));
     } else if (window.location.pathname === "/browse") {
       dispatch(changePage('browse'));
     } else if (window.location.pathname === "/menu") {
