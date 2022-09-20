@@ -24,6 +24,12 @@
     }
 }
 
+@media (max-width: 800px) {
+    .about-image {
+        display: none;
+    }
+}
+
 .about-information-container {
     width: 100%;
     display: flex;
