@@ -1,0 +1,12 @@
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-icon-image {
+    width: 30px;
+    height: 30px;
+}
