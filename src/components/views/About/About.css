@@ -45,7 +45,7 @@
         display: flex;
         height: 100%;
         width: auto;
-        min-width: 942px;
+        min-width: 943px;
         min-height: 816px;
     }
 }
@@ -56,6 +56,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 800px) {
+    .about-information-container {
+        display: none;
+    }
 }
 
 .about-information {
