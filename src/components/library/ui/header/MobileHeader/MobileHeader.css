@@ -1,0 +1,19 @@
+.mobile-header-container {
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    background: #fff;    
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .mobile-header-container {
+        display: flex;
+    }
+}

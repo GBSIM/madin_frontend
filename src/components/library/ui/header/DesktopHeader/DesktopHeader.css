@@ -12,6 +12,12 @@
     z-index: 999;
 }
 
+@media (max-width: 800px) {
+    .desktop-header-container {
+        display: none;
+    }
+}
+
 .desktop-header {
     width: 100%;
     max-width: 1440px;

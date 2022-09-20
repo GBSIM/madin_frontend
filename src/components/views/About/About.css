@@ -8,6 +8,12 @@
     justify-content: center;
 }
 
+@media (max-width: 800px) {
+    .about-image-container {
+        height: calc(100vh - 50px);
+    }
+}
+
 .about-image {
     height: 100%;
     width: auto;
