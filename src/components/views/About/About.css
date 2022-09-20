@@ -10,7 +10,7 @@
 
 @media (max-width: 800px) {
     .about-image-container {
-        height: calc(100vh - 50px);
+        height: calc(100vh - 50px - 60px);
     }
 }
 
@@ -45,8 +45,8 @@
         display: flex;
         height: 100%;
         width: auto;
-        min-width: 900px;
-        min-height: 779px;
+        min-width: 850px;
+        min-height: 736px;
     }
 }
 
@@ -56,6 +56,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 800px) {
+    .about-information-container {
+        margin-bottom: 60px;
+    }
 }
 
 .about-information {

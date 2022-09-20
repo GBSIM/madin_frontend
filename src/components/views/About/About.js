@@ -2,12 +2,14 @@ import './About.css';
 
 import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
 import MobileHeader from '../../library/ui/header/MobileHeader/MobileHeader';
+import MobileFooter from '../../library/ui/footer/MobileFooter/MobileFooter';
 
 export default function About() {
     return (
         <div className='page'>
             <DesktopHeader></DesktopHeader>
             <MobileHeader></MobileHeader>
+            <MobileFooter></MobileFooter>
             <div className='about-image-container'>
                 <img src={require('../../library/images/madin_about.png')} className='about-image'></img>
                 <img src={require('../../library/images/madin_about_mobile.png')} className='about-image-mobile'></img>
