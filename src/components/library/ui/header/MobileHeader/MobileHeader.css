@@ -7,7 +7,7 @@
     height: 50px;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     z-index: 999;
     display: none;
 }
@@ -16,4 +16,8 @@
     .mobile-header-container {
         display: flex;
     }
+}
+
+.mobile-header-logo-container {
+    margin-left: 20px;
 }
