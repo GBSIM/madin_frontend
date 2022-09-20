@@ -20,13 +20,27 @@
         height: 100%;
         width: auto;
         min-width: 1538px;
-        min-height: 773px;
+        min-height: 772px;
     }
 }
 
 @media (max-width: 800px) {
     .about-image {
         display: none;
+    }
+}
+
+.about-image-mobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .about-image-mobile {
+        display: flex;
+        height: 100%;
+        width: auto;
+        min-width: 942px;
+        min-height: 816px;
     }
 }
 
