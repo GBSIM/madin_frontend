@@ -40,8 +40,9 @@
     
     .menu-picture-mobile {
         width: 400px;
-        min-width: 105vw;
-        height: calc(105vw * 1668 / 900);
+        min-width: 100vw;
+        height: calc(100vw * 1668 / 900);
+        display: none
     }
 }
 
