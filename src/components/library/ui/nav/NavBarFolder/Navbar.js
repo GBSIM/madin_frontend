@@ -4,7 +4,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { changePage } from '../../../../../_reducers/nav';
 
-import Navmenu from '../navmenu/Navmenu';
+import Navmenu from '../NavMenuFolder/Navmenu';
 
 export default function Navbar() {
     const {page} = useSelector(state => state.nav);
