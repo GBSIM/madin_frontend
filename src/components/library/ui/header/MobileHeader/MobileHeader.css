@@ -13,18 +13,14 @@
     padding: 0px 20px 0px 20px;
 }
 
-.mobile-header-profile-button-container {
-    flex-shrink: 0;
-    width: 24px;
-    min-width: 24px;
+.mobile-header-button-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 @media (max-width: 800px) {
     .mobile-header-container {
         display: flex;
     }
-}
-
-.mobile-header-spacer {
-    flex: 1;
 }

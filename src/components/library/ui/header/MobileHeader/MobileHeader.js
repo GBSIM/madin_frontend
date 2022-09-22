@@ -9,8 +9,7 @@ export default function MobileHeader() {
             <div className='mobile-header-logo-container'>
                 <LogoButton width={'70px'}></LogoButton>
             </div>
-            <div className='mobile-header-spacer'></div>
-            <div className='mobile-header-profile-button-container'>
+            <div className='mobile-header-button-container'>
                 <ProfileButton></ProfileButton>
             </div>
         </div>
