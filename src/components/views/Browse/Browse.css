@@ -21,3 +21,9 @@
     justify-content: center;
     z-index: 999;
 }
+
+@media (max-width: 800px) {
+    .browse-option-button-container {
+        display: none;
+    } 
+}
