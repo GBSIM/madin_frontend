@@ -8,6 +8,12 @@
     padding-top: 60px;
 }
 
+@media (max-width: 800px) {
+    .menu-frame-container {
+        display: none;
+    }
+}
+
 .menu-container {
     width: 100%;
     max-width: 1920px;
@@ -54,12 +60,6 @@
     column-gap: 10px;
 }
 
-@media (max-width: 800px) {
-    .menu-picture-button-container {
-        display: none;
-    }
-}
-
 .menu-title {
     font-size: 40px;
     color: #141414;
@@ -81,4 +81,10 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+@media (max-width: 800px) {
+    .menu-type-container {
+        display: none;
+    }
 }
