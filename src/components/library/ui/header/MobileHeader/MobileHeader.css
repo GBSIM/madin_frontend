@@ -17,6 +17,8 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    height: 100%;
+    align-items: center;
 }
 
 @media (max-width: 800px) {

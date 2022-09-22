@@ -11,7 +11,6 @@ export default function MobileHeader() {
             </div>
             <div className='mobile-header-button-container'>
                 <ProfileButton></ProfileButton>
-                <ProfileButton></ProfileButton>
             </div>
         </div>
     )
