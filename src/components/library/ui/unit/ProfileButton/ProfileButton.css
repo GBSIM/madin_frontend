@@ -1,9 +1,11 @@
 .profile-button-container {
     height: 100%;
-    flex-shrink: 0;    
+    flex-shrink: 0;
+    min-width: 24px;    
 }
 
 .profile-button {
+    min-width: 24px;
     width: 24px;
     height: 24px;
     flex-shrink: 0;
