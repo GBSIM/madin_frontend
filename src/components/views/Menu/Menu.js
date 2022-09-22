@@ -57,6 +57,11 @@ export default function Menu() {
                     </div>
                 </div>
             </div>
+            <div className='menu-frame-container-mobile'>
+                <div className='menu-picture-container-mobile'>
+                    <img className='menu-picture-mobile' src={require('../../library/images/lemon_madeliene_mobile.png')}></img>
+                </div>
+            </div>
             <div className='menu-type-container'>
                 <OptionButton state={menuType} option1={'디저트'} option2={'음료'} clickEvent={menuTypeChangeEvent}></OptionButton>
             </div>

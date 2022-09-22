@@ -14,6 +14,37 @@
     }
 }
 
+.menu-frame-container-mobile {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .menu-frame-container-mobile {
+        width: 100%;
+        top: 50px;
+        height: calc(100vh - 50px - 60px);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    .menu-picture-container-mobile {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .menu-picture-mobile {
+        width: 400px;
+        min-width: 105vw;
+        height: calc(105vw * 1668 / 900);
+    }
+}
+
 .menu-container {
     width: 100%;
     max-width: 1920px;
