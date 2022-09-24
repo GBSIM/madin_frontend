@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import OrangeButton from '../../library/ui/unit/OrangeButton/OrangeButton';
-import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
+import TwoOptionsButton from '../../library/ui/unit/TwoOptionsButton/TwoOptionsButton';
 import PictureButton from '../../library/ui/unit/PictureButton/PictureButton';
 
 export default function Menu() {
@@ -60,7 +60,7 @@ export default function Menu() {
                 </div>
             </div>
             <div className='menu-type-container'>
-                <OptionButton state={menuType} option1={'디저트'} option2={'음료'} clickEvent={menuTypeChangeEvent}></OptionButton>
+                <TwoOptionsButton state={menuType} option1={'디저트'} option2={'음료'} clickEvent={menuTypeChangeEvent}></TwoOptionsButton>
             </div>
             <Footer></Footer>
         </div>

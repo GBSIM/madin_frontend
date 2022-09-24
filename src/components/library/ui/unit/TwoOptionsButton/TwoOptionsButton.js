@@ -1,6 +1,6 @@
-import './OptionButton.css';
+import './TwoOptionsButton.css';
 
-export default function OptionButton(props) {
+export default function TwoOptionsButton(props) {
     if (props.state === props.option1) {
         return (
             <div className='option-button-container'>

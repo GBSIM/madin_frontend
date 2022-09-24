@@ -5,7 +5,7 @@ import { changeBrowseOption } from '../../../_reducers/browse';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
-import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
+import TwoOptionsButton from '../../library/ui/unit/TwoOptionsButton/TwoOptionsButton';
 
 export default function Browse() {
     const {browseOption} = useSelector(state => state.browse);
@@ -20,7 +20,7 @@ export default function Browse() {
             <Header></Header>
             <div className='browse-container'>
                 <div className='browse-option-button-container'>
-                    <OptionButton state={browseOption} option1={'인기'} option2={'최신'} clickEvent={browseOptionChangeEvent}></OptionButton>
+                    <TwoOptionsButton state={browseOption} option1={'인기'} option2={'최신'} clickEvent={browseOptionChangeEvent}></TwoOptionsButton>
                 </div>
             </div>
             <Footer></Footer>

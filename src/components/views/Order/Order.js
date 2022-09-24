@@ -5,7 +5,7 @@ import { changeOrderType } from '../../../_reducers/order';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
-import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
+import TwoOptionsButton from '../../library/ui/unit/TwoOptionsButton/TwoOptionsButton';
 
 export default function Order() {
     const {orderType} = useSelector(state => state.order);
@@ -42,7 +42,7 @@ export default function Order() {
                     </div>
                 </div>
                 <div className='order-option-container'>
-                    <OptionButton state={orderType} option1={'개인구매'} option2={'선물하기'} clickEvent={orderTypeChangeEvent}></OptionButton>
+                    <TwoOptionsButton state={orderType} option1={'개인구매'} option2={'선물하기'} clickEvent={orderTypeChangeEvent}></TwoOptionsButton>
                 </div>
             </div>
             <div className='order-menu-frame-container'>
