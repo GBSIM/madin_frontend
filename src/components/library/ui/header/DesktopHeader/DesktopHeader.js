@@ -1,7 +1,7 @@
 import './DesktopHeader.css';
 
 import LogoButton from '../../unit/LogoButton/LogoButton';
-import Navbar from '../../nav/NavBar/Navbar';
+import Navbar from '../../nav/DesktopNavBar/DesktopNavbar';
 
 export default function DesktopHeader() {
     return (

@@ -4,7 +4,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { changePage } from '../../../../../_reducers/nav';
 
-import NavIcon from '../NavIcon/NavIcon';
+import IconNavButton from '../IconNavButton/IconNavButton';
 
 export default function MobileNavBar(props) {
     const {page} = useSelector(state => state.nav);
@@ -18,14 +18,14 @@ export default function MobileNavBar(props) {
 
     return (
         <div className='mobile-nav-bar'>
-            <NavIcon isOn={page==='about'} navEvent={navPageEvent} pageName='about' 
-                     onImage={require('../../../icons/home_orange.png')} offImage={require('../../../icons/home_grey.png')}></NavIcon>
-            <NavIcon isOn={page==='browse'} navEvent={navPageEvent} pageName='browse' 
-                     onImage={require('../../../icons/browse_orange.png')} offImage={require('../../../icons/browse_grey.png')}></NavIcon>
-            <NavIcon isOn={page==='menu'} navEvent={navPageEvent} pageName='menu' 
-                     onImage={require('../../../icons/menu_orange.png')} offImage={require('../../../icons/menu_grey.png')}></NavIcon>
-            <NavIcon isOn={page==='order'} navEvent={navPageEvent} pageName='order' 
-                     onImage={require('../../../icons/order_orange.png')} offImage={require('../../../icons/order_grey.png')}></NavIcon>
+            <IconNavButton isOn={page==='about'} navEvent={navPageEvent} pageName='about' 
+                     onImage={require('../../../icons/home_orange.png')} offImage={require('../../../icons/home_grey.png')}></IconNavButton>
+            <IconNavButton isOn={page==='browse'} navEvent={navPageEvent} pageName='browse' 
+                     onImage={require('../../../icons/browse_orange.png')} offImage={require('../../../icons/browse_grey.png')}></IconNavButton>
+            <IconNavButton isOn={page==='menu'} navEvent={navPageEvent} pageName='menu' 
+                     onImage={require('../../../icons/menu_orange.png')} offImage={require('../../../icons/menu_grey.png')}></IconNavButton>
+            <IconNavButton isOn={page==='order'} navEvent={navPageEvent} pageName='order' 
+                     onImage={require('../../../icons/order_orange.png')} offImage={require('../../../icons/order_grey.png')}></IconNavButton>
         </div>
     )
 }

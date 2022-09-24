@@ -1,6 +1,6 @@
-import './Navmenu.css';
+import './TextNavButton.css';
 
-export default function Navmenu(props) {
+export default function TextNavButton(props) {
     let NavMenuText;
     if (props.isOn) {
         NavMenuText = 
