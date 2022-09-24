@@ -1,6 +1,6 @@
 import './MobileHeader.css';
 
-import LogoButton from '../../logo/LogoButton/LogoButton';
+import LogoButton from '../../unit/LogoButton/LogoButton';
 import ProfileButton from '../../unit/ProfileButton/ProfileButton';
 
 export default function MobileHeader() {
