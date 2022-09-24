@@ -3,8 +3,7 @@ import './Browse.css';
 import { useSelector,useDispatch } from "react-redux";
 import { changeBrowseOption } from '../../../_reducers/browse';
 
-import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
-import MobileHeader from '../../library/ui/header/MobileHeader/MobileHeader';
+import Header from '../../library/ui/header/Header/Header';
 import MobileFooter from '../../library/ui/footer/MobileFooter/MobileFooter';
 import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
 
@@ -18,8 +17,7 @@ export default function Browse() {
 
     return (
         <div className='page'>
-            <DesktopHeader></DesktopHeader>
-            <MobileHeader></MobileHeader>
+            <Header></Header>
             <MobileFooter></MobileFooter>
             <div className='browse-container'>
                 <div className='browse-option-button-container'>

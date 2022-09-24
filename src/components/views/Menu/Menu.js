@@ -5,8 +5,7 @@ import { changeMenuType } from '../../../_reducers/menu';
 import { changePage } from '../../../_reducers/nav';
 import { useNavigate } from 'react-router-dom';
 
-import DesktopHeader from '../../library/ui/header/DesktopHeader/DesktopHeader';
-import MobileHeader from '../../library/ui/header/MobileHeader/MobileHeader';
+import Header from '../../library/ui/header/Header/Header';
 import MobileFooter from '../../library/ui/footer/MobileFooter/MobileFooter';
 import OrangeButton from '../../library/ui/unit/OrangeButton/OrangeButton';
 import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
@@ -27,8 +26,7 @@ export default function Menu() {
 
     return (
         <div className='page'>
-            <DesktopHeader></DesktopHeader>
-            <MobileHeader></MobileHeader>
+            <Header></Header>
             <MobileFooter></MobileFooter>
             <div className='menu-frame-container'>
                 <div className='menu-container'>
