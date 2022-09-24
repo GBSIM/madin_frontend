@@ -4,7 +4,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { changeBrowseOption } from '../../../_reducers/browse';
 
 import Header from '../../library/ui/header/Header/Header';
-import MobileFooter from '../../library/ui/footer/MobileFooter/MobileFooter';
+import Footer from '../../library/ui/footer/Footer/Footer';
 import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
 
 export default function Browse() {
@@ -18,12 +18,12 @@ export default function Browse() {
     return (
         <div className='page'>
             <Header></Header>
-            <MobileFooter></MobileFooter>
             <div className='browse-container'>
                 <div className='browse-option-button-container'>
                     <OptionButton state={browseOption} option1={'인기'} option2={'최신'} clickEvent={browseOptionChangeEvent}></OptionButton>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     )
 }

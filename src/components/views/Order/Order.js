@@ -4,7 +4,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { changeOrderType } from '../../../_reducers/order';
 
 import Header from '../../library/ui/header/Header/Header';
-import MobileFooter from '../../library/ui/footer/MobileFooter/MobileFooter';
+import Footer from '../../library/ui/footer/Footer/Footer';
 import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
 
 export default function Order() {
@@ -34,7 +34,6 @@ export default function Order() {
     return (
         <div className='page'>
             <Header></Header>
-            <MobileFooter></MobileFooter>
             <div className='order-guide-frame-container'>
                 <div className='order-guide-container'>
                     <div className='order-guide-contents-container'>
@@ -51,6 +50,7 @@ export default function Order() {
                     
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     )
 }

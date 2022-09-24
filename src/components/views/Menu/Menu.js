@@ -6,7 +6,7 @@ import { changePage } from '../../../_reducers/nav';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../../library/ui/header/Header/Header';
-import MobileFooter from '../../library/ui/footer/MobileFooter/MobileFooter';
+import Footer from '../../library/ui/footer/Footer/Footer';
 import OrangeButton from '../../library/ui/unit/OrangeButton/OrangeButton';
 import OptionButton from '../../library/ui/unit/OptionButton/OptionButton';
 import PictureButton from '../../library/ui/unit/PictureButton/PictureButton';
@@ -27,7 +27,6 @@ export default function Menu() {
     return (
         <div className='page'>
             <Header></Header>
-            <MobileFooter></MobileFooter>
             <div className='menu-frame-container'>
                 <div className='menu-container'>
                     <div className='menu-contents-container'>
@@ -63,6 +62,7 @@ export default function Menu() {
             <div className='menu-type-container'>
                 <OptionButton state={menuType} option1={'디저트'} option2={'음료'} clickEvent={menuTypeChangeEvent}></OptionButton>
             </div>
+            <Footer></Footer>
         </div>
     )
 }
