@@ -3,7 +3,10 @@ import './MenuContents.css';
 import { useSelector,useDispatch } from "react-redux";
 import { changePage } from '../../../../_reducers/nav';
 import { useNavigate } from 'react-router-dom';
+import { swipeMenuToLeft, swipeMenuToRight } from '../../../../_reducers/menu';
 
+import RightArrowButton from '../../ui/unit/RightArrowButton/RightArrowButton';
+import LeftArrowButton from '../../ui/unit/LeftArrowButton/LeftArrowButton';
 import OrangeButton from '../../ui/unit/OrangeButton/OrangeButton';
 
 export default function MenuContents() {
@@ -40,8 +43,38 @@ export default function MenuContents() {
                     <div className='menu-picture-container'>
                         <img className='menu-picture' src={require('../../../library/images/lemon_madeliene.jpeg')}></img>
                     </div>
+                    <div className='menu-swipe-button-container'>
+                        <MenuSwipeLefttButton></MenuSwipeLefttButton>
+                        <MenuSwipeRightButton></MenuSwipeRightButton>
+                    </div>
                 </div>
             </div>
+        </div>
+    )
+}
+
+function MenuSwipeLefttButton() {
+    const dispatch = useDispatch();
+    const swipeToLeft = () => {
+        dispatch(swipeMenuToLeft());
+    }
+
+    return (
+        <div className='menu-swipe-left-button' >
+            <LeftArrowButton clickEvent={swipeToLeft}></LeftArrowButton>
+        </div>
+    )
+}
+
+function MenuSwipeRightButton() {
+    const dispatch = useDispatch();
+    const swipeToRight = () => {
+        dispatch(swipeMenuToRight());
+    }
+
+    return (
+        <div className='menu-swipe-right-button' >
+            <RightArrowButton clickEvent={swipeToRight}></RightArrowButton>
         </div>
     )
 }

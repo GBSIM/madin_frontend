@@ -81,9 +81,10 @@
     height: auto;
 }
 
-.menu-picture-button-container {
+.menu-swipe-button-container {
     width: 100%;
     min-height: 60px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

@@ -4,7 +4,8 @@ export const SWIPE_MENU_TO_LEFT = "MENU/SWIPE_MENU_TO_LEFT";
 export const INIT_MENU_DATA = "MENU/INIT_MENU_DATA";
 
 export const changeMenuType = (menuType) => ({type:CHANGE_MENU_TYPE, menuType:menuType});
-export const swipeMenuToRight = (menuIndex) => ({type:SWIPE_MENU_TO_RIGHT});
+export const swipeMenuToRight = () => ({type:SWIPE_MENU_TO_RIGHT});
+export const swipeMenuToLeft = () => ({type:SWIPE_MENU_TO_LEFT});
 export const initMenuData = () => ({type:INIT_MENU_DATA});
 
 const initialState = {
