@@ -1,9 +1,11 @@
 export const CHANGE_MENU_TYPE = "MENU/CHANGE_MENU_TYPE";
 export const SWIPE_MENU_TO_RIGHT = "MENU/SWIPE_MENU_TO_RIGHT";
 export const SWIPE_MENU_TO_LEFT = "MENU/SWIPE_MENU_TO_LEFT";
+export const INIT_MENU_DATA = "MENU/INIT_MENU_DATA";
 
 export const changeMenuType = (menuType) => ({type:CHANGE_MENU_TYPE, menuType:menuType});
 export const swipeMenuToRight = (menuIndex) => ({type:SWIPE_MENU_TO_RIGHT});
+export const initMenuData = () => ({type:INIT_MENU_DATA});
 
 const initialState = {
     menuType: "디저트",
@@ -30,6 +32,16 @@ const menu = (state = initialState, action) => {
             return {
                 ...state,
                 menuType: action.menuType
+            }
+        case INIT_MENU_DATA:
+            return {
+                ...state,
+                menuEnglishName: action.menuList[action.currentMenuIndex]["englishName"],
+                menuKoreanName: action.menuList[action.currentMenuIndex]["koreanName"],
+                menuDescription1: action.menuList[action.currentMenuIndex]["description1"],
+                menuDescription2: action.menuList[action.currentMenuIndex]["description2"],
+                menuDescription3: action.menuList[action.currentMenuIndex]["description3"],
+                menuDescription4: action.menuList[action.currentMenuIndex]["description4"],
             }
         case SWIPE_MENU_TO_LEFT:
             let leftMenuIndex;
