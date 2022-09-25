@@ -57,7 +57,7 @@
     flex: 1;
     height: 100%;
     padding-left: 15%;
-    padding-top: 3%;
+    padding-top: 8vh;
     max-width: calc(1920px / 2);
     max-width: 50%;
 }
