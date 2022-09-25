@@ -24,6 +24,9 @@ const initialState = {
         {"koreanName":"초코마들렌","englishName":"Choco Madeliene",
          "description1":"깊은 초코의 맛과 마들렌의 조합","description2":"마딘의 시그니쳐 메뉴에요.",
          "description3":"마딘의 첫 오픈부터 지금까지","description4":"가장 많이 사랑받는 디저트입니다."},
+         {"koreanName":"애플시나몬마들렌","englishName":"Apple Cinnamon Madeliene",
+         "description1":"달콤한 사과와 마들렌의 조합","description2":"마딘의 시그니쳐 메뉴에요.",
+         "description3":"마딘의 첫 오픈부터 지금까지","description4":"가장 많이 사랑받는 디저트입니다."},
     ]
 }
 
