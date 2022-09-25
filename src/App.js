@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { changePage } from './_reducers/nav';
+import { initMenuData } from './_reducers/menu';
 
 import About from './components/views/About/About';
 import Browse from './components/views/Browse/Browse';
@@ -42,6 +43,8 @@ function App() {
   } else {
     dispatch(changePage('about'));
   }
+
+  dispatch(initMenuData());
 
   return (
     <Router>

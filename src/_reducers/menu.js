@@ -36,46 +36,46 @@ const menu = (state = initialState, action) => {
         case INIT_MENU_DATA:
             return {
                 ...state,
-                menuEnglishName: action.menuList[action.currentMenuIndex]["englishName"],
-                menuKoreanName: action.menuList[action.currentMenuIndex]["koreanName"],
-                menuDescription1: action.menuList[action.currentMenuIndex]["description1"],
-                menuDescription2: action.menuList[action.currentMenuIndex]["description2"],
-                menuDescription3: action.menuList[action.currentMenuIndex]["description3"],
-                menuDescription4: action.menuList[action.currentMenuIndex]["description4"],
+                menuEnglishName: state.menuList[state.currentMenuIndex]["englishName"],
+                menuKoreanName: state.menuList[state.currentMenuIndex]["koreanName"],
+                menuDescription1: state.menuList[state.currentMenuIndex]["description1"],
+                menuDescription2: state.menuList[state.currentMenuIndex]["description2"],
+                menuDescription3: state.menuList[state.currentMenuIndex]["description3"],
+                menuDescription4: state.menuList[state.currentMenuIndex]["description4"],
             }
         case SWIPE_MENU_TO_LEFT:
             let leftMenuIndex;
-            if (action.currentMenuIndex === 0) {
-                leftMenuIndex = action.menuList.length - 1;
+            if (state.currentMenuIndex === 0) {
+                leftMenuIndex = state.menuList.length - 1;
             } else {
-                leftMenuIndex = action.currentMenuIndex - 1;
+                leftMenuIndex = state.currentMenuIndex - 1;
             }
             return {
                 ...state,
                 currentMenuIndex: leftMenuIndex,
-                menuEnglishName: action.menuList[leftMenuIndex]["englishName"],
-                menuKoreanName: action.menuList[leftMenuIndex]["koreanName"],
-                menuDescription1: action.menuList[leftMenuIndex]["description1"],
-                menuDescription2: action.menuList[leftMenuIndex]["description2"],
-                menuDescription3: action.menuList[leftMenuIndex]["description3"],
-                menuDescription4: action.menuList[leftMenuIndex]["description4"],
+                menuEnglishName: state.menuList[leftMenuIndex]["englishName"],
+                menuKoreanName: state.menuList[leftMenuIndex]["koreanName"],
+                menuDescription1: state.menuList[leftMenuIndex]["description1"],
+                menuDescription2: state.menuList[leftMenuIndex]["description2"],
+                menuDescription3: state.menuList[leftMenuIndex]["description3"],
+                menuDescription4: state.menuList[leftMenuIndex]["description4"],
             }
         case SWIPE_MENU_TO_RIGHT:
             let rightMenuIndex;
-            if (action.currentMenuIndex === (action.menuList.length-1)) {
+            if (state.currentMenuIndex === (state.menuList.length-1)) {
                 rightMenuIndex = 0;
             } else {
-                rightMenuIndex = action.currentMenuIndex + 1;
+                rightMenuIndex = state.currentMenuIndex + 1;
             }
             return {
                 ...state,
                 currentMenuIndex: rightMenuIndex,
-                menuEnglishName: action.menuList[rightMenuIndex]["englishName"],
-                menuKoreanName: action.menuList[rightMenuIndex]["koreanName"],
-                menuDescription1: action.menuList[rightMenuIndex]["description1"],
-                menuDescription2: action.menuList[rightMenuIndex]["description2"],
-                menuDescription3: action.menuList[rightMenuIndex]["description3"],
-                menuDescription4: action.menuList[rightMenuIndex]["description4"],
+                menuEnglishName: state.menuList[rightMenuIndex]["englishName"],
+                menuKoreanName: state.menuList[rightMenuIndex]["koreanName"],
+                menuDescription1: state.menuList[rightMenuIndex]["description1"],
+                menuDescription2: state.menuList[rightMenuIndex]["description2"],
+                menuDescription3: state.menuList[rightMenuIndex]["description3"],
+                menuDescription4: state.menuList[rightMenuIndex]["description4"],
             }
         default:
             return state;
