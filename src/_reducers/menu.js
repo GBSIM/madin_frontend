@@ -103,9 +103,10 @@ const menu = (state = initialState, action) => {
                 } else {
                     leftMenuIndex = state.currentDrinkIndex - 1;
                 }
+                console.log(leftMenuIndex);
                 return {
                     ...state,
-                    currentMenuIndex: leftMenuIndex,
+                    currentDrinkIndex: leftMenuIndex,
                     menuEnglishName: state.drinkList[leftMenuIndex]["englishName"],
                     menuKoreanName: state.drinkList[leftMenuIndex]["koreanName"],
                     menuDescription1: state.drinkList[leftMenuIndex]["description1"],
