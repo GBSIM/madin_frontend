@@ -17,12 +17,12 @@
     flex-direction: row;
     overflow: hidden;
     padding-left: 30px;
-    min-height: 380px;
+    min-height: 350px;
 }
 
 .mobile-menu-image {
-    min-width: 442px;
-    min-height: 373px;
+    min-width: 403px;
+    min-height: 340px;
 }
 
 .mobile-menu-tag-container {
