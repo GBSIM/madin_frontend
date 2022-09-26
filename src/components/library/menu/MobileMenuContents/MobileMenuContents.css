@@ -8,7 +8,7 @@
         flex-direction: column;
         width: 100%;
         height: calc(100vh - 50px - 60px);
-        padding-top: 30px;
+        padding-top: 20px;
     }
 }
 
@@ -38,13 +38,13 @@
 }
 
 .mobile-menu-english-name {
-    font-size: 28px;
+    font-size: 26px;
     color: #141414;
     font-family: 'Philosopher', sans-serif;
 }
 
 .mobile-menu-korean-name {
-    font-size: 16px;
+    font-size: 14px;
     color: #8E8E8E;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .mobile-menu-description {
-    font-size: 16px;
+    font-size: 14px;
     color: #595959;
 }
 
@@ -64,7 +64,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 20px;
-    padding-top: 30px;
+    padding-top: 40px;
 }
 
 .mobile-menu-swipe-button-container {
