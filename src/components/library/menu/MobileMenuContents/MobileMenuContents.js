@@ -26,6 +26,7 @@ export default function MobileMenuContents() {
                 <div>
                     <span className='mobile-menu-description'>{menuDescription1}</span>
                 </div>
+                <div style={{'minHeight':'5px'}}></div>
                 <div>
                     <span className='mobile-menu-description'>{menuDescription2}</span>
                 </div>
