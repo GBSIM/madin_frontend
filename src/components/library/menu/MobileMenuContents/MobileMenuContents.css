@@ -8,7 +8,7 @@
         flex-direction: column;
         width: 100%;
         height: calc(100vh - 50px - 60px);
-        padding-top: 40px;
+        padding-top: 30px;
     }
 }
 
@@ -17,12 +17,12 @@
     flex-direction: row;
     overflow: hidden;
     padding-left: 30px;
-    min-height: 350px;
+    min-height: 320px;
 }
 
 .mobile-menu-image {
-    min-width: 403px;
-    min-height: 340px;
+    min-width: 367px;
+    min-height: 310px;
 }
 
 .mobile-menu-tag-container {
