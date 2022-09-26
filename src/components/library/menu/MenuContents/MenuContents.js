@@ -41,10 +41,10 @@ export default function MenuContents() {
                 </div>
                 <div className='menu-picture-frame-container'>
                     <div className='menu-picture-container'>
-                        <img className='menu-picture' src={require('../../../library/images/lemon_madeliene.jpeg')}></img>
+                        <img className='menu-picture' src={require('../../../library/images/lemon_madeleine.jpeg')}></img>
                     </div>
                     <div className='menu-swipe-button-container'>
-                        <MenuSwipeLefttButton></MenuSwipeLefttButton>
+                        <MenuSwipeLeftButton></MenuSwipeLeftButton>
                         <MenuSwipeRightButton></MenuSwipeRightButton>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export default function MenuContents() {
     )
 }
 
-function MenuSwipeLefttButton() {
+export function MenuSwipeLeftButton() {
     const dispatch = useDispatch();
     const swipeToLeft = () => {
         dispatch(swipeMenuToLeft());
@@ -66,7 +66,7 @@ function MenuSwipeLefttButton() {
     )
 }
 
-function MenuSwipeRightButton() {
+export function MenuSwipeRightButton() {
     const dispatch = useDispatch();
     const swipeToRight = () => {
         dispatch(swipeMenuToRight());
