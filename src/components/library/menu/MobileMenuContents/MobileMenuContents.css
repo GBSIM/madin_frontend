@@ -8,6 +8,7 @@
         flex-direction: column;
         width: 100%;
         height: calc(100vh - 40px - 50px);
+        min-height: 650px;
     }
 }
 
@@ -59,8 +60,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    position:fixed;
-    bottom: 75px;
+    padding-top: 15px;    
+    padding-bottom: 15px;
 }
 
 .mobile-menu-swipe-button-container {
