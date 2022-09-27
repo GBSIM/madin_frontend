@@ -7,7 +7,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: calc(100vh - 50px - 60px);
+        height: calc(100vh - 40px - 50px);
     }
 }
 
@@ -60,7 +60,7 @@
     justify-content: center;
     align-items: center;
     position:fixed;
-    bottom: 85px;
+    bottom: 75px;
 }
 
 .mobile-menu-swipe-button-container {
@@ -68,6 +68,6 @@
     display: flex;
     flex-direction: row;
     column-gap: 10px;
-    bottom: 75px;
+    bottom: 65px;
     right: 15px;
 }
