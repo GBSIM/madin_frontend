@@ -18,7 +18,6 @@ export default function MobileMenuContents() {
             <div className='mobile-menu-tag-container'>
                 <OrangeTag tag={'signature'}></OrangeTag>
             </div>
-            <div style={{'flex':'1'}}></div>
             <div className='mobile-menu-text-container'>
                 <h2 className='mobile-menu-english-name'>{menuEnglishName}</h2>
                 <span className='mobile-menu-korean-name'>{menuKoreanName}</span>

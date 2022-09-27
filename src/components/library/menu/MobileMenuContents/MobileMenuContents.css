@@ -8,21 +8,17 @@
         flex-direction: column;
         width: 100%;
         height: calc(100vh - 50px - 60px);
-        padding-top: 20px;
     }
 }
 
 .mobile-menu-image-container {
     display: flex;
     flex-direction: row;
-    overflow: hidden;
-    padding-left: 30px;
-    min-height: 320px;
 }
 
 .mobile-menu-image {
-    min-width: 367px;
-    min-height: 310px;
+    width: 100vw;
+    height: 100vw;
 }
 
 .mobile-menu-tag-container {
@@ -63,8 +59,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
-    padding-top: 40px;
+    position:fixed;
+    bottom: 85px;
 }
 
 .mobile-menu-swipe-button-container {
