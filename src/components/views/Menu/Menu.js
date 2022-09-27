@@ -8,7 +8,7 @@ import MobileMenuContents from '../../library/menu/MobileMenuContents/MobileMenu
 
 export default function Menu() {
     return (
-        <div className='page'>
+        <div className='page menu'>
             <Header></Header>
             <MenuContents></MenuContents>
             <MobileMenuContents></MobileMenuContents>

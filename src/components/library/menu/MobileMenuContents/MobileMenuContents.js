@@ -30,9 +30,11 @@ export default function MobileMenuContents() {
                     <span className='mobile-menu-description'>{menuDescription2}</span>
                 </div>
             </div>
+            <div className='mobile-menu-option-button-container-top-spacer'></div>
             <div className='mobile-menu-option-button-container'>
                 <MobileMenuOptionButton></MobileMenuOptionButton>
             </div>
+            <div className='mobile-menu-option-button-container-bottom-spacer'></div>
             <div className='mobile-menu-swipe-button-container'>
                 <MenuSwipeLeftButton></MenuSwipeLeftButton>
                 <MenuSwipeRightButton></MenuSwipeRightButton>

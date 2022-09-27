@@ -96,69 +96,9 @@ span {
 	margin: 0;
 }
 
-
-.main-contents {	
-	min-height: 1000px;
+.page {
 	display: flex;
 	flex-direction: column;
-	row-gap: 20px;
-	align-items: center;
-	padding-top: 20px;
-	padding-bottom: 100px;
-}
-
-.content-box {
-	width: min(500px, 100%);
-	background: rgba(0,0,0,0);
-	border: 1px solid rgba(245, 245, 244, 1);
-	box-shadow: 0px 3px 5px 0px rgba(248, 248, 248, 1);
-	padding-bottom: 50px;
-	border-radius: 10px;
-}
-
-.content-box-title {
-	color: #333;
-	margin: 0;
-	margin-left: 20px;
-	margin-top: 15px;
-}
-
-.sub-contents-right {
-	position: fixed;
-	top: 80px;
-	right: calc(50% - 250px - 360px - (50% - 250px - 360px) / 2);
-	width: 360px;
-	background: #fff;
-	display: flex;
-	flex-direction: column;
-	z-index: 0;
-}
-
-.container-center-align {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-}
-
-.container-right-align {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	align-items: center;
-}
-
-.subcontents-profile-image {
-	width: 100px;
-	height: 100px;
-	object-fit: cover;
-}
-
-.subcontents-profile-name {
-	margin: 0;
-	color: #696969;
 }
 
 @media (max-width: 1300px) {
