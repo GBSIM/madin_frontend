@@ -18,7 +18,7 @@
 
 .mobile-menu-image {
     width: 100vw;
-    height: 100vw;
+    height: calc(100vw * 774 / 961);
 }
 
 .mobile-menu-tag-container {
@@ -45,7 +45,7 @@
 }
 
 .mobile-menu-contents-spacer {
-    min-height: 30px;
+    min-height: 40px;
 }
 
 .mobile-menu-description {
@@ -55,13 +55,20 @@
 
 .mobile-menu-option-button-container-top-spacer {
     flex: 1;
-    min-height: 20px;
+    min-height: 30px;
 }
 
-@media (max-height: 690px) {
+@media (max-height: 650px) {
     .mobile-menu-option-button-container-bottom-spacer {
+        height: 0px;
         min-height: 50px;
+        max-height: 50px;
     }
+}
+
+.mobile-menu-option-button-container-bottom-spacer {
+    min-height: 25px;
+    height: 25px;
 }
 
 .mobile-menu-option-button-container {
@@ -70,7 +77,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-bottom: 25px;
+    padding-bottom: 0px;
 }
 
 .mobile-menu-swipe-button-container {
