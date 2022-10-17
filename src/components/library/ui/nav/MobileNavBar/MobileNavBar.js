@@ -18,14 +18,14 @@ export default function MobileNavBar(props) {
 
     return (
         <div className='mobile-nav-bar'>
-            <IconNavButton isOn={page==='about'} navEvent={navPageEvent} pageName='about' 
+            {/* <IconNavButton isOn={page==='about'} navEvent={navPageEvent} pageName='about' 
                      onImage={require('../../../icons/home_orange.png')} offImage={require('../../../icons/home_grey.png')}></IconNavButton>
             <IconNavButton isOn={page==='browse'} navEvent={navPageEvent} pageName='browse' 
                      onImage={require('../../../icons/browse_orange.png')} offImage={require('../../../icons/browse_grey.png')}></IconNavButton>
             <IconNavButton isOn={page==='menu'} navEvent={navPageEvent} pageName='menu' 
                      onImage={require('../../../icons/menu_orange.png')} offImage={require('../../../icons/menu_grey.png')}></IconNavButton>
             <IconNavButton isOn={page==='order'} navEvent={navPageEvent} pageName='order' 
-                     onImage={require('../../../icons/order_orange.png')} offImage={require('../../../icons/order_grey.png')}></IconNavButton>
+                     onImage={require('../../../icons/order_orange.png')} offImage={require('../../../icons/order_grey.png')}></IconNavButton> */}
         </div>
     )
 }
