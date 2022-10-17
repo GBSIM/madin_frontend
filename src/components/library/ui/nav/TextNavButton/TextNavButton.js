@@ -10,7 +10,7 @@ export default function TextNavButton(props) {
     } else {
         NavMenuText = 
             <button className='nav-menu' onClick={() => props.navEvent(props.pageName)}>
-                <span className='nav-menu-text' style={{color:'#666666'}}>{props.text}</span>
+                <span className='nav-menu-text' style={{color:'#CACACA'}}>{props.text}</span>
             </button>
     }
     return (    
