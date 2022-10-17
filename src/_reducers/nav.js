@@ -3,7 +3,7 @@ export const CHANGE_PAGE = "NAV/CHANGE_PAGE"
 export const changePage = (nextPage) => ({type:CHANGE_PAGE, page:nextPage})
 
 const initialState = {
-    page: "about"
+    page: "personal"
 }
 
 const nav = (state = initialState, action) => {

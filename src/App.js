@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { changePage } from './_reducers/nav';
-import { initMenuData } from './_reducers/menu';
 
 import Personal from './components/views/Personal/Personal';
 import Group from './components/views/Group/Group';
@@ -40,8 +39,6 @@ function App() {
   } else {
     dispatch(changePage('personal'));
   }
-
-  dispatch(initMenuData());
 
   return (
     <Router>
