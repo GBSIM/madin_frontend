@@ -8,8 +8,8 @@ export default function LogoButton(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const navPageEvent = () => {
-        dispatch(changePage('about'));
-        navigate('/about');
+        dispatch(changePage('personal'));
+        navigate('/personal');
         window.scrollTo(0,0);
     }
 
