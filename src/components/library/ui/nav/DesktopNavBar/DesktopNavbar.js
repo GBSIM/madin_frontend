@@ -18,11 +18,9 @@ export default function Navbar() {
 
     return (
         <div className='nav-bar'>
-            <TextNavButton text='ABOUT' isOn={page==='about'} navEvent={navPageEvent} pageName={'about'}></TextNavButton>
-            <TextNavButton text='BROWSE' isOn={page==='browse'} navEvent={navPageEvent} pageName={'browse'}></TextNavButton>
-            <TextNavButton text='MENU' isOn={page==='menu'} navEvent={navPageEvent} pageName={'menu'}></TextNavButton>
-            <TextNavButton text='ORDER' isOn={page==='order'} navEvent={navPageEvent} pageName={'order'}></TextNavButton>
-            <TextNavButton text='LOGIN' isOn={page==='login'} navEvent={navPageEvent} pageName={'login'}></TextNavButton>
+            <TextNavButton text='개인구매' isOn={page==='personal'} navEvent={navPageEvent} pageName={'personal'}></TextNavButton>
+            <TextNavButton text='답례품' isOn={page==='gruop'} navEvent={navPageEvent} pageName={'group'}></TextNavButton>
+            <TextNavButton text='픽업예약' isOn={page==='pickup'} navEvent={navPageEvent} pageName={'pickup'}></TextNavButton>
         </div>
     )
 }

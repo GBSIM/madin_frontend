@@ -9,10 +9,9 @@ import { useDispatch } from "react-redux";
 import { changePage } from './_reducers/nav';
 import { initMenuData } from './_reducers/menu';
 
-import About from './components/views/About/About';
-import Browse from './components/views/Browse/Browse';
-import Menu from './components/views/Menu/Menu';
-import Order from './components/views/Order/Order';
+import Personal from './components/views/Personal/Personal';
+import Group from './components/views/Group/Group';
+import Pickup from './components/views/Pickup/Pickup';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,28 +19,26 @@ function App() {
   window.onpopstate = function(event) {
     console.log("뒤로가기");
     if (window.location.pathname === "/") {
-      dispatch(changePage('about'));
-    } else if (window.location.pathname === "/about") {
-      dispatch(changePage('about'));
-    } else if (window.location.pathname === "/browse") {
-      dispatch(changePage('browse'));
-    } else if (window.location.pathname === "/menu") {
-      dispatch(changePage('menu'));
-    } else if (window.location.pathname === "/order") {
-      dispatch(changePage('order'));
+      dispatch(changePage('personal'));
+    } else if (window.location.pathname === "/personal") {
+      dispatch(changePage('personal'));
+    } else if (window.location.pathname === "/pickup") {
+      dispatch(changePage('pickup'));
+    } else if (window.location.pathname === "/group") {
+      dispatch(changePage('group'));
+    } else {
+      dispatch(changePage('personal'));
     } 
   }
 
-  if (window.location.pathname === "/about") {
-    dispatch(changePage('about'));
-  } else if (window.location.pathname === "/browse") {
-    dispatch(changePage('browse'));
-  } else if (window.location.pathname === "/menu") {
-    dispatch(changePage('menu'));
-  } else if (window.location.pathname === "/order") {
-    dispatch(changePage('order'));
+  if (window.location.pathname === "/personal") {
+    dispatch(changePage('personal'));
+  } else if (window.location.pathname === "/pickup") {
+    dispatch(changePage('pickup'));
+  } else if (window.location.pathname === "/group") {
+    dispatch(changePage('group'));
   } else {
-    dispatch(changePage('about'));
+    dispatch(changePage('personal'));
   }
 
   dispatch(initMenuData());
@@ -50,11 +47,10 @@ function App() {
     <Router>
       <div>
         <Routes>  
-          <Route exact path="/" element={<About/>} />
-          <Route exact path="/about" element={<About/>} />
-          <Route exact path="/browse" element={<Browse/>} />
-          <Route exact path="/menu" element={<Menu/>} />
-          <Route exact path="/order" element={<Order/>} />
+          <Route exact path="/" element={<Personal/>} />
+          <Route exact path="/personal" element={<Personal/>} />
+          <Route exact path="/group" element={<Group/>} />
+          <Route exact path="/pickup" element={<Pickup/>} />
         </Routes>
       </div>
     </Router>
