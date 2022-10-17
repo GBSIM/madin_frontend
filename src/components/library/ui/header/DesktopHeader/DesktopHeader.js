@@ -10,10 +10,10 @@ export default function DesktopHeader() {
                 <div className='desktop-header-logo-container'>
                     <LogoButton width={'90px'}></LogoButton>
                 </div>
-                <div className='desktop-header-space'></div>
                 <div className='desktop-header-navbar-container'>
                     <Navbar></Navbar>
                 </div>
+                <div className='desktop-header-space'></div>
             </div>
         </div>
     )
