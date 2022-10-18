@@ -41,6 +41,7 @@ export default function Personal() {
             <Header></Header>
             <Banner></Banner>
             {MenuBlocks}
+            <div style={{'minHeight':'50px'}}></div>
             <Footer></Footer>
         </div>
     )
