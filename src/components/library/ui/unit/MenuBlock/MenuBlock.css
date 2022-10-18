@@ -13,3 +13,82 @@
 .menu-intro {
     color: #595959;
 }
+
+.menu-menus-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 860px;
+    column-gap: 20px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    background: #F0F0F0;
+    border: 0px;
+}
+
+.menu-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.menu-quantity-container {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: content;
+    column-gap: 20px;
+}
+
+.menu-quantity-button {
+    padding: 0px;
+    margin: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #FFD5C8;
+}
+
+.menu-quantity {
+    font-weight: 500;
+}
+
+.menu-name-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu-name {
+    color: #141414;
+    font-weight: 500;
+}
+
+.menu-price-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu-price {
+    font-weight: 500;
+    color: #767676;
+}

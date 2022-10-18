@@ -29,8 +29,9 @@ export default function Personal() {
     if (Array.isArray(menus) && menus.length !== 0) {
         MenuBlocks = menus.map((menu,index) => (
             <MenuBlock 
-                menuTitle={menu["name"]}
-                menuIntro={menu["intro"]}
+                title={menu["name"]}
+                intro={menu["intro"]}
+                menus = {menu["menus"]}
                 key={"peronsal_menu_"+index}></MenuBlock>
         ));
     }
