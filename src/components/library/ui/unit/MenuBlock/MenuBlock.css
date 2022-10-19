@@ -19,8 +19,9 @@
     flex-direction: row;
     max-width: 860px;
     column-gap: 20px;
-    justify-content: center;
-    flex-wrap: nowrap;
+    row-gap: 30px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .menu-container {
