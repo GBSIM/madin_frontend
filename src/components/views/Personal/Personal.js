@@ -8,16 +8,17 @@ import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
 import MenuBlock from '../../library/ui/unit/MenuBlock/MenuBlock';
-import { saveMenu } from '../../../_reducers/menu';
+import { saveMenuClass } from '../../../_reducers/menu';
+import { savePersonalOrder } from '../../../_reducers/order';
 
 export default function Personal() {
     const dispatch = useDispatch();
-    const { menus } = useSelector(state => state.menu);
+    const { menuClasses } = useSelector(state => state.menu);
     useEffect(() => {
         const loadMenu  = async() => {
             try {
                 const response = await axios.get('https://api.madinbakery.com/menuclass');
-                dispatch(saveMenu(response.data.menuClass));
+                dispatch(saveMenuClass(response.data.menuClass));
             } catch(err) {
                 console.log(err);
             }
@@ -26,14 +27,21 @@ export default function Personal() {
     }, []);
 
     let MenuBlocks;
-    if (Array.isArray(menus) && menus.length !== 0) {
-        MenuBlocks = menus.map((menu,index) => (
+    if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
+        MenuBlocks = menuClasses.map((menuClass,index) => (
             <MenuBlock 
-                title={menu["name"]}
-                intro={menu["intro"]}
-                menus = {menu["menus"]}
+                title={menuClass["name"]}
+                intro={menuClass["intro"]}
+                menus = {menuClass["menus"]}
                 key={"peronsal_menu_"+index}></MenuBlock>
         ));
+        let menus = [];
+        menuClasses.map((menuClass,index) => (
+            menuClass["menus"].map((menu,index) => (
+                menus.push({"_id":menu["_id"],"name":menu["name"],"price":menu["price"],"number":0})
+            ))
+        ))
+        dispatch(savePersonalOrder(menus));
     }
 
     return (

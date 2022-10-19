@@ -1,17 +1,17 @@
-export const SAVE_MENU = "MENU/SAVE_MENU"
+export const SAVE_MENU_CLASS = "MENU/SAVE_MENU_CLASS"
 
-export const saveMenu = (loadedMenus) => ({type:SAVE_MENU, menus:loadedMenus})
+export const saveMenuClass = (loadedMenuClasses) => ({type:SAVE_MENU_CLASS, menuClasses:loadedMenuClasses})
 
 const initialState = {
-    menus: []
+    menuClasses: []
 }
 
 const menu = (state = initialState, action) => {    
     switch (action.type) {
-        case SAVE_MENU:
+        case SAVE_MENU_CLASS:
             return {
                 ...state,
-                menus: action.menus
+                menuClasses: action.menuClasses
             }
         default:
             return state;

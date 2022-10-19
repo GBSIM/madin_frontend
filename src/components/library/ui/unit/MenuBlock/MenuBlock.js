@@ -1,8 +1,6 @@
 import './MenuBlock.css';
 
 export default function MenuBlock(props) {
-    console.log(props.menus);
-
     let Menus;
     if (Array.isArray(props.menus) && props.menus.length !== 0) {
         Menus = props.menus.map((menu,index) => (
@@ -31,7 +29,7 @@ function Menu(props) {
     return (
         <div className='menu-container'>
             <div className='menu-image-container'>
-                <img src={props.image} className='menu-image'></img>
+                <img src={props.image} className='menu-image' alt={props.name}></img>
             </div>
             <div style={{'minHeight':'9px'}}></div>
             <div className='menu-quantity-container'>
