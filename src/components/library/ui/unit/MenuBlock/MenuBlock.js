@@ -8,6 +8,7 @@ export default function MenuBlock(props) {
                 image={menu.imageUrl}
                 name={menu.name}
                 price={menu.price}
+                quantity={0}
                 key={'menu_'+menu.name}></Menu>
         ))
     }
