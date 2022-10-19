@@ -17,8 +17,10 @@
 .menu-menus-container {
     display: flex;
     flex-direction: row;
-    max-width: 860px;
+    max-width: 900px;
     column-gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     row-gap: 30px;
     justify-content: flex-start;
     flex-wrap: wrap;
