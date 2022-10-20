@@ -1,9 +1,10 @@
 export const SAVE_PERSONAL_ORDER = "MENU/SAVE_PERSONAL_ORDER"
 
-export const savePersonalOrder = (savedOrder) => ({type:SAVE_PERSONAL_ORDER, order:savedOrder})
+export const savePersonalOrderMenuIdList = (menuIdList) => ({type:SAVE_PERSONAL_ORDER, menuIdList:menuIdList})
 
 const initialState = {
-    personalOrder: []
+    personalOrderMenuIdList: [],
+    personalOrderQuantityList: [],
 }
 
 const order = (state = initialState, action) => {    
@@ -11,7 +12,8 @@ const order = (state = initialState, action) => {
         case SAVE_PERSONAL_ORDER:
             return {
                 ...state,
-                personalOrder: action.order
+                personalOrderMenuIdList: action.menuIdList,
+                personalOrderQuantityList: Array(action.menuIdList.length).fill(0),
             }
         default:
             return state;

@@ -9,7 +9,8 @@ import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
 import MenuBlock from '../../library/ui/unit/MenuBlock/MenuBlock';
 import { saveMenuClass } from '../../../_reducers/menu';
-import { savePersonalOrder } from '../../../_reducers/order';
+import { savePersonalOrderMenuIdList } from '../../../_reducers/order';
+
 
 export default function Personal() {
     const dispatch = useDispatch();
@@ -28,20 +29,20 @@ export default function Personal() {
 
     let MenuBlocks;
     if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
+        let personalOrderMenuIdList = [];
+        menuClasses.map((menuClass) => (
+            menuClass["menus"].map((menu) => (
+                personalOrderMenuIdList.push(menu["_id"])
+            ))
+        ))
         MenuBlocks = menuClasses.map((menuClass,index) => (
             <MenuBlock 
                 title={menuClass["name"]}
                 intro={menuClass["intro"]}
                 menus = {menuClass["menus"]}
+                menuIdList = {personalOrderMenuIdList}
                 key={"peronsal_menu_"+index}></MenuBlock>
         ));
-        let menus = [];
-        menuClasses.map((menuClass,index) => (
-            menuClass["menus"].map((menu,index) => (
-                menus.push({"_id":menu["_id"],"name":menu["name"],"price":menu["price"],"number":0})
-            ))
-        ))
-        dispatch(savePersonalOrder(menus));
     }
 
     return (

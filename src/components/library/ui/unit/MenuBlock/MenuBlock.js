@@ -1,18 +1,33 @@
 import './MenuBlock.css';
 
+import { savePersonalOrderMenuIdList } from '../../../../../_reducers/order';
+import { useSelector,useDispatch } from "react-redux";
+import { useEffect } from 'react';
+
 export default function MenuBlock(props) {
+    const dispatch = useDispatch();
+    const { personalOrderMenuIdList,personalOrderQuantityList } = useSelector(state => state.order);
+    
+    useEffect(() => {
+        dispatch(savePersonalOrderMenuIdList(props.menuIdList))
+    },[])
+
+    console.log(personalOrderMenuIdList);
+    console.log(personalOrderQuantityList);
+
     let Menus;
     if (Array.isArray(props.menus) && props.menus.length !== 0) {
-        Menus = props.menus.map((menu,index) => (
+        Menus = props.menus.map((menu) => (
             <Menu
                 image={menu.imageUrl}
                 name={menu.name}
                 price={menu.price}
-                quantity={0}
+                id = {menu._id}
+                quantity={personalOrderQuantityList[personalOrderMenuIdList.indexOf(menu._id)]}
                 key={'menu_'+menu.name}></Menu>
         ))
     }
-
+    
     return (
         <div className='menu-block-container'>
             <h2 className='menu-title'>{props.title}</h2>
