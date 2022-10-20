@@ -1,20 +1,7 @@
+import { pureFinalPropsSelectorFactory } from 'react-redux/es/connect/selectorFactory';
 import './MenuBlock.css';
 
-import { savePersonalOrderMenuIdList } from '../../../../../_reducers/order';
-import { useSelector,useDispatch } from "react-redux";
-import { useEffect } from 'react';
-
 export default function MenuBlock(props) {
-    const dispatch = useDispatch();
-    const { personalOrderMenuIdList,personalOrderQuantityList } = useSelector(state => state.order);
-    
-    useEffect(() => {
-        dispatch(savePersonalOrderMenuIdList(props.menuIdList))
-    },[])
-
-    console.log(personalOrderMenuIdList);
-    console.log(personalOrderQuantityList);
-
     let Menus;
     if (Array.isArray(props.menus) && props.menus.length !== 0) {
         Menus = props.menus.map((menu) => (
@@ -23,7 +10,7 @@ export default function MenuBlock(props) {
                 name={menu.name}
                 price={menu.price}
                 id = {menu._id}
-                quantity={personalOrderQuantityList[personalOrderMenuIdList.indexOf(menu._id)]}
+                quantity={props.quantityList[props.menuIdList.indexOf(menu._id)]}
                 key={'menu_'+menu.name}></Menu>
         ))
     }

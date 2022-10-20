@@ -7,7 +7,7 @@ import { useSelector,useDispatch } from "react-redux";
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
-import MenuBlock from '../../library/ui/unit/MenuBlock/MenuBlock';
+import PersonalMenuBlock from '../../library/ui/personal/PersonalMenuBlock/PersonalMenuBlock';
 import { saveMenuClass } from '../../../_reducers/menu';
 import { savePersonalOrderMenuIdList } from '../../../_reducers/order';
 
@@ -35,13 +35,14 @@ export default function Personal() {
                 personalOrderMenuIdList.push(menu["_id"])
             ))
         ))
+        
         MenuBlocks = menuClasses.map((menuClass,index) => (
-            <MenuBlock 
+            <PersonalMenuBlock 
                 title={menuClass["name"]}
                 intro={menuClass["intro"]}
                 menus = {menuClass["menus"]}
                 menuIdList = {personalOrderMenuIdList}
-                key={"peronsal_menu_"+index}></MenuBlock>
+                key={"peronsal_menu_"+index}></PersonalMenuBlock>
         ));
     }
 
