@@ -37,9 +37,9 @@ function Menu(props) {
             </div>
             <div style={{'minHeight':'9px'}}></div>
             <div className='menu-quantity-container'>
-                <button className='menu-quantity-button' onClick={() => props.plusButtonEvent(props.id)}></button>
-                <span className='menu-quantity'>{props.quantity}</span>
                 <button className='menu-quantity-button' onClick={() => props.minusButtonEvent(props.id)}></button>
+                <span className='menu-quantity'>{props.quantity}</span>
+                <button className='menu-quantity-button' onClick={() => props.plusButtonEvent(props.id)}></button>
             </div>
             <div style={{'minHeight':'7px'}}></div>
             <div className='menu-name-container'>
