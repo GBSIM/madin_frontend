@@ -1,4 +1,3 @@
-import { pureFinalPropsSelectorFactory } from 'react-redux/es/connect/selectorFactory';
 import './MenuBlock.css';
 
 export default function MenuBlock(props) {
