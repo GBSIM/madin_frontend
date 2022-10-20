@@ -9,8 +9,6 @@ import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
 import PersonalMenuBlock from '../../library/ui/personal/PersonalMenuBlock/PersonalMenuBlock';
 import { saveMenuClass } from '../../../_reducers/menu';
-import { savePersonalOrderMenuIdList } from '../../../_reducers/order';
-
 
 export default function Personal() {
     const dispatch = useDispatch();

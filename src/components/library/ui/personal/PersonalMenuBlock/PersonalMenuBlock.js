@@ -1,6 +1,6 @@
-import { savePersonalOrderMenuIdList } from '../../../../../_reducers/order';
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from 'react';
+import { savePersonalOrderMenuIdList, increaseMenuQuantity, decreaseMenuQuantity } from '../../../../../_reducers/order';
 
 import MenuBlock from "../../unit/MenuBlock/MenuBlock";
 
@@ -12,8 +12,13 @@ export default function PersonalMenuBlock(props) {
         dispatch(savePersonalOrderMenuIdList(props.menuIdList))
     },[])
 
-    console.log(personalOrderMenuIdList);
-    console.log(personalOrderQuantityList);
+    const plusButtonEvent = (menuId) => {
+        dispatch(increaseMenuQuantity(menuId));
+    }
+
+    const minusButtonEvent = (menuId) => {
+        dispatch(decreaseMenuQuantity(menuId));
+    }
 
     return (
         <MenuBlock
@@ -21,6 +26,8 @@ export default function PersonalMenuBlock(props) {
             intro={props.intro}
             menus={props.menus}
             menuIdList={personalOrderMenuIdList}
-            quantityList={personalOrderQuantityList}></MenuBlock>
+            quantityList={personalOrderQuantityList}
+            plusEvent={plusButtonEvent}
+            minusEvent = {minusButtonEvent}></MenuBlock>
     )
 }

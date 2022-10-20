@@ -5,12 +5,14 @@ export default function MenuBlock(props) {
     if (Array.isArray(props.menus) && props.menus.length !== 0) {
         Menus = props.menus.map((menu) => (
             <Menu
-                image={menu.imageUrl}
-                name={menu.name}
-                price={menu.price}
+                image = {menu.imageUrl}
+                name = {menu.name}
+                price = {menu.price}
                 id = {menu._id}
-                quantity={props.quantityList[props.menuIdList.indexOf(menu._id)]}
-                key={'menu_'+menu.name}></Menu>
+                quantity = {props.quantityList[props.menuIdList.indexOf(menu._id)]}
+                plusEvent = {props.plusEvent}
+                minusEvent = {props.minusEvent}
+                key = {'menu_'+menu.name}></Menu>
         ))
     }
     
@@ -35,9 +37,9 @@ function Menu(props) {
             </div>
             <div style={{'minHeight':'9px'}}></div>
             <div className='menu-quantity-container'>
-                <button className='menu-quantity-button'></button>
+                <button className='menu-quantity-button' onClick={() => props.plusEvent(props.id)}></button>
                 <span className='menu-quantity'>{props.quantity}</span>
-                <button className='menu-quantity-button'></button>
+                <button className='menu-quantity-button' onClick={() => props.minusEvent(props.id)}></button>
             </div>
             <div style={{'minHeight':'7px'}}></div>
             <div className='menu-name-container'>
