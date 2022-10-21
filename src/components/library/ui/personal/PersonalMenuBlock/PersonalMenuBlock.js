@@ -9,7 +9,9 @@ export default function PersonalMenuBlock(props) {
     const { personalOrderIdList,personalOrderQuantityList } = useSelector(state => state.order);
     
     useEffect(() => {
-        dispatch(savePersonalOrder(props.menuIdList,props.menuNameList,props.priceList))
+        if (personalOrderIdList.length === 0) {
+            dispatch(savePersonalOrder(props.menuIdList,props.menuNameList,props.priceList))
+        }
     },[])
 
     const addQunatity = (menuId) => {
