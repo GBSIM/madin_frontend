@@ -38,11 +38,11 @@ function Menu(props) {
             <div style={{'minHeight':'9px'}}></div>
             <div className='menu-quantity-container'>
                 <button className='menu-quantity-button' onClick={() => props.minusButtonEvent(props.id)}>
-                    <img className='menu-quantity-button-image' src={require('../../../icons/minus_white.png')}></img>
+                    <img className='menu-quantity-button-image' src={require('../../../icons/minus_white.png')} alt='minus-button'></img>
                 </button>
                 <span className='menu-quantity'>{props.quantity}</span>
                 <button className='menu-quantity-button' onClick={() => props.plusButtonEvent(props.id)}>
-                    <img className='menu-quantity-button-image' src={require('../../../icons/plus_white.png')}></img>
+                    <img className='menu-quantity-button-image' src={require('../../../icons/plus_white.png')} alt='plus-button'></img>
                 </button>
             </div>
             <div style={{'minHeight':'7px'}}></div>
