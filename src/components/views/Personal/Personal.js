@@ -8,6 +8,7 @@ import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
 import PersonalMenuBlock from '../../library/ui/personal/PersonalMenuBlock/PersonalMenuBlock';
+import PersonalOrderSheet from '../../library/ui/personal/PersonalOrderSheet/PersonalOrderSheet';
 import { saveMenuClass } from '../../../_reducers/menu';
 
 export default function Personal() {
@@ -50,6 +51,7 @@ export default function Personal() {
             <Banner></Banner>
             {MenuBlocks}
             <div style={{'minHeight':'50px'}}></div>
+            <PersonalOrderSheet></PersonalOrderSheet>
             <Footer></Footer>
         </div>
     )

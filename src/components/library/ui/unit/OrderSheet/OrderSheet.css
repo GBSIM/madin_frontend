@@ -1,0 +1,24 @@
+.order-sheet-container {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    min-width: 250px;
+    min-height: 200px;
+    border: 1px solid #E7E7E7;
+    box-shadow: 0px 4px 4px #D3D3D3;
+    border-radius: 5px;
+}
+
+.order-sheet-title {
+    font-size: 20px;
+    color: #141414;
+    margin-top: 15px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.order-button-container {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
