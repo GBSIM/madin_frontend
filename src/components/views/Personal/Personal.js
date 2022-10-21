@@ -28,10 +28,14 @@ export default function Personal() {
 
     let MenuBlocks;
     if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
-        let personalOrderMenuIdList = [];
+        let personalOrderIdList = [];
+        let personalOrderNameList = [];
+        let personalOrderPriceList = [];
         menuClasses.map((menuClass) => (
             menuClass["menus"].map((menu) => (
-                personalOrderMenuIdList.push(menu["_id"])
+                personalOrderIdList.push(menu["_id"]),
+                personalOrderNameList.push(menu["name"]),
+                personalOrderPriceList.push(menu["price"])
             ))
         ))
         
@@ -40,7 +44,9 @@ export default function Personal() {
                 title={menuClass["name"]}
                 intro={menuClass["intro"]}
                 menus = {menuClass["menus"]}
-                menuIdList = {personalOrderMenuIdList}
+                menuIdList = {personalOrderIdList}
+                menuNameList = {personalOrderNameList}
+                priceList = {personalOrderPriceList}
                 key={"peronsal_menu_"+index}></PersonalMenuBlock>
         ));
     }

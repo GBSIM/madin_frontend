@@ -6,7 +6,7 @@ import GreyButton from '../GreyButton/GreyButton';
 export default function OrderSheet(props) {
     let quantitySum;
     const quantityArrayValid = (Array.isArray(props.quantityArray) && props.quantityArray.length !== 0);
-    const priceArrayValid = (Array.isArray(props.quantityArray) && props.quantityArray.length !== 0);
+    const priceArrayValid = (Array.isArray(props.priceArray) && props.priceArray.length !== 0);
 
     if (quantityArrayValid) {
         quantitySum = props.quantityArray.reduce((a,b) => (a + b));
@@ -33,7 +33,8 @@ export default function OrderSheet(props) {
 
     let totalPrice;
     if (quantityArrayValid && priceArrayValid) {
-        let totalPrice = props.quantityArray.map((quantity,index) => quantity*props.priceArray[index]);
+        const totalPriceArray = props.quantityArray.map((quantity,index) => quantity*props.priceArray[index]);
+        totalPrice = totalPriceArray.reduce((a,b) => (a + b));
     } else {
         totalPrice = 0;
     }

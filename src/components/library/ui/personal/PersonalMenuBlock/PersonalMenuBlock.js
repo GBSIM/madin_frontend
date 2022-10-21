@@ -1,15 +1,15 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { savePersonalOrderMenuIdList, addPersonalMenuQuantity, subtractPersonalMenuQuantity } from '../../../../../_reducers/order';
+import { savePersonalOrder, addPersonalMenuQuantity, subtractPersonalMenuQuantity } from '../../../../../_reducers/order';
 
 import MenuBlock from "../../unit/MenuBlock/MenuBlock";
 
 export default function PersonalMenuBlock(props) {
     const dispatch = useDispatch();
-    const { personalOrderMenuIdList,personalOrderQuantityList } = useSelector(state => state.order);
+    const { personalOrderIdList,personalOrderQuantityList } = useSelector(state => state.order);
     
     useEffect(() => {
-        dispatch(savePersonalOrderMenuIdList(props.menuIdList))
+        dispatch(savePersonalOrder(props.menuIdList,props.menuNameList,props.priceList))
     },[])
 
     const addQunatity = (menuId) => {
@@ -25,7 +25,7 @@ export default function PersonalMenuBlock(props) {
             title={props.title}
             intro={props.intro}
             menus={props.menus}
-            menuIdList={personalOrderMenuIdList}
+            menuIdList={personalOrderIdList}
             quantityList={personalOrderQuantityList}
             plusButtonEvent={addQunatity}
             minusButtonEvent = {subtractQuantity}></MenuBlock>
