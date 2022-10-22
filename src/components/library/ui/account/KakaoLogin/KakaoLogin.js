@@ -11,6 +11,7 @@ export const loginWithKakao = () =>{
         redirectUri: process.env.REACT_APP_REDIRECT_URL
     })
 }
+
 export const KakaoRedirectHandler = () => {
   useEffect(()=> {
     let params = new URL(document.location.toString()).searchParams;

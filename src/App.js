@@ -62,7 +62,6 @@ function App() {
   const href = window.location.href;
   let params = new URL(href).searchParams;
   let code = params.get("code");
-  console.log(code);
   if (code != null) {
       KakaoRedirectHandler();
   }
