@@ -1,12 +1,18 @@
 import './default.css';
 import './App.css';
+
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from 'react-router-dom';
+
+import axios from 'axios';
+import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
+
 import { changePage } from './_reducers/nav';
+import { saveMenuClass } from './_reducers/menu';
 
 import Personal from './components/views/Personal/Personal';
 import Group from './components/views/Group/Group';
@@ -39,6 +45,18 @@ function App() {
   } else {
     dispatch(changePage('personal'));
   }
+
+  useEffect(() => {
+      const loadMenu  = async() => {
+          try {
+              const response = await axios.get('https://api.madinbakery.com/menuclass');
+              dispatch(saveMenuClass(response.data.menuClass));
+          } catch(err) {
+              console.log(err);
+          }
+      };
+      loadMenu();
+  }, []);
 
   return (
     <Router>

@@ -1,7 +1,5 @@
 import './Personal.css';
 
-import axios from 'axios';
-import { useEffect } from 'react';
 import { useSelector,useDispatch } from "react-redux";
 
 import Header from '../../library/ui/header/Header/Header';
@@ -12,19 +10,7 @@ import PersonalOrderSheet from '../../library/ui/personal/PersonalOrderSheet/Per
 import { saveMenuClass } from '../../../_reducers/menu';
 
 export default function Personal() {
-    const dispatch = useDispatch();
     const { menuClasses } = useSelector(state => state.menu);
-    useEffect(() => {
-        const loadMenu  = async() => {
-            try {
-                const response = await axios.get('https://api.madinbakery.com/menuclass');
-                dispatch(saveMenuClass(response.data.menuClass));
-            } catch(err) {
-                console.log(err);
-            }
-        };
-        loadMenu();
-    }, []);
 
     let MenuBlocks;
     if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
