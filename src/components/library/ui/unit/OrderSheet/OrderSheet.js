@@ -15,6 +15,7 @@ export default function OrderSheet(props) {
     }
 
     let OrderSheetButton;
+    let OrderSheetDivider;
     if (quantitySum > 0) {
         OrderSheetButton = <OrangeButton
                                 width='230px'
@@ -22,6 +23,7 @@ export default function OrderSheet(props) {
                                 borderRadius='7px'
                                 text='주문하러가기'
                                 ></OrangeButton>
+        OrderSheetDivider = <div className='order-sheet-divider'></div>
     } else {
         OrderSheetButton = <GreyButton
                                 width='230px'
@@ -55,7 +57,7 @@ export default function OrderSheet(props) {
                 {OrderItem}
             </div>
             <div style={{'minHeight':'20px'}}></div>
-            <div className='order-sheet-divider'></div>
+            {OrderSheetDivider}
             <div style={{'minHeight':'20px'}}></div>
             <div className='order-sheet-total-price-container'>
                 <span className='order-sheet-total-price'>
