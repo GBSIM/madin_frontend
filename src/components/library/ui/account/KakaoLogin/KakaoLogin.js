@@ -18,10 +18,10 @@ export const KakaoRedirectHandler = async() => {
   console.log(code);
   let grant_type = "authorization_code";
   let client_id = "c49e9d7fad13c64229c3899523a2ba6b";
-  await axios.post('https://api.madinbakery.com/user/kakao',
-    {
-      "code": code,
-      "redirectUri": process.env.REACT_APP_REDIRECT_URL
-    }
-  )
+  // await axios.post('https://api.madinbakery.com/user/kakao',
+  //   {
+  //     "code": code,
+  //     "redirectUri": process.env.REACT_APP_REDIRECT_URL
+  //   }
+  // )
 };
