@@ -2,6 +2,7 @@ import './DesktopHeader.css';
 
 import LogoButton from '../../unit/LogoButton/LogoButton';
 import Navbar from '../../nav/DesktopNavBar/DesktopNavbar';
+import LoginButton from '../../account/LoginButton/LoginButton';
 
 export default function DesktopHeader() {
     return (
@@ -14,6 +15,9 @@ export default function DesktopHeader() {
                     <Navbar></Navbar>
                 </div>
                 <div className='desktop-header-space'></div>
+                <div className='desktop-header-login-button-container'>
+                    <LoginButton></LoginButton>
+                </div>
             </div>
         </div>
     )
