@@ -1,9 +1,7 @@
 import React from 'react';
 
 import axios from 'axios';
-import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import { useNavigate } from 'react-router-dom';
 
 import { saveUserInfo } from '../../../../../_reducers/user'
 
