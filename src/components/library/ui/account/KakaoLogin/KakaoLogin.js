@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
+import { saveUserInfo } from '../../../../../_reducers/user'
+
 const {Kakao} = window;
 export const loginWithKakao = () =>{
     Kakao.Auth.authorize({
@@ -13,6 +15,7 @@ export const loginWithKakao = () =>{
 }
 
 export const KakaoRedirectHandler = async() => {
+  const dispatch = useDispatch();
   let params = new URL(document.location.toString()).searchParams;
   let code = params.get("code");
   const kakaoLoginResponse = await axios.post('https://api.madinbakery.com/user/kakao',
@@ -24,4 +27,5 @@ export const KakaoRedirectHandler = async() => {
   const user = kakaoLoginResponse.data.user;
   console.log(user);
   window.history.replaceState({}, null, window.location.pathname);
+  dispatch(saveUserInfo(user));
 };
