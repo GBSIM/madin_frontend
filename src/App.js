@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 
 import { changePage } from './_reducers/nav';
 import { saveMenuClass } from './_reducers/menu';
-import { KakaoRedirectHandler } from './components/library/ui/account/KakaoLogin/KakaoLogin';
+import { KakaoRedirectHandler } from './components/library/function/KakaoLogin';
 
 import Personal from './components/views/Personal/Personal';
 import Group from './components/views/Group/Group';

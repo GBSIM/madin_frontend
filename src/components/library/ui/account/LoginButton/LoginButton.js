@@ -1,7 +1,7 @@
 import OrangeButton from "../../unit/OrangeButton/OrangeButton";
 
 import { useSelector } from "react-redux";
-import { loginWithKakao } from "../KakaoLogin/KakaoLogin";
+import { loginWithKakao } from "../../../function/KakaoLogin";
 
 export default function LoginButton() {
     const { isLogin } = useSelector(state => state.user);

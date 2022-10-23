@@ -3,8 +3,8 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 
-import { saveUserInfo } from '../../../../../_reducers/user';
-import { setCookie } from '../../../function/Cookie';
+import { saveUserInfo } from '../../../_reducers/user';
+import { setCookie } from './Cookie';
 
 const {Kakao} = window;
 export const loginWithKakao = () =>{
