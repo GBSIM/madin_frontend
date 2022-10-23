@@ -1,6 +1,8 @@
-export const SAVE_USER_INFO = "USER/SAVE_USER_INFO"
+export const SAVE_USER_INFO = "USER/SAVE_USER_INFO";
+export const LOGOUT = "USER/LOGOUT";
 
-export const saveUserInfo = (userInfo) => ({type:SAVE_USER_INFO, userInfo:userInfo})
+export const saveUserInfo = (userInfo) => ({type:SAVE_USER_INFO, userInfo:userInfo});
+export const logout = () => ({type: LOGOUT});
 
 const initialState = {
     isLogin: false,
@@ -26,6 +28,10 @@ const user = (state = initialState, action) => {
                 socialId: action.userInfo["socialId"],
                 shippings: action.userInfo["shppings"],
                 orders: action.userInfo["orders"],
+            }
+        case LOGOUT:
+            return {
+                initialState,
             }
         default:
             return state;

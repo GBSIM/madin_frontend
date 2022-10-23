@@ -3,7 +3,8 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 
-import { saveUserInfo } from '../../../../../_reducers/user'
+import { saveUserInfo } from '../../../../../_reducers/user';
+import { setCookie } from '../../../function/Cookie';
 
 const {Kakao} = window;
 export const loginWithKakao = () =>{
@@ -26,4 +27,7 @@ export const KakaoRedirectHandler = async() => {
   console.log(user);
   window.history.replaceState({}, null, window.location.pathname);
   dispatch(saveUserInfo(user));
+  setCookie("token",user["token"],1);
+  setCookie("email",user["email"],1);
+  setCookie("socialId",user["socialId"],1);
 };
