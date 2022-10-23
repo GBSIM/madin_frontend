@@ -17,7 +17,7 @@ export const KakaoRedirectHandler = async() => {
   const dispatch = useDispatch();
   let params = new URL(document.location.toString()).searchParams;
   let code = params.get("code");
-  const kakaoLoginResponse = await axios.post('https://api.madinbakery.com/user/kakao',
+  const kakaoLoginResponse = await axios.post('http://localhost:3000/user/kakaologin',
     {
       "code": code,
       "redirectUri": process.env.REACT_APP_REDIRECT_URL
