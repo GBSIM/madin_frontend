@@ -2,6 +2,8 @@ import './Personal.css';
 
 import { useSelector,useDispatch } from "react-redux";
 
+import { getCookie } from '../../library/function/Cookie';
+
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
@@ -10,6 +12,10 @@ import PersonalOrderSheet from '../../library/ui/personal/PersonalOrderSheet/Per
 
 export default function Personal() {
     const { menuClasses } = useSelector(state => state.menu);
+    const socialId = getCookie("socialId");
+    const token = getCookie("token");
+
+    
 
     let MenuBlocks;
     if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
