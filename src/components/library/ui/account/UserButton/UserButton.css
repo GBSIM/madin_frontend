@@ -1,0 +1,13 @@
+.user-button {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.user-button-text {
+    font-weight: 500;
+    color: #707070;
+}

@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     z-index: 999;
+    padding-right: 50px;
 }
 
 @media (max-width: 800px) {
@@ -36,8 +37,4 @@
 
 .desktop-header-navbar-container {
     margin-left: 60px;
-}
-
-.desktop-header-login-button-container {
-    margin-right: 50px;
 }

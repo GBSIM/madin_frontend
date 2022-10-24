@@ -12,13 +12,14 @@ export const UserAuth = async() => {
     if (!socialId || !token) {
         dispatch(logout());
     } else {
-        const user = await axios.post('https://api.madinbakery.com/user/auth/'+socialId,
+        const authResponse = await axios.post('https://api.madinbakery.com/user/auth/'+socialId,
             {
                 "token": token 
             }
         )
-        if (user) {
-            dispatch(saveUserInfo(user));
+        if (authResponse) {
+            console.log(authResponse.data.user);
+            dispatch(saveUserInfo(authResponse.data.user));
         } else {
             dispatch(logout());
         }
