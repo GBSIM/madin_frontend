@@ -18,7 +18,6 @@ export const UserAuth = async() => {
             }
         )
         if (authResponse) {
-            console.log(authResponse.data.user);
             dispatch(saveUserInfo(authResponse.data.user));
         } else {
             dispatch(logout());
