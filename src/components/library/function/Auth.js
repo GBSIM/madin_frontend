@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 
-import { getCookie } from './Cookie';
+import { getCookie, deleteCookie } from './Cookie';
 import { saveUserInfo, logout } from '../../../_reducers/user';
 
 export const UserAuth = async() => {
@@ -17,10 +17,13 @@ export const UserAuth = async() => {
                 "token": token 
             }
         )
-        if (authResponse) {
+        if (authResponse.data.user) {
             dispatch(saveUserInfo(authResponse.data.user));
         } else {
             dispatch(logout());
+            deleteCookie('email');
+            deleteCookie('socialId');
+            deleteCookie('token');
         }
     }
 }

@@ -25,3 +25,7 @@ export const getCookie = (key) => {
     return JSON.parse(getItem[0]);
     }
 };
+
+export const deleteCookie = (key) => {
+    document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
