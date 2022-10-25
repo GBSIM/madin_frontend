@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: center;
     z-index: 999;
-    padding-right: 50px;
 }
 
 @media (max-width: 800px) {
@@ -25,6 +24,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100%;
+    padding-right: 50px;
 }
 
 .desktop-header-logo-container {
@@ -33,8 +34,14 @@
 
 .desktop-header-space {
     flex: 1;
+    height: 100%;
 }
 
 .desktop-header-navbar-container {
     margin-left: 60px;
+}
+
+.desktop-header-popup-user-menu-container {
+    width: 0;
+    height: 0;
 }

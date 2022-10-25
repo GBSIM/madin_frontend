@@ -1,6 +1,6 @@
 import './Personal.css';
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { UserAuth } from '../../library/function/Auth';
 

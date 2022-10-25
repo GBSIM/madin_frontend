@@ -2,7 +2,7 @@ import './DesktopHeader.css';
 
 import { useDispatch } from 'react-redux';
 
-import { openUserMenu, closeUserMenu } from '../../../../../_reducers/user';
+import { changeUserMenuPopupState } from '../../../../../_reducers/user';
 
 import LogoButton from '../../unit/LogoButton/LogoButton';
 import Navbar from '../../nav/DesktopNavBar/DesktopNavbar';
@@ -12,8 +12,8 @@ import UserPopupMenu from '../../account/UserPopupMenu/UserPopupMenu';
 
 export default function DesktopHeader() {
     const dispatch = useDispatch();
-    const userMenuOpenEvent = () => {
-        dispatch(openUserMenu());
+    const userMenuChangeEvent = () => {
+        dispatch(changeUserMenuPopupState());
     }
 
     return (
@@ -30,9 +30,9 @@ export default function DesktopHeader() {
                     <LoginButton></LoginButton>
                 </div>
                 <div className='desktop-header-user-button-container'>
-                    <UserButton clickEvent={userMenuOpenEvent}></UserButton>
+                    <UserButton clickEvent={userMenuChangeEvent}></UserButton>
                 </div>
-                <div className='desktop-header-user-pop-menu-container'>
+                <div className='desktop-header-popup-user-menu-container'>
                     <UserPopupMenu></UserPopupMenu>
                 </div>
             </div>
