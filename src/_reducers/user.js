@@ -1,8 +1,13 @@
 export const SAVE_USER_INFO = "USER/SAVE_USER_INFO";
 export const LOGOUT = "USER/LOGOUT";
+export const OPEN_USER_MENU = "USER/OPEN_USER_MENU";
+export const CLOSE_USER_MENU = "USER/CLOSE_USER_MENU";
 
 export const saveUserInfo = (userInfo) => ({type:SAVE_USER_INFO, userInfo:userInfo});
 export const logout = () => ({type: LOGOUT});
+export const openUserMenu = () => ({type: OPEN_USER_MENU});
+export const closeUserMenu = () => ({type: CLOSE_USER_MENU});
+
 
 const initialState = {
     isLogin: false,
@@ -32,7 +37,18 @@ const user = (state = initialState, action) => {
             }
         case LOGOUT:
             return {
+                ...state,
                 initialState,
+            }
+        case OPEN_USER_MENU:
+            return {
+                ...state,
+                userMenuPopup: true,
+            }
+        case CLOSE_USER_MENU:
+            return {
+                ...state,
+                userMenuPopup: false,
             }
         default:
             return state;
