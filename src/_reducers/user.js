@@ -18,7 +18,7 @@ const initialState = {
     socialId: "",
     shippings: [],
     orders: [],
-    userMenuPopup: false,
+    userMenuPopup: true,
 }
 
 const user = (state = initialState, action) => {    

@@ -4,6 +4,7 @@ import LogoButton from '../../unit/LogoButton/LogoButton';
 import Navbar from '../../nav/DesktopNavBar/DesktopNavbar';
 import LoginButton from '../../account/LoginButton/LoginButton';
 import UserButton from '../../account/UserButton/UserButton';
+import UserPopupMenu from '../../account/UserPopupMenu/UserPopupMenu';
 
 export default function DesktopHeader() {
     return (
@@ -22,6 +23,7 @@ export default function DesktopHeader() {
                 <div className='desktop-header-user-button-container'>
                     <UserButton></UserButton>
                 </div>
+                <UserPopupMenu></UserPopupMenu>
             </div>
         </div>
     )
