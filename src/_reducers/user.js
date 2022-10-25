@@ -1,3 +1,5 @@
+import { deleteCookie } from "../components/library/function/Cookie";
+
 export const SAVE_USER_INFO = "USER/SAVE_USER_INFO";
 export const LOGOUT = "USER/LOGOUT";
 export const CHANGE_USER_MENU_POPUP_STATE = "USER/CHANGE_USER_MENU_POPUP_STATE";
@@ -33,12 +35,13 @@ const user = (state = initialState, action) => {
                 orders: action.userInfo["orders"],
             }
         case LOGOUT:
+            deleteCookie('email');
+            deleteCookie('socialId');
+            deleteCookie('token');
             return {
-                ...state,
                 initialState,
             }
         case CHANGE_USER_MENU_POPUP_STATE:
-            console.log("open")
             return {
                 ...state,
                 userMenuPopup: !state.userMenuPopup,
