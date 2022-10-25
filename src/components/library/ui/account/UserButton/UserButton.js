@@ -1,13 +1,13 @@
 import './UserButton.css';
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function UserButton() {
+export default function UserButton(props) {
     const { isLogin, name } = useSelector(state => state.user);
 
     if (isLogin && name) {
         return (
-            <button className='user-button'>
+            <button className='user-button' onClick={() => props.clickEvent()}>
                 <span className='user-button-text'>
                     {name}님
                 </span>
@@ -15,5 +15,4 @@ export default function UserButton() {
             </button>
         )
     }
-    
 }

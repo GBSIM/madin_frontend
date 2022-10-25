@@ -8,7 +8,6 @@ export const logout = () => ({type: LOGOUT});
 export const openUserMenu = () => ({type: OPEN_USER_MENU});
 export const closeUserMenu = () => ({type: CLOSE_USER_MENU});
 
-
 const initialState = {
     isLogin: false,
     name: "",
@@ -18,7 +17,7 @@ const initialState = {
     socialId: "",
     shippings: [],
     orders: [],
-    userMenuPopup: true,
+    userMenuPopup: false,
 }
 
 const user = (state = initialState, action) => {    
@@ -41,6 +40,7 @@ const user = (state = initialState, action) => {
                 initialState,
             }
         case OPEN_USER_MENU:
+            console.log("open the user menu")
             return {
                 ...state,
                 userMenuPopup: true,
