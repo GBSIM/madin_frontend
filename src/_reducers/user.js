@@ -13,6 +13,7 @@ const initialState = {
     socialId: "",
     shippings: [],
     orders: [],
+    userMenuPopup: false,
 }
 
 const user = (state = initialState, action) => {    
