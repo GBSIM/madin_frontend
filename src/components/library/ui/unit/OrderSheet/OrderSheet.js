@@ -1,5 +1,10 @@
 import './OrderSheet.css';
 
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { changePage } from '../../../../../_reducers/nav';
+
 import OrangeButton from '../OrangeButton/OrangeButton';
 import GreyButton from '../GreyButton/GreyButton';
 
@@ -14,6 +19,14 @@ export default function OrderSheet(props) {
         quantitySum = 0;
     }
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const navPageEvent = () => {
+        dispatch(changePage(props.type+'order'));
+        navigate('/'+props.type+'/order');
+        window.scrollTo(0,0);
+    }
+
     let OrderSheetButton;
     let OrderSheetDivider;
     if (quantitySum > 0) {
@@ -22,6 +35,7 @@ export default function OrderSheet(props) {
                                 height='36px'
                                 borderRadius='7px'
                                 text='주문하러가기'
+                                clickEvent={navPageEvent}
                                 ></OrangeButton>
         OrderSheetDivider = <div className='order-sheet-divider'></div>
     } else {

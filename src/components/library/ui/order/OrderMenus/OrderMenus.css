@@ -6,3 +6,29 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.order-menu-text {
+    font-weight: 400;
+    color: #848484;
+}
+
+.order-menu-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.order-menus-price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 260px;
+    align-items: center;    
+}
+
+.order-menus-price-text {
+    font-weight: 500;
+    color: #141414;
+}

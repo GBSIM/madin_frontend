@@ -2,15 +2,14 @@ import './PersonalOrder.css';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
-import OrderMenus from '../../library/ui/order/OrderMenus/OrderMenus';
+import PersonalOrderMenus from '../../library/ui/personalorder/PersonalOrderMenus/PersonalOrderMenus';
 
 export default function PersonalOrder() {
     return (
         <div className='page'>
             <Header></Header>
             <div className='order-contents-container'>
-                <OrderMenus 
-                    type='personal'></OrderMenus>
+                <PersonalOrderMenus></PersonalOrderMenus>
             </div>
             <Footer></Footer>
         </div>

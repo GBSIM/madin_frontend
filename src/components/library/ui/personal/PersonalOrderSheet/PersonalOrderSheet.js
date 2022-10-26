@@ -9,7 +9,8 @@ export default function PersonalOrderSheet(props) {
         <OrderSheet
             quantityArray={personalOrderQuantityList}
             priceArray={personalOrderPriceist}
-            nameArray={personalOrderNameList}>            
+            nameArray={personalOrderNameList}
+            type={'personal'}>            
         </OrderSheet>
     )
 }
