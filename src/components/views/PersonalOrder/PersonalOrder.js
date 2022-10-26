@@ -2,7 +2,7 @@ import './PersonalOrder.css';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
-import OrderMenus from '../../library/ui/order/OrderSheet/OrderMenus';
+import OrderMenus from '../../library/ui/order/OrderMenus/OrderMenus';
 
 export default function PersonalOrder() {
     return (
