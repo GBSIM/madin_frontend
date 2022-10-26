@@ -14,8 +14,6 @@ export const LogoutWithKakao = async() => {
     
     const logoutUser = logoutResponse.data.user;
 
-    console.log(logoutUser);
-
     if (logoutUser.socialId === socialId) {
         dispatch(logout());
     }    
