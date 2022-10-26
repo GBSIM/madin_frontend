@@ -4,7 +4,6 @@ import { useSelector,useDispatch } from "react-redux";
 import axios from 'axios';
 
 import { logout } from '../../../../../_reducers/user';
-import { LogoutWithKakao } from '../../../function/KakaoLogout';
 
 export default function UserPopupMenu() {
     const { userMenuPopup, socialId } = useSelector(state => state.user);
