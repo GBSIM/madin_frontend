@@ -7,7 +7,8 @@ export const setCookie = (key, value, expiredDays) => {
     JSON.stringify(value) +
     '; path=/; expires=' +
     today.toGMTString() +
-    ';';
+    ';' +
+    'SameSite=Lax;';
 };
 
 export const getCookie = (key) => {
