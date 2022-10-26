@@ -18,6 +18,7 @@ import { KakaoRedirectHandler } from './components/library/function/KakaoLogin';
 import Personal from './components/views/Personal/Personal';
 import Group from './components/views/Group/Group';
 import Pickup from './components/views/Pickup/Pickup';
+import PersonalOrder from './components/views/PersonalOrder/PersonalOrder';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,8 @@ function App() {
       dispatch(changePage('pickup'));
     } else if (window.location.pathname === "/group") {
       dispatch(changePage('group'));
+    } else if (window.location.pathname === "/personal/order") {
+      dispatch(changePage('personalorder'));
     } else {
       dispatch(changePage('personal'));
     } 
@@ -43,6 +46,8 @@ function App() {
     dispatch(changePage('pickup'));
   } else if (window.location.pathname === "/group") {
     dispatch(changePage('group'));
+  } else if (window.location.pathname === "/personal/order") {
+    dispatch(changePage('personalorder'));
   } else {
     dispatch(changePage('personal'));
   }
@@ -74,6 +79,7 @@ function App() {
           <Route exact path="/personal" element={<Personal/>} />
           <Route exact path="/group" element={<Group/>} />
           <Route exact path="/pickup" element={<Pickup/>} />
+          <Route exact path="/personal/order" element={<PersonalOrder/>} />
         </Routes>
       </div>
     </Router>
