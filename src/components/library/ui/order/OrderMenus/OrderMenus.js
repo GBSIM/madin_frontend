@@ -1,7 +1,5 @@
 import './OrderMenus.css';
 
-import { useSelector } from "react-redux";
-
 export default function OrderMenus(props) {
     const quantityArrayValid = (Array.isArray(props.quantityList) && props.quantityList.length !== 0);
     const priceArrayValid = (Array.isArray(props.priceList) && props.priceList.length !== 0);
