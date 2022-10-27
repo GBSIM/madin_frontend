@@ -97,6 +97,7 @@ span {
 	align-items: center;
 	padding-top: 20px;
 	padding-bottom: 50px;
+	row-gap: 20px;
 }
 
 .order-container {

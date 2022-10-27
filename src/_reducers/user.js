@@ -18,6 +18,7 @@ const initialState = {
     shippings: [],
     orders: [],
     userMenuPopup: false,
+    phone: "",
 }
 
 const user = (state = initialState, action) => {    
@@ -33,6 +34,7 @@ const user = (state = initialState, action) => {
                 socialId: action.userInfo["socialId"],
                 shippings: action.userInfo["shppings"],
                 orders: action.userInfo["orders"],
+                phone: action.userInfo["phone"]
             }
         case LOGOUT:
             deleteCookie('email');

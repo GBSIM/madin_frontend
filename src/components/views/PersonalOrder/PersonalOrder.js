@@ -2,6 +2,7 @@ import './PersonalOrder.css';
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { changePage } from '../../../_reducers/nav';
 import { UserAuth } from '../../library/function/Auth';
@@ -9,7 +10,7 @@ import { UserAuth } from '../../library/function/Auth';
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import PersonalOrderMenus from '../../library/ui/personalorder/PersonalOrderMenus/PersonalOrderMenus';
-import { useEffect } from 'react';
+import Orderer from '../../library/ui/order/Orderer/Orderer';
 
 export default function PersonalOrder() {
     const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export default function PersonalOrder() {
                 <Header></Header>
                 <div className='order-contents-container'>
                     <PersonalOrderMenus></PersonalOrderMenus>
+                    <Orderer></Orderer>
                 </div>
                 <Footer></Footer>
             </div>

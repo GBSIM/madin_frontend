@@ -1,6 +1,6 @@
 .order-menu-container {
-    width: 260px;
-    max-width: 260px;
+    width: 300px;
+    max-width: 300px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 260px;
+    width: 300px;
     align-items: center;    
 }
 

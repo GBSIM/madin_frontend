@@ -1,0 +1,14 @@
+.orderer-content-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.orderer-content-title {
+    color: #848484;
+}
+
+.orderer-content {
+    color: #464646;
+}

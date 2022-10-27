@@ -29,7 +29,7 @@ export default function OrderMenus(props) {
             <div className='order-menu-list-container'>
                 {OrderMenuList}
             </div>
-            <div style={{'marginTop':'20px','marginBottom':'20px','minHeight':'1px','background':'#C6C6C6','minWidth':'280px'}}></div>
+            <div style={{'marginTop':'20px','marginBottom':'20px','minHeight':'1px','background':'#C6C6C6','minWidth':'320px'}}></div>
             <div className='order-menus-price-container'>
                 <span className='order-menus-price-text'>총 {totalPrice.toLocaleString()}원</span>            
             </div>
