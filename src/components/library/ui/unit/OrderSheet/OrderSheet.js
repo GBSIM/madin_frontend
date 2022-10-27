@@ -22,9 +22,13 @@ export default function OrderSheet(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const navPageEvent = () => {
-        dispatch(changePage(props.type+'order'));
-        navigate('/'+props.type+'/order');
-        window.scrollTo(0,0);
+        if (props.isLogin) {
+            dispatch(changePage(props.type+'order'));
+            navigate('/'+props.type+'/order');
+            window.scrollTo(0,0);
+        } else {
+            window.alert('로그인을 진행해주세요!');
+        }
     }
 
     let OrderSheetButton;
