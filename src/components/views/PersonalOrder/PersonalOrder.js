@@ -11,6 +11,7 @@ import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import PersonalOrderMenus from '../../library/ui/personalorder/PersonalOrderMenus/PersonalOrderMenus';
 import Orderer from '../../library/ui/order/Orderer/Orderer';
+import Shipping from '../../library/ui/order/Shipping/Shipping';
 
 export default function PersonalOrder() {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ export default function PersonalOrder() {
                 <div className='order-contents-container'>
                     <PersonalOrderMenus></PersonalOrderMenus>
                     <Orderer></Orderer>
+                    <Shipping></Shipping>
                 </div>
                 <Footer></Footer>
             </div>

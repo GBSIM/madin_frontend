@@ -1,0 +1,78 @@
+.shipping-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #C6C6C6;
+    padding-bottom: 20px;
+
+}
+
+.shipping-tag-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.shipping-left-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-info-rows {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.shipping-info {
+    font-size: 15px;
+    font-weight: 400;
+    color: #848484;
+}
+
+.shipping-checkbox-container {
+    height: 100%;
+}
+
+.shipping-checkbox-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid #EA5B30;
+}
+
+.shipping-add-button-container {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.shipping-add-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.shipping-add-button-image-container {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    border: 2px solid #C8C8C8;
+}
+
+.shipping-add-button-text {
+    font-weight: 500;
+    color: #C8C8C8;
+}
