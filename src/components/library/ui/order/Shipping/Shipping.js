@@ -19,23 +19,27 @@ export default function Shipping() {
         ))
     }
 
+    let ShippingAddGuide;
+    if (!shippings) {
+        ShippingAddGuide = 
+        <div className='shipping-add-guide-container'>
+            <span className='shipping-add-guide'>아직 등록된 배송지가 없어요.</span>
+            <span className='shipping-add-guide'>배송지를 등록해주세요!</span>
+        </div>
+    }
+
     return (
         <div className='order-container'>
             <h2 className='order-title'>배송지 고르기</h2>
             <div style={{'minHeight':'30px'}}></div>
             <div style={{'paddingLeft':'40px','paddingRight':'40px','width':'100%'}}>
-                {ShippingInfoList}
-                <ShippingInfo
-                tag = '기본 배송지'
-                name = '이승지'
-                phone = '010-4829-1092'
-                address = '광안시 미기리 상승로 101번길 12 자이'
-                request = '문 앞에 놔주세요.'></ShippingInfo>
+                {ShippingInfoList}                
             </div>
+            {ShippingAddGuide}
             <div className='shipping-add-button-container'>
                 <button className='shipping-add-button'>
                     <div className='shipping-add-button-image-container'>
-                        
+                        <img className='shipping-add-button-image' src={require('../../../icons/plus_grey.png')}></img>
                     </div>
                     <span className='shipping-add-button-text'>새로운 주소 추가하기</span>
                 </button>
