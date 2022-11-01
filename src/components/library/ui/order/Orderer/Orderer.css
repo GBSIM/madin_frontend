@@ -32,7 +32,7 @@
 .orderer-update-window {
     z-index: 999;
     position: fixed;
-    top: calc(50vh - 300px);
+    top: max(150px,calc(50vh - 300px));
     left: calc(50vw - 200px);
     width: 400px;
     background: #FFFFFF;
