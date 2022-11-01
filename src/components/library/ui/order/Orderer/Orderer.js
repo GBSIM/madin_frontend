@@ -30,7 +30,7 @@ export default function Orderer() {
                 </div>
             </div>
             <h2 className='order-title'>주문자 정보</h2>
-            <div style={{'minHeight':'20px'}}></div>
+            <div style={{'minHeight':'30px'}}></div>
             <OrdererContent
                 title='보내는 사람'
                 content={name}></OrdererContent>
