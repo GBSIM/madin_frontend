@@ -4,12 +4,18 @@ import { useSelector,useDispatch } from "react-redux";
 import axios from 'axios';
 
 import { logout } from '../../../../../_reducers/user';
+import { useNavigate } from 'react-router-dom';
+import { changePage } from '../../../../../_reducers/nav';
 
 export default function UserPopupMenu() {
     const { userMenuPopup, socialId } = useSelector(state => state.user);
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const logoutEvent = async () => {
+        dispatch(changePage('personal'));
+        navigate('/personal');
+        window.scrollTo(0,0);
         const logoutResponse = await axios.post('https://api.madinbakery.com/user/kakaologout', {
             "socialId": socialId
         });
