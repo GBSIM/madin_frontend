@@ -77,6 +77,7 @@
     border: 0px;
     color: #848484;
     margin-left: 7px;
+    font-size: 14px;
 }
 
 .orderer-update-input:focus {
