@@ -8,6 +8,7 @@ export const saveUserInfo = (userInfo) => ({type:SAVE_USER_INFO, userInfo:userIn
 export const logout = () => ({type: LOGOUT});
 export const changeUserMenuPopupState = () => ({type: CHANGE_USER_MENU_POPUP_STATE});
 
+
 const initialState = {
     isLogin: false,
     name: "",
