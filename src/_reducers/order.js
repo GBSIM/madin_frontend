@@ -7,7 +7,7 @@ export const CHAGNE_PEROSNAL_SHIPPING_UPDATE_WINDOW = "ORDER/CHAGNE_PEROSNAL_SHI
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL_MENU_QUANTITY, menuId:menuId});
-export const changePeronalOrdererUpdateWindow = () => ({type:CHAGNE_PEROSNAL_ORDERER_UPDATE_WINDOW});
+export const changeOrdererUpdateWindow = () => ({type:CHAGNE_PEROSNAL_ORDERER_UPDATE_WINDOW});
 export const changePeronalShippingUpdateWindow = () => ({type:CHAGNE_PEROSNAL_SHIPPING_UPDATE_WINDOW});
 
 const initialState = {

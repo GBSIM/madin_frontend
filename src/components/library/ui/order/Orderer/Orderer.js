@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { changePeronalOrdererUpdateWindow } from '../../../../../_reducers/order';
+import { changeOrdererUpdateWindow } from '../../../../../_reducers/order';
 import { saveUserInfo } from '../../../../../_reducers/user';
 
 import GreyLineButton from '../../unit/GreyLineButton/GreyLineButton';
@@ -19,7 +19,7 @@ export default function Orderer() {
     const dispatch = useDispatch();
 
     const openOrdrerUpdateWindow = () => {
-        dispatch(changePeronalOrdererUpdateWindow());
+        dispatch(changeOrdererUpdateWindow());
     }
     
     return (
@@ -68,7 +68,7 @@ function OrdererUpdateWindow(props) {
     const dispatch = useDispatch();
 
     const closeOrdrerUpdateWindow = () => {
-        dispatch(changePeronalOrdererUpdateWindow());
+        dispatch(changeOrdererUpdateWindow());
     }
 
     const updateUserName = (e) => {
@@ -91,7 +91,7 @@ function OrdererUpdateWindow(props) {
             "token": token
         });
         dispatch(saveUserInfo(userUpdateResponse.data.user));
-        dispatch(changePeronalOrdererUpdateWindow());
+        dispatch(changeOrdererUpdateWindow());
     }
 
     if (props.isOpen) {
