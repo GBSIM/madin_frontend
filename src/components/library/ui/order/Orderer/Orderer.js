@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 export default function Orderer() {
     const { name,email, phone} = useSelector(state => state.user);
-    const { personalOrdererUpdateOpen} = useSelector(state => state.order);
+    const { ordererUpdateWindowOpen} = useSelector(state => state.order);
 
     const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ export default function Orderer() {
                 title='이메일'
                 content={email}></OrdererContent>
             <OrdererUpdateWindow 
-                isOpen={personalOrdererUpdateOpen}></OrdererUpdateWindow>
+                isOpen={ordererUpdateWindowOpen}></OrdererUpdateWindow>
         </div>
     )
 }

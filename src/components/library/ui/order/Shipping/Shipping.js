@@ -5,17 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import {  useState } from 'react';
 
 import { saveUserInfo } from '../../../../../_reducers/user';
-import { changePeronalShippingUpdateWindow } from '../../../../../_reducers/order';
+import { changeShippingUpdateWindow } from '../../../../../_reducers/order';
 
 import OrangeTag from '../../unit/OrangeTag/OrangeTag';
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
 import OrangeLineButton from '../../unit/OrangeLineButton/OrangeLineButton';
-import GreyLineButton from '../../unit/GreyLineButton/GreyLineButton';
 
 export default function Shipping() {
     const dispatch = useDispatch();
     const { shippings } = useSelector(state => state.user);
-    const { personalShippingUpdateOpen } = useSelector(state => state.order);
+    const { shippingUpdateWindowOpen } = useSelector(state => state.order);
 
     let ShippingInfoList;
     if (shippings) {
@@ -41,7 +40,7 @@ export default function Shipping() {
     }
 
     const openShippingUpdateWindow = () => {
-        dispatch(changePeronalShippingUpdateWindow());
+        dispatch(changeShippingUpdateWindow());
     }
 
     return (
@@ -60,7 +59,7 @@ export default function Shipping() {
                     <span className='shipping-add-button-text'>새로운 주소 추가하기</span>
                 </button>
             </div>
-            <ShippingUpdateWindow isOpen={personalShippingUpdateOpen}></ShippingUpdateWindow>
+            <ShippingUpdateWindow isOpen={shippingUpdateWindowOpen}></ShippingUpdateWindow>
         </div>
     )
 }
@@ -68,7 +67,7 @@ export default function Shipping() {
 function ShippingInfo(props) {
     const dispatch = useDispatch();
     const openShippingUpdateWindow = () => {
-        dispatch(changePeronalShippingUpdateWindow());
+        dispatch(changeShippingUpdateWindow());
     }
 
     return (
@@ -105,7 +104,7 @@ function ShippingUpdateWindow(props) {
     const dispatch = useDispatch();
 
     const closeShippingUpdateWindow = () => {
-        dispatch(changePeronalShippingUpdateWindow());
+        dispatch(changeShippingUpdateWindow());
 
         setNameInput(null);
         setAddressInput(null);
@@ -147,7 +146,7 @@ function ShippingUpdateWindow(props) {
             "token": token
         })
         dispatch(saveUserInfo(userGetResponse.data.user));
-        dispatch(changePeronalShippingUpdateWindow());
+        dispatch(changeShippingUpdateWindow());
 
         setNameInput(null);
         setAddressInput(null);
