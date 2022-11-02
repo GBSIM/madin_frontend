@@ -69,6 +69,9 @@ function OrdererUpdateWindow(props) {
 
     const closeOrdrerUpdateWindow = () => {
         dispatch(changeOrdererUpdateWindow());
+        setNameInput(name);
+        setEmailInput(email);
+        setPhoneInput(phone);
     }
 
     const updateUserName = (e) => {
@@ -92,6 +95,9 @@ function OrdererUpdateWindow(props) {
         });
         dispatch(saveUserInfo(userUpdateResponse.data.user));
         dispatch(changeOrdererUpdateWindow());
+        setNameInput(nameInput);
+        setEmailInput(emailInput);
+        setPhoneInput(phoneInput);
     }
 
     if (props.isOpen) {
