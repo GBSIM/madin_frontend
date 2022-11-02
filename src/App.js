@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { changePage } from './_reducers/nav';
 import { saveMenuClass } from './_reducers/menu';
 import { KakaoRedirectHandler } from './components/library/function/KakaoLogin';
+import { UserAuth } from './components/library/function/Auth';
 
 import Personal from './components/views/Personal/Personal';
 import Group from './components/views/Group/Group';
@@ -22,6 +23,8 @@ import PersonalOrder from './components/views/PersonalOrder/PersonalOrder';
 
 function App() {
   const dispatch = useDispatch();
+
+  UserAuth();
 
   window.onpopstate = function(event) {
     console.log("뒤로가기");

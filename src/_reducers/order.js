@@ -2,11 +2,13 @@ export const SAVE_PERSONAL_ORDER = "ORDER/SAVE_PERSONAL_ORDER";
 export const ADD_PERSONAL_MENU_QUANTITY = "ORDER/ADD_PERSONAL_MENU_QUANTITY";
 export const SUBTRACT_PERSONAL_MENU_QUANTITY = "ORDER/SUBTRACT_PERSONAL_MENU_QUANTITY";
 export const CHAGNE_PEROSNAL_ORDERER_UPDATE_WINDOW = "ORDER/CHAGNE_PEROSNAL_ORDERER_UPDATE_WINDOW";
+export const CHAGNE_PEROSNAL_SHIPPING_UPDATE_WINDOW = "ORDER/CHAGNE_PEROSNAL_SHIPPING_UPDATE_WINDOW";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL_MENU_QUANTITY, menuId:menuId});
-export const changePeronalOrderUpdateWindow = () => ({type:CHAGNE_PEROSNAL_ORDERER_UPDATE_WINDOW});
+export const changePeronalOrdererUpdateWindow = () => ({type:CHAGNE_PEROSNAL_ORDERER_UPDATE_WINDOW});
+export const changePeronalShippingUpdateWindow = () => ({type:CHAGNE_PEROSNAL_SHIPPING_UPDATE_WINDOW});
 
 const initialState = {
     personalOrderIdList: [],
@@ -14,6 +16,7 @@ const initialState = {
     personalOrderNameList: [],
     personalOrderPriceist: [],
     personalOrdererUpdateOpen: false,
+    personalShippingUpdateOpen: false,
 }
 
 const order = (state = initialState, action) => {    
@@ -50,6 +53,11 @@ const order = (state = initialState, action) => {
             return {
                 ...state,
                 personalOrdererUpdateOpen: !state.personalOrdererUpdateOpen
+            }
+        case CHAGNE_PEROSNAL_SHIPPING_UPDATE_WINDOW:
+            return {
+                ...state,
+                personalShippingUpdateOpen: !state.personalShippingUpdateOpen
             }
         default:
             return state;

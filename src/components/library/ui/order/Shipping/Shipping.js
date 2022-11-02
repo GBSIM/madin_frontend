@@ -1,20 +1,32 @@
 import './Shipping.css';
 
-import { useSelector } from "react-redux";
+import axios from 'axios';
+import { useSelector, useDispatch } from "react-redux";
+import {  useState } from 'react';
+
+import { saveUserInfo } from '../../../../../_reducers/user';
+import { changePeronalShippingUpdateWindow } from '../../../../../_reducers/order';
 
 import OrangeTag from '../../unit/OrangeTag/OrangeTag';
+import OrangeButton from '../../unit/OrangeButton/OrangeButton';
+import OrangeLineButton from '../../unit/OrangeLineButton/OrangeLineButton';
+import GreyLineButton from '../../unit/GreyLineButton/GreyLineButton';
 
 export default function Shipping() {
-    const { shippings} = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const { shippings } = useSelector(state => state.user);
+    const { personalShippingUpdateOpen } = useSelector(state => state.order);
 
     let ShippingInfoList;
     if (shippings) {
-        shippings.map((shipping,index) => (
+        ShippingInfoList = shippings.map((shipping,index) => (
             <ShippingInfo
                 tag = {shipping['tag']}
                 name = {shipping['name']}
+                address = {shipping['address']}
                 phone = {shipping['phone']}
                 request = {shipping['request']}
+                _id = {shipping['_id']}
                 key = {shipping['key']}></ShippingInfo>
         ))
     }
@@ -28,6 +40,10 @@ export default function Shipping() {
         </div>
     }
 
+    const openShippingUpdateWindow = () => {
+        dispatch(changePeronalShippingUpdateWindow());
+    }
+
     return (
         <div className='order-container'>
             <h2 className='order-title'>배송지 고르기</h2>
@@ -37,18 +53,24 @@ export default function Shipping() {
             </div>
             {ShippingAddGuide}
             <div className='shipping-add-button-container'>
-                <button className='shipping-add-button'>
+                <button className='shipping-add-button' onClick={() => openShippingUpdateWindow()}>
                     <div className='shipping-add-button-image-container'>
                         <img className='shipping-add-button-image' src={require('../../../icons/plus_grey.png')}></img>
                     </div>
                     <span className='shipping-add-button-text'>새로운 주소 추가하기</span>
                 </button>
             </div>
+            <ShippingUpdateWindow isOpen={personalShippingUpdateOpen}></ShippingUpdateWindow>
         </div>
     )
 }
 
 function ShippingInfo(props) {
+    const dispatch = useDispatch();
+    const openShippingUpdateWindow = () => {
+        dispatch(changePeronalShippingUpdateWindow());
+    }
+
     return (
         <div className='shipping-info-container'>
             <div className='shipping-left-container'>
@@ -68,4 +90,118 @@ function ShippingInfo(props) {
             </div>
         </div>
     )
+}
+
+
+function ShippingUpdateWindow(props) {
+    const { _id, socialId, token} = useSelector(state => state.user);
+
+    const [nameInput, setNameInput] = useState(props.name);
+    const [addressInput, setAddressInput] = useState(props.address);
+    const [requestInput, setRequestInput] = useState(props.request);
+    const [phoneInput, setPhoneInput] = useState(props.phone);
+    const [tagInput, setTagInput] = useState(props.tag);
+
+    const dispatch = useDispatch();
+
+    const closeShippingUpdateWindow = () => {
+        dispatch(changePeronalShippingUpdateWindow());
+
+        setNameInput(null);
+        setAddressInput(null);
+        setRequestInput(null);
+        setPhoneInput(null);
+        setTagInput(null);
+    }
+
+    const updateName = (e) => {
+        dispatch(setNameInput(e.target.value));
+    }
+
+    const updateAddress = (e) => {
+        dispatch(setAddressInput(e.target.value));
+    }
+
+    const updateRequest = (e) => {
+        dispatch(setRequestInput(e.target.value));
+    }
+
+    const updatePhone = (e) => {
+        dispatch(setPhoneInput(e.target.value));
+    }
+
+    const updateTag = (e) => {
+        dispatch(setTagInput(e.target.value));
+    }
+
+    const addShippingInfo = async() => {
+        await axios.post('https://api.madinbakery.com/shipping/'+ _id, {
+            "name": nameInput,
+            "phone": phoneInput,
+            "address": addressInput,
+            "request": requestInput,
+            "tag": tagInput,
+            "token": token
+        });
+        const userGetResponse = await axios.post('https://api.madinbakery.com/user/auth/'+ socialId, {
+            "token": token
+        })
+        dispatch(saveUserInfo(userGetResponse.data.user));
+        dispatch(changePeronalShippingUpdateWindow());
+
+        setNameInput(null);
+        setAddressInput(null);
+        setRequestInput(null);
+        setPhoneInput(null);
+        setTagInput(null);
+    }
+
+    if (props.isOpen) {
+        return (
+            <div className='orderer-update-window-container'>
+                <div className='orderer-update-window'>
+                    <h2 className='order-title'>새로운 주소 추가하기</h2>
+                    <div style={{'minHeight':'30px'}}></div>
+                    <div className='orderer-update-row-container'>
+                        <span className='orderer-update-row-title'>받는 사람</span>
+                        <div className='orderer-update-box'>
+                            <input className='orderer-update-input' value={nameInput} onChange={updateName}></input>
+                        </div>
+                    </div>
+                    <div style={{'minHeight':'20px'}}></div>
+                    <div className='orderer-update-row-container'>
+                        <span className='orderer-update-row-title'>핸드폰 번호</span>
+                        <div className='orderer-update-box'>
+                            <input className='orderer-update-input' value={phoneInput} onChange={updatePhone}></input>
+                        </div>
+                    </div>
+                    <div style={{'minHeight':'20px'}}></div>
+                    <div className='orderer-update-row-container'>
+                        <span className='orderer-update-row-title'>주소</span>
+                        <div className='orderer-update-box'>
+                            <input className='orderer-update-input' value={addressInput} onChange={updateAddress}></input>
+                        </div>
+                    </div>
+                    <div style={{'minHeight':'20px'}}></div>
+                    <div className='orderer-update-row-container'>
+                        <span className='orderer-update-row-title'>요청사항</span>
+                        <div className='orderer-update-box'>
+                            <input className='orderer-update-input' value={requestInput} onChange={updateRequest}></input>
+                        </div>
+                    </div>
+                    <div style={{'minHeight':'20px'}}></div>
+                    <div className='orderer-update-row-container'>
+                        <span className='orderer-update-row-title'>별명</span>
+                        <div className='orderer-update-box'>
+                            <input className='orderer-update-input' value={tagInput} onChange={updateTag}></input>
+                        </div>
+                    </div>
+                    <div style={{'flex':'1','minHeight':'30px'}}></div>
+                    <OrangeButton width='320px' height='40px' borderRadius='6px' text='추가하기' clickEvent={addShippingInfo}></OrangeButton>
+                    <div style={{'minHeight':'10px'}}></div>
+                    <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
+                </div>
+            </div>
+        )
+    }
 }

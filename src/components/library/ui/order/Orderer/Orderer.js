@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-import { changePeronalOrderUpdateWindow } from '../../../../../_reducers/order';
+import { changePeronalOrdererUpdateWindow } from '../../../../../_reducers/order';
 import { saveUserInfo } from '../../../../../_reducers/user';
 
 import GreyLineButton from '../../unit/GreyLineButton/GreyLineButton';
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
 import OrangeLineButton from '../../unit/OrangeLineButton/OrangeLineButton';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Orderer() {
     const { name,email, phone} = useSelector(state => state.user);
@@ -19,7 +19,7 @@ export default function Orderer() {
     const dispatch = useDispatch();
 
     const openOrdrerUpdateWindow = () => {
-        dispatch(changePeronalOrderUpdateWindow());
+        dispatch(changePeronalOrdererUpdateWindow());
     }
     
     return (
@@ -68,7 +68,7 @@ function OrdererUpdateWindow(props) {
     const dispatch = useDispatch();
 
     const closeOrdrerUpdateWindow = () => {
-        dispatch(changePeronalOrderUpdateWindow());
+        dispatch(changePeronalOrdererUpdateWindow());
     }
 
     const updateUserName = (e) => {
@@ -91,7 +91,7 @@ function OrdererUpdateWindow(props) {
             "token": token
         });
         dispatch(saveUserInfo(userUpdateResponse.data.user));
-        dispatch(changePeronalOrderUpdateWindow());
+        dispatch(changePeronalOrdererUpdateWindow());
     }
 
     if (props.isOpen) {

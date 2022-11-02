@@ -18,9 +18,8 @@ export default function PersonalOrder() {
     const navigate = useNavigate();
     const { isLogin } = useSelector(state => state.user);
 
-    UserAuth();
-
     useEffect(() => {
+        UserAuth();
         if (!isLogin) {
             dispatch(changePage('order'));
             navigate('/personal');

@@ -33,7 +33,7 @@ const user = (state = initialState, action) => {
                 token: action.userInfo["token"],
                 _id: action.userInfo["_id"],
                 socialId: action.userInfo["socialId"],
-                shippings: action.userInfo["shppings"],
+                shippings: action.userInfo["shippings"],
                 orders: action.userInfo["orders"],
                 phone: action.userInfo["phone"]
             }
