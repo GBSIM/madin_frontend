@@ -4,6 +4,7 @@ export const SUBTRACT_PERSONAL_MENU_QUANTITY = "ORDER/SUBTRACT_PERSONAL_MENU_QUA
 export const CHAGNE_ORDERER_UPDATE_WINDOW = "ORDER/CHAGNE_ORDERER_UPDATE_WINDOW";
 export const CHAGNE_SHIPPING_ADD_WINDOW = "ORDER/CHAGNE_SHIPPING_ADD_WINDOW";
 export const CHANGE_SHIPPING_CHECKED_INDEX = "ORDER/CHANGE_SHIPPING_CHECKED_INDEX";
+export const CHANGE_PAYMENT_METHOD = "ORDER/CHANGE_PAYMENT_METHOD";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
@@ -11,6 +12,8 @@ export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL
 export const changeOrdererUpdateWindow = () => ({type:CHAGNE_ORDERER_UPDATE_WINDOW});
 export const changeShippingAddWindow = () => ({type:CHAGNE_SHIPPING_ADD_WINDOW});
 export const changeShippingChekcedIndex = (index) => ({type:CHANGE_SHIPPING_CHECKED_INDEX, index: index});
+export const changePaymentMethod = (method) => ({type:CHANGE_PAYMENT_METHOD, method: method});
+
 
 const initialState = {
     personalOrderIdList: [],
@@ -21,6 +24,7 @@ const initialState = {
     shippingAddWindowOpen: false,
     shippingUpdateWindowOpen: false,
     shippingCheckedIndex: 0,
+    paymentMethod: "kakao",
 }
 
 const order = (state = initialState, action) => {    
@@ -67,6 +71,11 @@ const order = (state = initialState, action) => {
             return {
                 ...state,
                 shippingCheckedIndex: action.index
+            }
+        case CHANGE_PAYMENT_METHOD:
+            return {
+                ...state,
+                paymentMethod: action.method
             }
         default:
             return state;
