@@ -53,6 +53,14 @@
     margin: 0px;
 }
 
+.shipping-checkbox-button.checked {
+    border: 2px solid #EA5B30;
+}
+
+.shipping-checkbox-button.unchecked {
+    border: 2px solid #C8C8C8;
+}
+
 .shipping-checkbox-image {
     width: 28px;
     height: 28px;

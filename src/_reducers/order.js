@@ -3,12 +3,14 @@ export const ADD_PERSONAL_MENU_QUANTITY = "ORDER/ADD_PERSONAL_MENU_QUANTITY";
 export const SUBTRACT_PERSONAL_MENU_QUANTITY = "ORDER/SUBTRACT_PERSONAL_MENU_QUANTITY";
 export const CHAGNE_ORDERER_UPDATE_WINDOW = "ORDER/CHAGNE_ORDERER_UPDATE_WINDOW";
 export const CHAGNE_SHIPPING_UPDATE_WINDOW = "ORDER/CHAGNE_SHIPPING_UPDATE_WINDOW";
+export const CHANGE_SHIPPING_CHECKED_INDEX = "ORDER/CHANGE_SHIPPING_CHECKED_INDEX";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const changeOrdererUpdateWindow = () => ({type:CHAGNE_ORDERER_UPDATE_WINDOW});
 export const changeShippingUpdateWindow = () => ({type:CHAGNE_SHIPPING_UPDATE_WINDOW});
+export const changeShippingChekcedIndex = (index) => ({type:CHANGE_SHIPPING_CHECKED_INDEX, index: index});
 
 const initialState = {
     personalOrderIdList: [],
@@ -17,6 +19,7 @@ const initialState = {
     personalOrderPriceist: [],
     ordererUpdateWindowOpen: false,
     shippingUpdateWindowOpen: false,
+    shippingCheckedIndex: 0,
 }
 
 const order = (state = initialState, action) => {    
@@ -58,6 +61,11 @@ const order = (state = initialState, action) => {
             return {
                 ...state,
                 shippingUpdateWindowOpen: !state.shippingUpdateWindowOpen
+            }
+        case CHANGE_SHIPPING_CHECKED_INDEX:
+            return {
+                ...state,
+                shippingCheckedIndex: action.index
             }
         default:
             return state;

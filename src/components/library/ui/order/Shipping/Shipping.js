@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {  useState } from 'react';
 
 import { saveUserInfo } from '../../../../../_reducers/user';
-import { changeShippingUpdateWindow } from '../../../../../_reducers/order';
+import { changeShippingUpdateWindow, changeShippingChekcedIndex } from '../../../../../_reducers/order';
 
 import OrangeTag from '../../unit/OrangeTag/OrangeTag';
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
@@ -14,7 +14,7 @@ import OrangeLineButton from '../../unit/OrangeLineButton/OrangeLineButton';
 export default function Shipping() {
     const dispatch = useDispatch();
     const { shippings } = useSelector(state => state.user);
-    const { shippingUpdateWindowOpen } = useSelector(state => state.order);
+    const { shippingUpdateWindowOpen, shippingCheckedIndex } = useSelector(state => state.order);
 
     let ShippingInfoList;
     if (shippings) {
@@ -26,6 +26,8 @@ export default function Shipping() {
                 phone = {shipping['phone']}
                 request = {shipping['request']}
                 _id = {shipping['_id']}
+                isChecked = {shippingCheckedIndex === index}
+                index = {index}
                 key = {'shipping_'+index}></ShippingInfo>
         ))
     }
@@ -69,6 +71,22 @@ function ShippingInfo(props) {
     const openShippingUpdateWindow = () => {
         dispatch(changeShippingUpdateWindow());
     }
+    const setCheckbox = () => {
+        dispatch(changeShippingChekcedIndex(props.index))
+    }
+
+    let Checkbox;
+    if (props.isChecked) {
+        Checkbox = 
+        <button className='shipping-checkbox-button checked'>
+            <img src={require('../../../icons/check_orange.png')} alt='check' className='shipping-checkbox-image'></img>
+        </button>
+    } else {
+        Checkbox = 
+        <button className='shipping-checkbox-button unchecked' onClick={() => setCheckbox()}>
+            <img src={require('../../../icons/check_grey.png')} alt='check' className='shipping-checkbox-image'></img>
+        </button>
+    }
 
     return (
         <div className='shipping-info-container'>
@@ -83,9 +101,7 @@ function ShippingInfo(props) {
                 </div>
             </div>
             <div className='shipping-right-container'>
-                <button className='shipping-checkbox-button'>
-                    <img src={require('../../../icons/check_orange.png')} alt='check' className='shipping-checkbox-image'></img>
-                </button>
+                {Checkbox}
             </div>
         </div>
     )
