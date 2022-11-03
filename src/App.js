@@ -24,8 +24,6 @@ import PersonalOrder from './components/views/PersonalOrder/PersonalOrder';
 function App() {
   const dispatch = useDispatch();
 
-  UserAuth();
-
   window.onpopstate = function(event) {
     console.log("뒤로가기");
     if (window.location.pathname === "/") {

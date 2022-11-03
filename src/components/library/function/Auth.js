@@ -12,18 +12,26 @@ export const UserAuth = async() => {
     if (!socialId || !token) {
         dispatch(logout());
     } else {
-        const authResponse = await axios.post('https://api.madinbakery.com/user/auth/'+socialId,
+        await axios.post('https://api.madinbakery.com/user/auth/'+socialId,
             {
                 "token": token 
             }
-        )
-        if (authResponse.data.user) {
-            dispatch(saveUserInfo(authResponse.data.user));
-        } else {
+        ).then((res) => {
+            if (res.data.user) {
+                dispatch(saveUserInfo(res.data.user));
+            } else {
+                console.log(res);
+                dispatch(logout());
+                deleteCookie('email');
+                deleteCookie('socialId');
+                deleteCookie('token');
+            }
+        }).catch((err) => {
+            console.log(err);
             dispatch(logout());
             deleteCookie('email');
             deleteCookie('socialId');
             deleteCookie('token');
-        }
+        })
     }
 }

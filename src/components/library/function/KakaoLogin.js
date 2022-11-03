@@ -27,6 +27,5 @@ export const KakaoRedirectHandler = async() => {
   window.history.replaceState({}, null, window.location.pathname);
   dispatch(saveUserInfo(user));
   setCookie("token",user["token"],1);
-  setCookie("email",user["email"],1);
   setCookie("socialId",user["socialId"],1);
 };
