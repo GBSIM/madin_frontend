@@ -6,7 +6,7 @@ import {  useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 
 import { saveUserInfo } from '../../../../../_reducers/user';
-import { changeShippingUpdateWindow, changeShippingChekcedIndex, changeShippingAddWindow, saveShippingUpdateAddress } from '../../../../../_reducers/order';
+import { changeShippingChekcedIndex, changeShippingAddWindow } from '../../../../../_reducers/order';
 
 import OrangeTag from '../../unit/OrangeTag/OrangeTag';
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
@@ -70,10 +70,14 @@ export default function Shipping() {
 
 function ShippingInfo(props) {
     const [updateWindowOpen, setUpdateWindowOpen] = useState(false);
+    const [deleteWindowOpen, setDeleteWindowOpen] = useState(false);
 
     const dispatch = useDispatch();
     const openShippingUpdateWindow = () => {
         dispatch(setUpdateWindowOpen(true));
+    }
+    const openShippingDeleteWindow = () => {
+        dispatch(setDeleteWindowOpen(true));
     }
     const setCheckbox = () => {
         dispatch(changeShippingChekcedIndex(props.index));
@@ -112,6 +116,9 @@ function ShippingInfo(props) {
                 <button className='shipping-edit-button' onClick={() => openShippingUpdateWindow()}>
                     <span className='shipping-edit-button-text'>편집하기</span>
                 </button>
+                <button className='shipping-remove-button' onClick={() => openShippingDeleteWindow()}>
+                    <span className='shipping-remove-button-text'>삭제하기</span>
+                </button>
             </div>
             <ShippingUpdateWindow
                 _id = {props._id}
@@ -123,6 +130,10 @@ function ShippingInfo(props) {
                 phone={props.phone}
                 request={props.request}
                 tag={props.tag}></ShippingUpdateWindow>
+            <ShippingDeleteWindow
+                _id = {props._id}
+                isOpen={deleteWindowOpen}
+                closeWindow={setDeleteWindowOpen}></ShippingDeleteWindow>
         </div>
     )
 }
@@ -278,7 +289,7 @@ function ShippingAddWindow(props) {
 }
 
 function ShippingUpdateWindow(props) {
-    const { _id, socialId, token} = useSelector(state => state.user);
+    const { socialId, token} = useSelector(state => state.user);
 
     const [nameInput, setNameInput] = useState(props.name);
     const [basicAddressInput, setBasicAddressInput] = useState(props.basicAddress);
@@ -384,6 +395,44 @@ function ShippingUpdateWindow(props) {
                     <OrangeButton width='320px' height='40px' borderRadius='6px' text='수정하기' clickEvent={updateShippingInfo}></OrangeButton>
                     <div style={{'minHeight':'10px'}}></div>
                     <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
+                </div>
+            </div>
+        )
+    }
+}
+
+function ShippingDeleteWindow(props) {
+    const dispatch = useDispatch();
+    const { socialId, token} = useSelector(state => state.user);
+
+    const deleteShippingInfo = async() => {
+        await axios.delete('https://api.madinbakery.com/shipping/'+ props._id, {
+            data: {
+                "token": token
+            }
+        });
+        const userGetResponse = await axios.post('https://api.madinbakery.com/user/auth/'+ socialId, {
+            "token": token
+        })
+        dispatch(saveUserInfo(userGetResponse.data.user));
+        props.closeWindow();
+    }
+
+    const closeShippingDeleteWindow = () => {
+        props.closeWindow();
+    }
+
+    if (props.isOpen) {
+        return (
+            <div className='shipping-update-window-container'>
+                <div className='shipping-update-window'>
+                    <h2 className='order-title'>주소 삭제하기</h2>
+                    <div style={{'flex':'1','minHeight':'30px'}}></div>
+                    <span className='shipping-delete-check'>정말 삭제하시겠어요?</span>
+                    <div style={{'flex':'1','minHeight':'30px'}}></div>
+                    <OrangeButton width='320px' height='40px' borderRadius='6px' text='삭제하기' clickEvent={deleteShippingInfo}></OrangeButton>
+                    <div style={{'minHeight':'10px'}}></div>
+                    <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='취소' clickEvent={closeShippingDeleteWindow}></OrangeLineButton>
                 </div>
             </div>
         )

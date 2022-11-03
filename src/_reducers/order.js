@@ -2,7 +2,6 @@ export const SAVE_PERSONAL_ORDER = "ORDER/SAVE_PERSONAL_ORDER";
 export const ADD_PERSONAL_MENU_QUANTITY = "ORDER/ADD_PERSONAL_MENU_QUANTITY";
 export const SUBTRACT_PERSONAL_MENU_QUANTITY = "ORDER/SUBTRACT_PERSONAL_MENU_QUANTITY";
 export const CHAGNE_ORDERER_UPDATE_WINDOW = "ORDER/CHAGNE_ORDERER_UPDATE_WINDOW";
-export const CHAGNE_SHIPPING_UPDATE_WINDOW = "ORDER/CHAGNE_SHIPPING_UPDATE_WINDOW";
 export const CHAGNE_SHIPPING_ADD_WINDOW = "ORDER/CHAGNE_SHIPPING_ADD_WINDOW";
 export const CHANGE_SHIPPING_CHECKED_INDEX = "ORDER/CHANGE_SHIPPING_CHECKED_INDEX";
 
@@ -10,7 +9,6 @@ export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERS
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const changeOrdererUpdateWindow = () => ({type:CHAGNE_ORDERER_UPDATE_WINDOW});
-export const changeShippingUpdateWindow = () => ({type:CHAGNE_SHIPPING_UPDATE_WINDOW});
 export const changeShippingAddWindow = () => ({type:CHAGNE_SHIPPING_ADD_WINDOW});
 export const changeShippingChekcedIndex = (index) => ({type:CHANGE_SHIPPING_CHECKED_INDEX, index: index});
 
@@ -23,12 +21,6 @@ const initialState = {
     shippingAddWindowOpen: false,
     shippingUpdateWindowOpen: false,
     shippingCheckedIndex: 0,
-    basicAddressUpdate: "",
-    detailAddressUpdate: "",
-    nameUpdate: "",
-    phoneUpdate: "",
-    requestUpdate: "",
-    tagUpdate: "",
 }
 
 const order = (state = initialState, action) => {    
@@ -65,11 +57,6 @@ const order = (state = initialState, action) => {
             return {
                 ...state,
                 ordererUpdateWindowOpen: !state.ordererUpdateWindowOpen
-            }
-        case CHAGNE_SHIPPING_UPDATE_WINDOW:
-            return {
-                ...state,
-                shippingUpdateWindowOpen: !state.shippingUpdateWindowOpen
             }
         case CHAGNE_SHIPPING_ADD_WINDOW:
             return {

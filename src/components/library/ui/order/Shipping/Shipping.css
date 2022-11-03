@@ -245,7 +245,7 @@
 
 .shipping-edit-button {
     position: relative;
-    right: 50px;
+    right: 110px;
     bottom: -13px;
     display: flex;
     flex-direction: row;
@@ -259,4 +259,27 @@
 .shipping-edit-button-text {
     font-size: 12px;
     color: #C8C8C8;
+}
+
+.shipping-remove-button {
+    position: relative;
+    right: 100px;
+    bottom: -13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    min-width: 50px;
+    z-index: 0;
+}
+
+.shipping-remove-button-text {
+    font-size: 12px;
+    color: #C8C8C8;
+}
+
+.shipping-delete-check {
+    color: #C8C8C8;
+    font-weight: 500;
 }
