@@ -101,8 +101,14 @@ function ShippingInfo(props) {
                     <span className='shipping-info'>{props.request}</span>
                 </div>
             </div>
+            <div style={{'minWidth':'20px','flex':'1'}}></div>
             <div className='shipping-right-container'>
                 {Checkbox}
+            </div>
+            <div className='shipping-edit-button-container'>
+                <button className='shipping-edit-button'>
+                    <span className='shipping-edit-button-text'>편집하기</span>
+                </button>
             </div>
         </div>
     )
