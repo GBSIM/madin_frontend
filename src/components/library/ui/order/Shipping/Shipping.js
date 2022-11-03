@@ -3,6 +3,7 @@ import './Shipping.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from "react-redux";
 import {  useState } from 'react';
+import DaumPostcode from 'react-daum-postcode';
 
 import { saveUserInfo } from '../../../../../_reducers/user';
 import { changeShippingUpdateWindow, changeShippingChekcedIndex } from '../../../../../_reducers/order';
@@ -112,10 +113,12 @@ function ShippingUpdateWindow(props) {
     const { _id, socialId, token} = useSelector(state => state.user);
 
     const [nameInput, setNameInput] = useState(props.name);
-    const [addressInput, setAddressInput] = useState(props.address);
+    const [basicAddressInput, setBasicAddressInput] = useState(props.address);
+    const [detailAddressInput, setDetailAddressInput] = useState(props.address);
     const [requestInput, setRequestInput] = useState(props.request);
     const [phoneInput, setPhoneInput] = useState(props.phone);
     const [tagInput, setTagInput] = useState(props.tag);
+    const [isAddressSelected, setIsAddresssSeleted] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -123,18 +126,20 @@ function ShippingUpdateWindow(props) {
         dispatch(changeShippingUpdateWindow());
 
         setNameInput(null);
-        setAddressInput(null);
+        setBasicAddressInput(null);
+        setDetailAddressInput(null);
         setRequestInput(null);
         setPhoneInput(null);
         setTagInput(null);
+        setIsAddresssSeleted(false);
     }
 
     const updateName = (e) => {
         dispatch(setNameInput(e.target.value));
     }
 
-    const updateAddress = (e) => {
-        dispatch(setAddressInput(e.target.value));
+    const updateDetailAddress = (e) => {
+        dispatch(setDetailAddressInput(e.target.value));
     }
 
     const updateRequest = (e) => {
@@ -153,7 +158,7 @@ function ShippingUpdateWindow(props) {
         await axios.post('https://api.madinbakery.com/shipping/'+ _id, {
             "name": nameInput,
             "phone": phoneInput,
-            "address": addressInput,
+            "address": basicAddressInput + detailAddressInput,
             "request": requestInput,
             "tag": tagInput,
             "token": token
@@ -165,55 +170,85 @@ function ShippingUpdateWindow(props) {
         dispatch(changeShippingUpdateWindow());
 
         setNameInput(null);
-        setAddressInput(null);
+        setBasicAddressInput(null);
+        setDetailAddressInput(null);
         setRequestInput(null);
         setPhoneInput(null);
         setTagInput(null);
+        setIsAddresssSeleted(false);
+    }
+
+    const addressSelectComplete = (data) => {
+        setBasicAddressInput(data.address);
+        setIsAddresssSeleted(true);
+    }
+
+    let DaumAddressAPI;
+    if (!isAddressSelected) {
+        DaumAddressAPI = <DaumPostcode onComplete={addressSelectComplete} autoClose={false}></DaumPostcode>
+    }
+
+    let ShippingAddButton;
+    if (isAddressSelected) {
+        ShippingAddButton =
+        <div>
+            <OrangeButton width='320px' height='40px' borderRadius='6px' text='추가하기' clickEvent={addShippingInfo}></OrangeButton>
+            <div style={{'minHeight':'10px'}}></div>
+        </div> 
+    }
+
+    let ShippingInputRows;
+    if (isAddressSelected) {
+        ShippingInputRows = 
+        <div className='shipping-update-rows'>
+            <div className='shipping-update-row-container'>
+                <div className='shipping-update-basic-address-container'>
+                    <span className='shipping-update-basic-address'>{basicAddressInput}</span>
+                </div>
+            </div>
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>상세 주소</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={detailAddressInput} onChange={updateDetailAddress}></input>
+                </div>
+            </div>
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>받는 사람</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={nameInput} onChange={updateName}></input>
+                </div>
+            </div>
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>핸드폰 번호</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={phoneInput} onChange={updatePhone}></input>
+                </div>
+            </div>
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>요청사항</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={requestInput} onChange={updateRequest}></input>
+                </div>
+            </div>            
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>주소 별명</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={tagInput} onChange={updateTag}></input>
+                </div>
+            </div>
+        </div>
     }
 
     if (props.isOpen) {
         return (
-            <div className='orderer-update-window-container'>
-                <div className='orderer-update-window'>
+            <div className='shipping-update-window-container'>
+                <div className='shipping-update-window'>
                     <h2 className='order-title'>새로운 주소 추가하기</h2>
                     <div style={{'minHeight':'30px'}}></div>
-                    <div className='orderer-update-row-container'>
-                        <span className='orderer-update-row-title'>받는 사람</span>
-                        <div className='orderer-update-box'>
-                            <input className='orderer-update-input' value={nameInput} onChange={updateName}></input>
-                        </div>
-                    </div>
-                    <div style={{'minHeight':'20px'}}></div>
-                    <div className='orderer-update-row-container'>
-                        <span className='orderer-update-row-title'>핸드폰 번호</span>
-                        <div className='orderer-update-box'>
-                            <input className='orderer-update-input' value={phoneInput} onChange={updatePhone}></input>
-                        </div>
-                    </div>
-                    <div style={{'minHeight':'20px'}}></div>
-                    <div className='orderer-update-row-container'>
-                        <span className='orderer-update-row-title'>주소</span>
-                        <div className='orderer-update-box'>
-                            <input className='orderer-update-input' value={addressInput} onChange={updateAddress}></input>
-                        </div>
-                    </div>
-                    <div style={{'minHeight':'20px'}}></div>
-                    <div className='orderer-update-row-container'>
-                        <span className='orderer-update-row-title'>요청사항</span>
-                        <div className='orderer-update-box'>
-                            <input className='orderer-update-input' value={requestInput} onChange={updateRequest}></input>
-                        </div>
-                    </div>
-                    <div style={{'minHeight':'20px'}}></div>
-                    <div className='orderer-update-row-container'>
-                        <span className='orderer-update-row-title'>별명</span>
-                        <div className='orderer-update-box'>
-                            <input className='orderer-update-input' value={tagInput} onChange={updateTag}></input>
-                        </div>
-                    </div>
+                    {DaumAddressAPI}
+                    {ShippingInputRows}
                     <div style={{'flex':'1','minHeight':'30px'}}></div>
-                    <OrangeButton width='320px' height='40px' borderRadius='6px' text='추가하기' clickEvent={addShippingInfo}></OrangeButton>
-                    <div style={{'minHeight':'10px'}}></div>
+                    {ShippingAddButton}
                     <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
                 </div>
             </div>

@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    column-gap: 20px;
     width: 100%;
     border-bottom: 1px solid #C6C6C6;
     padding-bottom: 20px;
@@ -177,6 +178,9 @@
     background: #FFFFFF;
     border: 1px solid #DADADA;
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .shipping-update-input {
@@ -190,4 +194,27 @@
 
 .shipping-update-input:focus {
     outline: none;
+}
+
+.shipping-update-rows {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.shipping-update-basic-address-container {
+    height: 34px;
+    width: 100%;
+    background: rgb(245,245,245);
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.shipping-update-basic-address {
+    margin-left: 7px;
+    font-size: 14px;
+    color: #555;
 }
