@@ -26,7 +26,7 @@ export default function Shipping() {
                 phone = {shipping['phone']}
                 request = {shipping['request']}
                 _id = {shipping['_id']}
-                key = {shipping['key']}></ShippingInfo>
+                key = {'shipping_'+index}></ShippingInfo>
         ))
     }
 
