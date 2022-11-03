@@ -140,12 +140,14 @@
 }
 
 .shipping-update-window-container {
+    z-index: 998;
     position: fixed;
     top: 50px;
     left: 0px;
     height: calc(100vh - 50px);
     width: 100vw;
     background: rgba(255,255,255,0.7);
+    
 }
 
 .shipping-update-window {
@@ -251,6 +253,7 @@
     align-items: center;
     padding: 0px;
     min-width: 50px;
+    z-index: 0;
 }
 
 .shipping-edit-button-text {

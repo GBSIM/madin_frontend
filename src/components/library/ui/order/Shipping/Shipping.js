@@ -6,7 +6,7 @@ import {  useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 
 import { saveUserInfo } from '../../../../../_reducers/user';
-import { changeShippingUpdateWindow, changeShippingChekcedIndex } from '../../../../../_reducers/order';
+import { changeShippingUpdateWindow, changeShippingChekcedIndex, changeShippingAddWindow, saveShippingUpdateAddress } from '../../../../../_reducers/order';
 
 import OrangeTag from '../../unit/OrangeTag/OrangeTag';
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
@@ -15,7 +15,7 @@ import OrangeLineButton from '../../unit/OrangeLineButton/OrangeLineButton';
 export default function Shipping() {
     const dispatch = useDispatch();
     const { shippings } = useSelector(state => state.user);
-    const { shippingUpdateWindowOpen, shippingCheckedIndex } = useSelector(state => state.order);
+    const { shippingAddWindowOpen, shippingCheckedIndex } = useSelector(state => state.order);
 
     let ShippingInfoList;
     if (shippings) {
@@ -42,8 +42,8 @@ export default function Shipping() {
         </div>
     }
 
-    const openShippingUpdateWindow = () => {
-        dispatch(changeShippingUpdateWindow());
+    const openShippingAddWindow = () => {
+        dispatch(changeShippingAddWindow());
     }
 
     return (
@@ -55,25 +55,27 @@ export default function Shipping() {
             </div>
             {ShippingAddGuide}
             <div className='shipping-add-button-container'>
-                <button className='shipping-add-button' onClick={() => openShippingUpdateWindow()}>
+                <button className='shipping-add-button' onClick={() => openShippingAddWindow()}>
                     <div className='shipping-add-button-image-container'>
                         <img className='shipping-add-button-image' src={require('../../../icons/plus_grey.png')} alt='addImage'></img>
                     </div>
                     <span className='shipping-add-button-text'>새로운 주소 추가하기</span>
                 </button>
             </div>
-            <ShippingUpdateWindow isOpen={shippingUpdateWindowOpen}></ShippingUpdateWindow>
+            <ShippingAddWindow isOpen={shippingAddWindowOpen}></ShippingAddWindow>
         </div>
     )
 }
 
 function ShippingInfo(props) {
+    const [updateWindowOpen, setUpdateWindowOpen] = useState(false);
+
     const dispatch = useDispatch();
     const openShippingUpdateWindow = () => {
-        dispatch(changeShippingUpdateWindow());
+        dispatch(setUpdateWindowOpen(true));
     }
     const setCheckbox = () => {
-        dispatch(changeShippingChekcedIndex(props.index))
+        dispatch(changeShippingChekcedIndex(props.index));
     }
 
     let Checkbox;
@@ -106,30 +108,38 @@ function ShippingInfo(props) {
                 {Checkbox}
             </div>
             <div className='shipping-edit-button-container'>
-                <button className='shipping-edit-button'>
+                <button className='shipping-edit-button' onClick={() => openShippingUpdateWindow()}>
                     <span className='shipping-edit-button-text'>편집하기</span>
                 </button>
             </div>
+            <ShippingUpdateWindow 
+                isOpen={updateWindowOpen}
+                closeWindow={setUpdateWindowOpen}
+                name={props.name}
+                phone={props.phone}
+                request={props.request}
+                tag={props.tag}></ShippingUpdateWindow>
         </div>
     )
 }
 
 
-function ShippingUpdateWindow(props) {
+function ShippingAddWindow(props) {
     const { _id, socialId, token} = useSelector(state => state.user);
+    const { basicAddressUpdate, detailAddressUpdate, nameUpdate, phoneUpdate, tagUpdate, requestUpdate} = useSelector(state => state.order);
 
-    const [nameInput, setNameInput] = useState(props.name);
-    const [basicAddressInput, setBasicAddressInput] = useState(props.address);
-    const [detailAddressInput, setDetailAddressInput] = useState(props.address);
-    const [requestInput, setRequestInput] = useState(props.request);
-    const [phoneInput, setPhoneInput] = useState(props.phone);
-    const [tagInput, setTagInput] = useState(props.tag);
+    const [nameInput, setNameInput] = useState(nameUpdate);
+    const [basicAddressInput, setBasicAddressInput] = useState(basicAddressUpdate);
+    const [detailAddressInput, setDetailAddressInput] = useState(detailAddressUpdate);
+    const [requestInput, setRequestInput] = useState(requestUpdate);
+    const [phoneInput, setPhoneInput] = useState(phoneUpdate);
+    const [tagInput, setTagInput] = useState(tagUpdate);
     const [isAddressSelected, setIsAddresssSeleted] = useState(false);
 
     const dispatch = useDispatch();
 
     const closeShippingUpdateWindow = () => {
-        dispatch(changeShippingUpdateWindow());
+        dispatch(changeShippingAddWindow());
 
         setNameInput(null);
         setBasicAddressInput(null);
@@ -173,7 +183,7 @@ function ShippingUpdateWindow(props) {
             "token": token
         })
         dispatch(saveUserInfo(userGetResponse.data.user));
-        dispatch(changeShippingUpdateWindow());
+        dispatch(changeShippingAddWindow());
 
         setNameInput(null);
         setBasicAddressInput(null);
@@ -255,6 +265,125 @@ function ShippingUpdateWindow(props) {
                     {ShippingInputRows}
                     <div style={{'flex':'1','minHeight':'30px'}}></div>
                     {ShippingAddButton}
+                    <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
+                </div>
+            </div>
+        )
+    }
+}
+
+function ShippingUpdateWindow(props) {
+    const { _id, socialId, token} = useSelector(state => state.user);
+
+    const [nameInput, setNameInput] = useState(props.name);
+    const [basicAddressInput, setBasicAddressInput] = useState(props.basicAddress);
+    const [detailAddressInput, setDetailAddressInput] = useState(props.detailAddress);
+    const [requestInput, setRequestInput] = useState(props.request);
+    const [phoneInput, setPhoneInput] = useState(props.phone);
+    const [tagInput, setTagInput] = useState(props.tag);
+
+    const dispatch = useDispatch();
+
+    const closeShippingUpdateWindow = () => {
+        props.closeWindow();
+
+        setNameInput(props.name);
+        setBasicAddressInput(props.basicAddress);
+        setDetailAddressInput(props.detailAddress);
+        setRequestInput(props.request);
+        setPhoneInput(props.phone);
+        setTagInput(props.tag);
+    }
+
+    const updateName = (e) => {
+        dispatch(setNameInput(e.target.value));
+    }
+
+    const updateDetailAddress = (e) => {
+        dispatch(setDetailAddressInput(e.target.value));
+    }
+
+    const updateRequest = (e) => {
+        dispatch(setRequestInput(e.target.value));
+    }
+
+    const updatePhone = (e) => {
+        dispatch(setPhoneInput(e.target.value));
+    }
+
+    const updateTag = (e) => {
+        dispatch(setTagInput(e.target.value));
+    }
+
+    const addShippingInfo = async() => {
+        await axios.post('https://api.madinbakery.com/shipping/'+ _id, {
+            "name": nameInput,
+            "phone": phoneInput,
+            "address": basicAddressInput + ' ' + detailAddressInput,
+            "request": requestInput,
+            "tag": tagInput,
+            "token": token
+        });
+        const userGetResponse = await axios.post('https://api.madinbakery.com/user/auth/'+ socialId, {
+            "token": token
+        })
+        dispatch(saveUserInfo(userGetResponse.data.user));
+        dispatch(changeShippingAddWindow());
+
+        setNameInput(null);
+        setBasicAddressInput(null);
+        setDetailAddressInput(null);
+        setRequestInput(null);
+        setPhoneInput(null);
+        setTagInput(null);
+    }
+
+    if (props.isOpen) {
+        return (
+            <div className='shipping-update-window-container'>
+                <div className='shipping-update-window'>
+                    <h2 className='order-title'>주소 편집하기</h2>
+                    <div style={{'minHeight':'30px'}}></div>
+                    <div className='shipping-update-rows'>
+                        <div className='shipping-update-row-container'>
+                            <div className='shipping-update-basic-address-container'>
+                                <span className='shipping-update-basic-address'>{basicAddressInput}</span>
+                            </div>
+                        </div>
+                        <div className='shipping-update-row-container'>
+                            <span className='shipping-update-row-title'>상세 주소</span>
+                            <div className='shipping-update-box'>
+                                <input className='shipping-update-input' value={detailAddressInput} onChange={updateDetailAddress}></input>
+                            </div>
+                        </div>
+                        <div className='shipping-update-row-container'>
+                            <span className='shipping-update-row-title'>받는 사람</span>
+                            <div className='shipping-update-box'>
+                                <input className='shipping-update-input' value={nameInput} onChange={updateName}></input>
+                            </div>
+                        </div>
+                        <div className='shipping-update-row-container'>
+                            <span className='shipping-update-row-title'>핸드폰 번호</span>
+                            <div className='shipping-update-box'>
+                                <input className='shipping-update-input' value={phoneInput} onChange={updatePhone}></input>
+                            </div>
+                        </div>
+                        <div className='shipping-update-row-container'>
+                            <span className='shipping-update-row-title'>요청사항</span>
+                            <div className='shipping-update-box'>
+                                <input className='shipping-update-input' value={requestInput} onChange={updateRequest}></input>
+                            </div>
+                        </div>            
+                        <div className='shipping-update-row-container'>
+                            <span className='shipping-update-row-title'>주소 별명</span>
+                            <div className='shipping-update-box'>
+                                <input className='shipping-update-input' value={tagInput} onChange={updateTag}></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div style={{'flex':'1','minHeight':'30px'}}></div>
+                    <OrangeButton width='320px' height='40px' borderRadius='6px' text='수정하기' clickEvent={addShippingInfo}></OrangeButton>
+                    <div style={{'minHeight':'10px'}}></div>
                     <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
                 </div>
             </div>
