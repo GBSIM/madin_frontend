@@ -158,7 +158,7 @@ function ShippingUpdateWindow(props) {
         await axios.post('https://api.madinbakery.com/shipping/'+ _id, {
             "name": nameInput,
             "phone": phoneInput,
-            "address": basicAddressInput + detailAddressInput,
+            "address": basicAddressInput + ' ' + detailAddressInput,
             "request": requestInput,
             "tag": tagInput,
             "token": token
