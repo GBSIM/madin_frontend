@@ -23,7 +23,8 @@ export default function Shipping() {
             <ShippingInfo
                 tag = {shipping['tag']}
                 name = {shipping['name']}
-                address = {shipping['address']}
+                basicAddress = {shipping['basicAddress']}
+                detailAddress = {shipping['detailAddress']}
                 phone = {shipping['phone']}
                 request = {shipping['request']}
                 _id = {shipping['_id']}
@@ -98,7 +99,7 @@ function ShippingInfo(props) {
                     <OrangeTag tag={props.tag}></OrangeTag>
                 </div>
                 <div className='shipping-info-rows'>
-                    <span className='shipping-info'>{props.address}</span>
+                    <span className='shipping-info'>{props.basicAddress} {props.detailAddress}</span>
                     <span className='shipping-info'>{props.name}, {props.phone}</span>
                     <span className='shipping-info'>{props.request}</span>
                 </div>
@@ -112,9 +113,12 @@ function ShippingInfo(props) {
                     <span className='shipping-edit-button-text'>편집하기</span>
                 </button>
             </div>
-            <ShippingUpdateWindow 
+            <ShippingUpdateWindow
+                _id = {props._id}
                 isOpen={updateWindowOpen}
                 closeWindow={setUpdateWindowOpen}
+                basicAddress = {props.basicAddress}
+                detailAddress = {props.detailAddress}
                 name={props.name}
                 phone={props.phone}
                 request={props.request}
@@ -174,7 +178,8 @@ function ShippingAddWindow(props) {
         await axios.post('https://api.madinbakery.com/shipping/'+ _id, {
             "name": nameInput,
             "phone": phoneInput,
-            "address": basicAddressInput + ' ' + detailAddressInput,
+            "basicAddress": basicAddressInput,
+            "detailAddress": detailAddressInput,
             "request": requestInput,
             "tag": tagInput,
             "token": token
@@ -315,11 +320,12 @@ function ShippingUpdateWindow(props) {
         dispatch(setTagInput(e.target.value));
     }
 
-    const addShippingInfo = async() => {
-        await axios.post('https://api.madinbakery.com/shipping/'+ _id, {
+    const updateShippingInfo = async() => {
+        await axios.patch('https://api.madinbakery.com/shipping/'+ props._id, {
             "name": nameInput,
             "phone": phoneInput,
-            "address": basicAddressInput + ' ' + detailAddressInput,
+            "basicAddress": basicAddressInput,
+            "detailAddress": detailAddressInput,
             "request": requestInput,
             "tag": tagInput,
             "token": token
@@ -328,14 +334,7 @@ function ShippingUpdateWindow(props) {
             "token": token
         })
         dispatch(saveUserInfo(userGetResponse.data.user));
-        dispatch(changeShippingAddWindow());
-
-        setNameInput(null);
-        setBasicAddressInput(null);
-        setDetailAddressInput(null);
-        setRequestInput(null);
-        setPhoneInput(null);
-        setTagInput(null);
+        props.closeWindow();
     }
 
     if (props.isOpen) {
@@ -382,7 +381,7 @@ function ShippingUpdateWindow(props) {
                         </div>
                     </div>
                     <div style={{'flex':'1','minHeight':'30px'}}></div>
-                    <OrangeButton width='320px' height='40px' borderRadius='6px' text='수정하기' clickEvent={addShippingInfo}></OrangeButton>
+                    <OrangeButton width='320px' height='40px' borderRadius='6px' text='수정하기' clickEvent={updateShippingInfo}></OrangeButton>
                     <div style={{'minHeight':'10px'}}></div>
                     <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
                 </div>
