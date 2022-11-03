@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { changePage } from '../../../_reducers/nav';
-import { UserAuth } from '../../library/function/Auth';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import PersonalOrderMenus from '../../library/ui/personalorder/PersonalOrderMenus/PersonalOrderMenus';
 import Orderer from '../../library/ui/order/Orderer/Orderer';
 import Shipping from '../../library/ui/order/Shipping/Shipping';
+import PersonalOrderPayment from '../../library/ui/personalorder/PersonalOrderPayment/PersonalOrderPayment';
 
 export default function PersonalOrder() {
     const dispatch = useDispatch();
@@ -33,6 +33,7 @@ export default function PersonalOrder() {
                     <PersonalOrderMenus></PersonalOrderMenus>
                     <Orderer></Orderer>
                     <Shipping></Shipping>
+                    <PersonalOrderPayment></PersonalOrderPayment>
                 </div>
                 <Footer></Footer>
             </div>

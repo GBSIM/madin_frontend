@@ -7,7 +7,7 @@ import axios from 'axios';
 import { changeOrdererUpdateWindow } from '../../../../../_reducers/order';
 import { saveUserInfo } from '../../../../../_reducers/user';
 
-import GreyLineButton from '../../unit/GreyLineButton/GreyLineButton';
+import GreyLineButton from '../../unit/GreyLineTagButton/GreyLineTagButton';
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
 import OrangeLineButton from '../../unit/OrangeLineButton/OrangeLineButton';
 import { useState } from 'react';

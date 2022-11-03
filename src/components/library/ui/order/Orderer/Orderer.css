@@ -21,7 +21,7 @@
 }
 
 .orderer-update-window-container {
-    z-index: 998;
+    z-index: 999;
     position: fixed;
     top: 50px;
     left: 0px;
