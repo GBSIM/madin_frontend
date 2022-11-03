@@ -425,7 +425,7 @@ function ShippingDeleteWindow(props) {
     if (props.isOpen) {
         return (
             <div className='shipping-update-window-container'>
-                <div className='shipping-update-window'>
+                <div className='shipping-delete-window'>
                     <h2 className='order-title'>주소 삭제하기</h2>
                     <div style={{'flex':'1','minHeight':'30px'}}></div>
                     <span className='shipping-delete-check'>정말 삭제하시겠어요?</span>
