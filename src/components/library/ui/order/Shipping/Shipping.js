@@ -54,7 +54,7 @@ export default function Shipping() {
             <div className='shipping-add-button-container'>
                 <button className='shipping-add-button' onClick={() => openShippingUpdateWindow()}>
                     <div className='shipping-add-button-image-container'>
-                        <img className='shipping-add-button-image' src={require('../../../icons/plus_grey.png')}></img>
+                        <img className='shipping-add-button-image' src={require('../../../icons/plus_grey.png')} alt='addImage'></img>
                     </div>
                     <span className='shipping-add-button-text'>새로운 주소 추가하기</span>
                 </button>
@@ -84,7 +84,7 @@ function ShippingInfo(props) {
             </div>
             <div className='shipping-right-container'>
                 <button className='shipping-checkbox-button'>
-                    
+                    <img src={require('../../../icons/check_orange.png')} alt='check' className='shipping-checkbox-image'></img>
                 </button>
             </div>
         </div>

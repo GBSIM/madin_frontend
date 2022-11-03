@@ -45,6 +45,17 @@
     height: 40px;
     border-radius: 20px;
     border: 2px solid #EA5B30;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.shipping-checkbox-image {
+    width: 28px;
+    height: 28px;
 }
 
 .shipping-add-button-container {
