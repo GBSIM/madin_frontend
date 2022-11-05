@@ -31,7 +31,7 @@ const initialState = {
     shippingCheckedIndex: 0,
     paymentMethod: "kakao",
     groupOrderBoxSize: 3,
-    groupOrderBoxQuantity: 0,
+    groupOrderBoxQuantity: 10,
 }
 
 const order = (state = initialState, action) => {    
@@ -95,7 +95,7 @@ const order = (state = initialState, action) => {
                 groupOrderBoxQuantity: state.groupOrderBoxQuantity + 1
             }
         case SUBTRACT_GROUP_ORDER_BOX_QUANTITY:
-            if (state.groupOrderBoxQuantity > 0) {
+            if (state.groupOrderBoxQuantity > 10) {
                 return {
                     ...state,
                     groupOrderBoxQuantity: state.groupOrderBoxQuantity - 1
