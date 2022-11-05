@@ -1,6 +1,7 @@
 import './GroupBoxSelect.css';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { changeGroupOrderBoxSize, addGroupOrderBoxQuantity, subtractGroupOrderBoxQuantity } from '../../../../../_reducers/order';
 
@@ -12,11 +13,16 @@ export default function GroupBoxSelect() {
     let mostCheapMenuPrice = 3000;
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const plusButtonEvent = () => {
         dispatch(addGroupOrderBoxQuantity());
     }
     const minusButtonEvent = () => {
         dispatch(subtractGroupOrderBoxQuantity());
+    }
+    const moveToMenu = () => {
+        navigate('/group/menu');
+        window.scrollTo(0,0);
     }
 
     return (
@@ -62,7 +68,7 @@ export default function GroupBoxSelect() {
             <div style={{'minHeight':'30px'}}></div>
             <span className='group-box-select-result'>{groupOrderBoxSize} in One 박스 {groupOrderBoxQuantity}개</span>
             <div style={{'minHeight':'10px'}}></div>
-            <OrangeButton width='350px' height='50px' text='메뉴 고르러 가기' borderRadius='7px'></OrangeButton>
+            <OrangeButton width='350px' height='50px' text='메뉴 고르러 가기' borderRadius='7px' clickEvent={moveToMenu}></OrangeButton>
         </div>
     )
 }

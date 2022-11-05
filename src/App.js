@@ -14,12 +14,12 @@ import { useDispatch } from "react-redux";
 import { changePage } from './_reducers/nav';
 import { saveMenuClass } from './_reducers/menu';
 import { KakaoRedirectHandler } from './components/library/function/KakaoLogin';
-import { UserAuth } from './components/library/function/Auth';
 
 import Personal from './components/views/Personal/Personal';
 import Group from './components/views/Group/Group';
 import Pickup from './components/views/Pickup/Pickup';
 import PersonalOrder from './components/views/PersonalOrder/PersonalOrder';
+import GroupMenu from './components/views/GroupMenu/GroupMenu';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +35,9 @@ function App() {
     } else if (window.location.pathname === "/group") {
       dispatch(changePage('group'));
     } else if (window.location.pathname === "/personal/order") {
-      dispatch(changePage('personalorder'));
+      dispatch(changePage('personal'));
+    } else if (window.location.pathname === "/group/menu") {
+      dispatch(changePage('groupmenu'));
     } else {
       dispatch(changePage('personal'));
     } 
@@ -48,7 +50,9 @@ function App() {
   } else if (window.location.pathname === "/group") {
     dispatch(changePage('group'));
   } else if (window.location.pathname === "/personal/order") {
-    dispatch(changePage('personalorder'));
+    dispatch(changePage('personal'));
+  } else if (window.location.pathname === "/group/menu") {
+    dispatch(changePage('group'));
   } else {
     dispatch(changePage('personal'));
   }
@@ -81,6 +85,7 @@ function App() {
           <Route exact path="/group" element={<Group/>} />
           <Route exact path="/pickup" element={<Pickup/>} />
           <Route exact path="/personal/order" element={<PersonalOrder/>} />
+          <Route exact path="/group/menu" element={<GroupMenu/>} />
         </Routes>
       </div>
     </Router>

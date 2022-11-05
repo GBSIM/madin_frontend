@@ -21,15 +21,17 @@ export default function PersonalMenuBlock(props) {
     const subtractQuantity = (menuId) => {
         dispatch(subtractPersonalMenuQuantity(menuId));
     }
-
-    return (
-        <MenuBlock
-            title={props.title}
-            intro={props.intro}
-            menus={props.menus}
-            menuIdList={personalOrderIdList}
-            quantityList={personalOrderQuantityList}
-            plusButtonEvent={addQunatity}
-            minusButtonEvent = {subtractQuantity}></MenuBlock>
-    )
+    
+    if (props.deliveryEn) {
+        return (
+            <MenuBlock
+                title={props.title}
+                intro={props.intro}
+                menus={props.menus}
+                menuIdList={personalOrderIdList}
+                quantityList={personalOrderQuantityList}
+                plusButtonEvent={addQunatity}
+                minusButtonEvent = {subtractQuantity}></MenuBlock>
+        )
+    }
 }

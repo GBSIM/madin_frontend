@@ -1,4 +1,5 @@
 export const SAVE_PERSONAL_ORDER = "ORDER/SAVE_PERSONAL_ORDER";
+export const SAVE_GROUP_ORDER = "ORDER/SAVE_GROUP_ORDER";
 export const ADD_PERSONAL_MENU_QUANTITY = "ORDER/ADD_PERSONAL_MENU_QUANTITY";
 export const SUBTRACT_PERSONAL_MENU_QUANTITY = "ORDER/SUBTRACT_PERSONAL_MENU_QUANTITY";
 export const CHAGNE_ORDERER_UPDATE_WINDOW = "ORDER/CHAGNE_ORDERER_UPDATE_WINDOW";
@@ -10,6 +11,7 @@ export const ADD_GROUP_ORDER_BOX_QUANTITY = "ORDER/ADD_GROUP_ORDER_BOX_QUANTITY"
 export const SUBTRACT_GROUP_ORDER_BOX_QUANTITY = "ORDER/SUBTRACT_GROUP_ORDER_BOX_QUANTITY";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
+export const saveGroupOrder = (idList,nameList,priceList) => ({type:SAVE_GROUP_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const changeOrdererUpdateWindow = () => ({type:CHAGNE_ORDERER_UPDATE_WINDOW});
@@ -25,6 +27,10 @@ const initialState = {
     personalOrderQuantityList: [],
     personalOrderNameList: [],
     personalOrderPriceist: [],
+    groupOrderIdList: [],
+    groupOrderQuantityList: [],
+    groupOrderNameList: [],
+    groupOrderPriceist: [],
     ordererUpdateWindowOpen: false,
     shippingAddWindowOpen: false,
     shippingUpdateWindowOpen: false,
@@ -43,6 +49,14 @@ const order = (state = initialState, action) => {
                 personalOrderNameList: action.nameList,
                 personalOrderPriceist: action.priceList,
                 personalOrderQuantityList: Array(action.idList.length).fill(0),
+            }
+        case SAVE_GROUP_ORDER:
+            return {
+                ...state,
+                groupOrderIdList: action.idList,
+                groupOrderNameList: action.nameList,
+                groupOrderPriceist: action.priceList,
+                groupOrderQuantityList: Array(action.idList.length).fill(0),
             }
         case ADD_PERSONAL_MENU_QUANTITY:
             let increaseQuantityList = state.personalOrderQuantityList;

@@ -1,4 +1,4 @@
-import './Personal.css';
+import './GroupMenu.css';
 
 import { useSelector } from "react-redux";
 
@@ -7,41 +7,40 @@ import { UserAuth } from '../../library/function/Auth';
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
-import PersonalMenuBlock from '../../library/ui/personal/PersonalMenuBlock/PersonalMenuBlock';
-import PersonalOrderSheet from '../../library/ui/personal/PersonalOrderSheet/PersonalOrderSheet';
+import GroupMenuBlock from '../../library/ui/group/GroupMenuBlock/GroupMenuBlock';
 
-export default function Personal() {
+export default function GroupMenu() {
     const { menuClasses } = useSelector(state => state.menu);
 
     UserAuth();
     
     let MenuBlocks;
     if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
-        let personalOrderIdList = [];
-        let personalOrderNameList = [];
-        let personalOrderPriceList = [];
+        let groupOrderIdList = [];
+        let groupOrderNameList = [];
+        let groupOrderPriceList = [];
         menuClasses.map((menuClass) => {
-            if (menuClass["deliveryEn"]) {
+            if (menuClass["presentEn"]) {
                 menuClass["menus"].map((menu) => (
-                    personalOrderIdList.push(menu["_id"]),
-                    personalOrderNameList.push(menu["name"]),
-                    personalOrderPriceList.push(menu["price"])
+                    groupOrderIdList.push(menu["_id"]),
+                    groupOrderNameList.push(menu["name"]),
+                    groupOrderPriceList.push(menu["price"])
                 ))
             }
         })
         
         MenuBlocks = menuClasses.map((menuClass,index) => (
-            <PersonalMenuBlock 
+            <GroupMenuBlock 
                 title={menuClass["name"]}
                 intro={menuClass["intro"]}
                 menus = {menuClass["menus"]}
                 deliveryEn = {menuClass["deliveryEn"]}
                 pickupEn = {menuClass["pickupEn"]}
                 presentEn = {menuClass["presentEn"]}
-                menuIdList = {personalOrderIdList}
-                menuNameList = {personalOrderNameList}
-                priceList = {personalOrderPriceList}
-                key={"peronsal_menu_"+index}></PersonalMenuBlock>
+                menuIdList = {groupOrderIdList}
+                menuNameList = {groupOrderNameList}
+                priceList = {groupOrderPriceList}
+                key={"group_menu_"+index}></GroupMenuBlock>
         ));
     }
 
@@ -51,7 +50,6 @@ export default function Personal() {
             <Banner></Banner>
             {MenuBlocks}
             <div style={{'minHeight':'50px'}}></div>
-            <PersonalOrderSheet></PersonalOrderSheet>
             <Footer></Footer>
         </div>
     )
