@@ -9,6 +9,8 @@ export const CHANGE_PAYMENT_METHOD = "ORDER/CHANGE_PAYMENT_METHOD";
 export const CHAGNE_GROUP_ORDER_BOX_SIZE = "ORDER/CHAGNE_GROUP_ORDER_BOX_SIZE";
 export const ADD_GROUP_ORDER_BOX_QUANTITY = "ORDER/ADD_GROUP_ORDER_BOX_QUANTITY";
 export const SUBTRACT_GROUP_ORDER_BOX_QUANTITY = "ORDER/SUBTRACT_GROUP_ORDER_BOX_QUANTITY";
+export const ADD_GROUP_MENU_QUANTITY = "ORDER/ADD_GROUP_MENU_QUANTITY";
+export const SUBTRACT_GROUP_MENU_QUANTITY = "ORDER/SUBTRACT_GROUP_MENU_QUANTITY";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const saveGroupOrder = (idList,nameList,priceList) => ({type:SAVE_GROUP_ORDER, idList:idList, nameList: nameList, priceList:priceList});
@@ -21,6 +23,8 @@ export const changePaymentMethod = (method) => ({type:CHANGE_PAYMENT_METHOD, met
 export const changeGroupOrderBoxSize = (size) => ({type:CHAGNE_GROUP_ORDER_BOX_SIZE, size: size});
 export const addGroupOrderBoxQuantity = () => ({type:ADD_GROUP_ORDER_BOX_QUANTITY});
 export const subtractGroupOrderBoxQuantity = () => ({type:SUBTRACT_GROUP_ORDER_BOX_QUANTITY});
+export const addGroupMenuQuantity = (menuId) => ({type:ADD_GROUP_MENU_QUANTITY, menuId:menuId});
+export const subtractGroupMenuQuantity = (menuId) => ({type:SUBTRACT_GROUP_MENU_QUANTITY, menuId:menuId});
 
 const initialState = {
     personalOrderIdList: [],
@@ -59,19 +63,19 @@ const order = (state = initialState, action) => {
                 groupOrderQuantityList: Array(action.idList.length).fill(0),
             }
         case ADD_PERSONAL_MENU_QUANTITY:
-            let increaseQuantityList = state.personalOrderQuantityList;
-            increaseQuantityList[state.personalOrderIdList.indexOf(action.menuId)] = increaseQuantityList[state.personalOrderIdList.indexOf(action.menuId)] + 1;
+            let increasePersonalQuantityList = state.personalOrderQuantityList;
+            increasePersonalQuantityList[state.personalOrderIdList.indexOf(action.menuId)] = increasePersonalQuantityList[state.personalOrderIdList.indexOf(action.menuId)] + 1;
             return {
                 ...state,
-                personalOrderQuantityList: increaseQuantityList
+                personalOrderQuantityList: increasePersonalQuantityList
             }
         case SUBTRACT_PERSONAL_MENU_QUANTITY:
-            let decreaseQuantityList = state.personalOrderQuantityList;
-            if (decreaseQuantityList[state.personalOrderIdList.indexOf(action.menuId)] > 0) {
-                decreaseQuantityList[state.personalOrderIdList.indexOf(action.menuId)] = decreaseQuantityList[state.personalOrderIdList.indexOf(action.menuId)] - 1;
+            let decreasePersonalQuantityList = state.personalOrderQuantityList;
+            if (decreasePersonalQuantityList[state.personalOrderIdList.indexOf(action.menuId)] > 0) {
+                decreasePersonalQuantityList[state.personalOrderIdList.indexOf(action.menuId)] = decreasePersonalQuantityList[state.personalOrderIdList.indexOf(action.menuId)] - 1;
                 return {
                     ...state,
-                    personalOrderQuantityList: decreaseQuantityList
+                    personalOrderQuantityList: decreasePersonalQuantityList
                 }
             } else {
                 return {
@@ -117,6 +121,26 @@ const order = (state = initialState, action) => {
             } else {
                 return {
                     ...state
+                }
+            }
+        case ADD_GROUP_MENU_QUANTITY:
+            let increaseGroupQuantityList = state.groupOrderQuantityList;
+            increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] = increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] + 1;
+            return {
+                ...state,
+                groupOrderQuantityList: increaseGroupQuantityList
+            }
+        case SUBTRACT_GROUP_MENU_QUANTITY:
+            let decreaseGroupQuantityList = state.groupOrderQuantityList;
+            if (decreaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] > 0) {
+                decreaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] = decreaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] - 1;
+                return {
+                    ...state,
+                    groupOrderQuantityList: decreaseGroupQuantityList
+                }
+            } else {
+                return {
+                    ...state,
                 }
             }
         default:

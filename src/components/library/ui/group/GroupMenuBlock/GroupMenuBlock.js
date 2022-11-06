@@ -1,6 +1,7 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { saveGroupOrder } from '../../../../../_reducers/order';
+
+import { saveGroupOrder, addGroupMenuQuantity, subtractGroupMenuQuantity } from '../../../../../_reducers/order';
 
 import MenuBlock from "../../unit/MenuBlock/MenuBlock";
 
@@ -14,6 +15,14 @@ export default function GroupMenuBlock(props) {
         }
     },[])
 
+    const addQunatity = (menuId) => {
+        dispatch(addGroupMenuQuantity(menuId));
+    }
+
+    const subtractQuantity = (menuId) => {
+        dispatch(subtractGroupMenuQuantity(menuId));
+    }
+
     if (props.deliveryEn) {
         return (
             <MenuBlock
@@ -21,7 +30,9 @@ export default function GroupMenuBlock(props) {
                 intro={props.intro}
                 menus={props.menus}
                 menuIdList={groupOrderIdList}
-                quantityList={groupOrderQuantityList}></MenuBlock>
+                quantityList={groupOrderQuantityList}
+                plusButtonEvent={addQunatity}
+                minusButtonEvent={subtractQuantity}></MenuBlock>
         )
     }
 }
