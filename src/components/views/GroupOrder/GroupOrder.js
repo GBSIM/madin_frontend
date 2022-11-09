@@ -1,4 +1,4 @@
-import './PersonalOrder.css';
+import './GroupOrder.css';
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
@@ -8,20 +8,20 @@ import { changePage } from '../../../_reducers/nav';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
-import PersonalOrderMenus from '../../library/ui/personalorder/PersonalOrderMenus/PersonalOrderMenus';
 import Orderer from '../../library/ui/order/Orderer/Orderer';
 import Shipping from '../../library/ui/order/Shipping/Shipping';
-import PersonalOrderPayment from '../../library/ui/personalorder/PersonalOrderPayment/PersonalOrderPayment';
+import GroupOrderMenus from '../../library/ui/groupOrder/GroupOrderMenus/GroupOrderMenus';
+import GroupOrderPayment from '../../library/ui/groupOrder/GroupOrderPayment/GroupOrderPayment';
 
-export default function PersonalOrder() {
+export default function GroupOrder() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isLogin } = useSelector(state => state.user);
 
     useEffect(() => {
         if (!isLogin) {
-            dispatch(changePage('personal'));
-            navigate('/personal');
+            dispatch(changePage('group'));
+            navigate('/group/menu');
         }
     }, [])
     
@@ -30,10 +30,10 @@ export default function PersonalOrder() {
             <div className='page'>
                 <Header></Header>
                 <div className='order-contents-container'>
-                    <PersonalOrderMenus></PersonalOrderMenus>
+                    <GroupOrderMenus></GroupOrderMenus>
                     <Orderer></Orderer>
                     <Shipping></Shipping>
-                    <PersonalOrderPayment></PersonalOrderPayment>
+                    <GroupOrderPayment></GroupOrderPayment>
                 </div>
                 <Footer></Footer>
             </div>

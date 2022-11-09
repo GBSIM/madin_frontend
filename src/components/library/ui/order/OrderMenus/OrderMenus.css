@@ -8,8 +8,11 @@
 }
 
 .order-menu-text {
-    font-weight: 400;
     color: #848484;
+}
+
+.order-menu-box-text {
+    color: #585858;
 }
 
 .order-menu-list-container {
@@ -20,6 +23,15 @@
     row-gap: 10px;
 }
 
+.order-menu-box-container {
+    width: 300px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .order-menus-price-container {
     display: flex;
     flex-direction: row;
@@ -28,7 +40,21 @@
     align-items: center;    
 }
 
+.order-menus-group-price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 300px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
 .order-menus-price-text {
     font-weight: 500;
     color: #141414;
+}
+
+.order-menus-group-price-text {
+    font-weight: 500;
+    color: #585858;
 }
