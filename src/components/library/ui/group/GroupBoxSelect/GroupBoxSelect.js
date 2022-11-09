@@ -3,7 +3,7 @@ import './GroupBoxSelect.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { changeGroupOrderBoxSize, addGroupOrderBoxQuantity, subtractGroupOrderBoxQuantity } from '../../../../../_reducers/order';
+import { changeGroupOrderBoxSize, addGroupOrderBoxQuantity, subtractGroupOrderBoxQuantity, intializeGroupMenuQuantity } from '../../../../../_reducers/order';
 
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
 
@@ -58,11 +58,11 @@ export default function GroupBoxSelect() {
             <div style={{'minHeight':'60px'}}></div>
             <div className='group-box-quantity-select-container'>
                 <button className='group-box-quantity-button' onClick={() => minusButtonEvent()}>
-                    <img className='group-box-quantity-button-image' src={require('../../../icons/minus_white.png')}></img>
+                    <img className='group-box-quantity-button-image' src={require('../../../icons/minus_white.png')} alt='minus'></img>
                 </button>
                 <h1 className='group-box-quantity'>{groupOrderBoxQuantity} BOX</h1>
                 <button className='group-box-quantity-button' onClick={() => plusButtonEvent()}>
-                    <img className='group-box-quantity-button-image' src={require('../../../icons/plus_white.png')}></img>
+                    <img className='group-box-quantity-button-image' src={require('../../../icons/plus_white.png')} alt='plus'></img>
                 </button>
             </div>
             <div style={{'minHeight':'30px'}}></div>
@@ -77,6 +77,7 @@ function BoxSelect(props) {
     const dispatch = useDispatch();
     const boxCheckEvent = () => {
         dispatch(changeGroupOrderBoxSize(props.size));
+        dispatch(intializeGroupMenuQuantity());
     }
 
     let CheckBox;

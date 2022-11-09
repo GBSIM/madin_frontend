@@ -11,6 +11,7 @@ export const ADD_GROUP_ORDER_BOX_QUANTITY = "ORDER/ADD_GROUP_ORDER_BOX_QUANTITY"
 export const SUBTRACT_GROUP_ORDER_BOX_QUANTITY = "ORDER/SUBTRACT_GROUP_ORDER_BOX_QUANTITY";
 export const ADD_GROUP_MENU_QUANTITY = "ORDER/ADD_GROUP_MENU_QUANTITY";
 export const SUBTRACT_GROUP_MENU_QUANTITY = "ORDER/SUBTRACT_GROUP_MENU_QUANTITY";
+export const INITIALIZE_GROUP_MENU_QUANTITY = "ORDER/INITIALIZE_GROUP_MENU_QUANTITY";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const saveGroupOrder = (idList,nameList,priceList) => ({type:SAVE_GROUP_ORDER, idList:idList, nameList: nameList, priceList:priceList});
@@ -25,6 +26,7 @@ export const addGroupOrderBoxQuantity = () => ({type:ADD_GROUP_ORDER_BOX_QUANTIT
 export const subtractGroupOrderBoxQuantity = () => ({type:SUBTRACT_GROUP_ORDER_BOX_QUANTITY});
 export const addGroupMenuQuantity = (menuId) => ({type:ADD_GROUP_MENU_QUANTITY, menuId:menuId});
 export const subtractGroupMenuQuantity = (menuId) => ({type:SUBTRACT_GROUP_MENU_QUANTITY, menuId:menuId});
+export const intializeGroupMenuQuantity = () => ({type:INITIALIZE_GROUP_MENU_QUANTITY});
 
 const initialState = {
     personalOrderIdList: [],
@@ -139,7 +141,8 @@ const order = (state = initialState, action) => {
                     ...state,
                     groupOrderQuantityList: increaseGroupQuantityList
                 }
-            }     
+            }
+            break;
         case SUBTRACT_GROUP_MENU_QUANTITY:
             let decreaseGroupQuantityList = state.groupOrderQuantityList;
             if (decreaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] > 0) {
@@ -152,6 +155,15 @@ const order = (state = initialState, action) => {
                 return {
                     ...state,
                 }
+            }
+        case INITIALIZE_GROUP_MENU_QUANTITY:
+            let initializedGroupQuantityList = state.groupOrderQuantityList;
+            initializedGroupQuantityList.map((quantity,index) => {
+                initializedGroupQuantityList[index] = 0;
+            })
+            return {
+                ...state,
+                groupOrderQuantityList: initializedGroupQuantityList
             }
         default:
             return state;
