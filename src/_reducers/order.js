@@ -133,10 +133,9 @@ const order = (state = initialState, action) => {
             } else {
                 groupQuantitySum = 0;
             }
-            let increaseGroupQuantityList = state.groupOrderQuantityList;
-            increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] = increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] + 1;
-
             if (groupQuantitySum < state.groupOrderBoxSize) {
+                let increaseGroupQuantityList = state.groupOrderQuantityList;
+                increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] = increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] + 1;
                 return {
                     ...state,
                     groupOrderQuantityList: increaseGroupQuantityList
