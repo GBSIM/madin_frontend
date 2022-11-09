@@ -124,12 +124,22 @@ const order = (state = initialState, action) => {
                 }
             }
         case ADD_GROUP_MENU_QUANTITY:
+            let groupQuantitySum;
+            let groupQuantityArrayValid = (Array.isArray(state.groupOrderQuantityList) && state.groupOrderQuantityList.length !== 0);
+            if (groupQuantityArrayValid) {
+                groupQuantitySum = state.groupOrderQuantityList.reduce((a,b) => (a + b));
+            } else {
+                groupQuantitySum = 0;
+            }
             let increaseGroupQuantityList = state.groupOrderQuantityList;
             increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] = increaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] + 1;
-            return {
-                ...state,
-                groupOrderQuantityList: increaseGroupQuantityList
-            }
+
+            if (groupQuantitySum < state.groupOrderBoxSize) {
+                return {
+                    ...state,
+                    groupOrderQuantityList: increaseGroupQuantityList
+                }
+            }     
         case SUBTRACT_GROUP_MENU_QUANTITY:
             let decreaseGroupQuantityList = state.groupOrderQuantityList;
             if (decreaseGroupQuantityList[state.groupOrderIdList.indexOf(action.menuId)] > 0) {

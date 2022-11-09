@@ -25,7 +25,6 @@ function App() {
   const dispatch = useDispatch();
 
   window.onpopstate = function(event) {
-    console.log("뒤로가기");
     if (window.location.pathname === "/") {
       dispatch(changePage('personal'));
     } else if (window.location.pathname === "/personal") {
