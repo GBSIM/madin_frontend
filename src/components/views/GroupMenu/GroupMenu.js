@@ -8,6 +8,7 @@ import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
 import GroupMenuBlock from '../../library/ui/group/GroupMenuBlock/GroupMenuBlock';
+import GroupOrderSheet from '../../library/ui/group/GroupOrderSheet/GroupOrderSheet';
 
 export default function GroupMenu() {
     const { menuClasses } = useSelector(state => state.menu);
@@ -51,6 +52,7 @@ export default function GroupMenu() {
             {MenuBlocks}
             <div style={{'minHeight':'50px'}}></div>
             <Footer></Footer>
+            <GroupOrderSheet></GroupOrderSheet>
         </div>
     )
 }

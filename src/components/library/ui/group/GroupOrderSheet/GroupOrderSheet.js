@@ -2,17 +2,18 @@ import { useSelector } from "react-redux";
 
 import OrderSheet from "../../unit/OrderSheet/OrderSheet"
 
-export default function PersonalOrderSheet(props) {
-    const { personalOrderQuantityList,personalOrderNameList,personalOrderPriceist } = useSelector(state => state.order);
+export default function GroupOrderSheet(props) {
+    const { groupOrderQuantityList,groupOrderNameList,groupOrderPriceist, groupOrderBoxSize } = useSelector(state => state.order);
     const { isLogin } = useSelector(state => state.user);
 
     return (
         <OrderSheet
-            quantityArray={personalOrderQuantityList}
-            priceArray={personalOrderPriceist}
-            nameArray={personalOrderNameList}
+            quantityArray={groupOrderQuantityList}
+            priceArray={groupOrderPriceist}
+            nameArray={groupOrderNameList}
             isLogin = {isLogin}
-            type={'personal'}>            
+            type={'group'}
+            boxSize = {groupOrderBoxSize}>            
         </OrderSheet>
     )
 }
