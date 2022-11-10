@@ -33,7 +33,7 @@ export default function OrderSheet(props) {
 
     let OrderSheetButton;
     let OrderSheetDivider;
-    if (props.type === 'personal') {
+    if (props.type === 'personal' || props.type === 'pickup') {
         if (quantitySum > 0) {
             OrderSheetButton = <OrangeButton
                                     width='230px'

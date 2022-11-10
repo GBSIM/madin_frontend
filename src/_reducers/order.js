@@ -1,5 +1,6 @@
 export const SAVE_PERSONAL_ORDER = "ORDER/SAVE_PERSONAL_ORDER";
 export const SAVE_GROUP_ORDER = "ORDER/SAVE_GROUP_ORDER";
+export const SAVE_PICKUP_ORDER = "ORDER/SAVE_PICKUP_ORDER";
 export const ADD_PERSONAL_MENU_QUANTITY = "ORDER/ADD_PERSONAL_MENU_QUANTITY";
 export const SUBTRACT_PERSONAL_MENU_QUANTITY = "ORDER/SUBTRACT_PERSONAL_MENU_QUANTITY";
 export const CHAGNE_ORDERER_UPDATE_WINDOW = "ORDER/CHAGNE_ORDERER_UPDATE_WINDOW";
@@ -12,9 +13,12 @@ export const SUBTRACT_GROUP_ORDER_BOX_QUANTITY = "ORDER/SUBTRACT_GROUP_ORDER_BOX
 export const ADD_GROUP_MENU_QUANTITY = "ORDER/ADD_GROUP_MENU_QUANTITY";
 export const SUBTRACT_GROUP_MENU_QUANTITY = "ORDER/SUBTRACT_GROUP_MENU_QUANTITY";
 export const INITIALIZE_GROUP_MENU_QUANTITY = "ORDER/INITIALIZE_GROUP_MENU_QUANTITY";
+export const ADD_PICKUP_MENU_QUANTITY = "ORDER/ADD_PICKUP_MENU_QUANTITY";
+export const SUBTRACT_PICKUP_MENU_QUANTITY = "ORDER/SUBTRACT_PICKUP_MENU_QUANTITY";
 
 export const savePersonalOrder = (idList,nameList,priceList) => ({type:SAVE_PERSONAL_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const saveGroupOrder = (idList,nameList,priceList) => ({type:SAVE_GROUP_ORDER, idList:idList, nameList: nameList, priceList:priceList});
+export const savePickupOrder = (idList,nameList,priceList) => ({type:SAVE_PICKUP_ORDER, idList:idList, nameList: nameList, priceList:priceList});
 export const addPersonalMenuQuantity = (menuId) => ({type:ADD_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const subtractPersonalMenuQuantity = (menuId) => ({type:SUBTRACT_PERSONAL_MENU_QUANTITY, menuId:menuId});
 export const changeOrdererUpdateWindow = () => ({type:CHAGNE_ORDERER_UPDATE_WINDOW});
@@ -27,6 +31,8 @@ export const subtractGroupOrderBoxQuantity = () => ({type:SUBTRACT_GROUP_ORDER_B
 export const addGroupMenuQuantity = (menuId) => ({type:ADD_GROUP_MENU_QUANTITY, menuId:menuId});
 export const subtractGroupMenuQuantity = (menuId) => ({type:SUBTRACT_GROUP_MENU_QUANTITY, menuId:menuId});
 export const intializeGroupMenuQuantity = () => ({type:INITIALIZE_GROUP_MENU_QUANTITY});
+export const addPickupMenuQuantity = (menuId) => ({type:ADD_PICKUP_MENU_QUANTITY, menuId:menuId});
+export const subtractPickupMenuQuantity = (menuId) => ({type:SUBTRACT_PICKUP_MENU_QUANTITY, menuId:menuId});
 
 const initialState = {
     personalOrderIdList: [],
@@ -37,6 +43,10 @@ const initialState = {
     groupOrderQuantityList: [],
     groupOrderNameList: [],
     groupOrderPriceist: [],
+    pickupOrderIdList: [],
+    pickupOrderQuantityList: [],
+    pickupOrderNameList: [],
+    pickupOrderPriceist: [],
     ordererUpdateWindowOpen: false,
     shippingAddWindowOpen: false,
     shippingUpdateWindowOpen: false,
@@ -63,6 +73,14 @@ const order = (state = initialState, action) => {
                 groupOrderNameList: action.nameList,
                 groupOrderPriceist: action.priceList,
                 groupOrderQuantityList: Array(action.idList.length).fill(0),
+            }
+        case SAVE_PICKUP_ORDER:
+            return {
+                ...state,
+                pickupOrderIdList: action.idList,
+                pickupOrderNameList: action.nameList,
+                pickupOrderPriceist: action.priceList,
+                pickupOrderQuantityList: Array(action.idList.length).fill(0),
             }
         case ADD_PERSONAL_MENU_QUANTITY:
             let increasePersonalQuantityList = state.personalOrderQuantityList;
@@ -163,6 +181,26 @@ const order = (state = initialState, action) => {
             return {
                 ...state,
                 groupOrderQuantityList: initializedGroupQuantityList
+            }
+        case ADD_PICKUP_MENU_QUANTITY:
+            let increasePickupQuantityList = state.pickupOrderQuantityList;
+            increasePickupQuantityList[state.pickupOrderIdList.indexOf(action.menuId)] = increasePickupQuantityList[state.pickupOrderIdList.indexOf(action.menuId)] + 1;
+            return {
+                ...state,
+                pickupOrderQuantityList: increasePickupQuantityList
+            }
+        case SUBTRACT_PICKUP_MENU_QUANTITY:
+            let decreasePickupQuantityList = state.pickupOrderQuantityList;
+            if (decreasePickupQuantityList[state.pickupOrderIdList.indexOf(action.menuId)] > 0) {
+                decreasePickupQuantityList[state.pickupOrderIdList.indexOf(action.menuId)] = decreasePickupQuantityList[state.pickupOrderIdList.indexOf(action.menuId)] - 1;
+                return {
+                    ...state,
+                    pickupOrderQuantityList: decreasePickupQuantityList
+                }
+            } else {
+                return {
+                    ...state,
+                }
             }
         default:
             return state;
