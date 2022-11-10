@@ -36,6 +36,7 @@ export default function OrderSheet(props) {
     if (props.type === 'personal' || props.type === 'pickup') {
         if (quantitySum > 0) {
             OrderSheetButton = <OrangeButton
+                                    isFlex={true}
                                     width='230px'
                                     height='36px'
                                     borderRadius='7px'
@@ -45,6 +46,7 @@ export default function OrderSheet(props) {
             OrderSheetDivider = <div className='order-sheet-divider'></div>
         } else {
             OrderSheetButton = <GreyButton
+                                    isFlex={true}
                                     width='230px'
                                     height='36px'
                                     borderRadius='7px'
@@ -54,6 +56,7 @@ export default function OrderSheet(props) {
     } else {
         if (quantitySum === props.boxSize) {
             OrderSheetButton = <OrangeButton
+                                    isFlex={true}
                                     width='230px'
                                     height='36px'
                                     borderRadius='7px'
@@ -63,6 +66,7 @@ export default function OrderSheet(props) {
             OrderSheetDivider = <div className='order-sheet-divider'></div>
         } else if (quantitySum === 0) {
             OrderSheetButton = <GreyButton
+                                    isFlex={true}
                                     width='230px'
                                     height='36px'
                                     borderRadius='7px'
@@ -95,6 +99,7 @@ export default function OrderSheet(props) {
                     break;
             }
             OrderSheetButton = <GreyButton
+                                    isFlex={true}
                                     width='230px'
                                     height='36px'
                                     borderRadius='7px'
@@ -155,7 +160,7 @@ function OrderSheetItem(props) {
         return (
             <div className='order-sheet-item-container'>
                 <span className='order-sheet-item-text'>{props.name} x {props.quantity}</span>
-                <div style={{'flex':'1'}}></div>
+                <div style={{'flex':'1','minWidth':'10px'}}></div>
                 <span className='order-sheet-item-text'>{itemTotalPrice.toLocaleString()}원</span>
             </div>
         )

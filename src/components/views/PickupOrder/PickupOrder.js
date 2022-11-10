@@ -10,7 +10,6 @@ import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import PickupOrderMenus from '../../library/ui/pickuporder/PickupOrderMenus/PickupOrderMenus';
 import Orderer from '../../library/ui/order/Orderer/Orderer';
-import Shipping from '../../library/ui/order/Shipping/Shipping';
 import PickupOrderPayment from '../../library/ui/pickuporder/PersonalOrderPayment/PickupOrderPayment';
 
 export default function PickupOrder() {
@@ -32,7 +31,6 @@ export default function PickupOrder() {
                 <div className='order-contents-container'>
                     <PickupOrderMenus></PickupOrderMenus>
                     <Orderer></Orderer>
-                    <Shipping></Shipping>
                     <PickupOrderPayment></PickupOrderPayment>
                 </div>
                 <Footer></Footer>

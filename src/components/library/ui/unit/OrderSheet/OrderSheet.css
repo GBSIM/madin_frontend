@@ -23,11 +23,12 @@
 .order-button-container {
     margin-left: 10px;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 .order-sheet-divider {
     height: 1px;
-    width: 230px;
+    width: calc(100% - 20px);
     background: #C6C6C6;
     margin-left: 10px;
 }
