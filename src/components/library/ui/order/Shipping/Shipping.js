@@ -175,16 +175,8 @@ function ShippingAddWindow(props) {
         dispatch(setDetailAddressInput(e.target.value));
     }
 
-    const updateRequest = (e) => {
-        dispatch(setRequestInput(e.target.value));
-    }
-
     const updatePhone = (e) => {
         dispatch(setPhoneInput(e.target.value));
-    }
-
-    const updateTag = (e) => {
-        dispatch(setTagInput(e.target.value));
     }
 
     const addShippingInfo = async() => {
