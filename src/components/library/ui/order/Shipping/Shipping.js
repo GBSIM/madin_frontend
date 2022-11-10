@@ -150,6 +150,7 @@ function ShippingAddWindow(props) {
     const [phoneInput, setPhoneInput] = useState(phoneUpdate);
     const [tagInput, setTagInput] = useState(tagUpdate);
     const [isAddressSelected, setIsAddresssSeleted] = useState(false);
+    const [isDetailAddressTyped, setIsDetailAddressTyped] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -163,6 +164,7 @@ function ShippingAddWindow(props) {
         setPhoneInput(null);
         setTagInput(null);
         setIsAddresssSeleted(false);
+        setIsDetailAddressTyped(false);
     }
 
     const updateName = (e) => {
@@ -208,6 +210,7 @@ function ShippingAddWindow(props) {
         setPhoneInput(null);
         setTagInput(null);
         setIsAddresssSeleted(false);
+        setIsDetailAddressTyped(false);
     }
 
     const addressSelectComplete = (data) => {
@@ -220,8 +223,22 @@ function ShippingAddWindow(props) {
         DaumAddressAPI = <DaumPostcode onComplete={addressSelectComplete} autoClose={false}></DaumPostcode>
     }
 
+    const completeDetailAddressTyping = () => {
+        setIsDetailAddressTyped(true);
+    }
+
+    
+    let ShippingInfoNextButton;
+    if (isAddressSelected && !isDetailAddressTyped) {
+        ShippingInfoNextButton = 
+        <div>
+            <OrangeButton width='320px' height='40px' borderRadius='6px' text='다음' clickEvent={completeDetailAddressTyping}></OrangeButton>
+            <div style={{'minHeight':'10px'}}></div>
+        </div>
+    }
+
     let ShippingAddButton;
-    if (isAddressSelected) {
+    if (isDetailAddressTyped) {
         ShippingAddButton =
         <div>
             <OrangeButton width='320px' height='40px' borderRadius='6px' text='추가하기' clickEvent={addShippingInfo}></OrangeButton>
@@ -229,9 +246,9 @@ function ShippingAddWindow(props) {
         </div> 
     }
 
-    let ShippingInputRows;
-    if (isAddressSelected) {
-        ShippingInputRows = 
+    let DetailShippingInputRows;
+    if (isAddressSelected && !isDetailAddressTyped) {
+        DetailShippingInputRows = 
         <div className='shipping-update-rows'>
             <div className='shipping-update-row-container'>
                 <div className='shipping-update-basic-address-container'>
@@ -242,6 +259,48 @@ function ShippingAddWindow(props) {
                 <span className='shipping-update-row-title'>상세 주소</span>
                 <div className='shipping-update-box'>
                     <input className='shipping-update-input' value={detailAddressInput} onChange={updateDetailAddress}></input>
+                </div>
+            </div>
+            {/* <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>받는 사람</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={nameInput} onChange={updateName}></input>
+                </div>
+            </div>
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>핸드폰 번호</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={phoneInput} onChange={updatePhone}></input>
+                </div>
+            </div> */}
+            {/* <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>요청사항</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={requestInput} onChange={updateRequest}></input>
+                </div>
+            </div>            
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>주소 별명</span>
+                <div className='shipping-update-box'>
+                    <input className='shipping-update-input' value={tagInput} onChange={updateTag}></input>
+                </div>
+            </div> */}
+        </div>
+    }
+
+    let ReceiverInfo;
+    if (isDetailAddressTyped) {
+        ReceiverInfo = 
+        <div className='shipping-update-rows'>
+            <div className='shipping-update-row-container'>
+                <div className='shipping-update-basic-address-container'>
+                    <span className='shipping-update-basic-address'>{basicAddressInput}</span>
+                </div>
+            </div>
+            <div className='shipping-update-row-container'>
+                <span className='shipping-update-row-title'>상세 주소</span>
+                <div className='shipping-update-detail-address-container'>
+                    <span className='shipping-update-basic-address'>{detailAddressInput}</span>
                 </div>
             </div>
             <div className='shipping-update-row-container'>
@@ -256,7 +315,7 @@ function ShippingAddWindow(props) {
                     <input className='shipping-update-input' value={phoneInput} onChange={updatePhone}></input>
                 </div>
             </div>
-            <div className='shipping-update-row-container'>
+            {/* <div className='shipping-update-row-container'>
                 <span className='shipping-update-row-title'>요청사항</span>
                 <div className='shipping-update-box'>
                     <input className='shipping-update-input' value={requestInput} onChange={updateRequest}></input>
@@ -267,7 +326,7 @@ function ShippingAddWindow(props) {
                 <div className='shipping-update-box'>
                     <input className='shipping-update-input' value={tagInput} onChange={updateTag}></input>
                 </div>
-            </div>
+            </div> */}
         </div>
     }
 
@@ -278,8 +337,10 @@ function ShippingAddWindow(props) {
                     <h2 className='order-title'>새로운 주소 추가하기</h2>
                     <div style={{'minHeight':'30px'}}></div>
                     {DaumAddressAPI}
-                    {ShippingInputRows}
+                    {DetailShippingInputRows}
+                    {ReceiverInfo}
                     <div style={{'flex':'1','minHeight':'30px'}}></div>
+                    {ShippingInfoNextButton}
                     {ShippingAddButton}
                     <OrangeLineButton width='320px' height='40px' borderRadius='6px' text='닫기' clickEvent={closeShippingUpdateWindow}></OrangeLineButton>
                 </div>

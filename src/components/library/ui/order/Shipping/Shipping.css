@@ -225,6 +225,17 @@
     align-items: center;
 }
 
+.shipping-update-detail-address-container {
+    height: 34px;
+    width: 220px;
+    background: rgb(245,245,245);
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .shipping-update-basic-address {
     margin-left: 7px;
     font-size: 14px;
