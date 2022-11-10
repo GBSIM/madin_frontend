@@ -48,6 +48,7 @@ export default function Pickup() {
             <Header></Header>
             <Banner></Banner>
             {MenuBlocks}
+            <div style={{'minHeight':'50px'}}></div>
             <PickupOrderSheet></PickupOrderSheet>
             <Footer></Footer>
         </div>
