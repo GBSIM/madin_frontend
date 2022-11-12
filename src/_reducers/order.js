@@ -42,7 +42,7 @@ const initialState = {
     groupOrderIdList: [],
     groupOrderQuantityList: [],
     groupOrderNameList: [],
-    groupOrderPriceist: [],
+    groupOrderPriceList: [],
     pickupOrderIdList: [],
     pickupOrderQuantityList: [],
     pickupOrderNameList: [],
@@ -71,7 +71,7 @@ const order = (state = initialState, action) => {
                 ...state,
                 groupOrderIdList: action.idList,
                 groupOrderNameList: action.nameList,
-                groupOrderPriceist: action.priceList,
+                groupOrderPriceList: action.priceList,
                 groupOrderQuantityList: Array(action.idList.length).fill(0),
             }
         case SAVE_PICKUP_ORDER:
