@@ -8,10 +8,12 @@ import { changeGroupOrderBoxSize, addGroupOrderBoxQuantity, subtractGroupOrderBo
 import OrangeButton from '../../unit/OrangeButton/OrangeButton';
 
 export default function GroupBoxSelect() {
-    const { groupOrderBoxSize, groupOrderBoxQuantity, groupOrderPriceList } = useSelector(state => state.order);
+    const { groupOrderBoxSize, groupOrderBoxQuantity, groupOrderPriceList, groupOrderIdList } = useSelector(state => state.order);
     let mostExpenstiveMenuPrice;
     let mostCheapMenuPrice;
+
     if (groupOrderPriceList) {
+        console.log(groupOrderPriceList);
         mostExpenstiveMenuPrice = Math.max.apply(null,groupOrderPriceList);
         mostCheapMenuPrice = Math.min.apply(null,groupOrderPriceList);
     } else {
