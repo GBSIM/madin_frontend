@@ -1,22 +1,58 @@
 import './Group.css';
 
+import { useSelector } from "react-redux";
+
 import { UserAuth } from '../../library/function/Auth';
 
 import Header from '../../library/ui/header/Header/Header';
 import Footer from '../../library/ui/footer/Footer/Footer';
 import Banner from '../../library/ui/unit/Banner/Banner';
-
-import GroupBoxSelect from '../../library/ui/group/GroupBoxSelect/GroupBoxSelect';
+import GroupMenuBlock from '../../library/ui/group/GroupMenuBlock/GroupMenuBlock';
+import GroupOrderSheet from '../../library/ui/group/GroupOrderSheet/GroupOrderSheet';
 
 export default function Group() {
+    const { menuClasses } = useSelector(state => state.menu);
+
     UserAuth();
     
+    let MenuBlocks;
+    if (Array.isArray(menuClasses) && menuClasses.length !== 0) {
+        let groupOrderIdList = [];
+        let groupOrderNameList = [];
+        let groupOrderPriceList = [];
+        menuClasses.map((menuClass) => {
+            if (menuClass["presentEn"]) {
+                menuClass["menus"].map((menu) => (
+                    groupOrderIdList.push(menu["_id"]),
+                    groupOrderNameList.push(menu["name"]),
+                    groupOrderPriceList.push(menu["price"])
+                ))
+            }
+        })
+        
+        MenuBlocks = menuClasses.map((menuClass,index) => (
+            <GroupMenuBlock 
+                title={menuClass["name"]}
+                intro={menuClass["intro"]}
+                menus = {menuClass["menus"]}
+                deliveryEn = {menuClass["deliveryEn"]}
+                pickupEn = {menuClass["pickupEn"]}
+                presentEn = {menuClass["presentEn"]}
+                menuIdList = {groupOrderIdList}
+                menuNameList = {groupOrderNameList}
+                priceList = {groupOrderPriceList}
+                key={"group_menu_"+index}></GroupMenuBlock>
+        ));
+    }
+
     return (
         <div className='page'>
             <Header></Header>
             <Banner></Banner>
-            <GroupBoxSelect></GroupBoxSelect>
+            {MenuBlocks}
+            <div style={{'minHeight':'50px'}}></div>
             <Footer></Footer>
+            <GroupOrderSheet></GroupOrderSheet>
         </div>
     )
 }
