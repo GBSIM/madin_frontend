@@ -33,82 +33,26 @@ export default function OrderSheet(props) {
 
     let OrderSheetButton;
     let OrderSheetDivider;
-    if (props.type === 'personal' || props.type === 'pickup') {
-        if (quantitySum > 0) {
-            OrderSheetButton = <OrangeButton
-                                    isFlex={true}
-                                    width='230px'
-                                    height='36px'
-                                    borderRadius='7px'
-                                    text='주문하러가기'
-                                    clickEvent={navPageEvent}
-                                    ></OrangeButton>
-            OrderSheetDivider = <div className='order-sheet-divider'></div>
-        } else {
-            OrderSheetButton = <GreyButton
-                                    isFlex={true}
-                                    width='230px'
-                                    height='36px'
-                                    borderRadius='7px'
-                                    text='메뉴를 골라주세요.'
-                                    ></GreyButton>
-        }
-    } else {
-        if (quantitySum === props.boxSize) {
-            OrderSheetButton = <OrangeButton
-                                    isFlex={true}
-                                    width='230px'
-                                    height='36px'
-                                    borderRadius='7px'
-                                    text='주문하러가기'
-                                    clickEvent={navPageEvent}
-                                    ></OrangeButton>
-            OrderSheetDivider = <div className='order-sheet-divider'></div>
-        } else if (quantitySum === 0) {
-            OrderSheetButton = <GreyButton
-                                    isFlex={true}
-                                    width='230px'
-                                    height='36px'
-                                    borderRadius='7px'
-                                    text='메뉴를 골라주세요.'
-                                    ></GreyButton>
-        } else {
-            let menuLeft = props.boxSize - quantitySum;
-            let menuLeftText;
-            switch (menuLeft) {
-                case 1:
-                    menuLeftText = '한 개';
-                    break;
-                case 2:
-                    menuLeftText = '두 개';
-                    break;
-                case 3:
-                    menuLeftText = '세 개';
-                    break;
-                case 4:
-                    menuLeftText = '네 개';
-                    break;
-                case 5:
-                    menuLeftText = '다섯 개';
-                    break;
-                case 6:
-                    menuLeftText = '여섯 개';
-                    break;
-                case 7:
-                    menuLeftText = '일곱 개';
-                    break;
-            }
-            OrderSheetButton = <GreyButton
-                                    isFlex={true}
-                                    width='230px'
-                                    height='36px'
-                                    borderRadius='7px'
-                                    text={menuLeftText + ' 더 골라주세요.'}
-                                    ></GreyButton>
-            OrderSheetDivider = <div className='order-sheet-divider'></div>
-        }
-    }
     
+    if (quantitySum > 0) {
+        OrderSheetButton = <OrangeButton
+                                isFlex={true}
+                                width='230px'
+                                height='36px'
+                                borderRadius='7px'
+                                text='주문하러가기'
+                                clickEvent={navPageEvent}
+                                ></OrangeButton>
+        OrderSheetDivider = <div className='order-sheet-divider'></div>
+    } else {
+        OrderSheetButton = <GreyButton
+                                isFlex={true}
+                                width='230px'
+                                height='36px'
+                                borderRadius='7px'
+                                text='메뉴를 골라주세요.'
+                                ></GreyButton>
+    }
 
     let totalPrice;
     if (quantityArrayValid && priceArrayValid) {

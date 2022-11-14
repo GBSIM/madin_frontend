@@ -12,7 +12,7 @@ export default function GroupOrderSheet(props) {
             priceArray={groupOrderPriceList}
             nameArray={groupOrderNameList}
             isLogin = {isLogin}
-            type={'group'}
+            type='group'
             boxSize = {groupOrderBoxSize}>            
         </OrderSheet>
     )
