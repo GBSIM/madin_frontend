@@ -4,8 +4,10 @@ export default function Banner(props) {
     let bannerImage;
     if (props.type === 'personal') {
         bannerImage = <img className='banner-image' src={require('../../../images/banner_personal.png')}></img>
-    } else if (props.type === 'group'){
+    } else if (props.type === 'group') {
         bannerImage = <img className='banner-image' src={require('../../../images/banner_group.png')}></img>
+    } else if (props.type === 'pickup') {
+        bannerImage = <img className='banner-image' src={require('../../../images/banner_pickup.png')}></img>
     } else {
         bannerImage = <img className='banner-image' src={require('../../../images/banner_personal.png')}></img>
     }
