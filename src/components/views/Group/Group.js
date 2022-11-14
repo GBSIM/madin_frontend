@@ -48,7 +48,7 @@ export default function Group() {
     return (
         <div className='page'>
             <Header></Header>
-            <Banner></Banner>
+            <Banner type='group'></Banner>
             {MenuBlocks}
             <div style={{'minHeight':'50px'}}></div>
             <Footer></Footer>

@@ -48,7 +48,7 @@ export default function Personal() {
     return (
         <div className='page'>
             <Header></Header>
-            <Banner></Banner>
+            <Banner type='personal'></Banner>
             {MenuBlocks}
             <div style={{'minHeight':'50px'}}></div>
             <PersonalOrderSheet></PersonalOrderSheet>
