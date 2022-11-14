@@ -22,21 +22,8 @@ export default function OrderMenus(props) {
         totalPrice = 0;
     }
 
-    let GroupOrderPrice;
-    if (props.type === 'group') {
-        GroupOrderPrice = 
-        <div className='order-menus-group-price-container'>
-            <span className='order-menus-group-price-text'>{totalPrice.toLocaleString()}원 x {props.boxQuantity} 박스</span>
-        </div>
-    }
-
     let TotalPriceText;
-    if (props.type === 'group') {
-        TotalPriceText = <span className='order-menus-price-text'>{(totalPrice*props.boxQuantity).toLocaleString()}원</span>
-    } else {
-        TotalPriceText = <span className='order-menus-price-text'>총 {totalPrice.toLocaleString()}원</span>
-    }
-    
+    TotalPriceText = <span className='order-menus-price-text'>총 {totalPrice.toLocaleString()}원</span>    
     return (
         <div className='order-container'>
             <h2 className='order-title'>주문서</h2>
@@ -46,7 +33,6 @@ export default function OrderMenus(props) {
             </div>
             <div style={{'marginTop':'20px','marginBottom':'2px','minHeight':'1px','background':'#C6C6C6','minWidth':'320px'}}></div>
             <div style={{'marginTop':'1px','marginBottom':'20px','minHeight':'1px','background':'#C6C6C6','minWidth':'320px'}}></div>
-            {GroupOrderPrice}
             <div className='order-menus-price-container'>
                 {TotalPriceText}
             </div>
