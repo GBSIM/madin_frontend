@@ -7,7 +7,7 @@ import {
   Route
 } from 'react-router-dom';
 
-
+import Header from './components/library/ui/components/Header/Header';
 import Main from './components/views/Main/Main';
 import Present from './components/views/Present/Present';
 import Pickup from './components/views/Pickup/Pickup';
@@ -16,6 +16,7 @@ function App() {
   return (
     <Router>
       <div>
+        <Header></Header>
         <Routes>  
           <Route exact path="/" element={<Main/>} />
           <Route exact path="/main" element={<Main/>} />
