@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
+import LoginButton from '../../units/LoginButton/LoginButton';
 
 import { changePage } from '../../../../../_reducers/nav';
 
@@ -21,14 +22,14 @@ function DesktopHeader() {
     return (
         <div className='desktop-header'>
             <div className='desktop-header-brand-icon-container'>
-
+                
             </div>
             <div className='desktop-header-nav-container'>
                 <DesktopNavContainer />
             </div>
             <div className='desktop-header-spacer'></div>
             <div className='desktop-header-account-container'>
-                
+                <LoginButton />
             </div>
         </div>
     )
