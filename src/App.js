@@ -7,12 +7,17 @@ import {
   Route
 } from 'react-router-dom';
 
+import Header from './components/library/ui/components/header/Header';
+import Footer from './components/library/ui/components/footer/Footer';
+
 function App() {
   return (
     <Router>
       <div>
+        <Header></Header>
         <Routes>  
         </Routes>
+        <Footer></Footer>
       </div>
     </Router>
   );

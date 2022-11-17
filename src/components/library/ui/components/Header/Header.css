@@ -1,0 +1,9 @@
+.header {
+    width: 100%;
+    min-width: 100%;
+    flex-shrink: 0;
+    padding: 0px;
+    margin: 0px;
+    height: 60px;
+    background: crimson;
+}
