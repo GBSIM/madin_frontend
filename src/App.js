@@ -7,17 +7,17 @@ import {
   Route
 } from 'react-router-dom';
 
-import Header from './components/library/ui/components/header/Header';
-import Footer from './components/library/ui/components/footer/Footer';
+
+import Main from './components/views/Main/Main';
 
 function App() {
   return (
     <Router>
       <div>
-        <Header></Header>
         <Routes>  
-        </Routes>
-        <Footer></Footer>
+          <Route exact path="/" element={<Main/>} />
+          <Route exact path="/main" element={<Main/>} />
+        </Routes>        
       </div>
     </Router>
   );

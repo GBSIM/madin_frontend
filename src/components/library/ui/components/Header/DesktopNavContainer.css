@@ -1,0 +1,12 @@
+.desktop-nav-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.desktop-nav-button-divider {
+    width: 1px;
+    height: 20px;
+    background: #CACACA;
+}

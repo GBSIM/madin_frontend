@@ -1,0 +1,25 @@
+.text-nav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.text-nav-button-text {
+    font-weight: 500;
+    color: #CACACA;
+}
+
+.text-nav-button-text.on {
+    color: #EB5C2E;
+}
+
+.text-nav-button-text.off {
+    color: #CACACA;
+}
+
+.text-nav-button-text.off:hover {
+    color: #EB5C2E;
+}
