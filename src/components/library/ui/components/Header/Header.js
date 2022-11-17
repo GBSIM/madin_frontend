@@ -2,7 +2,7 @@ import './Header.css';
 import './DesktopHeader.css';
 import './DesktopNavContainer.css';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
@@ -36,10 +36,11 @@ function DesktopHeader() {
 
 function DesktopNavContainer() {
     const navigate = useNavigate();
+    const dispath = useDispatch();
     const { page } = useSelector(state => state.nav);
 
     const movePage = (nextPage) => {
-        changePage(nextPage);
+        dispath(changePage(nextPage));
         navigate('/'+nextPage);
         window.scrollTo(0,0);
     }
