@@ -9,6 +9,7 @@ import {
 import { useDispatch } from 'react-redux';
 
 import { changePage } from './_reducers/nav';
+import { KakaoRedirectHandler } from './components/library/ui/units/LoginButton/KakaoLogin';
 
 import Header from './components/library/ui/components/Header/Header';
 import Main from './components/views/Main/Main';
@@ -43,6 +44,13 @@ function App() {
   } else {
     dispatch(changePage('main'));
   } 
+  
+  const href = window.location.href;
+  let params = new URL(href).searchParams;
+  let code = params.get("code");
+  if (code != null) {
+      KakaoRedirectHandler();
+  }
 
   return (
     <Router>

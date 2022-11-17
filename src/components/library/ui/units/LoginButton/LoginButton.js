@@ -3,6 +3,8 @@ import './SocialLoginBox.css';
 
 import { useState } from 'react';
 
+import { loginWithKakao } from './KakaoLogin';
+
 export default function LoginButton() {    
     const [isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn] = useState(false);
 
@@ -48,7 +50,8 @@ function SocialLoginBox(props) {
                             borderColor='#FEE500'
                             textColor='#141414'
                             text='카카오 로그인'
-                            img={require('../../../icons/kakao.png')}/>
+                            img={require('../../../icons/kakao.png')}
+                            clickEvent={loginWithKakao}/>
                         <SocialLoginButton
                             backgroundColor='#03C75A'
                             borderColor='#03C75A'
@@ -70,7 +73,7 @@ function SocialLoginBox(props) {
 
 function SocialLoginButton(props) {
     return (
-        <button className='social-login-button' style={{'background':props.backgroundColor,'borderColor':props.borderColor}}>
+        <button className='social-login-button' style={{'background':props.backgroundColor,'borderColor':props.borderColor}} onClick={()=>props.clickEvent()}>
             <img src={props.img} className='social-login-button-image'></img>
             <span className='social-login-button-text' style={{'color':props.textColor}}>{props.text}</span>
         </button>
