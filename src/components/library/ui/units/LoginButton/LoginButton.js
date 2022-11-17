@@ -38,8 +38,8 @@ function SocialLoginBox(props) {
                             <img className='social-login-box-close-button-image' src={require('.././../../icons/close_grey.png')}></img>
                         </button>
                     </div>
-                    <img src={require('../../../images/logo.png')} className='social-login-box-logo-image'></img>
-                    <div style={{'minHeight':'30px'}}></div>
+                    <img src={require('../../../images/logo_text.png')} className='social-login-box-logo-image'></img>
+                    <div style={{'minHeight':'60px'}}></div>
                     <span className='social-login-guide'>아래의 버튼을 눌러 간편 로그인해주세요.</span>
                     <div style={{'minHeight':'30px'}}></div>
                     <div className='social-login-buttons-container'>

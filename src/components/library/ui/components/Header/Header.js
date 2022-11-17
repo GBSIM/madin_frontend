@@ -22,7 +22,7 @@ function DesktopHeader() {
     return (
         <div className='desktop-header'>
             <div className='desktop-header-brand-icon-container'>
-                <img src={require('../../../images/logo.png')}></img>
+                <img src={require('../../../images/logo_text.png')}></img>
             </div>
             <div className='desktop-header-nav-container'>
                 <DesktopNavContainer />
