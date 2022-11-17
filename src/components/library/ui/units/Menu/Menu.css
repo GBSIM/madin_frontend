@@ -1,0 +1,22 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-image-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    background: #F0F0F0;
+}
+
+.menu-name {
+    color: #141414;
+    font-weight: 500;
+}
+
+.menu-price {
+    color: #767676;
+    font-weight: 500;
+}

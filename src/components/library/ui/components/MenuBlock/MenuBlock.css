@@ -1,0 +1,25 @@
+.menu-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-block-name {
+    color: #141414;
+    font-weight: 500;
+}
+
+.menu-block-intro {
+    color: #595959;
+}
+
+.menu-block-menu-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 860px;
+    column-gap: 20px;
+}
