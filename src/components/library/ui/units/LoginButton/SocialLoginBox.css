@@ -1,0 +1,51 @@
+.social-login-box-background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;    
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-login-box {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ECECEC;
+    box-shadow: 0px 4px 4px #E2E2E2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px 10px 15px;
+}
+
+.social-login-box-close-button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;    
+    justify-content: flex-end;
+}
+
+.social-login-guide {
+    color: #848484;
+}
+
+.social-login-box-close-button-image {
+    width: 24px;
+    height: 24px;
+}
+
+.social-login-buttons-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.social-login-box-logo-image {
+    width: 90px;
+    height: 36px;
+}
