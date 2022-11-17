@@ -28,7 +28,7 @@ export default function Main() {
             name={menuClass["name"]}
             intro={menuClass["intro"]}                        
             menus={menuClass["menus"]}
-            isDisplayOn={true}
+            isDisplayOn={menuClass["deliveryEn"]}
             key={'main_menu_class_'+String(index)}></MenuBlock>
     ));
 

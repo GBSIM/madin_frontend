@@ -1,0 +1,19 @@
+.cart-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background: rgba(235,92,46,0.6);
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-button-image {
+    width: 20px;
+    height: 20px;
+}

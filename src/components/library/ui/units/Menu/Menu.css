@@ -4,12 +4,24 @@
     row-gap: 5px;
 }
 
-.menu-image-container {
+.menu-image-button {
     position: relative;
     width: 200px;
     height: 200px;
+    overflow: hidden;
     border-radius: 10px;
+    padding: 0px;
     background: #F0F0F0;
+}
+
+.menu-image:hover {
+    transform: scale(1.08);
+    transition: 0.5s;
+}
+
+.menu-image {
+    transform: scale(1);
+    transition: 0.5s;
 }
 
 .menu-name {
