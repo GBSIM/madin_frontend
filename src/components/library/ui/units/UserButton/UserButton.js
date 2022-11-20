@@ -1,5 +1,7 @@
 import './UserButton.css';
 import './UserMenus.css';
+import './UserCart.css';
+import './UserLike.css';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,6 +25,9 @@ export default function UserButton(props) {
     if (props.isLogined) {
         return (
             <div className='user-buttons-container'>
+                <UserLike></UserLike>
+                <UserCart></UserCart>
+                <div style={{'minWidth':'20px'}}></div>
                 <button className='user-button' onClick={() => switchUserMenus()}>
                     <span className='user-button-text'>{props.name}님</span>
                     <img className='user-button-arrow-image' src={require('../../../icons/inequity_down_grey.png')} alt='arrow-down'></img>
@@ -78,5 +83,24 @@ function UserLogoutButton() {
 
     return (
         <UserMenuButton text='로그아웃' clickEvent={logoutUser}></UserMenuButton>
+    )
+}
+
+function UserCart() {
+    return (
+        <div className='user-cart-container'>
+            <button className='user-cart'>
+                <img src={require('../../../icons/cart_grey.png')} className='user-cart-image' alt='cart'></img>
+            </button>
+        </div>
+        
+    )
+}
+
+function UserLike() {
+    return (
+        <button className='user-like'>
+            <img src={require('../../../icons/heart_grey.png')} className='user-like-image' alt='like'></img>
+        </button>
     )
 }
