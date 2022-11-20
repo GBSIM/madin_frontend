@@ -5,9 +5,7 @@ import './DesktopNavContainer.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect,useState } from 'react';
-import axios from 'axios';
 
-import { getCookie } from '../../units/Cookie/Cookie';
 import { KakaoRedirectHandler, authUser } from '../../units/LoginButton/KakaoLogin';
 
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
@@ -28,7 +26,7 @@ function DesktopHeader() {
     return (
         <div className='desktop-header'>
             <div className='desktop-header-brand-icon-container'>
-                <img src={require('../../../images/logo_text.png')}></img>
+                <img src={require('../../../images/logo_text.png')} alt='logo'></img>
             </div>
             <div className='desktop-header-nav-container'>
                 <DesktopNavContainer />
