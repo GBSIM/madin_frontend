@@ -8,5 +8,5 @@ export default function UserButton(props) {
                 <img className='user-button-arrow-image' src={require('../../../icons/inequity_down_grey.png')}></img>
             </button>
         )
-    }    
+    }
 }
