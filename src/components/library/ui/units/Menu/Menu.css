@@ -4,10 +4,13 @@
     row-gap: 5px;
 }
 
-.menu-image-button {
+.menu-image-container {
     position: relative;
     width: 200px;
     height: 200px;
+}
+
+.menu-image-button {
     overflow: hidden;
     border-radius: 10px;
     padding: 0px;
