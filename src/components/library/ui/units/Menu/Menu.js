@@ -35,7 +35,7 @@ export default function Menu(props) {
 function Cart(props) {
     return (
         <button className='cart-button' onClick={() => props.openMenuAddWindow()}>
-            <img className='cart-button-image' src={require('../../../icons/cart_white.png')}></img>
+            <img className='cart-button-image' src={require('../../../icons/cart_white.png')} alt='cart'></img>
         </button>
     )
 }
@@ -55,9 +55,9 @@ function MenuAddWindow(props) {
 
     let MinusButtonImage;
     if (quantity === 1) {
-        MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_grey.png')}></img>
+        MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_grey.png')} alt='deactivated-minus'></img>
     } else {
-        MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_black.png')}></img>
+        MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_black.png')} alt='activated-minus'></img>
     }
     
     if (props.isDisplayOn) {
@@ -76,7 +76,7 @@ function MenuAddWindow(props) {
                             </button>
                             <span className='menu-add-window-quantity'>{quantity}</span>
                             <button className='menu-add-window-quantity-button' onClick={() => addQuantity()}>
-                                <img className='menu-add-window-quantity-button-image' src={require('../../../icons/plus_black.png')}></img>
+                                <img className='menu-add-window-quantity-button-image' src={require('../../../icons/plus_black.png')} alt='activated-plus'></img>
                             </button>
                         </div>
                     </div>

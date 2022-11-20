@@ -16,7 +16,7 @@ export default function UserButton(props) {
 
     if (props.isLogined) {
         return (
-            <div>
+            <div className='user-buttons-container'>
                 <button className='user-button' onClick={() => switchUserMenus()}>
                     <span className='user-button-text'>{props.name}님</span>
                     <img className='user-button-arrow-image' src={require('../../../icons/inequity_down_grey.png')} alt='arrow-down'></img>

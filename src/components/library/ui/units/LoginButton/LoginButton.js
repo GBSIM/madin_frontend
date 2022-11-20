@@ -38,10 +38,10 @@ function SocialLoginBox(props) {
                 <div className='social-login-box'>
                     <div className='social-login-box-close-button-container'>
                         <button className='social-login-box-close-button' onClick={()=>props.closeEvent()}>
-                            <img className='social-login-box-close-button-image' src={require('.././../../icons/close_grey.png')}></img>
+                            <img className='social-login-box-close-button-image' src={require('.././../../icons/close_grey.png')} alt='close'></img>
                         </button>
                     </div>
-                    <img src={require('../../../images/logo_text.png')} className='social-login-box-logo-image'></img>
+                    <img src={require('../../../images/logo_text.png')} className='social-login-box-logo-image' alt='logo'></img>
                     <div style={{'minHeight':'30px'}}></div>
                     <span className='social-login-guide'>아래의 버튼을 눌러 간편 로그인해주세요.</span>
                     <div style={{'minHeight':'30px'}}></div>
@@ -75,7 +75,7 @@ function SocialLoginBox(props) {
 function SocialLoginButton(props) {
     return (
         <button className='social-login-button' style={{'background':props.backgroundColor,'borderColor':props.borderColor}} onClick={()=>props.clickEvent()}>
-            <img src={props.img} className='social-login-button-image'></img>
+            <img src={props.img} className='social-login-button-image' alt='social-logo'></img>
             <span className='social-login-button-text' style={{'color':props.textColor}}>{props.text}</span>
         </button>
     )

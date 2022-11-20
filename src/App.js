@@ -9,7 +9,6 @@ import {
 import { useDispatch } from 'react-redux';
 
 import { changePage } from './_reducers/nav';
-import { KakaoRedirectHandler } from './components/library/ui/units/LoginButton/KakaoLogin';
 
 import Header from './components/library/ui/components/Header/Header';
 import Main from './components/views/Main/Main';
