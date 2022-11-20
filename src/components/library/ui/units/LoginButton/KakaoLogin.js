@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { useDispatch } from "react-redux";
 
-import { setCookie } from '../Cookie/Cookie';
+import { setCookie, getCookie, deleteCookie } from '../Cookie/Cookie';
 
 const {Kakao} = window;
 export const loginWithKakao = () =>{
@@ -26,4 +25,22 @@ export const KakaoRedirectHandler = async() => {
   return (
     user
   )
+};
+
+export const authUser  = async() => {
+  try {
+      const token = getCookie('token');
+      if (token) {
+          const authResponse = await axios.post('https://api.madinbakery.com/user/auth',
+          {
+          "token": token
+          });
+          if (authResponse.data.user) {
+              return (authResponse.data.user);
+          }
+      }
+  } catch(err) {
+      console.log(err);
+      deleteCookie('token');
+  }
 };
