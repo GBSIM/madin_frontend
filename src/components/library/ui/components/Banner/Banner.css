@@ -1,8 +1,13 @@
 .banner {
     width: 100%;
     height: 350px;
-    background: #FDEFEB;
     position: relative;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    background: #FDEFEB;
 }
 
 .banner-button {
