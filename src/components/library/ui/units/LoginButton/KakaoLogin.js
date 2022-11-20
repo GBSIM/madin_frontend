@@ -11,7 +11,6 @@ export const loginWithKakao = () =>{
 }
 
 export const KakaoRedirectHandler = async() => {
-  const dispatch = useDispatch();
   let params = new URL(document.location.toString()).searchParams;
   let code = params.get("code");
   const kakaoLoginResponse = await axios.post('https://api.madinbakery.com/user/kakaologin',

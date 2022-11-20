@@ -4,9 +4,14 @@ import './DesktopNavContainer.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useEffect,useState } from 'react';
+import axios from 'axios';
+
+import { getCookie } from '../../units/Cookie/Cookie';
 
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
 import LoginButton from '../../units/LoginButton/LoginButton';
+import UserButton from '../../units/UserButton/UserButton';
 
 import { changePage } from '../../../../../_reducers/nav';
 
@@ -28,9 +33,7 @@ function DesktopHeader() {
                 <DesktopNavContainer />
             </div>
             <div className='desktop-header-spacer'></div>
-            <div className='desktop-header-account-container'>
-                <LoginButton />
-            </div>
+            <DesktopAccountButtons />
         </div>
     )
 }
@@ -53,6 +56,41 @@ function DesktopNavContainer() {
             <TextNavButton isOn={page==='present'} text='선물하기' clickEvent={movePage} clickEventInput={'present'}></TextNavButton>
             <div className='desktop-nav-button-divider'></div>
             <TextNavButton isOn={page==='pickup'} text='픽업예약' clickEvent={movePage} clickEventInput={'pickup'}></TextNavButton>
+        </div>
+    )
+}
+
+function DesktopAccountButtons() {
+    const [isLogined, setIsLogined] = useState(false);
+    const [name, setName] = useState(null);    
+
+    useEffect(() => {
+        const authUser  = async() => {
+            try {
+                const token = getCookie('token');
+                console.log(token);
+                if (token) {
+                    const authResponse = await axios.post('https://api.madinbakery.com/user/auth',
+                    {
+                    "token": token
+                    });
+                    console.log(authResponse);
+                    if (authResponse.data.user) {
+                        setIsLogined(true);
+                        setName(authResponse.data.user["name"]);
+                    }
+                }
+            } catch(err) {
+                console.log(err);
+            }
+        };
+        authUser();
+    }, []);
+    
+    return (
+        <div className='desktop-header-account-container'>
+            <LoginButton isLogined={isLogined}/>
+            <UserButton isLogined={isLogined} name={name}/>
         </div>
     )
 }

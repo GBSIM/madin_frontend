@@ -26,4 +26,7 @@
 
 .desktop-header-account-container {
     margin-right: 50px;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
 }

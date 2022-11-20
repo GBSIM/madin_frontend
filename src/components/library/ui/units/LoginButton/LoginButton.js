@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import { loginWithKakao } from './KakaoLogin';
 
-export default function LoginButton() {    
+export default function LoginButton(props) {    
     const [isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn] = useState(false);
 
     const switchSocialLoginBox = () => {
@@ -17,17 +17,18 @@ export default function LoginButton() {
         console.log(isSocialLoginBoxDisplayOn);
     }
 
-    return (
-        <div>
-            <button className='login-button' onClick={() => switchSocialLoginBox()}>
-                <span className='login-button-text'>로그인</span>
-            </button>
-            <SocialLoginBox 
-                isOn={isSocialLoginBoxDisplayOn}
-                closeEvent={switchSocialLoginBox}></SocialLoginBox>
-        </div>
-        
-    )
+    if (!props.isLogined) {
+        return (
+            <div>
+                <button className='login-button' onClick={() => switchSocialLoginBox()}>
+                    <span className='login-button-text'>로그인</span>
+                </button>
+                <SocialLoginBox 
+                    isOn={isSocialLoginBoxDisplayOn}
+                    closeEvent={switchSocialLoginBox}></SocialLoginBox>
+            </div>
+        )
+    }
 }
 
 function SocialLoginBox(props) {
