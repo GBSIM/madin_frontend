@@ -83,7 +83,6 @@ function DesktopAccountButtons() {
                     {
                     "token": token
                     });
-                    console.log(authResponse);
                     if (authResponse.data.user) {
                         setIsLogined(true);
                         setName(authResponse.data.user["name"]);
