@@ -44,13 +44,6 @@ function App() {
   } else {
     dispatch(changePage('main'));
   } 
-  
-  const href = window.location.href;
-  let params = new URL(href).searchParams;
-  let code = params.get("code");
-  if (code != null) {
-      KakaoRedirectHandler();
-  }
 
   return (
     <Router>

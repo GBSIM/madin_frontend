@@ -8,6 +8,7 @@ import { useEffect,useState } from 'react';
 import axios from 'axios';
 
 import { getCookie } from '../../units/Cookie/Cookie';
+import { KakaoRedirectHandler } from '../../units/LoginButton/KakaoLogin';
 
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
 import LoginButton from '../../units/LoginButton/LoginButton';
@@ -62,13 +63,21 @@ function DesktopNavContainer() {
 
 function DesktopAccountButtons() {
     const [isLogined, setIsLogined] = useState(false);
-    const [name, setName] = useState(null);    
+    const [name, setName] = useState(null);
 
     useEffect(() => {
+        const href = window.location.href;
+        let params = new URL(href).searchParams;
+        let code = params.get("code");
+        if (code != null) {
+            KakaoRedirectHandler().then((user) => {
+                setIsLogined(true);
+                setName(user["name"]);
+            });
+        }
         const authUser  = async() => {
             try {
                 const token = getCookie('token');
-                console.log(token);
                 if (token) {
                     const authResponse = await axios.post('https://api.madinbakery.com/user/auth',
                     {
