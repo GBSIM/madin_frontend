@@ -26,7 +26,7 @@ export default function UserButton(props) {
         return (
             <div className='user-buttons-container'>
                 <UserLike></UserLike>
-                <UserCart></UserCart>
+                <UserCart number={props.cartNumber}></UserCart>
                 <div style={{'minWidth':'20px'}}></div>
                 <button className='user-button' onClick={() => switchUserMenus()}>
                     <span className='user-button-text'>{props.name}님</span>
@@ -86,12 +86,18 @@ function UserLogoutButton() {
     )
 }
 
-function UserCart() {
+function UserCart(props) {
+    let CartNumber;
+    if (props.number > 0) {
+        CartNumber = <div className='cart-number'><span className='cart-number-text'>{props.number}</span></div>
+    }
+
     return (
         <div className='user-cart-container'>
             <button className='user-cart'>
                 <img src={require('../../../icons/cart_grey.png')} className='user-cart-image' alt='cart'></img>
             </button>
+            {CartNumber}
         </div>
         
     )

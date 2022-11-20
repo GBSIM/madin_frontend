@@ -1,7 +1,30 @@
-.user-cart {
+.user-cart-container {
     position: relative;
+}
+
+.user-cart {
     padding: 0px;
     margin: 0px;
     width: 30px;
     height: 30px;
+}
+
+.cart-number {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 19px;
+    height: 19px;
+    border-radius: 10px;
+    background: #EB5C2E;
+    border: 2px solid #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-number-text {
+    font-size: 10px;
+    color: #fff;
 }
