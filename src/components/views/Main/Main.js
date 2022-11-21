@@ -2,7 +2,12 @@ import './Main.css';
 
 import axios from 'axios';
 import { useEffect,useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
+import { login, saveName } from '../../../_reducers/user';
+
+import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';
 import MenuBlock from '../../library/ui/components/MenuBlock/MenuBlock';
 
@@ -10,6 +15,9 @@ export default function Main() {
     let MenuBlocks;
 
     const [menuClasses, setMenuClasses] = useState([]);
+    const dispath = useDispatch();
+
+    const { isLogined, name } = useSelector(state => state.user);
 
     useEffect(() => {
         const loadMenu  = async() => {
@@ -21,6 +29,21 @@ export default function Main() {
             }
         };
         loadMenu();
+        const href = window.location.href;
+        let params = new URL(href).searchParams;
+        let code = params.get("code");
+        if (code != null) {
+            KakaoRedirectHandler().then((user) => {
+                dispath(login());
+                dispath(saveName(user["name"]));
+            });
+        }
+        authUser().then((user) => {
+            if (user) {
+                dispath(login());
+                dispath(saveName(user["name"]));
+            }
+        })
     }, []);
 
     MenuBlocks = menuClasses.map((menuClass,index) => (
@@ -34,6 +57,7 @@ export default function Main() {
 
     return (
         <div className='page'>
+            <Header isLogined={isLogined} name={name}></Header>
             <Banner />
             <div className='main-menuclass-container'>
                 {MenuBlocks}

@@ -4,9 +4,6 @@ import './DesktopNavContainer.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect,useState } from 'react';
-
-import { KakaoRedirectHandler, authUser } from '../../units/LoginButton/KakaoLogin';
 
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
 import LoginButton from '../../units/LoginButton/LoginButton';
@@ -14,15 +11,15 @@ import UserButton from '../../units/UserButton/UserButton';
 
 import { changePage } from '../../../../../_reducers/nav';
 
-export default function Header() {
+export default function Header(props) {
     return (
         <div className='header'>
-            <DesktopHeader />
+            <DesktopHeader isLogined={props.isLogined} name={props.name}/>
         </div>
     )
 }
 
-function DesktopHeader() {
+function DesktopHeader(props) {
     return (
         <div className='desktop-header'>
             <div className='desktop-header-brand-icon-container'>
@@ -32,7 +29,7 @@ function DesktopHeader() {
                 <DesktopNavContainer />
             </div>
             <div className='desktop-header-spacer'></div>
-            <DesktopAccountButtons />
+            <DesktopAccountButtons isLogined={props.isLogined} name={props.name} />
         </div>
     )
 }
@@ -59,32 +56,11 @@ function DesktopNavContainer() {
     )
 }
 
-function DesktopAccountButtons() {
-    const [isLogined, setIsLogined] = useState(false);
-    const [name, setName] = useState(null);
-
-    useEffect(() => {
-        const href = window.location.href;
-        let params = new URL(href).searchParams;
-        let code = params.get("code");
-        if (code != null) {
-            KakaoRedirectHandler().then((user) => {
-                setIsLogined(true);
-                setName(user["name"]);
-            });
-        }
-        authUser().then((user) => {
-            if (user) {
-                setIsLogined(true);
-                setName(user["name"]);
-            }
-        })
-    }, []);
-    
+function DesktopAccountButtons(props) {
     return (
         <div className='desktop-header-account-container'>
-            <LoginButton isLogined={isLogined}/>
-            <UserButton isLogined={isLogined} name={name}/>
+            <LoginButton isLogined={props.isLogined}/>
+            <UserButton isLogined={props.isLogined} name={props.name}/>
         </div>
     )
 }
