@@ -23,7 +23,6 @@ export default function Menu(props) {
                 </button>
                 <Cart openMenuAddWindow = {switchMenuAddWindowDisplay}></Cart>
             </div>
-            
             <span className='menu-name'>{props.name}</span>
             <span className='menu-price'>{props.price.toLocaleString()}원</span>
             <MenuAddWindow 
