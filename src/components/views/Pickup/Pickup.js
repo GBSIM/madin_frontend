@@ -9,8 +9,11 @@ import { login, saveName } from '../../../_reducers/user';
 
 import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';
+import MenuBlock from '../../library/ui/components/MenuBlock/MenuBlock';
 
 export default function Pickup() {
+    let MenuBlocks;
+
     const [menuClasses, setMenuClasses] = useState([]);
     const dispath = useDispatch();
 
@@ -43,10 +46,22 @@ export default function Pickup() {
         })
     }, []);
 
+    MenuBlocks = menuClasses.map((menuClass,index) => (
+        <MenuBlock
+            name={menuClass["name"]}
+            intro={menuClass["intro"]}                        
+            menus={menuClass["menus"]}
+            isDisplayOn={menuClass["pickupEn"]}
+            key={'main_menu_class_'+String(index)}></MenuBlock>
+    ));
+
     return (
         <div className='page'>
             <Header isLogined={isLogined} name={name}></Header>
             <Banner/>
+            <div className='pickup-menuclass-container'>
+                {MenuBlocks}
+            </div>
         </div>
     )
 }
