@@ -3,6 +3,11 @@ import './Cart.css';
 import './MenuAddWindow.css';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+
+import { getCookie } from '../Cookie/Cookie';
+import { saveCart } from '../../../../../_reducers/user';
 
 export default function Menu(props) {
     const [isMenuAddWindowDisplayOn, setMenuAddWindowDisplayOn] = useState(false);
@@ -29,6 +34,7 @@ export default function Menu(props) {
                 isDisplayOn={isMenuAddWindowDisplayOn}
                 name={props.name}
                 price={props.price}
+                menuId={props.menuId}
                 closeEvent={switchMenuAddWindowDisplay}></MenuAddWindow>
         </div>
     )
@@ -43,6 +49,7 @@ function Cart(props) {
 }
 
 function MenuAddWindow(props) {
+    const dispath = useDispatch();
     const [quantity, setQuantity] = useState(1);
 
     const addQuantity = () => {
@@ -53,6 +60,22 @@ function MenuAddWindow(props) {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
+    }
+
+    const addCart = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.post('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "menuId": props.menuId,
+                "quantity": quantity
+            }).then((res) => {
+                const user = res.data.user;
+                console.log(res.data.user);
+                dispath(saveCart(user["cart"]));
+            });
+        }
+        props.closeEvent()
     }
 
     let MinusButtonImage;
@@ -90,7 +113,7 @@ function MenuAddWindow(props) {
                         <h2 className='menu-add-window-total-price'>{(props.price*quantity).toLocaleString()}원</h2>
                     </div>
                     <div style={{'minHeight':'50px'}}></div>
-                    <button className='menu-add-window-save-button'>
+                    <button className='menu-add-window-save-button' onClick={() => {addCart()}}>
                         <span className='menu-add-window-save-button-text'>장바구니에 담기</span>
                     </button>
                     <div style={{'minHeight':'10px'}}></div>

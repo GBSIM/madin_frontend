@@ -6,7 +6,8 @@ export default function MenuBlock(props) {
     let Menus;
     if (props.menus) {
         Menus = props.menus.map((menu,index) => (
-            <Menu 
+            <Menu
+                menuId={menu["_id"]}
                 imageUrl={menu["imageUrl"]}
                 name={menu["name"]}
                 price={menu["price"]}
