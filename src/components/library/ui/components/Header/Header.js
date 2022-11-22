@@ -14,7 +14,7 @@ import { changePage } from '../../../../../_reducers/nav';
 export default function Header(props) {
     return (
         <div className='header'>
-            <DesktopHeader isLogined={props.isLogined} name={props.name}/>
+            <DesktopHeader isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
         </div>
     )
 }
@@ -29,7 +29,7 @@ function DesktopHeader(props) {
                 <DesktopNavContainer />
             </div>
             <div className='desktop-header-spacer'></div>
-            <DesktopAccountButtons isLogined={props.isLogined} name={props.name} />
+            <DesktopAccountButtons isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
         </div>
     )
 }
@@ -60,7 +60,7 @@ function DesktopAccountButtons(props) {
     return (
         <div className='desktop-header-account-container'>
             <LoginButton isLogined={props.isLogined}/>
-            <UserButton isLogined={props.isLogined} name={props.name}/>
+            <UserButton isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
         </div>
     )
 }
