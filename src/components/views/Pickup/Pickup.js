@@ -5,7 +5,7 @@ import { useEffect,useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
-import { login, saveName } from '../../../_reducers/user';
+import { login, saveName, saveCart } from '../../../_reducers/user';
 
 import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';
@@ -17,7 +17,7 @@ export default function Pickup() {
     const [menuClasses, setMenuClasses] = useState([]);
     const dispath = useDispatch();
 
-    const { isLogined, name } = useSelector(state => state.user);
+    const { isLogined, name, cart } = useSelector(state => state.user);
 
     useEffect(() => {
         const loadMenu  = async() => {
@@ -36,12 +36,14 @@ export default function Pickup() {
             KakaoRedirectHandler().then((user) => {
                 dispath(login());
                 dispath(saveName(user["name"]));
+                dispath(saveCart(user["cart"]));
             });
         }
         authUser().then((user) => {
             if (user) {
                 dispath(login());
                 dispath(saveName(user["name"]));
+                dispath(saveCart(user["cart"]));
             }
         })
     }, []);
@@ -57,7 +59,7 @@ export default function Pickup() {
 
     return (
         <div className='page'>
-            <Header isLogined={isLogined} name={name}></Header>
+            <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
             <Banner/>
             <div className='pickup-menuclass-container'>
                 {MenuBlocks}
