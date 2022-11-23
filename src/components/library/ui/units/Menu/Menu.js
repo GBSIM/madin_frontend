@@ -71,7 +71,6 @@ function MenuAddWindow(props) {
                 "quantity": quantity
             }).then((res) => {
                 const user = res.data.user;
-                console.log(res.data.user);
                 dispath(saveCart(user["cart"]));
             });
         }
