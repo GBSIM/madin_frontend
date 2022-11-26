@@ -1,13 +1,13 @@
 import './DeliveryCart.css';
 
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState,useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { saveName, saveCart, login } from '../../../_reducers/user';
 import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
 
 import Header from '../../library/ui/components/Header/Header';
+import Cart from '../../library/ui/units/Cart/Cart';
 
 export default function DeliveryCart() {
     const dispath = useDispatch();
@@ -36,6 +36,10 @@ export default function DeliveryCart() {
     return (
         <div className='page'>
             <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
+            <div style={{'minHeight':'60px'}}></div>
+            <div className='cart-container'>
+                <Cart cart={cart}></Cart>
+            </div>
         </div>
     )
 }
