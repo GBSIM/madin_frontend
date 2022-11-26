@@ -15,6 +15,7 @@ export default function Cart(props) {
 
     const CartMenus = props.cart.map((menu,index) => (
         <CartMenu
+            isChecked={menu["isChecked"]}
             name={menu["name"]}
             price={menu["price"]}
             image={menu["imageUrl"]}
@@ -103,15 +104,45 @@ function CartMenu(props) {
         setDeleteWindowOn(false);
     }
 
+    const resetChecked = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.patch('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "menuId": props.id,
+                "isChecked": false
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    }
+
+    const setChecked = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.patch('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "menuId": props.id,
+                "isChecked": true
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            });
+        }
+    }
+
     let CheckButton;
     if (props.isChecked) {
         CheckButton = 
-            <button className='cart-menu-select-button'>
+            <button className='cart-menu-select-button' onClick={() => resetChecked()}>
                 <img className='cart-menu-select-button-image' alt='check' src={require('../../../icons/check_orange.png')}></img>
             </button>
     } else {
         CheckButton = 
-            <button className='cart-menu-select-button'>
+            <button className='cart-menu-select-button' onClick={() => setChecked()}>
                 <img className='cart-menu-select-button-image' alt='check' src={require('../../../icons/check_grey.png')}></img>
             </button>
     }
