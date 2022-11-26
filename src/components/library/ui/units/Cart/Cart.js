@@ -8,8 +8,6 @@ import { getCookie } from '../Cookie/Cookie';
 import { saveCart } from '../../../../../_reducers/user';
 
 export default function Cart(props) {
-    console.log(props.cart);
-
     let AllSelectButton;
     AllSelectButton = <img className='cart-all-select-button-image' alt='check' src={require('../../../icons/check_grey.png')}></img>
 
@@ -77,7 +75,6 @@ function CartMenu(props) {
                 dispath(saveCart(user["cart"]));
             });
         }
-        props.closeEvent()
     }
 
     const subtractQuantity = async() => {
@@ -92,7 +89,24 @@ function CartMenu(props) {
                 dispath(saveCart(user["cart"]));
             });
         }
-        props.closeEvent()
+    }
+
+    const deleteMenu = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.delete('https://api.madinbakery.com/user/cart',{
+                data: {
+                    "token": token,
+                    "menuId": props.id
+                }
+            }).then((res) => {
+                console.log(res);
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
     }
 
     let CheckButton;
@@ -141,7 +155,7 @@ function CartMenu(props) {
                     {(props.price*props.quantity).toLocaleString()}원
                 </h3>
             </div>
-            <button className='cart-menu-delete-button'>
+            <button className='cart-menu-delete-button' onClick={() => deleteMenu()}>
                 <span className='cart-menu-delete-button-text'>삭제하기</span>
             </button>
         </div>
