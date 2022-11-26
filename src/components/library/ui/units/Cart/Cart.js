@@ -10,8 +10,65 @@ import { getCookie } from '../Cookie/Cookie';
 import { saveCart } from '../../../../../_reducers/user';
 
 export default function Cart(props) {
+    const dispath = useDispatch();
+    let isAllChecked = true;
+    props.cart.map((menu) => {
+        if (!menu["isChecked"]) {
+            isAllChecked = false;
+        }
+    })
+
+    const setAllChecked = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.patch('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "isChecked": true,
+                "isAllMenus": true
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    }
+
+    const setAllUnchecked = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.patch('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "isChecked": false,
+                "isAllMenus": true
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    }
+
     let AllSelectButton;
-    AllSelectButton = <img className='cart-all-select-button-image' alt='check' src={require('../../../icons/check_grey.png')}></img>
+    if (!isAllChecked) {
+        AllSelectButton = 
+            <button className='cart-all-select-button' onClick={()=>setAllChecked()}>
+                <img className='cart-all-select-button-image' 
+                    alt='check' 
+                    src={require('../../../icons/check_grey.png')}></img>
+                <span className='cart-all-select-button-text'>전체선택</span>
+            </button>
+    } else {
+        AllSelectButton = 
+        <button className='cart-all-select-button' onClick={()=>setAllUnchecked()}>
+            <img className='cart-all-select-button-image' 
+                alt='check' 
+                src={require('../../../icons/check_orange.png')}></img>
+            <span className='cart-all-select-button-text'>전체선택</span>
+        </button>
+    }
+    
 
     const CartMenus = props.cart.map((menu,index) => (
         <CartMenu
@@ -25,6 +82,11 @@ export default function Cart(props) {
     ))
 
     let totalPrice = 0;
+    props.cart.map((menu) => {
+        if (menu["isChecked"]) {
+            totalPrice = totalPrice + menu["price"] * menu["quantity"];
+        }
+    })
 
     let CartOrderButton;
     if (totalPrice > 0) {
@@ -44,10 +106,7 @@ export default function Cart(props) {
             <h1 className='cart-title'>장바구니</h1>
             <div style={{'minHeight':'30px'}}></div>
             <div className='cart-all-select-button-container'>
-                <button className='cart-all-select-button'>
-                    {AllSelectButton}
-                    <span className='cart-all-select-button-text'>전체선택</span>
-                </button>
+                {AllSelectButton}
             </div>
             <div style={{'minHeight':'10px'}}></div>
             <div style={{'width':'100%','minHeight':'1px','background':'#c6c6c6'}}></div>
