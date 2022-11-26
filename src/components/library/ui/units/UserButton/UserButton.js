@@ -87,6 +87,29 @@ function UserLogoutButton() {
 }
 
 function UserCart(props) {
+    const navigate = useNavigate();
+    const moveToCart = () => {
+        let cartName;
+        switch (window.location.pathname) {
+            case "/":
+                cartName='delivery';
+                break;
+            case "/main":
+                cartName='delivery';
+                break;
+            case "/present":
+                cartName='present';
+                break;
+            case "/pickup":
+                cartName='pickup';
+                break;
+            default:
+                cartName='delivery';   
+        }
+        
+        navigate('/cart/'+cartName);
+        window.scrollTo(0,0);
+    }
     let CartNumber;
     if (props.number > 0) {
         CartNumber = <div className='cart-number'><span className='cart-number-text'>{props.number}</span></div>
@@ -94,7 +117,7 @@ function UserCart(props) {
 
     return (
         <div className='user-cart-container'>
-            <button className='user-cart'>
+            <button className='user-cart' onClick={() => moveToCart()}>
                 <img src={require('../../../icons/cart_grey.png')} className='user-cart-image' alt='cart'></img>
             </button>
             {CartNumber}
