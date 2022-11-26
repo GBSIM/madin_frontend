@@ -1,0 +1,64 @@
+.delete-window-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;    
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.delete-window {
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ECECEC;
+    box-shadow: 0px 4px 4px #E2E2E2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 20px 20px;
+}
+
+.delete-window-guide {
+    color: #141414;
+    font-weight: 500;
+}
+
+.delete-window-delete-button {
+    width: 100%;
+    height: 40px;
+    background: #EB5C2E;
+    border-radius: 6px;
+}
+
+.delete-window-delete-button:hover {
+    background: rgba(235,92,46,0.9);
+}
+
+.delete-window-delete-button-text {
+    color: #fff;
+    font-weight: 500;
+}
+
+.delete-window-cancel-button {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #EB5C2E;
+    border-radius: 6px;
+}
+
+.delete-window-cancel-button:hover {
+    background: rgba(235,92,46,0.1);
+}
+
+.delete-window-cancel-button-text {
+    color: #EB5C2E;
+    font-weight: 500;
+}
