@@ -3,13 +3,13 @@ import './OrderItem.css';
 
 export default function OrderSheet(props) {
     let OrderItems;
-    console.log(props.cart);
-    OrderItems = props.cart.map((menu) => (
+    OrderItems = props.cart.map((menu,index) => (
         <OrderItem
             name={menu["name"]}
             quantity={menu["quantity"]}
             price={menu["price"]}
-            isOn={menu["isChecked"]}></OrderItem>
+            isOn={menu["isChecked"]}
+            key={'order_item'+String(index)}></OrderItem>
     ))
 
     let totalPrice = 0;

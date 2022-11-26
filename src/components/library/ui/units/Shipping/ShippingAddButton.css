@@ -1,0 +1,17 @@
+.shipping-add-button {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.shipping-add-button-image {
+    width: 24px;
+    height: 24px;
+}
+
+.shipping-add-button-guide {
+    color: #C8C8C8;
+}

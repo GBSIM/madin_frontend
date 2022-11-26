@@ -6,16 +6,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { KakaoRedirectHandler, authUser } from '../../library/ui/units/LoginButton/KakaoLogin';
 
-import { login, saveCart, saveName } from '../../../_reducers/user';
+import { login, saveCart, saveName, saveShipping } from '../../../_reducers/user';
 
 import Header from '../../library/ui/components/Header/Header';
 import OrderSheet from '../../library/ui/units/OrderSheet/OrderSheet';
-import Delivery from '../../library/ui/units/Delivery/Delivery';
+import Shipping from '../../library/ui/units/Shipping/Shipping';
 
 export default function DeliveryOrder() {
     const dispath = useDispatch();
 
-    const { isLogined, name, cart } = useSelector(state => state.user);
+    const { isLogined, name, cart, shippings } = useSelector(state => state.user);
 
     useEffect(() => {
         const href = window.location.href;
@@ -26,6 +26,7 @@ export default function DeliveryOrder() {
                 dispath(login());
                 dispath(saveName(user["name"]));
                 dispath(saveCart(user["cart"]));
+                dispath(saveShipping(user["shippings"]));
             });
         }
         authUser().then((user) => {
@@ -33,6 +34,7 @@ export default function DeliveryOrder() {
                 dispath(login());
                 dispath(saveName(user["name"]));
                 dispath(saveCart(user["cart"]));
+                dispath(saveShipping(user["shippings"]));
             }
         })
     }, []);
@@ -44,7 +46,8 @@ export default function DeliveryOrder() {
                 <div style={{'minHeight':'60px'}}></div>
                 <OrderSheet cart={cart}></OrderSheet>
                 <div style={{'minHeight':'60px'}}></div>
-                <Delivery></Delivery>
+                <Shipping shippings={shippings}></Shipping>
+                <div style={{'minHeight':'100px'}}></div>
             </div>
         </div>
     )
