@@ -1,0 +1,11 @@
+.order-item {
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.order-item-text {
+    color: #464646;
+    font-weight: 500;
+}

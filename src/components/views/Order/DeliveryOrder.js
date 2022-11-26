@@ -1,17 +1,19 @@
-import './Cart.css';
-import './DeliveryCart.css';
+import './Order.css';
+import './DeliveryOrder.css';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { saveName, saveCart, login } from '../../../_reducers/user';
-import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
+import { KakaoRedirectHandler, authUser } from '../../library/ui/units/LoginButton/KakaoLogin';
+
+import { login, saveCart, saveName } from '../../../_reducers/user';
 
 import Header from '../../library/ui/components/Header/Header';
-import Cart from '../../library/ui/units/Cart/Cart';
+import OrderSheet from '../../library/ui/units/OrderSheet/OrderSheet';
 
-export default function DeliveryCart() {
+export default function DeliveryOrder() {
     const dispath = useDispatch();
+
     const { isLogined, name, cart } = useSelector(state => state.user);
 
     useEffect(() => {
@@ -37,9 +39,9 @@ export default function DeliveryCart() {
     return (
         <div className='page'>
             <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
-            <div style={{'minHeight':'60px'}}></div>
-            <div className='cart-container'>
-                <Cart cart={cart}></Cart>
+            <div className='order-container'>
+                <div style={{'minHeight':'60px'}}></div>
+                <OrderSheet cart={cart}></OrderSheet>
             </div>
         </div>
     )

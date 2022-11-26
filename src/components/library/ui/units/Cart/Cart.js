@@ -5,12 +5,15 @@ import './DeleteWindow.css';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { getCookie } from '../Cookie/Cookie';
 import { saveCart } from '../../../../../_reducers/user';
 
 export default function Cart(props) {
+    const navigate = useNavigate();
     const dispath = useDispatch();
+
     let isAllChecked = true;
     props.cart.map((menu) => {
         if (!menu["isChecked"]) {
@@ -88,10 +91,29 @@ export default function Cart(props) {
         }
     })
 
+    const moveToOrder = () => {
+        let cartName;
+        switch (window.location.pathname) {
+            case "/cart/delivery":
+                cartName='delivery';
+                break;
+            case "/cart/present":
+                cartName='present';
+                break;
+            case "/cart/pickup":
+                cartName='pickup';
+                break;
+            default:
+                cartName='delivery';   
+        }
+        navigate('/order/'+cartName);
+        window.scrollTo(0,0);
+    }
+
     let CartOrderButton;
     if (totalPrice > 0) {
         CartOrderButton = 
-        <button className='cart-order-button'>
+        <button className='cart-order-button' onClick={() => moveToOrder()}>
             <span className='cart-order-button-text'>주문하기</span>
         </button>
     } else {
