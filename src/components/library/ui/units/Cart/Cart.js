@@ -1,6 +1,12 @@
 import './Cart.css';
 import './CartMenu.css';
 
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+
+import { getCookie } from '../Cookie/Cookie';
+import { saveCart } from '../../../../../_reducers/user';
+
 export default function Cart(props) {
     console.log(props.cart);
 
@@ -58,6 +64,37 @@ export default function Cart(props) {
 }
 
 function CartMenu(props) {
+    const dispath = useDispatch();
+    const addQuantity = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.post('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "menuId": props.id,
+                "quantity": 1
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            });
+        }
+        props.closeEvent()
+    }
+
+    const subtractQuantity = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.post('https://api.madinbakery.com/user/cart',{
+                "token": token,
+                "menuId": props.id,
+                "quantity": -1
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveCart(user["cart"]));
+            });
+        }
+        props.closeEvent()
+    }
+
     let CheckButton;
     if (props.isChecked) {
         CheckButton = 
@@ -71,11 +108,17 @@ function CartMenu(props) {
             </button>
     }
 
-    let MinusButtonImage;
+    let MinusButton;
     if (props.quantity === 1) {
-        MinusButtonImage = <img className='cart-menu-quantity-button-image' alt='activated-minus' src={require('../../../icons/minus_grey.png')}></img>
+        MinusButton = 
+            <button className='cart-menu-quantity-button'>
+                <img className='cart-menu-quantity-button-image' alt='activated-minus' src={require('../../../icons/minus_grey.png')}></img>
+            </button>
     } else {
-        MinusButtonImage = <img className='cart-menu-quantity-button-image' alt='activated-minus' src={require('../../../icons/minus_black.png')}></img>
+        MinusButton = 
+            <button className='cart-menu-quantity-button' onClick={() => subtractQuantity()}>
+                <img className='cart-menu-quantity-button-image' alt='activated-minus' src={require('../../../icons/minus_black.png')}></img>
+            </button>
     }
     return (
         <div className='cart-menu'>
@@ -87,11 +130,9 @@ function CartMenu(props) {
             <div style={{'flex':'1'}}></div>
             <div className='cart-menu-right-container'>
                 <div className='cart-menu-quantity-controller'>
-                    <button className='cart-menu-quantity-button'>
-                        {MinusButtonImage}
-                    </button>
+                    {MinusButton}
                     <span className='cart-menu-quantity'>{props.quantity}</span>
-                    <button className='cart-menu-quantity-button'>
+                    <button className='cart-menu-quantity-button' onClick={() => addQuantity()}>
                         <img className='cart-menu-quantity-button-image' alt='activated-plus' src={require('../../../icons/plus_black.png')}></img>
                     </button>
                 </div>
