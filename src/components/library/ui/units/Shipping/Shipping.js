@@ -1,8 +1,23 @@
 import './Shipping.css';
 import './ShippingInfo.css';
 import './ShippingAddButton.css';
+import './ShippingAddWindow.css';
+
+import DaumPostcode from 'react-daum-postcode';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export default function Shipping(props) {
+    const [isShippingAddWindowOn, setShippingAddWindowOn] = useState(false);
+
+    const openShippingAddWindow = () => {
+        setShippingAddWindowOn(true);
+    }
+
+    const closeShippingAddWindow= () => {
+        setShippingAddWindowOn(false);
+    }
+
     let ShippingInfos;
     if (props.shippings.length > 0) {
         ShippingInfos = props.shippings.map((shipping) => (
@@ -27,7 +42,8 @@ export default function Shipping(props) {
             <div style={{'minHeight':'20px'}}></div>
             {ShippingInfos}
             <div style={{'minHeight':'20px'}}></div>
-            <ShippingAddButton></ShippingAddButton>
+            <ShippingAddButton clickEvent={openShippingAddWindow}></ShippingAddButton>
+            <ShippingAddWindow isOn={isShippingAddWindowOn} closeEvent={closeShippingAddWindow}></ShippingAddWindow>
         </div>
     )
 }
@@ -59,11 +75,69 @@ function ShippingInfo(props) {
     )
 }
 
-function ShippingAddButton() {
+function ShippingAddButton(props) {
     return (
-        <button className='shipping-add-button'>
+        <button className='shipping-add-button' onClick={() => props.clickEvent()}>
             <img className='shipping-add-button-image' src={require('../../../icons/plus_grey.png')}></img>
             <span className='shipping-add-button-guide'>새로운 주소 추가하기</span>
         </button>
     )
+}
+
+function ShippingAddWindow(props) {
+    const dispatch = useDispatch();
+    const [isBasicAddressSelected, setBasicAddressSelected] = useState(false);
+    const [isDetailAddressSelected, setDetailAddressSelected] = useState(false);
+    const [basicAddress, setBasicAddress] = useState(null);
+    const [detailAddress, setDetailAddress] = useState(null);
+
+    const updateDetailAddress = (e) => {
+        dispatch(setDetailAddress(e.target.value));
+    }
+    
+    const completeSetBasicAddress = (data) => {
+        setBasicAddressSelected(true);
+        setBasicAddress(data.address);
+    }
+
+    let DaumAddressAPI;
+    if (!isBasicAddressSelected) {
+        DaumAddressAPI = <DaumPostcode onComplete={completeSetBasicAddress} autoClose={false}></DaumPostcode>
+    }
+
+    let DetailAddressInput;
+    if (isBasicAddressSelected && !isDetailAddressSelected) {
+        DetailAddressInput = 
+            <div className='shipping-add-window-detail-address-input-container'>
+                <div className='shipping-add-window-basic-address-frame'>
+                    <span className='shipping-add-window-basic-address'>{basicAddress}</span>
+                </div>
+                <div className='shipping-add-window-detail-address-input-row'>
+                    <span className='shipping-add-window-detail-address-title'>상세 주소</span>
+                    <div className='shipping-add-window-detail-address-input-frame'>
+                        <input className='shipping-add-window-detail-address' value={detailAddress} onChange={updateDetailAddress}></input>
+                    </div>
+                </div>
+                <div style={{'minHeight':'50px'}}></div>
+                <button className='shipping-add-window-save-button'>
+                    <span className='shipping-add-window-save-button-text'>다음</span>
+                </button>
+            </div>
+    }
+
+    if (props.isOn) {
+        return (
+            <div className='shipping-add-window-background'>
+                <div className='shipping-add-window'>
+                    {DaumAddressAPI}
+                    {DetailAddressInput}
+                    <div style={{'minHeight':'10px'}}></div>
+                    <button className='shipping-add-window-cancel-button' onClick={() => {props.closeEvent()}}>
+                        <span className='shipping-add-window-cancel-button-text'>닫기</span>
+                    </button>
+                </div>
+            </div>
+            
+        )
+    }
 }
