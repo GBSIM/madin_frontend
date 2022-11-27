@@ -112,7 +112,12 @@ function UserCart(props) {
     }
     let CartNumber;
     if (props.number > 0) {
-        CartNumber = <div className='cart-number'><span className='cart-number-text'>{props.number}</span></div>
+        CartNumber = 
+            <button className='cart-number' onClick={() => moveToCart()}>
+                <span className='cart-number-text'>
+                    {props.number}
+                </span>
+            </button>
     }
 
     return (
