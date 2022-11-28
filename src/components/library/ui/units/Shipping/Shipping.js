@@ -45,7 +45,6 @@ export default function Shipping(props) {
             <h1 className='shipping-title'>배송지</h1>
             <div style={{'minHeight':'30px'}}></div>
             <div style={{'width':'100%','minHeight':'1px','background':'#c6c6c6'}}></div>
-            <div style={{'minHeight':'20px'}}></div>
             {ShippingInfos}
             <div style={{'minHeight':'20px'}}></div>
             <ShippingAddButton clickEvent={openShippingAddWindow}></ShippingAddButton>
