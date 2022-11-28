@@ -19,11 +19,15 @@
     padding: 5px 12px 5px 12px;
     background: #EA5B30;
     border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .shipping-tag {
     color: #fff;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
 }
 
