@@ -1,21 +1,87 @@
 .shipping {
-    width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.shipping-left-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.shipping-title {
-    color: #141414;
+.shipping-tag-container {
+    padding: 5px 12px 5px 12px;
+    background: #EA5B30;
+    border-radius: 50px;
 }
 
-.shipping-infos-guide {
+.shipping-tag {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.shipping-address {
+    color: #696969;
+}
+
+.shipping-name {
+    color: #696969;
+}
+
+.shipping-request {
+    color: #696969;
+}
+
+.shipping-right-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.shipping-check-button {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+}
+
+.shipping-check-button-image {
     width: 100%;
-    color: #606060;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    height: 100%;
+}
+
+.shipping-edit-button {
+    position: absolute;
+    right: 55px;
+    bottom: 5px;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.shipping-edit-button-text {
+    color: #AAA;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.shipping-remove-button {
+    position: absolute;
+    right: 0px;
+    bottom: 5px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.shipping-remove-button-text {
+    color: #AAA;
+    font-size: 12px;
+    font-weight: 400;
 }

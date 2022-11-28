@@ -1,5 +1,5 @@
+import './ShippingList.css';
 import './Shipping.css';
-import './ShippingInfo.css';
 import './ShippingAddButton.css';
 import './ShippingAddWindow.css';
 
@@ -12,7 +12,7 @@ import { getCookie } from '../Cookie/Cookie';
 import { authUser } from '../LoginButton/KakaoLogin';
 import { saveShipping } from '../../../../../_reducers/user';
 
-export default function Shipping(props) {
+export default function ShippingList(props) {
     const [isShippingAddWindowOn, setShippingAddWindowOn] = useState(false);
 
     const openShippingAddWindow = () => {
@@ -23,29 +23,36 @@ export default function Shipping(props) {
         setShippingAddWindowOn(false);
     }
 
-    let ShippingInfos;
+    let Shippings;
     if (props.shippings) {
-        ShippingInfos = props.shippings.map((shipping,index) => (
-            <ShippingInfo
-                name={shipping["tag"]}
-                address={shipping["basicAddress"]+' '+shipping["detailAddress"]}
-                phone={shipping["phone"]}
-                receiver={shipping["name"]}
-                key={'shipping_'+String(index)}></ShippingInfo>
-        ))
+        if (props.shippings.length > 0) {
+            Shippings = props.shippings.map((shipping,index) => (
+                <Shipping
+                    tag={shipping["tag"]}
+                    address={shipping["basicAddress"]+' '+shipping["detailAddress"]}
+                    phone={shipping["phone"]}
+                    name={shipping["name"]}
+                    key={'shipping_'+String(index)}></Shipping>
+            ))
+        } else {
+            Shippings = 
+            <span className='shipping-list-guide'>
+                아직 등록된 배송지가 없어요.
+            </span>
+        }
     } else {
-        ShippingInfos = 
-            <span className='shipping-infos-guide'>
+        Shippings = 
+            <span className='shipping-list-guide'>
                 아직 등록된 배송지가 없어요.
             </span>
     }
 
     return (
-        <div className='shipping'>
-            <h1 className='shipping-title'>배송지</h1>
+        <div className='shipping-list'>
+            <h1 className='shipping-list-title'>배송지</h1>
             <div style={{'minHeight':'30px'}}></div>
             <div style={{'width':'100%','minHeight':'1px','background':'#c6c6c6'}}></div>
-            {ShippingInfos}
+            {Shippings}
             <div style={{'minHeight':'20px'}}></div>
             <ShippingAddButton clickEvent={openShippingAddWindow}></ShippingAddButton>
             <ShippingAddWindow isOn={isShippingAddWindowOn} closeEvent={closeShippingAddWindow}></ShippingAddWindow>
@@ -53,29 +60,35 @@ export default function Shipping(props) {
     )
 }
 
-function ShippingInfo(props) {
+function Shipping(props) {
     return (
-        <div className='shipping-info'>
-            <div className='shipping-info-left-container'>
-                <div className='shipping-info-name-container'>
-                    <span className='shipping-info-name'>{props.name}</span>
+        <div className='shipping'>
+            <div className='shipping-left-container'>
+                <div className='shipping-tag-container'>
+                    <span className='shipping-tag'>{props.tag}</span>
                 </div>
                 <div style={{'minHeight':'10px'}}></div>
-                <div className='shipping-info-text'>{props.address}</div>
+                <div className='shipping-address'>{props.address}</div>
                 <div style={{'minHeight':'5px'}}></div>
-                <div className='shipping-info-text'>{props.receiver}, {props.phone}</div>
+                <div className='shipping-name'>{props.name}, {props.phone}</div>
                 <div style={{'minHeight':'5px'}}></div>
-                <div className='shipping-info-text'>{props.request}</div>
+                <div className='shipping-request'>{props.request}</div>
             </div>
             <div style={{'flex':'1'}}></div>
-            <div className='shipping-info-right-container'>
-                <button className='shipping-info-check-button'>
+            <div className='shipping-right-container'>
+                <button className='shipping-check-button'>
                     <img 
-                        className='shipping-info-check-button-image'
+                        className='shipping-check-button-image'
                         src={require('../../../icons/check_grey.png')}
                         alt='check'></img>
                 </button>
             </div>
+            <button className='shipping-edit-button'>
+                <span className='shipping-edit-button-text'>편집하기</span>
+            </button>
+            <button className='shipping-remove-button'>
+                <span className='shipping-remove-button-text'>삭제하기</span>
+            </button>
         </div>
     )
 }
@@ -119,7 +132,7 @@ function ShippingAddWindow(props) {
         setDetailAddressSelected(true);
     }
 
-    const completeAddAddress = async() => {
+    const completeAddShipping = async() => {
         const token = getCookie('token');
         await axios.post('https://api.madinbakery.com/shipping', {
             "name": name,
@@ -182,7 +195,7 @@ function ShippingAddWindow(props) {
                     </div>
                 </div>
                 <div style={{'minHeight':'30px'}}></div>
-                <button className='shipping-add-window-save-button' onClick={() => completeAddAddress()}>
+                <button className='shipping-add-window-save-button' onClick={() => completeAddShipping()}>
                     <span className='shipping-add-window-save-button-text'>완료</span>
                 </button>
             </div>

@@ -31,10 +31,10 @@
     border: 1px solid #EB5C2E;
     border-radius: 6px;
 }
-
+/* 
 .shipping-add-window-cancel-button:hover {
     background: rgba(235,92,46,0.1);
-}
+} */
 
 .shipping-add-window-cancel-button-text {
     color: #EB5C2E;

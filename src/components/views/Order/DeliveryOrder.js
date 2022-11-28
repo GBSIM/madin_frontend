@@ -10,7 +10,7 @@ import { login, saveCart, saveName, saveShipping } from '../../../_reducers/user
 
 import Header from '../../library/ui/components/Header/Header';
 import OrderSheet from '../../library/ui/units/OrderSheet/OrderSheet';
-import Shipping from '../../library/ui/units/Shipping/Shipping';
+import ShippingList from '../../library/ui/units/Shipping/ShippingList';
 
 export default function DeliveryOrder() {
     const dispath = useDispatch();
@@ -46,7 +46,7 @@ export default function DeliveryOrder() {
                 <div style={{'minHeight':'60px'}}></div>
                 <OrderSheet cart={cart}></OrderSheet>
                 <div style={{'minHeight':'60px'}}></div>
-                <Shipping shippings={shippings}></Shipping>
+                <ShippingList shippings={shippings}></ShippingList>
                 <div style={{'minHeight':'100px'}}></div>
             </div>
         </div>
