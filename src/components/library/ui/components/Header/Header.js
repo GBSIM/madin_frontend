@@ -47,7 +47,7 @@ function DesktopNavContainer() {
 
     return (
         <div className='desktop-nav-container'>
-            <TextNavButton isOn={page==='main'} text='개인구매' clickEvent={movePage} clickEventInput={'main'}></TextNavButton>
+            <TextNavButton isOn={page==='main'} text='배송구매' clickEvent={movePage} clickEventInput={'main'}></TextNavButton>
             <div className='desktop-nav-button-divider'></div>
             <TextNavButton isOn={page==='present'} text='선물하기' clickEvent={movePage} clickEventInput={'present'}></TextNavButton>
             <div className='desktop-nav-button-divider'></div>
