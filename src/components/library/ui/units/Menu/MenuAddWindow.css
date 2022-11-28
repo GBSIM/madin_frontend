@@ -49,9 +49,9 @@
     border-radius: 6px;
 }
 
-.menu-add-window-save-button:hover {
+/* .menu-add-window-save-button:hover {
     background: rgba(235,92,46,0.9);
-}
+} */
 
 .menu-add-window-save-button-text {
     color: #fff;
@@ -64,10 +64,10 @@
     border: 1px solid #EB5C2E;
     border-radius: 6px;
 }
-
+/* 
 .menu-add-window-cancel-button:hover {
     background: rgba(235,92,46,0.1);
-}
+} */
 
 .menu-add-window-cancel-button-text {
     color: #EB5C2E;
