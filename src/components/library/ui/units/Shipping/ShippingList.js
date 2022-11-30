@@ -2,6 +2,8 @@ import './ShippingList.css';
 import './Shipping.css';
 import './ShippingAddButton.css';
 import './ShippingAddWindow.css';
+import './ShippingEditWindow.css';
+import './ShippingDeleteWindow.css';
 
 import DaumPostcode from 'react-daum-postcode';
 import { useState } from 'react';
@@ -28,10 +30,13 @@ export default function ShippingList(props) {
         if (props.shippings.length > 0) {
             Shippings = props.shippings.map((shipping,index) => (
                 <Shipping
+                    id={shipping["_id"]}
                     tag={shipping["tag"]}
-                    address={shipping["basicAddress"]+' '+shipping["detailAddress"]}
+                    basicAddress={shipping["basicAddress"]}
+                    detailAddress={shipping["detailAddress"]}
                     phone={shipping["phone"]}
                     name={shipping["name"]}
+                    request={shipping["request"]}
                     key={'shipping_'+String(index)}></Shipping>
             ))
         } else {
@@ -61,6 +66,25 @@ export default function ShippingList(props) {
 }
 
 function Shipping(props) {
+    const [isShippingEditWindowOn, setShippingEditWindowOn] = useState(false);
+    const [isShippingDeleteWindowOn, setShippingDeleteWindowOn] = useState(false);
+
+    const openShippingEditWindow = () => {
+        setShippingEditWindowOn(true);
+    }
+
+    const closeShippingEditWindow= () => {
+        setShippingEditWindowOn(false);
+    }
+
+    const openShippingDeleteWindow = () => {
+        setShippingDeleteWindowOn(true);
+    }
+
+    const closeShippingDeleteWindow= () => {
+        setShippingDeleteWindowOn(false);
+    }
+
     return (
         <div className='shipping'>
             <div className='shipping-left-container'>
@@ -68,7 +92,7 @@ function Shipping(props) {
                     <span className='shipping-tag'>{props.tag}</span>
                 </div>
                 <div style={{'minHeight':'10px'}}></div>
-                <div className='shipping-address'>{props.address}</div>
+                <div className='shipping-address'>{props.basicAddress} {props.detailAddress}</div>
                 <div style={{'minHeight':'5px'}}></div>
                 <div className='shipping-name'>{props.name}, {props.phone}</div>
                 <div style={{'minHeight':'5px'}}></div>
@@ -83,12 +107,26 @@ function Shipping(props) {
                         alt='check'></img>
                 </button>
             </div>
-            <button className='shipping-edit-button'>
+            <button className='shipping-edit-button' onClick={() => openShippingEditWindow()}>
                 <span className='shipping-edit-button-text'>편집하기</span>
             </button>
-            <button className='shipping-remove-button'>
+            <button className='shipping-remove-button' onClick={() => openShippingDeleteWindow()}>
                 <span className='shipping-remove-button-text'>삭제하기</span>
             </button>
+            <ShippingEditWindow 
+                id={props.id}
+                isOn={isShippingEditWindowOn}
+                closeEvent={closeShippingEditWindow}
+                basicAddress={props.basicAddress}
+                detailAddress={props.detailAddress}
+                name={props.name}
+                phone={props.phone}
+                tag={props.tag}
+                request={props.request}></ShippingEditWindow>
+            <ShippingDeleteWindow
+                id={props.id}
+                isOn={isShippingDeleteWindowOn}
+                closeEvent={closeShippingDeleteWindow}></ShippingDeleteWindow>
         </div>
     )
 }
@@ -211,6 +249,125 @@ function ShippingAddWindow(props) {
                     <div style={{'minHeight':'10px'}}></div>
                     <button className='shipping-add-window-cancel-button' onClick={() => {props.closeEvent()}}>
                         <span className='shipping-add-window-cancel-button-text'>닫기</span>
+                    </button>
+                </div>
+            </div>
+        )
+    }
+}
+
+function ShippingEditWindow(props) {
+    const dispatch = useDispatch();
+    const [name, setName] = useState(props.name);
+    const [phone, setPhone] = useState(props.phone);
+    const [tag, setTag] = useState(props.tag);
+    const [request, setRequest] = useState(props.request);
+
+    const updateName = (e) => {
+        dispatch(setName(e.target.value));
+    }
+
+    const updatePhone = (e) => {
+        dispatch(setPhone(e.target.value));
+    }
+
+    const updateTag = (e) => {
+        dispatch(setTag(e.target.value));
+    }
+
+    const updateRequest = (e) => {
+        dispatch(setRequest(e.target.value));
+    }
+
+    const completeEditShipping = async() => {
+        const token = getCookie('token');
+        await axios.patch('https://api.madinbakery.com/shipping/'+(props.id), {
+            "name": name,
+            "phone": phone,
+            "token": token,
+            "tag": tag,
+            "request":request,
+        });
+        const user = await authUser();
+        dispatch(saveShipping(user["shippings"]));
+        props.closeEvent();
+    }
+
+    if (props.isOn) {
+        return (
+            <div className='shipping-edit-window-background'>
+                <div className='shipping-edit-window'>
+                    <div className='shipping-edit-window-detail-address-input-container'>
+                        <div className='shipping-edit-window-basic-address-frame'>
+                            <span className='shipping-edit-window-basic-address'>{props.basicAddress}</span>
+                        </div>
+                        <div className='shipping-edit-window-basic-address-frame'>
+                            <span className='shipping-edit-window-basic-address'>{props.detailAddress}</span>
+                        </div>
+                        <div className='shipping-edit-window-detail-address-input-row'>
+                            <span className='shipping-edit-window-detail-address-title'>받는 사람</span>
+                            <div className='shipping-edit-window-detail-address-input-frame'>
+                                <input className='shipping-edit-window-detail-address' value={name} onChange={updateName}></input>
+                            </div>
+                        </div>
+                        <div className='shipping-edit-window-detail-address-input-row'>
+                            <span className='shipping-edit-window-detail-address-title'>연락처</span>
+                            <div className='shipping-edit-window-detail-address-input-frame'>
+                                <input className='shipping-edit-window-detail-address' value={phone} onChange={updatePhone}></input>
+                            </div>
+                        </div>
+                        <div className='shipping-edit-window-detail-address-input-row'>
+                            <span className='shipping-edit-window-detail-address-title'>주소 별명</span>
+                            <div className='shipping-edit-window-detail-address-input-frame'>
+                                <input className='shipping-edit-window-detail-address' value={tag} onChange={updateTag}></input>
+                            </div>
+                        </div>
+                        <div className='shipping-edit-window-detail-address-input-row'>
+                            <span className='shipping-edit-window-detail-address-title'>요청사항</span>
+                            <div className='shipping-edit-window-detail-address-input-frame'>
+                                <input className='shipping-edit-window-detail-address' value={request} onChange={updateRequest}></input>
+                            </div>
+                        </div>
+                        <div style={{'minHeight':'30px'}}></div>
+                        <button className='shipping-edit-window-save-button' onClick={() => completeEditShipping()}>
+                            <span className='shipping-edit-window-save-button-text'>완료</span>
+                        </button>
+                        <button className='shipping-add-window-cancel-button' onClick={() => {props.closeEvent()}}>
+                            <span className='shipping-add-window-cancel-button-text'>닫기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+function ShippingDeleteWindow(props) {
+    const dispatch = useDispatch();
+    const completeDeleteShipping = async() => {
+        const token = getCookie('token');
+        await axios.delete('https://api.madinbakery.com/shipping/'+(props.id), {
+            data: {
+                "token": token
+            }
+        });
+        const user = await authUser();
+        dispatch(saveShipping(user["shippings"]));
+        props.closeEvent();
+    }
+
+    if (props.isOn) {
+        return (
+            <div className='shipping-delete-window-background'>
+                <div className='shipping-delete-window'>
+                    <span className='shipping-delete-guide'>정말 삭제하시겠어요?</span>
+                    <div style={{'minHeight':'50px'}}></div>
+                    <button className='shipping-edit-window-save-button' onClick={() => completeDeleteShipping()}>
+                        <span className='shipping-edit-window-save-button-text'>삭제하기</span>
+                    </button>
+                    <div style={{'minHeight':'10px'}}></div>
+                    <button className='shipping-delete-window-cancel-button' onClick={() => {props.closeEvent()}}>
+                        <span className='shipping-delete-window-cancel-button-text'>닫기</span>
                     </button>
                 </div>
             </div>
