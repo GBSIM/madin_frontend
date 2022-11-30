@@ -31,7 +31,7 @@ export default function LoginButton(props) {
     }
 }
 
-function SocialLoginBox(props) {
+export function SocialLoginBox(props) {
     if (props.isOn) {
         return (
             <div className='social-login-box-background' >

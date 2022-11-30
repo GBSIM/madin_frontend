@@ -3,15 +3,17 @@ import './MobileFooter.css';
 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
 import { changePage } from '../../../../../_reducers/nav';
 
 import IconNavButton from '../../units/IconNavButton/IconNavButton';
+import { SocialLoginBox } from '../../units/LoginButton/LoginButton';
 
-export default function Footer() {
+export default function Footer(props) {
     return (
         <div className='footer'>
-            <MobileFooter></MobileFooter>
+            <MobileFooter isLogined={props.isLogined}></MobileFooter>
         </div>
     )
 }
@@ -20,12 +22,32 @@ function MobileFooter(props) {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const { page } = useSelector(state => state.nav);
+    const [isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn] = useState(false);
 
     const movePage = (nextPage) => {
         dispath(changePage(nextPage));
         navigate('/'+nextPage);
         window.scrollTo(0,0);
     }
+
+    const openSocialLoginBox = () => {
+        setSocialLoginBoxDisplayOn(true);
+    }
+
+    const closeSocialLoginBox = () => {
+        setSocialLoginBoxDisplayOn(false);
+    }
+
+    const moveToUser = () => {
+        if (props.isLogined) {
+            dispath(changePage('user'));
+            navigate('/user');
+            window.scrollTo(0,0);
+        } else {
+            openSocialLoginBox();
+        }
+    }
+
     return (
         <div className='mobile-footer'>
             <IconNavButton
@@ -54,8 +76,11 @@ function MobileFooter(props) {
                 deactivatedImage={require('../../../icons/user_grey.png')}
                 text='My'
                 isActivated={page==='user'}
-                clickEvent={movePage}
+                clickEvent={moveToUser}
                 clickEventInput='user'></IconNavButton>
+            <SocialLoginBox 
+                isOn={isSocialLoginBoxDisplayOn}
+                closeEvent={closeSocialLoginBox}></SocialLoginBox>
         </div>
     )
 }

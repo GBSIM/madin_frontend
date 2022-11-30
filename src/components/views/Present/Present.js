@@ -66,7 +66,7 @@ export default function Present() {
                 {MenuBlocks}
             </div>
             <div style={{'minHeight':'100px'}}></div>
-            <Footer />
+            <Footer isLogined={isLogined}/>
         </div>
     )
 }
