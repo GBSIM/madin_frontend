@@ -214,14 +214,14 @@ function ShippingAddWindow(props) {
     let DetailAddressInput;
     if (isBasicAddressSelected && !isDetailAddressSelected) {
         DetailAddressInput = 
-            <div className='shipping-add-window-detail-address-input-container'>
+            <div className='shipping-add-window-input-container'>
                 <div className='shipping-add-window-basic-address-frame'>
                     <span className='shipping-add-window-basic-address'>{basicAddress}</span>
                 </div>
-                <div className='shipping-add-window-detail-address-input-row'>
-                    <span className='shipping-add-window-detail-address-title'>상세 주소</span>
-                    <div className='shipping-add-window-detail-address-input-frame'>
-                        <input className='shipping-add-window-detail-address' value={detailAddress} onChange={updateDetailAddress}></input>
+                <div className='shipping-add-window-input-row'>
+                    <span className='shipping-add-window-title'>상세 주소</span>
+                    <div className='shipping-add-window-input-frame'>
+                        <input className='shipping-add-window-input' value={detailAddress} onChange={updateDetailAddress}></input>
                     </div>
                 </div>
                 <div style={{'minHeight':'50px'}}></div>
@@ -234,23 +234,23 @@ function ShippingAddWindow(props) {
     let ReceiverInput;
     if (isDetailAddressSelected) {
         ReceiverInput = 
-            <div className='shipping-add-window-detail-address-input-container'>
+            <div className='shipping-add-window-input-container'>
                 <div className='shipping-add-window-basic-address-frame'>
                     <span className='shipping-add-window-basic-address'>{basicAddress}</span>
                 </div>
                 <div className='shipping-add-window-basic-address-frame'>
                     <span className='shipping-add-window-basic-address'>{detailAddress}</span>
                 </div>
-                <div className='shipping-add-window-detail-address-input-row'>
-                    <span className='shipping-add-window-detail-address-title'>받는 사람</span>
-                    <div className='shipping-add-window-detail-address-input-frame'>
-                        <input className='shipping-add-window-detail-address' value={name} onChange={updateName}></input>
+                <div className='shipping-add-window-input-row'>
+                    <span className='shipping-add-window-title'>받는 사람</span>
+                    <div className='shipping-add-window-input-frame'>
+                        <input className='shipping-add-window-input' value={name} onChange={updateName}></input>
                     </div>
                 </div>
-                <div className='shipping-add-window-detail-address-input-row'>
-                    <span className='shipping-add-window-detail-address-title'>연락처</span>
-                    <div className='shipping-add-window-detail-address-input-frame'>
-                        <input className='shipping-add-window-detail-address' value={phone} onChange={updatePhone}></input>
+                <div className='shipping-add-window-input-row'>
+                    <span className='shipping-add-window-title'>연락처</span>
+                    <div className='shipping-add-window-input-frame'>
+                        <input className='shipping-add-window-input' value={phone} onChange={updatePhone}></input>
                     </div>
                 </div>
                 <div style={{'minHeight':'30px'}}></div>
@@ -318,35 +318,35 @@ function ShippingEditWindow(props) {
         return (
             <div className='shipping-edit-window-background'>
                 <div className='shipping-edit-window'>
-                    <div className='shipping-edit-window-detail-address-input-container'>
+                    <div className='shipping-edit-window-input-container'>
                         <div className='shipping-edit-window-basic-address-frame'>
                             <span className='shipping-edit-window-basic-address'>{props.basicAddress}</span>
                         </div>
                         <div className='shipping-edit-window-basic-address-frame'>
                             <span className='shipping-edit-window-basic-address'>{props.detailAddress}</span>
                         </div>
-                        <div className='shipping-edit-window-detail-address-input-row'>
-                            <span className='shipping-edit-window-detail-address-title'>받는 사람</span>
-                            <div className='shipping-edit-window-detail-address-input-frame'>
-                                <input className='shipping-edit-window-detail-address' value={name} onChange={updateName}></input>
+                        <div className='shipping-edit-window-input-row'>
+                            <span className='shipping-edit-window-title'>받는 사람</span>
+                            <div className='shipping-edit-window-input-frame'>
+                                <input className='shipping-edit-window-input' value={name} onChange={updateName}></input>
                             </div>
                         </div>
-                        <div className='shipping-edit-window-detail-address-input-row'>
-                            <span className='shipping-edit-window-detail-address-title'>연락처</span>
-                            <div className='shipping-edit-window-detail-address-input-frame'>
-                                <input className='shipping-edit-window-detail-address' value={phone} onChange={updatePhone}></input>
+                        <div className='shipping-edit-window-input-row'>
+                            <span className='shipping-edit-window-title'>연락처</span>
+                            <div className='shipping-edit-window-input-frame'>
+                                <input className='shipping-edit-window-input' value={phone} onChange={updatePhone}></input>
                             </div>
                         </div>
-                        <div className='shipping-edit-window-detail-address-input-row'>
-                            <span className='shipping-edit-window-detail-address-title'>주소 별명</span>
-                            <div className='shipping-edit-window-detail-address-input-frame'>
-                                <input className='shipping-edit-window-detail-address' value={tag} onChange={updateTag}></input>
+                        <div className='shipping-edit-window-input-row'>
+                            <span className='shipping-edit-window-title'>주소 별명</span>
+                            <div className='shipping-edit-window-input-frame'>
+                                <input className='shipping-edit-window-input' value={tag} onChange={updateTag}></input>
                             </div>
                         </div>
-                        <div className='shipping-edit-window-detail-address-input-row'>
-                            <span className='shipping-edit-window-detail-address-title'>요청사항</span>
-                            <div className='shipping-edit-window-detail-address-input-frame'>
-                                <input className='shipping-edit-window-detail-address' value={request} onChange={updateRequest}></input>
+                        <div className='shipping-edit-window-input-row'>
+                            <span className='shipping-edit-window-title'>요청사항</span>
+                            <div className='shipping-edit-window-input-frame'>
+                                <input className='shipping-edit-window-input' value={request} onChange={updateRequest}></input>
                             </div>
                         </div>
                         <div style={{'minHeight':'30px'}}></div>
