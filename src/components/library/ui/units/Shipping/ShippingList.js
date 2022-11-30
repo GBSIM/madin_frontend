@@ -16,6 +16,7 @@ import { saveShipping } from '../../../../../_reducers/user';
 
 export default function ShippingList(props) {
     const [isShippingAddWindowOn, setShippingAddWindowOn] = useState(false);
+    const [selectedShippingIndex, setSelectedShippingIndex] = useState(0);
 
     const openShippingAddWindow = () => {
         setShippingAddWindowOn(true);
@@ -25,11 +26,17 @@ export default function ShippingList(props) {
         setShippingAddWindowOn(false);
     }
 
+    const changeShippgngIndex = (index) => {
+        setSelectedShippingIndex(index);
+    }
+
     let Shippings;
     if (props.shippings) {
         if (props.shippings.length > 0) {
             Shippings = props.shippings.map((shipping,index) => (
                 <Shipping
+                    index={index}
+                    isChekced={index===selectedShippingIndex}
                     id={shipping["_id"]}
                     tag={shipping["tag"]}
                     basicAddress={shipping["basicAddress"]}
@@ -37,7 +44,8 @@ export default function ShippingList(props) {
                     phone={shipping["phone"]}
                     name={shipping["name"]}
                     request={shipping["request"]}
-                    key={'shipping_'+String(index)}></Shipping>
+                    key={'shipping_'+String(index)}
+                    checkButtonEvent={changeShippgngIndex}></Shipping>
             ))
         } else {
             Shippings = 
@@ -85,6 +93,21 @@ function Shipping(props) {
         setShippingDeleteWindowOn(false);
     }
 
+    let ShippingCheckButtonImage;
+    if (props.isChekced) {
+        ShippingCheckButtonImage = 
+            <img 
+                className='shipping-check-button-image'
+                src={require('../../../icons/check_orange.png')}
+                alt='check'></img>
+    } else {
+        ShippingCheckButtonImage = 
+            <img 
+                className='shipping-check-button-image'
+                src={require('../../../icons/check_grey.png')}
+                alt='check'></img>
+    }
+
     return (
         <div className='shipping'>
             <div className='shipping-left-container'>
@@ -100,11 +123,8 @@ function Shipping(props) {
             </div>
             <div style={{'flex':'1'}}></div>
             <div className='shipping-right-container'>
-                <button className='shipping-check-button'>
-                    <img 
-                        className='shipping-check-button-image'
-                        src={require('../../../icons/check_grey.png')}
-                        alt='check'></img>
+                <button className='shipping-check-button' onClick={() => props.checkButtonEvent(props.index)}>
+                    {ShippingCheckButtonImage}
                 </button>
             </div>
             <button className='shipping-edit-button' onClick={() => openShippingEditWindow()}>
@@ -126,7 +146,8 @@ function Shipping(props) {
             <ShippingDeleteWindow
                 id={props.id}
                 isOn={isShippingDeleteWindowOn}
-                closeEvent={closeShippingDeleteWindow}></ShippingDeleteWindow>
+                closeEvent={closeShippingDeleteWindow}
+                checkButtonEvent={props.checkButtonEvent}></ShippingDeleteWindow>
         </div>
     )
 }
@@ -354,6 +375,7 @@ function ShippingDeleteWindow(props) {
         const user = await authUser();
         dispatch(saveShipping(user["shippings"]));
         props.closeEvent();
+        props.checkButtonEvent(0);
     }
 
     if (props.isOn) {
