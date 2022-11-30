@@ -65,6 +65,7 @@ export default function Pickup() {
             <div className='pickup-menuclass-container'>
                 {MenuBlocks}
             </div>
+            <div style={{'minHeight':'100px'}}></div>
             <Footer />
         </div>
     )

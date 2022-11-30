@@ -21,7 +21,7 @@ export default function MenuBlock(props) {
                 <h2 className='menu-block-name'>{props.name}</h2>
                 <div style={{'minHeight':'5px'}}></div>
                 <span className='menu-block-intro'>{props.intro}</span>
-                <div style={{'minHeight':'30px'}}></div>
+                <div className='menu-block-spacer'></div>
                 <div className='menu-block-menu-container'>
                     {Menus}
                 </div>

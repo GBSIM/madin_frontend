@@ -65,6 +65,7 @@ export default function Main() {
             <div className='main-menuclass-container'>
                 {MenuBlocks}
             </div>
+            <div style={{'minHeight':'100px'}}></div>
             <Footer />
         </div>
     )

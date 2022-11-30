@@ -38,3 +38,19 @@
     color: #767676;
     font-weight: 500;
 }
+
+@media (max-width: 700px) {
+    .menu-image-container {
+        width: 150px;
+        height: 150px;
+    }
+    .menu-image-button {
+        border-radius: 6px;
+    }
+    .menu-name {
+        font-size: 14px;
+    }
+    .menu-price {
+        font-size: 14px;
+    }
+}
