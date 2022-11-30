@@ -1,6 +1,7 @@
 import './Header.css';
 import './DesktopHeader.css';
 import './DesktopNavContainer.css';
+import './MobileHeader.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,7 @@ export default function Header(props) {
     return (
         <div className='header'>
             <DesktopHeader isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
+            <MobileHeader></MobileHeader>
         </div>
     )
 }
@@ -61,6 +63,20 @@ function DesktopAccountButtons(props) {
         <div className='desktop-header-account-container'>
             <LoginButton isLogined={props.isLogined}/>
             <UserButton isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
+        </div>
+    )
+}
+
+function MobileHeader(props) {
+    return (
+        <div className='mobile-header'>
+            <div className='mobile-header-brand-icon-container'>
+                <img src={require('../../../images/logo_text.png')} alt='logo'></img>
+            </div>
+            <div style={{'flex':'1'}}></div>
+            <button className='mobile-header-alert-button'>
+                <img className='mobile-hedaer-alert-button-image' src={require('../../../icons/alert_grey.png')} alt='alert'></img>
+            </button>
         </div>
     )
 }

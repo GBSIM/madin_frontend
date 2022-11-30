@@ -15,3 +15,12 @@
     background: #fff;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;
 }
+
+@media (max-width: 700px) {
+    .header {
+        height: 50px;
+        box-shadow: none;
+        background: rgba(249, 249, 249, 0.8);
+        backdrop-filter: blur(10px);
+    }
+}
