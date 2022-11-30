@@ -1,0 +1,33 @@
+.orderer {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orderer-title {
+    color: #141414;
+}
+
+.orderer-item {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.orderer-items-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.orderer-item-text {
+    color: #464646;
+    font-weight: 500;
+}
