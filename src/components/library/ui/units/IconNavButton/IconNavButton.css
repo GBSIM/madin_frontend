@@ -1,0 +1,26 @@
+.icon-nav-button {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-nav-button-image {
+    width: 36px;
+    height: 36px;
+}
+
+.icon-nav-button-text {
+    font-size: 10px;
+    color: #CDCDCD;
+}
+
+.icon-nav-button-text.activated {
+    color: #EB5C2E;
+}
+
+.icon-nav-button-text.deactivated {
+    color: #CDCDCD;
+}
+

@@ -10,6 +10,7 @@ import { login, saveName, saveCart } from '../../../_reducers/user';
 import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';
 import MenuBlock from '../../library/ui/components/MenuBlock/MenuBlock';
+import Footer from '../../library/ui/components/Footer/Footer';
 
 export default function Main() {
     let MenuBlocks;
@@ -64,6 +65,7 @@ export default function Main() {
             <div className='main-menuclass-container'>
                 {MenuBlocks}
             </div>
+            <Footer />
         </div>
     )
 }
