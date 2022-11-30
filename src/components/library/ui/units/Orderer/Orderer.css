@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .orderer-title {
@@ -22,12 +23,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 15px;
+    row-gap: 10px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 .orderer-item-text {
     color: #464646;
     font-weight: 500;
+}
+
+
+.orderer-edit-button {
+    position: absolute;
+    right: 0px;
+    bottom: 5px;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.orderer-edit-button-text {
+    color: #AAA;
+    font-size: 12px;
+    font-weight: 400;
 }
