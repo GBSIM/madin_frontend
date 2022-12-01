@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { changePage } from '../../../../../_reducers/nav';
 
 import IconNavButton from '../../units/IconNavButton/IconNavButton';
-import { SocialLoginBox } from '../../units/LoginButton/LoginButton';
 
 export default function Footer(props) {
     return (
@@ -22,7 +21,6 @@ function MobileFooter(props) {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const { page } = useSelector(state => state.nav);
-    const [isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn] = useState(false);
 
     const movePage = (nextPage) => {
         dispath(changePage(nextPage));
@@ -30,21 +28,11 @@ function MobileFooter(props) {
         window.scrollTo(0,0);
     }
 
-    const openSocialLoginBox = () => {
-        setSocialLoginBoxDisplayOn(true);
-    }
-
-    const closeSocialLoginBox = () => {
-        setSocialLoginBoxDisplayOn(false);
-    }
-
     const moveToUser = () => {
         if (props.isLogined) {
             dispath(changePage('user'));
             navigate('/user');
             window.scrollTo(0,0);
-        } else {
-            openSocialLoginBox();
         }
     }
 
@@ -78,9 +66,6 @@ function MobileFooter(props) {
                 isActivated={page==='user'}
                 clickEvent={moveToUser}
                 clickEventInput='user'></IconNavButton>
-            <SocialLoginBox 
-                isOn={isSocialLoginBoxDisplayOn}
-                closeEvent={closeSocialLoginBox}></SocialLoginBox>
         </div>
     )
 }
