@@ -16,6 +16,8 @@ import Pickup from './components/views/Pickup/Pickup';
 import DeliveryCart from './components/views/Cart/DeliveryCart';
 import DeliveryOrder from './components/views/Order/DeliveryOrder';
 import UserOrder from './components/views/User/UserOrder';
+import UserShipping from './components/views/User/UserShipping';
+import UserCoupon from './components/views/User/UserCoupon';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +36,10 @@ function App() {
     } else if (window.location.pathname === "/order/devliery") {
       dispatch(changePage('main'));
     } else if (window.location.pathname === "/user/order") {
+      dispatch(changePage('user'));
+    } else if (window.location.pathname === "/user/shipping") {
+      dispatch(changePage('user'));
+    } else if (window.location.pathname === "/user/coupon") {
       dispatch(changePage('user'));
     } else {
       dispatch(changePage('main'));
@@ -54,6 +60,10 @@ function App() {
     dispatch(changePage('main'));
   } else if (window.location.pathname === "/user/order") {
     dispatch(changePage('user'));
+  } else if (window.location.pathname === "/user/shipping") {
+    dispatch(changePage('user'));
+  } else if (window.location.pathname === "/user/coupon") {
+    dispatch(changePage('user'));
   } else {
     dispatch(changePage('main'));
   } 
@@ -69,6 +79,8 @@ function App() {
           <Route exact path="/cart/delivery" element={<DeliveryCart/>} />
           <Route exact path="/order/delivery" element={<DeliveryOrder/>} />
           <Route exact path="/user/order" element={<UserOrder/>} />
+          <Route exact path="/user/shipping" element={<UserShipping/>} />
+          <Route exact path="/user/coupon" element={<UserCoupon/>} />
         </Routes>
       </div>
     </Router>

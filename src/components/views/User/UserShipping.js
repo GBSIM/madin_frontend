@@ -13,7 +13,7 @@ import UserClass from '../../library/ui/units/UserClass/UserClass';
 import Mileage from '../../library/ui/units/Mileage/Mileage';
 import UserNav from '../../library/ui/units/UserNav/UserNav';
 
-export default function UserOrder() {
+export default function UserShipping() {
     const { isLogined, name, cart, userClass, mileage } = useSelector(state => state.user);
 
     const dispatch = useDispatch();
@@ -53,7 +53,7 @@ export default function UserOrder() {
                 <div style={{'minHeight':'20px'}}></div>
                 <Mileage mileage={mileage}></Mileage>
                 <div style={{'minHeight':'40px'}}></div>
-                <UserNav page='order'></UserNav>
+                <UserNav page='shipping'></UserNav>
             </div>
         </div>
     )
