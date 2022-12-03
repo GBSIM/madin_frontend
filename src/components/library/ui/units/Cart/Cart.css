@@ -44,6 +44,10 @@
 }
 
 .cart-order-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     padding: 6px 20px 6px 20px;
     border-radius: 6px;
     background: #EB5C2E;
