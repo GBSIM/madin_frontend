@@ -13,9 +13,10 @@ import UserClass from '../../library/ui/units/UserClass/UserClass';
 import Mileage from '../../library/ui/units/Mileage/Mileage';
 import UserNav from '../../library/ui/units/UserNav/UserNav';
 import Footer from '../../library/ui/components/Footer/Footer';
+import ShippingList from '../../library/ui/units/Shipping/ShippingList';
 
 export default function UserShipping() {
-    const { isLogined, name, cart, userClass, mileage } = useSelector(state => state.user);
+    const { isLogined, name, cart, userClass, mileage, shippings } = useSelector(state => state.user);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -55,6 +56,9 @@ export default function UserShipping() {
                 <Mileage mileage={mileage}></Mileage>
                 <div style={{'minHeight':'40px'}}></div>
                 <UserNav page='shipping'></UserNav>
+                <div style={{'minHeight':'40px'}}></div>
+                <ShippingList shippings={shippings}></ShippingList>
+                <div style={{'minHeight':'100px'}}></div>
             </div>
             <Footer isLogined={isLogined}/>
         </div>
