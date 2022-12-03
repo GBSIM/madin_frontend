@@ -15,9 +15,10 @@
     }
 }
 
-.mobile-header-brand-icon-container {
+.mobile-header-brand-icon-button {
     width: 65px;
     height: 26px;
+    padding: 0px;
 }
 
 .mobile-header-alert-button {

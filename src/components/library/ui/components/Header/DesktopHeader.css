@@ -9,10 +9,11 @@
     max-width: 1440px;
 }
 
-.desktop-header-brand-icon-container {
+.desktop-header-brand-icon-button {
     width: 90px;
     height: 36px;
     flex-shrink: 0;
+    padding: 0px
 }
 
 .desktop-header-nav-container {

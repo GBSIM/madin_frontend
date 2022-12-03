@@ -23,11 +23,20 @@ export default function Header(props) {
 }
 
 function DesktopHeader(props) {
+    const navigate = useNavigate();
+    const dispath = useDispatch();
+
+    const moveToMain = (nextPage) => {
+        dispath(changePage('main'));
+        navigate('/main');
+        window.scrollTo(0,0);
+    }
+
     return (
         <div className='desktop-header'>
-            <div className='desktop-header-brand-icon-container'>
+            <button className='desktop-header-brand-icon-button' onClick={() => moveToMain()}>
                 <img src={require('../../../images/logo_text.png')} alt='logo'></img>
-            </div>
+            </button>
             <div className='desktop-header-nav-container'>
                 <DesktopNavContainer />
             </div>
@@ -69,6 +78,15 @@ function DesktopAccountButtons(props) {
 }
 
 function MobileHeader(props) {
+    const navigate = useNavigate();
+    const dispath = useDispatch();
+
+    const moveToMain = (nextPage) => {
+        dispath(changePage('main'));
+        navigate('/main');
+        window.scrollTo(0,0);
+    }
+
     let UserButtons;
     if (props.isLogined) {
         UserButtons =
@@ -82,9 +100,9 @@ function MobileHeader(props) {
     }
     return (
         <div className='mobile-header'>
-            <div className='mobile-header-brand-icon-container'>
+            <button className='mobile-header-brand-icon-button' onClick={() => {moveToMain()}}>
                 <img src={require('../../../images/logo_text.png')} alt='logo'></img>
-            </div>
+            </button>
             <div style={{'flex':'1'}}></div>
             {UserButtons}
         </div>
