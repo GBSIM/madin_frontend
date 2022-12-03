@@ -19,7 +19,7 @@ export default function UserClass(props) {
                 <div className='user-class-class-container'>
                     <h3 className='user-class-class'>{classText}</h3>    
                 </div>
-                <h1 className='user-class-name'>{props.name}</h1>
+                <h1 className='user-class-name'>{props.name}님</h1>
             </div>
             <div style={{'minHeight':'5px'}}></div>
             <button className='user-class-guide'>
