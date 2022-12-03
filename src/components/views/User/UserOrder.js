@@ -1,19 +1,19 @@
 import './User.css';
 
-import axios from 'axios';
-import { useEffect,useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
-import { login, logout, saveName, saveCart, saveUserClass } from '../../../_reducers/user';
+import { login, logout, saveUserInfo } from '../../../_reducers/user';
 import { changePage } from '../../../_reducers/nav'
 
 import Header from '../../library/ui/components/Header/Header';
 import UserClass from '../../library/ui/units/UserClass/UserClass';
+import Mileage from '../../library/ui/units/Mileage/Mileage';
 
 export default function UserOrder() {
-    const { isLogined, name, cart, userClass } = useSelector(state => state.user);
+    const { isLogined, name, cart, userClass, mileage } = useSelector(state => state.user);
 
     const dispath = useDispatch();
     const navigate = useNavigate();
@@ -30,17 +30,13 @@ export default function UserOrder() {
         if (code != null) {
             KakaoRedirectHandler().then((user) => {
                 dispath(login());
-                dispath(saveName(user["name"]));
-                dispath(saveCart(user["cart"]));
-                dispath(saveUserClass(user["class"]));
+                dispath(saveUserInfo(user));
             });
         }
         authUser().then((user) => {
             if (user) {
                 dispath(login());
-                dispath(saveName(user["name"]));
-                dispath(saveCart(user["cart"]));
-                dispath(saveUserClass(user["class"]));
+                dispath(saveUserInfo(user));
             } else {
                 dispath(logout());
                 moveToMain();
@@ -53,6 +49,8 @@ export default function UserOrder() {
             <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
             <div className='user-container'>
                 <UserClass name={name} class={userClass}></UserClass>
+                <div style={{'minHeight':'20px'}}></div>
+                <Mileage mileage={mileage}></Mileage>
             </div>
         </div>
     )

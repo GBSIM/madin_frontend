@@ -21,7 +21,7 @@ export default function UserClass(props) {
                 </div>
                 <h1 className='user-class-name'>{props.name}</h1>
             </div>
-            <div style={{'minHeight':'3px'}}></div>
+            <div style={{'minHeight':'5px'}}></div>
             <button className='user-class-guide'>
                 <span className='user-class-guide-text'>Madin의 등급 제도가 궁금하다면?</span>
             </button>
