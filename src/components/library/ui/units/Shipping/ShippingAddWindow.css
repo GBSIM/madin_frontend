@@ -74,13 +74,15 @@
 .shipping-add-window-input-frame {
     background: #fff;
     border: 1px solid #D1D1D1;
-    height: 34px;
-    width: 290px;
+    height: 34px;    
+    flex: 1;
+    min-width: 100px;
     border-radius: 6px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .shipping-add-window-title {
@@ -94,6 +96,7 @@
     font-size: 14px;
     margin: 0px;
     padding: 0px;
+    width: 100%;
 }
 
 .shipping-add-window-input:focus {
