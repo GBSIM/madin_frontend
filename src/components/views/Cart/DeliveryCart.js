@@ -37,7 +37,7 @@ export default function DeliveryCart() {
     return (
         <div className='page'>
             <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
-            <div style={{'minHeight':'60px'}}></div>
+            <div className='delivery-cart-top-spacer'></div>
             <div className='cart-container'>
                 <Cart cart={cart}></Cart>
             </div>

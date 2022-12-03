@@ -243,11 +243,12 @@ function CartMenu(props) {
     return (
         <div className='cart-menu'>
             {CheckButton}
-            <div style={{'minWidth':'20px'}}></div>
+            <div className='cart-menu-horizontal-spacer'></div>
             <img className='cart-menu-image' alt='menu' src={props.image}></img>
-            <div style={{'minWidth':'20px'}}></div>
+            <div className='cart-menu-horizontal-spacer'></div>
             <span className='cart-menu-name'>{props.name}</span>
             <div style={{'flex':'1'}}></div>
+            <div className='cart-menu-horizontal-spacer'></div>
             <div className='cart-menu-right-container'>
                 <div className='cart-menu-quantity-controller'>
                     {MinusButton}

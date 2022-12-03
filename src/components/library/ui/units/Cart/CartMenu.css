@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.cart-menu-horizontal-spacer {
+    min-width: 20px;
+}
+
 .cart-menu-select-button {
     width: 28px;
     height: 28px;
@@ -80,4 +84,20 @@
     font-size: 12px;
     color: #C8C8C8;
     font-weight: 400;
+}
+
+@media (max-width: 700px) {
+    .cart-menu {
+        height: 120px;
+    }
+    .cart-menu-image {
+        width: 90px;
+        height: 90px;
+    }
+    .cart-menu-quantity-controller {
+        width: 80px;
+    }
+    .cart-menu-horizontal-spacer {
+        min-width: 15px;
+    }
 }
