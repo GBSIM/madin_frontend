@@ -3,10 +3,12 @@ import './DeliveryOrder.css';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { KakaoRedirectHandler, authUser } from '../../library/ui/units/LoginButton/KakaoLogin';
 
-import { login, saveCart, saveName, saveShipping, saveEmail, savePhone } from '../../../_reducers/user';
+import { login, logout, saveCart, saveName, saveShipping, saveEmail, savePhone } from '../../../_reducers/user';
+import { changePage } from '../../../_reducers/nav'
 
 import Header from '../../library/ui/components/Header/Header';
 import OrderSheet from '../../library/ui/units/OrderSheet/OrderSheet';
@@ -17,6 +19,12 @@ export default function DeliveryOrder() {
     const dispath = useDispatch();
 
     const { isLogined, name, email, phone, cart, shippings } = useSelector(state => state.user);
+    const navigate = useNavigate();
+    const moveToMain = () => {
+        dispath(changePage('main'));
+        navigate('/main');
+        window.scrollTo(0,0);
+    }
 
     useEffect(() => {
         const href = window.location.href;
@@ -40,6 +48,9 @@ export default function DeliveryOrder() {
                 dispath(saveShipping(user["shippings"]));
                 dispath(saveEmail(user["email"]));
                 dispath(savePhone(user["phone"]));
+            } else {
+                dispath(logout());
+                moveToMain();
             }
         })
     }, []);

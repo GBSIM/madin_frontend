@@ -33,7 +33,12 @@ const user = (state = initialState, action) => {
         case LOGOUT:
             return {
                 ...state,
-                isLogined: false
+                isLogined: false,
+                name: "",
+                cart: [],
+                shippings: [],
+                email: "",
+                phone: "",
             }
         case SAVE_NAME:
             return {

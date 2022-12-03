@@ -5,7 +5,7 @@ import { useEffect,useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
-import { login, saveName, saveCart } from '../../../_reducers/user';
+import { login, logout, saveName, saveCart } from '../../../_reducers/user';
 
 import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';
@@ -45,6 +45,8 @@ export default function Main() {
                 dispath(login());
                 dispath(saveName(user["name"]));
                 dispath(saveCart(user["cart"]));
+            } else {
+                dispath(logout());
             }
         })
     }, []);
