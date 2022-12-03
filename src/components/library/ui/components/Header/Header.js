@@ -17,7 +17,7 @@ export default function Header(props) {
     return (
         <div className='header'>
             <DesktopHeader isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
-            <MobileHeader cartNumber={props.cartNumber}></MobileHeader>
+            <MobileHeader isLogined={props.isLogined} cartNumber={props.cartNumber}></MobileHeader>
         </div>
     )
 }
@@ -69,17 +69,24 @@ function DesktopAccountButtons(props) {
 }
 
 function MobileHeader(props) {
+    let UserButtons;
+    if (props.isLogined) {
+        UserButtons =
+        <div>
+            <MobileUserCart cartNumber={props.cartNumber}></MobileUserCart>
+            <div style={{'minWidth':'5px'}}></div>
+            <button className='mobile-header-alert-button'>
+                <img className='mobile-hedaer-alert-button-image' src={require('../../../icons/alert_grey.png')} alt='alert'></img>
+            </button>
+        </div>
+    }
     return (
         <div className='mobile-header'>
             <div className='mobile-header-brand-icon-container'>
                 <img src={require('../../../images/logo_text.png')} alt='logo'></img>
             </div>
             <div style={{'flex':'1'}}></div>
-            <MobileUserCart cartNumber={props.cartNumber}></MobileUserCart>
-            <div style={{'minWidth':'5px'}}></div>
-            <button className='mobile-header-alert-button'>
-                <img className='mobile-hedaer-alert-button-image' src={require('../../../icons/alert_grey.png')} alt='alert'></img>
-            </button>
+            {UserButtons}
         </div>
     )
 }
