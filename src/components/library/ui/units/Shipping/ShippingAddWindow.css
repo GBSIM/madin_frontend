@@ -15,6 +15,7 @@
 }
 
 .shipping-add-window {
+    max-width: 90%;
     width: 400px;
     background: #fff;
     border-radius: 10px;
