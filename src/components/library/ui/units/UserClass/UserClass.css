@@ -1,0 +1,47 @@
+.user-class {
+    width: 600px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.user-class-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 10px;
+}
+
+.user-class-class-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #EB5C2E;
+    background: #fff;
+    border-radius: 50px;
+}
+
+.user-class-class {
+    color: #EB5C2E;
+}
+
+.user-class-name {
+    color: #676767;
+}
+
+.user-class-guide {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-class-guide-text {
+    color: #B6B6B6;
+    font-size: 14px;
+    margin-left: 5px;
+}

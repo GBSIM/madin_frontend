@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
 import { login, logout, saveName, saveCart } from '../../../_reducers/user';
+import { changePage } from '../../../_reducers/nav'
 
 import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';

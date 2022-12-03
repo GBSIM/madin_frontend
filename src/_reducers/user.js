@@ -5,6 +5,7 @@ export const SAVE_CART = "USER/SAVE_CART";
 export const SAVE_SHIPPING = "USER/SAVE_SHIPPING";
 export const SAVE_EMAIL = "USER/SAVE_EMAIL";
 export const SAVE_PHONE = "USER/SAVE_PHONE";
+export const SAVE_USERCLASS = "USER/SAVE_USERCLASS";
 
 export const login = () => ({type:LOGIN});
 export const logout = () => ({type:LOGOUT});
@@ -13,6 +14,7 @@ export const saveCart = (cart) => ({type:SAVE_CART, cart: cart});
 export const saveShipping = (shippings) => ({type:SAVE_SHIPPING, shippings: shippings});
 export const saveEmail = (email) => ({type:SAVE_EMAIL, email: email});
 export const savePhone = (phone) => ({type:SAVE_PHONE, phone: phone});
+export const saveUserClass = (userClass) => ({type:SAVE_USERCLASS, userClass: userClass});
 
 const initialState = {
     isLogined: false,
@@ -21,6 +23,7 @@ const initialState = {
     shippings: [],
     email: "",
     phone: "",
+    userClass: 0,
 }
 
 const user = (state = initialState, action) => {
@@ -64,6 +67,11 @@ const user = (state = initialState, action) => {
             return {
                 ...state,
                 phone: action.phone
+            }
+        case SAVE_USERCLASS:
+            return {
+                ...state,
+                userClass: action.userClass
             }
         default:
             return state;

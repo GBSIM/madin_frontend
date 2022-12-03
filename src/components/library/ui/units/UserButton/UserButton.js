@@ -41,13 +41,20 @@ export default function UserButton(props) {
 }
 
 function UserMenus(props) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const moveToUser = (detailPage) => {
+        dispatch(changePage('user'));
+        navigate('/user/'+detailPage);
+        window.scrollTo(0,0);
+    }
+
     if (props.isOn) {
         return (
             <div className='user-menus'>
-                <UserMenuButton text='주문내역'></UserMenuButton>
-                <UserMenuButton text='배송지 관리'></UserMenuButton>
-                <UserMenuButton text='적립금'></UserMenuButton>
-                <UserMenuButton text='쿠폰'></UserMenuButton>
+                <UserMenuButton text='주문내역' clickEvent={moveToUser} clickEventInput='order'></UserMenuButton>
+                <UserMenuButton text='배송지 관리' clickEvent={moveToUser} clickEventInput='shipping'></UserMenuButton>
+                <UserMenuButton text='쿠폰' clickEvent={moveToUser} clickEventInput='coupon'></UserMenuButton>
                 <UserLogoutButton />
             </div>
         )
