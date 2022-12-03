@@ -14,7 +14,6 @@ export default function LoginButton(props) {
         } else {
             setSocialLoginBoxDisplayOn(true);
         }
-        console.log(isSocialLoginBoxDisplayOn);
     }
 
     if (!props.isLogined) {
