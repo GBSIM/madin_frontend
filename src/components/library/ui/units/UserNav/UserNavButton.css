@@ -5,6 +5,10 @@
     background: #fff;
     border: 1px solid #E0E0E0;
     border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-nav-button.on {
