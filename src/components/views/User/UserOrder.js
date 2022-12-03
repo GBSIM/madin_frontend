@@ -13,6 +13,7 @@ import UserClass from '../../library/ui/units/UserClass/UserClass';
 import Mileage from '../../library/ui/units/Mileage/Mileage';
 import UserNav from '../../library/ui/units/UserNav/UserNav';
 import Footer from '../../library/ui/components/Footer/Footer';
+import OrderHistory from '../../library/ui/units/OrderHistory/OrderHistory';
 
 export default function UserOrder() {
     const { isLogined, name, cart, userClass, mileage } = useSelector(state => state.user);
@@ -55,6 +56,10 @@ export default function UserOrder() {
                 <Mileage mileage={mileage}></Mileage>
                 <div style={{'minHeight':'40px'}}></div>
                 <UserNav page='order'></UserNav>
+                <div style={{'minHeight':'40px'}}></div>
+                <OrderHistory>
+                <div style={{'minHeight':'100px'}}></div>
+                </OrderHistory>
             </div>
             <Footer isLogined={isLogined}/>
         </div>

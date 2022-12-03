@@ -1,0 +1,11 @@
+.order-history {
+    max-width: 100%;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-history-title {
+    color: #6A6A6A;
+}
