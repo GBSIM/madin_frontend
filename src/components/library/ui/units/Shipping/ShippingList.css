@@ -1,4 +1,5 @@
 .shipping-list {
+    max-width: 100%;
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -18,4 +19,11 @@
     color: #606060;
     padding-bottom: 20px;
     border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 700px) {
+    .shipping-list {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }

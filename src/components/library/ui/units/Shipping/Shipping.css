@@ -89,3 +89,12 @@
     font-size: 12px;
     font-weight: 400;
 }
+
+@media (max-width: 700px) {
+    .shipping-tag-container {
+        padding: 5px 10px 5px 10px;
+    }
+    .shipping-tag {
+        font-size: 11px;
+    }
+}

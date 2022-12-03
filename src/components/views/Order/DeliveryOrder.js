@@ -48,13 +48,9 @@ export default function DeliveryOrder() {
         <div className='page'>
             <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
             <div className='order-container'>
-                <div style={{'minHeight':'60px'}}></div>
                 <OrderSheet cart={cart}></OrderSheet>
-                <div style={{'minHeight':'60px'}}></div>
                 <ShippingList shippings={shippings}></ShippingList>
-                <div style={{'minHeight':'60px'}}></div>
-                <Orderer name={name} email={email} phone={phone}></Orderer>
-                <div style={{'minHeight':'100px'}}></div>
+                <Orderer name={name} email={email} phone={phone}></Orderer>                
             </div>
         </div>
     )

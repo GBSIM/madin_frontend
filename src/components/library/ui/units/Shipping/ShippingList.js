@@ -115,11 +115,11 @@ function Shipping(props) {
                     <span className='shipping-tag'>{props.tag}</span>
                 </div>
                 <div style={{'minHeight':'10px'}}></div>
-                <div className='shipping-address'>{props.basicAddress} {props.detailAddress}</div>
+                <span className='shipping-address'>{props.basicAddress} {props.detailAddress}</span>
                 <div style={{'minHeight':'5px'}}></div>
-                <div className='shipping-name'>{props.name}, {props.phone}</div>
+                <span className='shipping-name'>{props.name}, {props.phone}</span>
                 <div style={{'minHeight':'5px'}}></div>
-                <div className='shipping-request'>{props.request}</div>
+                <span className='shipping-request'>{props.request}</span>
             </div>
             <div style={{'flex':'1'}}></div>
             <div className='shipping-right-container'>
