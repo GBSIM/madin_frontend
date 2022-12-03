@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import TextNavButton from '../../units/TextNavButton/TextNavButton';
 import LoginButton from '../../units/LoginButton/LoginButton';
 import UserButton from '../../units/UserButton/UserButton';
+import { MobileUserCart } from '../../units/UserButton/UserButton';
 
 import { changePage } from '../../../../../_reducers/nav';
 
@@ -16,7 +17,7 @@ export default function Header(props) {
     return (
         <div className='header'>
             <DesktopHeader isLogined={props.isLogined} name={props.name} cartNumber={props.cartNumber}/>
-            <MobileHeader></MobileHeader>
+            <MobileHeader cartNumber={props.cartNumber}></MobileHeader>
         </div>
     )
 }
@@ -74,6 +75,8 @@ function MobileHeader(props) {
                 <img src={require('../../../images/logo_text.png')} alt='logo'></img>
             </div>
             <div style={{'flex':'1'}}></div>
+            <MobileUserCart cartNumber={props.cartNumber}></MobileUserCart>
+            <div style={{'minWidth':'5px'}}></div>
             <button className='mobile-header-alert-button'>
                 <img className='mobile-hedaer-alert-button-image' src={require('../../../icons/alert_grey.png')} alt='alert'></img>
             </button>

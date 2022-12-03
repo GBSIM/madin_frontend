@@ -2,6 +2,7 @@ import './UserButton.css';
 import './UserMenus.css';
 import './UserCart.css';
 import './UserLike.css';
+import './MobileUserCart.css';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -127,7 +128,6 @@ function UserCart(props) {
             </button>
             {CartNumber}
         </div>
-        
     )
 }
 
@@ -136,5 +136,49 @@ function UserLike() {
         <button className='user-like'>
             <img src={require('../../../icons/heart_grey.png')} className='user-like-image' alt='like'></img>
         </button>
+    )
+}
+
+export function MobileUserCart(props) {
+    const navigate = useNavigate();
+    const moveToCart = () => {
+        let cartName;
+        switch (window.location.pathname) {
+            case "/":
+                cartName='delivery';
+                break;
+            case "/main":
+                cartName='delivery';
+                break;
+            case "/present":
+                cartName='present';
+                break;
+            case "/pickup":
+                cartName='pickup';
+                break;
+            default:
+                cartName='delivery';   
+        }
+        
+        navigate('/cart/'+cartName);
+        window.scrollTo(0,0);
+    }
+    let CartNumber;
+    if (props.number > 0) {
+        CartNumber = 
+            <button className='mobile-cart-number' onClick={() => moveToCart()}>
+                <span className='mobile-cart-number-text'>
+                    {props.number}
+                </span>
+            </button>
+    }
+
+    return (
+        <div className='mobile-user-cart-container'>
+            <button className='mobile-user-cart' onClick={() => moveToCart()}>
+                <img src={require('../../../icons/mobile_cart_grey.png')} className='mobile-user-cart-image' alt='cart'></img>
+            </button>
+            {CartNumber}
+        </div>
     )
 }
