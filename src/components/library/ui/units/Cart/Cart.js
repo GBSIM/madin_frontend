@@ -21,6 +21,24 @@ export default function Cart(props) {
         }
     })
 
+    let isNoMenu = false;
+    if (props.cart) {
+        if (props.cart.length === 0) {
+            isAllChecked = false;
+            isNoMenu = true;
+        }
+    }
+
+    let CartAddGuide;
+    if (isNoMenu) {
+        CartAddGuide =
+            <div className='cart-add-guide'>
+                <span className='cart-add-guide-text'>
+                    장바구니에 상품을 담아주세요.
+                </span>
+            </div>
+    }
+
     const setAllChecked = async() => {
         const token = getCookie('token');
         if (token) {
@@ -132,6 +150,7 @@ export default function Cart(props) {
             </div>
             <div style={{'minHeight':'10px'}}></div>
             <div style={{'width':'100%','minHeight':'1px','background':'#c6c6c6'}}></div>
+            {CartAddGuide}
             {CartMenus}
             <div style={{'minHeight':'20px'}}></div>
             <div className='cart-order-button-container'>
