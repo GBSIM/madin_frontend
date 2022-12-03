@@ -8,3 +8,9 @@
     column-gap: 20px;
     justify-content: space-around;
 }
+
+@media (max-width: 700px) {
+    .user-nav {
+        column-gap: 10px;
+    }
+}
