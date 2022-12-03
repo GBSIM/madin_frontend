@@ -1,0 +1,20 @@
+.user-nav-button {
+    flex: 1;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #fff;
+    border: 1px solid #E0E0E0;
+    border-radius: 100px;
+}
+
+.user-nav-button.on {
+    border: 1px solid #EB5C2E;
+}
+
+.user-nav-button-text {
+    color: #E0E0E0;
+}
+
+.user-nav-button-text.on {
+    color: #EB5C2E;
+}

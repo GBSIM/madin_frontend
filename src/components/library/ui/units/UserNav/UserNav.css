@@ -1,0 +1,10 @@
+.user-nav {
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 100%;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    justify-content: space-around;
+}

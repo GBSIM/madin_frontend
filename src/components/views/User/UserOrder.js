@@ -11,14 +11,15 @@ import { changePage } from '../../../_reducers/nav'
 import Header from '../../library/ui/components/Header/Header';
 import UserClass from '../../library/ui/units/UserClass/UserClass';
 import Mileage from '../../library/ui/units/Mileage/Mileage';
+import UserNav from '../../library/ui/units/UserNav/UserNav';
 
 export default function UserOrder() {
     const { isLogined, name, cart, userClass, mileage } = useSelector(state => state.user);
 
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const moveToMain = () => {
-        dispath(changePage('main'));
+        dispatch(changePage('main'));
         navigate('/main');
         window.scrollTo(0,0);
     }
@@ -29,16 +30,16 @@ export default function UserOrder() {
         let code = params.get("code");
         if (code != null) {
             KakaoRedirectHandler().then((user) => {
-                dispath(login());
-                dispath(saveUserInfo(user));
+                dispatch(login());
+                dispatch(saveUserInfo(user));
             });
         }
         authUser().then((user) => {
             if (user) {
-                dispath(login());
-                dispath(saveUserInfo(user));
+                dispatch(login());
+                dispatch(saveUserInfo(user));
             } else {
-                dispath(logout());
+                dispatch(logout());
                 moveToMain();
             }
         })
@@ -51,6 +52,8 @@ export default function UserOrder() {
                 <UserClass name={name} class={userClass}></UserClass>
                 <div style={{'minHeight':'20px'}}></div>
                 <Mileage mileage={mileage}></Mileage>
+                <div style={{'minHeight':'40px'}}></div>
+                <UserNav></UserNav>
             </div>
         </div>
     )
