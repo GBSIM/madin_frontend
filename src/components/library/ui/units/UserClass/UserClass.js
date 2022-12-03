@@ -1,16 +1,16 @@
 import './UserClass.css';
 
 export default function UserClass(props) {
-    let classText = "green";
+    let classText = "Green";
     switch (props.class) {
         case 0:
-            classText="green"
+            classText="Green"
         case 1:
-            classText="yellow"
+            classText="Yellow"
         case 2:
-            classText="orange"
+            classText="Orange"
         default:
-            classText="green"
+            classText="Green"
     }
 
     return (

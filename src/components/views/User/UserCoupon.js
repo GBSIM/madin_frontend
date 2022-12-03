@@ -12,6 +12,7 @@ import Header from '../../library/ui/components/Header/Header';
 import UserClass from '../../library/ui/units/UserClass/UserClass';
 import Mileage from '../../library/ui/units/Mileage/Mileage';
 import UserNav from '../../library/ui/units/UserNav/UserNav';
+import Footer from '../../library/ui/components/Footer/Footer';
 
 export default function UserCoupon() {
     const { isLogined, name, cart, userClass, mileage } = useSelector(state => state.user);
@@ -55,6 +56,7 @@ export default function UserCoupon() {
                 <div style={{'minHeight':'40px'}}></div>
                 <UserNav page='coupon'></UserNav>
             </div>
+            <Footer isLogined={isLogined}/>
         </div>
     )
 }

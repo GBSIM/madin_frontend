@@ -35,6 +35,8 @@ function App() {
       dispatch(changePage('main'));
     } else if (window.location.pathname === "/order/devliery") {
       dispatch(changePage('main'));
+    } else if (window.location.pathname === "/user") {
+      dispatch(changePage('user'));
     } else if (window.location.pathname === "/user/order") {
       dispatch(changePage('user'));
     } else if (window.location.pathname === "/user/shipping") {
@@ -58,6 +60,8 @@ function App() {
     dispatch(changePage('main'));
   } else if (window.location.pathname === "/order/delivery") {
     dispatch(changePage('main'));
+  } else if (window.location.pathname === "/user") {
+    dispatch(changePage('user'));
   } else if (window.location.pathname === "/user/order") {
     dispatch(changePage('user'));
   } else if (window.location.pathname === "/user/shipping") {
@@ -79,6 +83,7 @@ function App() {
           <Route exact path="/cart/delivery" element={<DeliveryCart/>} />
           <Route exact path="/order/delivery" element={<DeliveryOrder/>} />
           <Route exact path="/user/order" element={<UserOrder/>} />
+          <Route exact path="/user" element={<UserOrder/>} />
           <Route exact path="/user/shipping" element={<UserShipping/>} />
           <Route exact path="/user/coupon" element={<UserCoupon/>} />
         </Routes>
