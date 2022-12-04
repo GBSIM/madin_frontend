@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { KakaoRedirectHandler, authUser } from '../../library/ui/units/LoginButton/KakaoLogin';
 
-import { login, logout, saveCart, saveName, saveShipping, saveEmail, savePhone } from '../../../_reducers/user';
+import { login, logout, saveUserInfo } from '../../../_reducers/user';
 import { changePage } from '../../../_reducers/nav'
 
 import Header from '../../library/ui/components/Header/Header';
@@ -33,21 +33,13 @@ export default function DeliveryOrder() {
         if (code != null) {
             KakaoRedirectHandler().then((user) => {
                 dispath(login());
-                dispath(saveName(user["name"]));
-                dispath(saveCart(user["cart"]));
-                dispath(saveShipping(user["shippings"]));
-                dispath(saveEmail(user["email"]));
-                dispath(savePhone(user["phone"]));
+                dispath(saveUserInfo(user));
             });
         }
         authUser().then((user) => {
             if (user) {
                 dispath(login());
-                dispath(saveName(user["name"]));
-                dispath(saveCart(user["cart"]));
-                dispath(saveShipping(user["shippings"]));
-                dispath(saveEmail(user["email"]));
-                dispath(savePhone(user["phone"]));
+                dispath(saveUserInfo(user));
             } else {
                 dispath(logout());
                 moveToMain();
