@@ -83,7 +83,9 @@ const user = (state = initialState, action) => {
                 cart: action.user["cart"],
                 shippings: action.user["shippings"],
                 userClass: action.user["class"],
-                mileage: action.user["mileage"]
+                mileage: action.user["mileage"],
+                phone: action.user["phone"],
+                email: action.user["email"],
             }
         default:
             return state;
