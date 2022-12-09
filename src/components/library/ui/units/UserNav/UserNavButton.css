@@ -1,18 +1,18 @@
 .user-nav-button {
+    max-width: 110px;
     flex: 1;
     padding-top: 8px;
     padding-bottom: 8px;
     background: #fff;
-    border: 2px solid #E0E0E0;
-    border-radius: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .user-nav-button.on {
-    border: 2px solid #EB5C2E;
+    border-bottom: 2px solid #EB5C2E;
 }
 
 .user-nav-button-text {
