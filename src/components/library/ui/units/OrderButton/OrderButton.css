@@ -16,9 +16,3 @@
     color: #fff;
     font-weight: 500;
 }
-
-@media (max-width: 700px) {
-    .order-button {
-        height: 40px;
-    }
-}
