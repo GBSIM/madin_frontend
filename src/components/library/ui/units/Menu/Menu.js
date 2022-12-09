@@ -3,21 +3,33 @@ import './Cart.css';
 import './MenuAddWindow.css';
 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { getCookie } from '../Cookie/Cookie';
 import { saveCart } from '../../../../../_reducers/user';
+import { SocialLoginBox } from '../LoginButton/LoginButton';
 
 export default function Menu(props) {
+    const { isLogined } = useSelector(state => state.user);
+
     const [isMenuAddWindowDisplayOn, setMenuAddWindowDisplayOn] = useState(false);
+    const [isSocialLoginBoxOn, setSocialLoginBoxOn] = useState(false);
 
     const switchMenuAddWindowDisplay = () => {
-        if (isMenuAddWindowDisplayOn) {
-            setMenuAddWindowDisplayOn(false);            
+        if (isLogined) {
+            if (isMenuAddWindowDisplayOn) {
+                setMenuAddWindowDisplayOn(false);            
+            } else {
+                setMenuAddWindowDisplayOn(true);
+            } 
         } else {
-            setMenuAddWindowDisplayOn(true);
+            setSocialLoginBoxOn(true);   
         }
+    }
+
+    const closeSocialLoginBox = () => {
+        setSocialLoginBoxOn(false);
     }
 
     return (
@@ -27,6 +39,7 @@ export default function Menu(props) {
                     <img className='menu-image' src={props.imageUrl} alt='menu'></img>                
                 </button>
                 <Cart openMenuAddWindow = {switchMenuAddWindowDisplay}></Cart>
+                <SocialLoginBox isOn={isSocialLoginBoxOn} closeEvent={closeSocialLoginBox}></SocialLoginBox>
             </div>
             <span className='menu-name'>{props.name}</span>
             <span className='menu-price'>{props.price.toLocaleString()}원</span>
