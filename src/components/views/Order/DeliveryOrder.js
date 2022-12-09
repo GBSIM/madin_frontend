@@ -15,6 +15,7 @@ import OrderSheet from '../../library/ui/units/OrderSheet/OrderSheet';
 import ShippingList from '../../library/ui/units/Shipping/ShippingList';
 import Orderer from '../../library/ui/units/Orderer/Orderer';
 import Payment from '../../library/ui/units/Payment/Payment';
+import OrderButton from '../../library/ui/units/OrderButton/OrderButton';
 
 export default function DeliveryOrder() {
     const dispath = useDispatch();
@@ -55,7 +56,8 @@ export default function DeliveryOrder() {
                 <OrderSheet cart={cart}></OrderSheet>
                 <ShippingList shippings={shippings}></ShippingList>
                 <Orderer name={name} email={email} phone={phone}></Orderer>  
-                <Payment></Payment>              
+                <Payment></Payment>    
+                <OrderButton cart={cart}></OrderButton>       
             </div>
         </div>
     )

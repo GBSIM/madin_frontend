@@ -38,3 +38,14 @@
 .pay-method-title {
     font-weight: 500;
 }
+
+@media (max-width: 700px) {
+    .pay-method {
+        height: 40px;
+    }
+    .pay-method-image {
+        width: 24px;
+        height: 24px;
+        top: 8px;
+    }
+}

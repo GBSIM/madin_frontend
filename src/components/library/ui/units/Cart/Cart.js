@@ -90,7 +90,6 @@ export default function Cart(props) {
         </button>
     }
     
-
     const CartMenus = props.cart.map((menu,index) => (
         <CartMenu
             isChecked={menu["isChecked"]}
