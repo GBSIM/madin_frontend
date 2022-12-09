@@ -1,6 +1,6 @@
 .pay-method {
     max-width: 500px;
-    width: 90%;
+    width: 100%;
     height: 50px;
     display: flex;
     flex-direction: row;
