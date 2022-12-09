@@ -92,7 +92,7 @@ function MobileHeader(props) {
         UserButtons =
         <div className='mobile-user-buttons-container'>
             <MobileUserCart number={props.cartNumber}></MobileUserCart>
-            <div style={{'minWidth':'5px'}}></div>
+            <div style={{'minWidth':'7px'}}></div>
             <button className='mobile-header-alert-button'>
                 <img className='mobile-hedaer-alert-button-image' src={require('../../../icons/alert_grey.png')} alt='alert'></img>
             </button>
