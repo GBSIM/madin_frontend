@@ -33,7 +33,7 @@ export default function Orderer(props) {
 
     return (
         <div className='orderer'>
-            <h2 className='orderer-title'>주문자 정보</h2>
+            <h1 className='orderer-title'>주문자 정보</h1>
             <div style={{'minHeight':'30px'}}></div>
             <div style={{'width':'100%','minHeight':'1px','background':'#c6c6c6'}}></div>
             <div className='orderer-items-container'>

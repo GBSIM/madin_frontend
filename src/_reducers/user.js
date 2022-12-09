@@ -7,6 +7,7 @@ export const SAVE_EMAIL = "USER/SAVE_EMAIL";
 export const SAVE_PHONE = "USER/SAVE_PHONE";
 export const SAVE_USERCLASS = "USER/SAVE_USERCLASS";
 export const SAVE_USER_INFO = "USER/SAVE_USER_INFO";
+export const SAVE_PAY = "USER/SAVE_PAY";
 
 export const login = () => ({type:LOGIN});
 export const logout = () => ({type:LOGOUT});
@@ -17,6 +18,7 @@ export const saveEmail = (email) => ({type:SAVE_EMAIL, email: email});
 export const savePhone = (phone) => ({type:SAVE_PHONE, phone: phone});
 export const saveUserClass = (userClass) => ({type:SAVE_USERCLASS, userClass: userClass});
 export const saveUserInfo = (user) => ({type:SAVE_USER_INFO, user: user});
+export const savePay = (pay) => ({type:SAVE_PAY, pay: pay});
 
 const initialState = {
     isLogined: false,
@@ -27,6 +29,7 @@ const initialState = {
     phone: "",
     userClass: 0,
     mileage: 0,
+    pay: "",
 }
 
 const user = (state = initialState, action) => {
@@ -75,6 +78,11 @@ const user = (state = initialState, action) => {
             return {
                 ...state,
                 userClass: action.userClass
+            }
+        case SAVE_PAY:
+            return {
+                ...state,
+                pay: action.pay
             }
         case SAVE_USER_INFO:
             return {

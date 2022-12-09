@@ -14,6 +14,7 @@ import Header from '../../library/ui/components/Header/Header';
 import OrderSheet from '../../library/ui/units/OrderSheet/OrderSheet';
 import ShippingList from '../../library/ui/units/Shipping/ShippingList';
 import Orderer from '../../library/ui/units/Orderer/Orderer';
+import Payment from '../../library/ui/units/Payment/Payment';
 
 export default function DeliveryOrder() {
     const dispath = useDispatch();
@@ -53,7 +54,8 @@ export default function DeliveryOrder() {
             <div className='order-container'>
                 <OrderSheet cart={cart}></OrderSheet>
                 <ShippingList shippings={shippings}></ShippingList>
-                <Orderer name={name} email={email} phone={phone}></Orderer>                
+                <Orderer name={name} email={email} phone={phone}></Orderer>  
+                <Payment></Payment>              
             </div>
         </div>
     )
