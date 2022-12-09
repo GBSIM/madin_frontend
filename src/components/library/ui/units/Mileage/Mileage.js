@@ -12,7 +12,7 @@ export default function Mileage(props) {
     return (
         <div className='mileage'>
             <div className='mileage-first-row'>
-                <h2 className='mileage-title'>Madin mileage</h2>
+                <h2 className='mileage-title'>Mileage</h2>
                 <div className='mileage-container'>
                     <h1 className='mileage-user'>{props.mileage}</h1>    
                     <h1 className='mileage-maximum'>/{maximumMileage}</h1>    
@@ -25,7 +25,7 @@ export default function Mileage(props) {
             <div style={{'minHeight':'5px'}}></div>
             <div className='mileage-guide-container'>
                 <span className='mileage-guide'>
-                    {remainedMileageToCoupon}개만 더 모으면 원하는 음료 또는 디저트가 무료!
+                    다음 보상까지 {remainedMileageToCoupon}개 남았어요.
                 </span>
             </div>
         </div>

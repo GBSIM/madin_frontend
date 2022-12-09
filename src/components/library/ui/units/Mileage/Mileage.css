@@ -62,4 +62,7 @@
     .mileage-guide {
         font-size: 12px;
     }
+    .mileage-bar-frame {
+        height: 10px;
+    }
 }
