@@ -204,6 +204,22 @@ function ShippingAddWindow(props) {
         const user = await authUser();
         dispatch(saveShipping(user["shippings"]));
         props.closeEvent();
+        setBasicAddressSelected(false);
+        setDetailAddressSelected(false);
+        setBasicAddress(null);
+        setDetailAddress(null);
+        setName(null);
+        setPhone(null);
+    }
+
+    const closeWindow = () => {
+        props.closeEvent();
+        setBasicAddressSelected(false);
+        setDetailAddressSelected(false);
+        setBasicAddress(null);
+        setDetailAddress(null);
+        setName(null);
+        setPhone(null);
     }
 
     let DaumAddressAPI;
@@ -268,7 +284,7 @@ function ShippingAddWindow(props) {
                     {DetailAddressInput}
                     {ReceiverInput}
                     <div style={{'minHeight':'10px'}}></div>
-                    <button className='shipping-add-window-cancel-button' onClick={() => {props.closeEvent()}}>
+                    <button className='shipping-add-window-cancel-button' onClick={() => closeWindow()}>
                         <span className='shipping-add-window-cancel-button-text'>닫기</span>
                     </button>
                 </div>
@@ -314,6 +330,14 @@ function ShippingEditWindow(props) {
         props.closeEvent();
     }
 
+    const closeWindow = () => {
+        setName(props.name);
+        setPhone(props.phone);
+        setTag(props.tag);
+        setRequest(props.request);
+        props.closeEvent();
+    }
+
     if (props.isOn) {
         return (
             <div className='shipping-edit-window-background'>
@@ -353,7 +377,7 @@ function ShippingEditWindow(props) {
                         <button className='shipping-edit-window-save-button' onClick={() => completeEditShipping()}>
                             <span className='shipping-edit-window-save-button-text'>완료</span>
                         </button>
-                        <button className='shipping-add-window-cancel-button' onClick={() => {props.closeEvent()}}>
+                        <button className='shipping-add-window-cancel-button' onClick={() => closeWindow()}>
                             <span className='shipping-add-window-cancel-button-text'>닫기</span>
                         </button>
                     </div>
