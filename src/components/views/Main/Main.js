@@ -25,6 +25,7 @@ export default function Main() {
             try {
                 const response = await axios.get('https://api.madinbakery.com/menuclass');
                 setMenuClasses(response.data.menuClass);
+                console.log(response.data.menuClass);
             } catch(err) {
                 console.log(err);
             }
@@ -54,7 +55,7 @@ export default function Main() {
             name={menuClass["name"]}
             intro={menuClass["intro"]}                        
             menus={menuClass["menus"]}
-            isDisplayOn={menuClass["deliveryEn"]}
+            isDisplayOn={menuClass["orderType"]==='delivery'}
             key={'main_menu_class_'+String(index)}></MenuBlock>
     ));
 

@@ -54,7 +54,7 @@ export default function Present() {
             name={menuClass["name"]}
             intro={menuClass["intro"]}                        
             menus={menuClass["menus"]}
-            isDisplayOn={menuClass["presentEn"]}
+            isDisplayOn={menuClass["orderType"] === "present"}
             key={'present_menu_class_'+String(index)}></MenuBlock>
     ));
 

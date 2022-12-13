@@ -67,6 +67,7 @@ export default function Item({ match }) {
                 name={menuName}
                 image={image}
                 price={price}
+                intro={intro}
                 menuId={id}></ItemDetail>
         </div>
     )

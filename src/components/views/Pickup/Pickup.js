@@ -54,7 +54,7 @@ export default function Pickup() {
             name={menuClass["name"]}
             intro={menuClass["intro"]}                        
             menus={menuClass["menus"]}
-            isDisplayOn={menuClass["pickupEn"]}
+            isDisplayOn={menuClass["orderType"] === "pickup"}
             key={'main_menu_class_'+String(index)}></MenuBlock>
     ));
 
