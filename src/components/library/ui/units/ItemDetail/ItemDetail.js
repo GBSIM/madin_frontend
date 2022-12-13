@@ -7,10 +7,12 @@ import axios from 'axios';
 import { getCookie } from '../Cookie/Cookie';
 import { saveCart } from '../../../../../_reducers/user';
 
+import { SocialLoginBox } from '../LoginButton/LoginButton';
+
 export default function ItemDetail(props) {
     const dispath = useDispatch();
     const [ quantity, setQuantity ] = useState(1);
-    const [ isCartAddWindowOpen, setCartAddWindowOpen ] = useState(false);
+    const [ isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn ] = useState(false);
     
     let totalPrice = quantity * props.price;
     const addQuantity = () => {
@@ -31,20 +33,25 @@ export default function ItemDetail(props) {
                 const user = res.data.user;
                 dispath(saveCart(user["cart"]));
             });
+        } else {
+            setSocialLoginBoxDisplayOn(true);
         }
-        props.closeEvent()
+    }
+
+    const closeSocialLoginBox = () => {
+        setSocialLoginBoxDisplayOn(false);
     }
 
     let MinusButton;
     if (quantity > 1) {
         MinusButton = 
             <button className='item-detail-quantity-button' onClick={() => subtractQuantity()}>
-                <img src={require('../../../icons/minus_black.png')} className='item-detail-quantity-button'></img>
+                <img src={require('../../../icons/minus_black.png')} className='item-detail-quantity-button' alt='minus'></img>
             </button>
     } else {
         MinusButton =
             <button className='item-detail-quantity-button'>
-                <img src={require('../../../icons/minus_grey.png')} className='item-detail-quantity-button'></img>
+                <img src={require('../../../icons/minus_grey.png')} className='item-detail-quantity-button' alt='minus'></img>
             </button>
     }
 
@@ -112,7 +119,7 @@ export default function ItemDetail(props) {
                     <div className='item-detail-name-container'>
                         <h2 className='item-detail-name'>{props.name}</h2>
                         <button className='item-like-button'>
-                            <img className='item-like-button-image' src={require('../../../icons/heart_black.png')}></img>
+                            <img className='item-like-button-image' src={require('../../../icons/heart_black.png')} alt='like'></img>
                         </button>
                     </div>
                     <div className='item-detail-price-container'>
@@ -127,7 +134,7 @@ export default function ItemDetail(props) {
                                 {MinusButton}
                                 <span className='item-detail-quantity'>{quantity}</span>
                                 <button className='item-detail-quantity-button' onClick={() => addQuantity()}>
-                                    <img src={require('../../../icons/plus_black.png')} className='item-detail-quantity-button'></img>
+                                    <img src={require('../../../icons/plus_black.png')} className='item-detail-quantity-button' alt='plus'></img>
                                 </button>
                             </div>
                         </div>
@@ -148,10 +155,13 @@ export default function ItemDetail(props) {
                 </div>
             </div>
             <div className='item-detail-mobile-cart-button-container'>
-                <button className='item-detail-mobile-cart-button'>
+                <button className='item-detail-mobile-cart-button' onClick={() => {addCart()}}>
                     <h3 className='item-detail-mobile-cart-button-text'>장바구니 담기</h3>
                 </button>
             </div>
+            <SocialLoginBox 
+                isOn={isSocialLoginBoxDisplayOn}
+                closeEvent={closeSocialLoginBox}></SocialLoginBox>
         </div>
     )
 }
