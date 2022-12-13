@@ -149,7 +149,7 @@ export default function ItemDetail(props) {
             </div>
             <div className='item-detail-mobile-cart-button-container'>
                 <button className='item-detail-mobile-cart-button'>
-                    <span className='item-detail-mobile-cart-button-text'>장바구니 담기</span>
+                    <h3 className='item-detail-mobile-cart-button-text'>장바구니 담기</h3>
                 </button>
             </div>
         </div>
