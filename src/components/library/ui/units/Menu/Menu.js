@@ -4,6 +4,7 @@ import './MenuAddWindow.css';
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { getCookie } from '../Cookie/Cookie';
@@ -32,10 +33,16 @@ export default function Menu(props) {
         setSocialLoginBoxOn(false);
     }
 
+    const navigate = useNavigate();
+    const moveToMenuDetail = () => {
+        navigate('/item/'+props.menuId);
+        window.scrollTo(0,0);
+    }
+
     return (
         <div className='menu'>
             <div className='menu-image-container'>
-                <button className='menu-image-button'>
+                <button className='menu-image-button' onClick={() => moveToMenuDetail()}>
                     <img className='menu-image' src={props.imageUrl} alt='menu'></img>                
                 </button>
                 <Cart openMenuAddWindow = {switchMenuAddWindowDisplay}></Cart>
