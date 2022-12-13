@@ -1,9 +1,9 @@
 .order-button {
     background: #EB5C2E;
     max-width: 500px;
-    width: calc(100% - 40px);
-    margin-left: 20px;
-    margin-right: 20px;
+    width: calc(100% - 30px);
+    margin-left: 15px;
+    margin-right: 15px;
     height: 50px;
     display: flex;
     flex-direction: row;
