@@ -30,6 +30,7 @@ const initialState = {
     userClass: 0,
     mileage: 0,
     pay: "",
+    likes: [],
 }
 
 const user = (state = initialState, action) => {
@@ -94,6 +95,7 @@ const user = (state = initialState, action) => {
                 mileage: action.user["mileage"],
                 phone: action.user["phone"],
                 email: action.user["email"],
+                likes: action.user["likes"],
             }
         default:
             return state;

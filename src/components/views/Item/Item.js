@@ -16,7 +16,6 @@ export default function Item({ match }) {
     const [ price, setPrice ] = useState(0);
     const [ intro, setIntro ] = useState('메뉴 소개');
     const [ type, setType ] = useState('주문 유형');
-    const [ quantity, setQuantity ] = useState(1);
     const [ image, setImage ] = useState(null);
 
     const { id } = useParams();
@@ -63,6 +62,7 @@ export default function Item({ match }) {
             <Header isLogined={isLogined} name={name} cartNumber={cart.length}></Header>
             <div className='item-top-spacer'></div>
             <ItemDetail
+                type={type}
                 name={menuName}
                 image={image}
                 price={price}

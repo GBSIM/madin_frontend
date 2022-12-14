@@ -1,11 +1,11 @@
 import './ItemDetail.css';
 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { getCookie } from '../Cookie/Cookie';
-import { saveCart } from '../../../../../_reducers/user';
+import { saveUserInfo } from '../../../../../_reducers/user';
 
 import { SocialLoginBox } from '../LoginButton/LoginButton';
 
@@ -31,7 +31,7 @@ export default function ItemDetail(props) {
                 "quantity": quantity
             }).then((res) => {
                 const user = res.data.user;
-                dispath(saveCart(user["cart"]));
+                dispath(saveUserInfo(user));
             });
         } else {
             setSocialLoginBoxDisplayOn(true);
@@ -40,6 +40,56 @@ export default function ItemDetail(props) {
 
     const closeSocialLoginBox = () => {
         setSocialLoginBoxDisplayOn(false);
+    }
+
+    const { likes } = useSelector(state => state.user);
+
+    let isLiked = false;
+    if (likes.includes(props.menuId)) isLiked = true;
+
+    const likeMenu = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.post('https://api.madinbakery.com/user/like',{
+                "token": token,
+                "menuId": props.menuId,
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveUserInfo(user));
+            });
+        } else {
+            setSocialLoginBoxDisplayOn(true);
+        }
+    }
+
+    const unlikeMenu = async() => {
+        const token = getCookie('token');
+        if (token) {
+            await axios.delete('https://api.madinbakery.com/user/like',{
+                data: {
+                    "token": token,
+                    "menuId": props.menuId
+                }
+            }).then((res) => {
+                const user = res.data.user;
+                dispath(saveUserInfo(user));
+            });
+        } else {
+            setSocialLoginBoxDisplayOn(true);
+        }
+    }
+
+    let LikeButton;
+    if (isLiked) {
+        LikeButton =
+            <button className='item-like-button' onClick={() => unlikeMenu()}>
+                <img className='item-like-button-image' src={require('../../../icons/heart_red.png')} alt='like'></img>
+            </button>
+    } else {
+        LikeButton =
+        <button className='item-like-button' onClick={() => likeMenu()}>
+            <img className='item-like-button-image' src={require('../../../icons/heart_grey.png')} alt='like'></img>
+        </button>   
     }
 
     let MinusButton;
@@ -118,9 +168,7 @@ export default function ItemDetail(props) {
                     <div style={{'minHeight':'3px'}}></div>
                     <div className='item-detail-name-container'>
                         <h2 className='item-detail-name'>{props.name}</h2>
-                        <button className='item-like-button'>
-                            <img className='item-like-button-image' src={require('../../../icons/heart_black.png')} alt='like'></img>
-                        </button>
+                        {LikeButton}
                     </div>
                     <div className='item-detail-price-container'>
                         <span className='item-detail-intro'>{props.intro}</span>
