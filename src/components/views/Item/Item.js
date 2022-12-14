@@ -23,7 +23,6 @@ export default function Item({ match }) {
     const loadMenu  = async() => {
         try {
             const response = await axios.get('https://api.madinbakery.com/menu/'+id);
-            console.log(response.data.menu);
             setMenuName(response.data.menu["name"]);
             setPrice(response.data.menu["price"]);
             setIntro(response.data.menu["intro"]);
