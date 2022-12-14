@@ -66,3 +66,17 @@
     font-size: 12px;
     color: #C8C8C8;
 }
+
+@media (max-width: 700px) {
+    .like-image {
+        margin-right: 5px;
+    }
+    .like-cart-button {
+        width: 36px;
+        height: 36px;
+    }
+    .like-cart-button-image {
+        width: 24px;
+        height: 24px;
+    }
+}

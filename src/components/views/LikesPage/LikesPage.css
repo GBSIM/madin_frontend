@@ -9,3 +9,9 @@
 .likes-top-spacer {
     min-height: 60px;
 }
+
+@media (max-width: 700px) {
+    .likes-top-spacer {
+        min-height: 30px;
+    }
+}

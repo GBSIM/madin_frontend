@@ -21,7 +21,7 @@
     padding: 0px;
 }
 
-.mobile-header-alert-button {
+.mobile-header-like-button {
     width: 32px;
     height: 32px;
     padding: 0px;
@@ -32,7 +32,7 @@
     padding: 0px;
 }
 
-.mobile-header-alert-button-image {
+.mobile-header-like-button-image {
     width: 32px;
     height: 32px;
 }
@@ -42,4 +42,3 @@
     flex-direction: row;
     align-items: center;
 }
-

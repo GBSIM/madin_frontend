@@ -81,9 +81,14 @@ function MobileHeader(props) {
     const navigate = useNavigate();
     const dispath = useDispatch();
 
-    const moveToMain = (nextPage) => {
+    const moveToMain = () => {
         dispath(changePage('main'));
         navigate('/main');
+        window.scrollTo(0,0);
+    }
+
+    const moveToLike = () => {
+        navigate('/likes');
         window.scrollTo(0,0);
     }
 
@@ -91,11 +96,11 @@ function MobileHeader(props) {
     if (props.isLogined) {
         UserButtons =
         <div className='mobile-user-buttons-container'>
-            <MobileUserCart number={props.cartNumber}></MobileUserCart>
-            <div style={{'minWidth':'7px'}}></div>
-            <button className='mobile-header-alert-button'>
-                <img className='mobile-hedaer-alert-button-image' src={require('../../../icons/alert_grey.png')} alt='alert'></img>
+            <button className='mobile-header-like-button' onClick={() => moveToLike()}>
+                <img className='mobile-header-like-button-image' src={require('../../../icons/mobile_heart_grey.png')}></img>
             </button>
+            <div style={{'minWidth':'7px'}}></div>
+            <MobileUserCart number={props.cartNumber}></MobileUserCart>
         </div>
     }
     return (
