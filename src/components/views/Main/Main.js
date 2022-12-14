@@ -25,7 +25,6 @@ export default function Main() {
             try {
                 const response = await axios.get('https://api.madinbakery.com/menuclass');
                 setMenuClasses(response.data.menuClass);
-                console.log(response.data.menuClass);
             } catch(err) {
                 console.log(err);
             }

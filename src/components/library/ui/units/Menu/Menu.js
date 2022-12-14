@@ -68,7 +68,7 @@ function Cart(props) {
     )
 }
 
-function MenuAddWindow(props) {
+export function MenuAddWindow(props) {
     const dispath = useDispatch();
     const [quantity, setQuantity] = useState(1);
 

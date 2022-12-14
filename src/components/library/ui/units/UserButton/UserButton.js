@@ -139,8 +139,14 @@ function UserCart(props) {
 }
 
 function UserLike() {
+    const navigate = useNavigate();
+    const moveToLikes = () => {
+        navigate('/likes');
+        window.scrollTo(0,0);
+    }
+    
     return (
-        <button className='user-like'>
+        <button className='user-like' onClick={() => moveToLikes()}>
             <img src={require('../../../icons/heart_grey.png')} className='user-like-image' alt='like'></img>
         </button>
     )

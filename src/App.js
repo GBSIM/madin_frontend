@@ -19,6 +19,7 @@ import UserOrder from './components/views/User/UserOrder';
 import UserShipping from './components/views/User/UserShipping';
 import UserCoupon from './components/views/User/UserCoupon';
 import Item from './components/views/Item/Item';
+import LikesPages from './components/views/LikesPage/LikesPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -88,6 +89,7 @@ function App() {
           <Route exact path="/user/shipping" element={<UserShipping/>} />
           <Route exact path="/user/coupon" element={<UserCoupon/>} />
           <Route exact path="/item/:id" element={<Item/>} />
+          <Route exact path="/likes" element={<LikesPages/>} />
         </Routes>
       </div>
     </Router>

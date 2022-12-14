@@ -26,7 +26,7 @@ function DesktopHeader(props) {
     const navigate = useNavigate();
     const dispath = useDispatch();
 
-    const moveToMain = (nextPage) => {
+    const moveToMain = () => {
         dispath(changePage('main'));
         navigate('/main');
         window.scrollTo(0,0);
