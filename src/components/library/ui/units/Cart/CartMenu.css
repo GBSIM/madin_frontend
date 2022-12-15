@@ -101,6 +101,6 @@
         width: 80px;
     }
     .cart-menu-horizontal-spacer {
-        min-width: 15px;
+        min-width: 5px;
     }
 }
