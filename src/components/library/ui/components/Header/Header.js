@@ -99,7 +99,7 @@ function MobileHeader(props) {
             <button className='mobile-header-like-button' onClick={() => moveToLike()}>
                 <img className='mobile-header-like-button-image' src={require('../../../icons/mobile_heart_grey.png')}></img>
             </button>
-            <div style={{'minWidth':'7px'}}></div>
+            <div style={{'minWidth':'8px'}}></div>
             <MobileUserCart number={props.cartNumber}></MobileUserCart>
         </div>
     }
