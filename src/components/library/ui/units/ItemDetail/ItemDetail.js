@@ -164,8 +164,8 @@ export default function ItemDetail(props) {
     let MenuAddAlarm;
     if (isMenuAddAlarmOn) {
         MenuAddAlarm =
-            <div className='menu-add-alarm'>
-                <span className='menu-add-alarm-text'>{props.name} {quantity}개를 담았어요. </span>
+            <div className='item-detail-menu-add-alarm'>
+                <span className='item-detail-menu-add-alarm-text'>{props.name} {quantity}개를 담았어요. </span>
             </div>
     }
 
