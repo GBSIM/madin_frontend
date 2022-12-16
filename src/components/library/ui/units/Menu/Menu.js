@@ -71,6 +71,7 @@ function Cart(props) {
 export function MenuAddWindow(props) {
     const dispath = useDispatch();
     const [quantity, setQuantity] = useState(1);
+    const [isMenuAddAlarmOn, setMenuAddAlarmOn] = useState(false);
 
     const addQuantity = () => {
         setQuantity(quantity + 1);
@@ -92,6 +93,8 @@ export function MenuAddWindow(props) {
             }).then((res) => {
                 const user = res.data.user;
                 dispath(saveCart(user["cart"]));
+                setMenuAddAlarmOn(true);
+                setTimeout(() => setMenuAddAlarmOn(false),2000);
             });
         }
         props.closeEvent()
@@ -104,8 +107,9 @@ export function MenuAddWindow(props) {
         MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_black.png')} alt='activated-minus'></img>
     }
     
+    let AddWindow;
     if (props.isDisplayOn) {
-        return (
+        AddWindow = 
             <div className='menu-add-window-background'>
                 <div className='menu-add-window'>
                     <div className='menu-add-window-info-container'>
@@ -141,6 +145,20 @@ export function MenuAddWindow(props) {
                     </button>
                 </div>
             </div>
-        )
     }
+
+    let MenuAddAlarm;
+    if (isMenuAddAlarmOn) {
+        MenuAddAlarm =
+            <div className='menu-add-alarm'>
+                <span className='menu-add-alarm-text'>{props.name} {quantity}개를 담았어요. </span>
+            </div>
+    }
+
+    return (
+        <div>
+            {AddWindow}
+            {MenuAddAlarm}
+        </div>
+    )
 }

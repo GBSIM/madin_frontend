@@ -13,6 +13,7 @@ export default function ItemDetail(props) {
     const dispath = useDispatch();
     const [ quantity, setQuantity ] = useState(1);
     const [ isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn ] = useState(false);
+    const [isMenuAddAlarmOn, setMenuAddAlarmOn] = useState(false);
     
     let totalPrice = quantity * props.price;
     const addQuantity = () => {
@@ -32,6 +33,8 @@ export default function ItemDetail(props) {
             }).then((res) => {
                 const user = res.data.user;
                 dispath(saveUserInfo(user));
+                setMenuAddAlarmOn(true);
+                setTimeout(() => setMenuAddAlarmOn(false),2000);
             });
         } else {
             setSocialLoginBoxDisplayOn(true);
@@ -158,6 +161,14 @@ export default function ItemDetail(props) {
             </div>
     }
 
+    let MenuAddAlarm;
+    if (isMenuAddAlarmOn) {
+        MenuAddAlarm =
+            <div className='menu-add-alarm'>
+                <span className='menu-add-alarm-text'>{props.name} {quantity}개를 담았어요. </span>
+            </div>
+    }
+
     return (
         <div className='item-detail'>
             <img src={props.image} alt='menu' className='item-detail-mobile-image'></img>
@@ -210,6 +221,7 @@ export default function ItemDetail(props) {
             <SocialLoginBox 
                 isOn={isSocialLoginBoxDisplayOn}
                 closeEvent={closeSocialLoginBox}></SocialLoginBox>
+            {MenuAddAlarm}
         </div>
     )
 }
