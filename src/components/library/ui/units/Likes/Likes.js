@@ -25,11 +25,23 @@ export default function Likes(props) {
         ))
     }
 
+    console.log(props.likes);
+    let LikesGuide;
+    if (props.likes.length === 0 || !props.likes) {
+        LikesGuide =
+            <div className='likes-guide'>
+                <span className='likes-guide-text'>
+                    관심 상품을 추가해주세요.
+                </span>
+            </div>
+    }
+
     return (
         <div className='likes'>
             <h1 className='likes-title'>관심 상품</h1>
             <div className='likes-spacer'></div>
             <div className='likes-container'>
+                {LikesGuide}
                 {LikeMenus}
             </div>
         </div>

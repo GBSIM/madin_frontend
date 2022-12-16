@@ -24,3 +24,19 @@
     flex-direction: column;
     width: 100%;
 }
+
+.likes-guide {
+    width: 600px;
+    max-width: calc(100% - 40px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.likes-guide-text {
+    color: #696969;
+}
