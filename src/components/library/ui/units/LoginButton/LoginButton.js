@@ -30,8 +30,18 @@ export default function LoginButton(props) {
     }
 }
 
-export function SocialLoginBox(props) {
-    if (props.isOn) {
+export function SocialLoginBox(props) {    
+    var naverLogin = new window.naver.LoginWithNaverId(
+        {
+            clientId: "WpWqvTCMbQqXK4On9905",
+            callbackUrl: process.env.REACT_APP_REDIRECT_URL,
+            isPopup: false,
+            callbackHandle: true,
+        }
+    );	
+    naverLogin.init();
+
+    if (props.isOn) {        
         return (
             <div className='social-login-box-background' >
                 <div className='social-login-box'>
@@ -52,12 +62,15 @@ export function SocialLoginBox(props) {
                             text='카카오 로그인'
                             img={require('../../../icons/kakao.png')}
                             clickEvent={loginWithKakao}/>
-                        <SocialLoginButton
-                            backgroundColor='#03C75A'
-                            borderColor='#03C75A'
-                            textColor='#fff'
-                            text='네이버 로그인'
-                            img={require('../../../icons/naver_white.png')}/>
+                        <div id='naver_id_login'>
+                            <SocialLoginButton
+                                id='naverIdLogin_loginButton'
+                                backgroundColor='#03C75A'
+                                borderColor='#03C75A'
+                                textColor='#fff'
+                                text='네이버 로그인'
+                                img={require('../../../icons/naver_white.png')}/>
+                        </div>
                         <SocialLoginButton
                             backgroundColor='#fff'
                             borderColor='#eee'
@@ -72,10 +85,20 @@ export function SocialLoginBox(props) {
 }
 
 function SocialLoginButton(props) {
-    return (
-        <button className='social-login-button' style={{'background':props.backgroundColor,'borderColor':props.borderColor}} onClick={()=>props.clickEvent()}>
-            <img src={props.img} className='social-login-button-image' alt='social-logo'></img>
-            <span className='social-login-button-text' style={{'color':props.textColor}}>{props.text}</span>
-        </button>
-    )
+    if (props.clickEvent) {
+        return (
+            <a id={props.id} className='social-login-button' style={{'background':props.backgroundColor,'borderColor':props.borderColor}} onClick={()=>props.clickEvent()}>
+                <img src={props.img} className='social-login-button-image' alt='social-logo'></img>
+                <span className='social-login-button-text' style={{'color':props.textColor}}>{props.text}</span>
+            </a>
+        )
+    } else {
+        return (
+            <a href='#' id={props.id} className='social-login-button' style={{'background':props.backgroundColor,'borderColor':props.borderColor}}>
+                <img src={props.img} className='social-login-button-image' alt='social-logo'></img>
+                <span className='social-login-button-text' style={{'color':props.textColor}}>{props.text}</span>
+            </a>
+        )
+    }
+    
 }
