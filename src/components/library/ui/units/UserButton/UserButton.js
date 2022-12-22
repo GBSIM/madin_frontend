@@ -75,13 +75,16 @@ function UserLogoutButton() {
 
     const logoutUser = async () => {
         const token = getCookie('token');
+        const socialLogin = getCookie('socialLogin');
         if (token) {
             await axios.post('https://api.madinbakery.com/user/logout',
                 {
-                "token": token
+                "token": token,
+                "socialLogin": socialLogin,
                 }
             );
             deleteCookie('token');
+            deleteCookie('socialLogin');
             dispath(changePage('main'));
             navigate('/main');
             window.location.reload();
