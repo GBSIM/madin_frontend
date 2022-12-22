@@ -1,9 +1,10 @@
 import './LoginButton.css';
 import './SocialLoginBox.css';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { loginWithKakao } from './KakaoLogin';
+import { loginWidthNaver } from './NaverLogin';
 
 export default function LoginButton(props) {    
     const [isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn] = useState(false);
@@ -31,16 +32,6 @@ export default function LoginButton(props) {
 }
 
 export function SocialLoginBox(props) {    
-    var naverLogin = new window.naver.LoginWithNaverId(
-        {
-            clientId: "WpWqvTCMbQqXK4On9905",
-            callbackUrl: process.env.REACT_APP_REDIRECT_URL,
-            isPopup: false,
-            callbackHandle: true,
-        }
-    );	
-    naverLogin.init();
-
     if (props.isOn) {        
         return (
             <div className='social-login-box-background' >
@@ -62,15 +53,13 @@ export function SocialLoginBox(props) {
                             text='카카오 로그인'
                             img={require('../../../icons/kakao.png')}
                             clickEvent={loginWithKakao}/>
-                        <div id='naver_id_login'>
-                            <SocialLoginButton
-                                id='naverIdLogin_loginButton'
-                                backgroundColor='#03C75A'
-                                borderColor='#03C75A'
-                                textColor='#fff'
-                                text='네이버 로그인'
-                                img={require('../../../icons/naver_white.png')}/>
-                        </div>
+                        <SocialLoginButton
+                            backgroundColor='#03C75A'
+                            borderColor='#03C75A'
+                            textColor='#fff'
+                            text='네이버 로그인'
+                            img={require('../../../icons/naver_white.png')}
+                            clickEvent={loginWidthNaver}/>
                         <SocialLoginButton
                             backgroundColor='#fff'
                             borderColor='#eee'

@@ -7,6 +7,7 @@ export const loginWithKakao = () =>{
     Kakao.Auth.authorize({
         redirectUri: process.env.REACT_APP_REDIRECT_URL
     })
+    setCookie("socialLogin","kakao",1);
 }
 
 export const KakaoRedirectHandler = async() => {
@@ -21,7 +22,6 @@ export const KakaoRedirectHandler = async() => {
   const user = kakaoLoginResponse.data.user;
   window.history.replaceState({}, null, window.location.pathname);
   setCookie("token",user["token"],1);
-
   return (
     user
   )

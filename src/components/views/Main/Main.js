@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { authUser, KakaoRedirectHandler } from '../../library/ui/units/LoginButton/KakaoLogin';
 import { login, logout, saveUserInfo } from '../../../_reducers/user';
+import { NaverRedirectHandler } from '../../library/ui/units/LoginButton/NaverLogin';
+import { getCookie } from '../../library/ui/units/Cookie/Cookie';
 
 import Header from '../../library/ui/components/Header/Header';
 import Banner from '../../library/ui/components/Banner/Banner';
@@ -33,12 +35,24 @@ export default function Main() {
         const href = window.location.href;
         let params = new URL(href).searchParams;
         let code = params.get("code");
-        if (code != null) {
-            KakaoRedirectHandler().then((user) => {
-                dispath(login());
-                dispath(saveUserInfo(user));
-            });
+        const socialLogin = getCookie('socialLogin');
+        if (socialLogin === 'kakao') {
+            if (code != null) {
+                KakaoRedirectHandler().then((user) => {
+                    dispath(login());
+                    dispath(saveUserInfo(user));
+                });
+            }
+        } 
+        if (socialLogin === 'naver') {
+            if (code != null) {
+                NaverRedirectHandler().then((user) => {
+                    dispath(login());
+                    dispath(saveUserInfo(user));
+                });
+            }
         }
+        
         authUser().then((user) => {
             if (user) {
                 dispath(login());
@@ -48,6 +62,8 @@ export default function Main() {
             }
         })
     }, []);
+
+    
 
     MenuBlocks = menuClasses.map((menuClass,index) => (
         <MenuBlock
