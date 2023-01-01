@@ -153,6 +153,11 @@ export function MenuAddWindow(props) {
             <div className='menu-add-alarm'>
                 <span className='menu-add-alarm-text'>{props.name} {quantity}개를 담았어요. </span>
             </div>
+    } else {
+        MenuAddAlarm =
+            <div className='menu-add-alarm off'>
+                <span className='menu-add-alarm-text'>{props.name} {quantity}개를 담았어요. </span>
+            </div>
     }
 
     return (
