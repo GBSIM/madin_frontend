@@ -134,30 +134,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    animation: fadein 1s;
+    animation: fadeinout 2s steps(100) infinite;
 }
 
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+@keyframes fadeinout {
+    0% { opacity: 0; }
+    33% { opacity: 1; }
+    66% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 .menu-add-alarm.off {
     display: none;
-    animation: fadeout 1s;
-}
-
-@keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
 }
 
 .menu-add-alarm-text {
