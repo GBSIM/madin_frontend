@@ -39,6 +39,21 @@ export default function Menu(props) {
         window.scrollTo(0,0);
     }
 
+    let priceText;
+    if (props.options && Array.isArray(props.options) && props.options.length) {
+        const maxPriceObj = props.options.reduce( (prev, value) => {
+            return prev.price >= value.price ? prev : value
+        });
+        const maxPrice = maxPriceObj["price"];
+        const minPriceObj = props.options.reduce( (prev, value) => {
+            return prev.price < value.price ? prev : value
+        });
+        const minPrice = minPriceObj["price"];
+        priceText = <span className='menu-price'>{minPrice.toLocaleString()} ~ {maxPrice.toLocaleString()}원</span>
+    } else {
+        priceText = <span className='menu-price'>{props.price.toLocaleString()}원</span>
+    }
+
     return (
         <div className='menu'>
             <div className='menu-image-container'>
@@ -49,7 +64,7 @@ export default function Menu(props) {
                 <SocialLoginBox isOn={isSocialLoginBoxOn} closeEvent={closeSocialLoginBox}></SocialLoginBox>
             </div>
             <span className='menu-name'>{props.name}</span>
-            <span className='menu-price'>{props.price.toLocaleString()}원</span>
+            {priceText}
             <MenuAddWindow 
                 isDisplayOn={isMenuAddWindowDisplayOn}
                 name={props.name}
