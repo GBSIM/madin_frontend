@@ -227,8 +227,8 @@ export default function ItemDetail(props) {
                         {LikeButton}
                     </div>
                     <div className='item-detail-price-container'>
-                        <span className='item-detail-intro'>{props.intro}</span>
                         {menuSelectContainer}
+                        <span className='item-detail-intro'>{props.intro}</span>
                         {itemPrice}
                     </div>
                     {GetType}
