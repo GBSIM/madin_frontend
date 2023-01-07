@@ -308,7 +308,8 @@ function CartMenu(props) {
             <DeleteWindow 
                 isOn={isDeleteWindowOn} 
                 closeEvent={closeDeleteWindow}
-                id={props.id}></DeleteWindow>
+                id={props.id}
+                option={props.option}></DeleteWindow>
         </div>
     )
 }
@@ -321,7 +322,8 @@ function DeleteWindow(props) {
             await axios.delete('https://api.madinbakery.com/user/cart',{
                 data: {
                     "token": token,
-                    "menuId": props.id
+                    "menuId": props.id,
+                    "option": props.option
                 }
             }).then((res) => {
                 const user = res.data.user;
