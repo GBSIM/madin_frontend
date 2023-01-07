@@ -88,12 +88,14 @@ export function MenuAddWindow(props) {
     const dispath = useDispatch();
     const [quantity, setQuantity] = useState(1);
     const [isMenuAddAlarmOn, setMenuAddAlarmOn] = useState(false);
-    const [option, setOption] = useState("basic");
+    const [option, setOption] = useState({"name":"basic","price":0});
     const [price, setPrice] = useState(props.price);
 
     useEffect(() => {
         if (props.options && Array.isArray(props.options) && props.options.length) {
-            setOption(props.options[0]["name"]);
+            setOption(
+                {"name":props.options[0]["name"],
+                 "price":props.options[0]["price"]});
             setPrice(props.options[0]["price"]);
         }
     }, []);
@@ -127,7 +129,9 @@ export function MenuAddWindow(props) {
     }
 
     const selectOption = (e) => {
-        setOption(props.options[e.target.selectedIndex]["name"]);
+        setOption(
+            {"name":props.options[e.target.selectedIndex]["name"],
+             "price":props.options[e.target.selectedIndex]["price"]});
         setPrice(props.options[e.target.selectedIndex]["price"]);
 
     }
@@ -156,7 +160,7 @@ export function MenuAddWindow(props) {
             </select>
         menuInfo = 
             <div className='menu-add-window-info-container'>
-                <span className='menu-add-window-name'>{props.name} {option}</span>
+                <span className='menu-add-window-name'>{props.name} {option["name"]}</span>
                 <span className='menu-add-window-price'>{price.toLocaleString()}원</span>
             </div>
     } else {
