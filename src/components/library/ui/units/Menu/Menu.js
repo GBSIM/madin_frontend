@@ -2,7 +2,7 @@ import './Menu.css';
 import './Cart.css';
 import './MenuAddWindow.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -70,6 +70,7 @@ export default function Menu(props) {
                 name={props.name}
                 price={props.price}
                 menuId={props.menuId}
+                options={props.options}
                 closeEvent={switchMenuAddWindowDisplay}></MenuAddWindow>
         </div>
     )
@@ -87,6 +88,15 @@ export function MenuAddWindow(props) {
     const dispath = useDispatch();
     const [quantity, setQuantity] = useState(1);
     const [isMenuAddAlarmOn, setMenuAddAlarmOn] = useState(false);
+    const [option, setOption] = useState("basic");
+    const [price, setPrice] = useState(props.price);
+
+    useEffect(() => {
+        if (props.options && Array.isArray(props.options) && props.options.length) {
+            setOption(props.options[0]["name"]);
+            setPrice(props.options[0]["price"]);
+        }
+    }, []);
 
     const addQuantity = () => {
         setQuantity(quantity + 1);
@@ -104,7 +114,8 @@ export function MenuAddWindow(props) {
             await axios.post('https://api.madinbakery.com/user/cart',{
                 "token": token,
                 "menuId": props.menuId,
-                "quantity": quantity
+                "quantity": quantity,
+                "option": option,
             }).then((res) => {
                 const user = res.data.user;
                 dispath(saveCart(user["cart"]));
@@ -115,11 +126,45 @@ export function MenuAddWindow(props) {
         props.closeEvent()
     }
 
+    const selectOption = (e) => {
+        setOption(props.options[e.target.selectedIndex]["name"]);
+        setPrice(props.options[e.target.selectedIndex]["price"]);
+
+    }
+
     let MinusButtonImage;
     if (quantity === 1) {
         MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_grey.png')} alt='deactivated-minus'></img>
     } else {
         MinusButtonImage = <img className='menu-add-window-quantity-button-image' src={require('../../../icons/minus_black.png')} alt='activated-minus'></img>
+    }
+
+    let menuSelectContainer;
+    let menuInfo;
+    if (props.options && Array.isArray(props.options) && props.options.length) {
+        const options = props.options.map((option) => (
+            <option 
+                className='menu-add-window-option'
+                value={option["name"]} 
+                key={option["name"]}>
+                {option["name"]} --- {option["price"].toLocaleString()}원
+            </option>
+        ))
+        menuSelectContainer =
+            <select name='option' className='menu-add-window-option-container' onChange={selectOption}>
+                {options}
+            </select>
+        menuInfo = 
+            <div className='menu-add-window-info-container'>
+                <span className='menu-add-window-name'>{props.name} {option}</span>
+                <span className='menu-add-window-price'>{price.toLocaleString()}원</span>
+            </div>
+    } else {
+        menuInfo = 
+            <div className='menu-add-window-info-container'>
+                <span className='menu-add-window-name'>{props.name}</span>
+                <span className='menu-add-window-price'>{price.toLocaleString()}원</span>
+            </div>
     }
     
     let AddWindow;
@@ -127,10 +172,9 @@ export function MenuAddWindow(props) {
         AddWindow = 
             <div className='menu-add-window-background'>
                 <div className='menu-add-window'>
-                    <div className='menu-add-window-info-container'>
-                        <span className='menu-add-window-name'>{props.name}</span>
-                        <span className='menu-add-window-price'>{props.price.toLocaleString()}원</span>
-                    </div>
+                    {menuSelectContainer}
+                    <div style={{'minHeight':'20px'}}></div>
+                    {menuInfo}
                     <div style={{'minHeight':'20px'}}></div>
                     <div className='menu-add-window-quantity-container'>
                         <div className='menu-add-window-quantity-controller'>
@@ -148,7 +192,7 @@ export function MenuAddWindow(props) {
                     <div style={{'minHeight':'20px'}}></div>
                     <div className='menu-add-window-info-container'>
                         <span className='menu-add-window-price-title'>합계</span>
-                        <h2 className='menu-add-window-total-price'>{(props.price*quantity).toLocaleString()}원</h2>
+                        <h2 className='menu-add-window-total-price'>{(price*quantity).toLocaleString()}원</h2>
                     </div>
                     <div style={{'minHeight':'50px'}}></div>
                     <button className='menu-add-window-save-button' onClick={() => {addCart()}}>

@@ -98,6 +98,7 @@ export default function Cart(props) {
             image={menu["imageUrl"]}
             id={menu["_id"]}
             quantity={menu["quantity"]}
+            option={menu["option"]}
             key={'cart_menu_'+String(index)}></CartMenu>
     ))
 
