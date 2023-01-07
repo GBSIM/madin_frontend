@@ -41,12 +41,12 @@
 
 .banner-button.left {
     left: 10%;
-    top: 150px;
+    top: 125px;
 }
 
 .banner-button.right {
     right: 10%;
-    top: 150px;
+    top: 125px;
 }
 
 .banner:hover .banner-button {
