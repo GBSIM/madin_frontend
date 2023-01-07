@@ -17,6 +17,7 @@ export default function Item({ match }) {
     const [ intro, setIntro ] = useState('메뉴 소개');
     const [ type, setType ] = useState('주문 유형');
     const [ image, setImage ] = useState(null);
+    const [ options, setOptions] = useState([]);
 
     const { id } = useParams();
     const loadMenu  = async() => {
@@ -27,6 +28,10 @@ export default function Item({ match }) {
             setIntro(response.data.menu["intro"]);
             setType(response.data.menu["type"]);
             setImage(response.data.menu["imageUrl"]);
+            setOptions(response.data.menu["options"]);
+            if (response.data.menu["options"]["name"] !== "basic") {
+                setPrice(response.data.menu["options"][0]["price"]);
+            }
         } catch(err) {
             console.log(err);
         }
@@ -67,7 +72,9 @@ export default function Item({ match }) {
                 image={image}
                 price={price}
                 intro={intro}
-                menuId={id}></ItemDetail>
+                menuId={id}
+                options={options}
+                ></ItemDetail>
         </div>
     )
 }

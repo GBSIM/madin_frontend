@@ -9,13 +9,18 @@ export default function OrderSheet(props) {
             quantity={menu["quantity"]}
             price={menu["price"]}
             isOn={menu["isChecked"]}
+            option={menu["option"]}
             key={'order_item'+String(index)}></OrderItem>
     ))
 
     let totalPrice = 0;
     props.cart.map((menu) => {
         if (menu["isChecked"]) {
-            totalPrice = totalPrice + menu["price"] * menu["quantity"];
+            if (menu["option"] === "basic") {
+                totalPrice = totalPrice + menu["price"] * menu["quantity"];
+            } else {
+                totalPrice = totalPrice + menu["option"]["price"] * menu["quantity"];
+            }
         }
     })
 
@@ -39,11 +44,20 @@ export default function OrderSheet(props) {
 }
 
 function OrderItem(props) {
+    let itemName;
+    let itemPrice;
+    if (props.option["name"] !== "basic") {
+        itemName = <span className='order-item-text'>{props.name} {props.option["name"]} x {props.quantity}</span>
+        itemPrice = <span className='order-item-text'>{(props.quantity*props.option["price"]).toLocaleString()}원</span>
+    } else {
+        itemName = <span className='order-item-text'>{props.name} x {props.quantity}</span>
+        itemPrice = <span className='order-item-text'>{(props.quantity*props.price).toLocaleString()}원</span>
+    }
     if (props.isOn) {
         return (
             <div className='order-item'>
-                <span className='order-item-text'>{props.name} x {props.quantity}</span>
-                <span className='order-itme-text'>{(props.quantity*props.price).toLocaleString()}원</span>
+                {itemName}
+                {itemPrice}
             </div>
         )
     } else {

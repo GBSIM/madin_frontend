@@ -14,11 +14,20 @@ export default function ItemDetail(props) {
     const [ quantity, setQuantity ] = useState(1);
     const [ isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn ] = useState(false);
     const [isMenuAddAlarmOn, setMenuAddAlarmOn] = useState(false);
-    
-    let totalPrice = quantity * props.price;
+    const [option, setOption] = useState({"name":"basic","price":0});
+    const [price, setPrice] = useState(props.price);
+
+    let totalPrice;
+    if (price > 0) {
+        totalPrice = quantity * price;
+    } else {
+        totalPrice = quantity * props.price;
+    }
+
     const addQuantity = () => {
         setQuantity(quantity + 1);
     }
+
     const subtractQuantity = () => {
         if (quantity > 1) setQuantity(quantity-1);
     }
@@ -26,10 +35,17 @@ export default function ItemDetail(props) {
     const addCart = async() => {
         const token = getCookie('token');
         if (token) {
+            let itemOption;
+            if (option["name"] === "basic" && props.options.length) {
+                itemOption = props.options[0];
+            } else {
+                itemOption = option;
+            }
             await axios.post('https://api.madinbakery.com/user/cart',{
                 "token": token,
                 "menuId": props.menuId,
-                "quantity": quantity
+                "quantity": quantity,
+                "option": itemOption
             }).then((res) => {
                 const user = res.data.user;
                 dispath(saveUserInfo(user));
@@ -55,7 +71,7 @@ export default function ItemDetail(props) {
         if (token) {
             await axios.post('https://api.madinbakery.com/user/like',{
                 "token": token,
-                "menuId": props.menuId,
+                "menuId": props.menuId, 
             }).then((res) => {
                 const user = res.data.user;
                 dispath(saveUserInfo(user));
@@ -108,6 +124,28 @@ export default function ItemDetail(props) {
             </button>
     }
 
+    const selectOption = (e) => {
+        setOption(
+            {"name":props.options[e.target.selectedIndex]["name"],
+             "price":props.options[e.target.selectedIndex]["price"]});
+        setPrice(props.options[e.target.selectedIndex]["price"]);
+    }
+
+    let menuSelectContainer;
+    if (props.options && Array.isArray(props.options) && props.options.length) {
+        const options = props.options.map((option) => (
+            <option 
+                className='item-detail-option'
+                value={option["name"]} 
+                key={option["name"]}>
+                {option["name"]} --- {option["price"].toLocaleString()}원
+            </option>
+        ))
+        menuSelectContainer =
+            <select name='option' className='item-detail-option-container' onChange={selectOption}>
+                {options}
+            </select>
+    }
 
     let typeText;
     let GetType;
@@ -169,6 +207,13 @@ export default function ItemDetail(props) {
             </div>
     }
 
+    let itemPrice;
+    if (price === 0) {
+        itemPrice = <h2 className='item-detail-price'>{props.price.toLocaleString()}원</h2>
+    } else {
+        itemPrice = <h2 className='item-detail-price'>{price.toLocaleString()}원</h2>
+    }
+
     return (
         <div className='item-detail'>
             <img src={props.image} alt='menu' className='item-detail-mobile-image'></img>
@@ -183,7 +228,8 @@ export default function ItemDetail(props) {
                     </div>
                     <div className='item-detail-price-container'>
                         <span className='item-detail-intro'>{props.intro}</span>
-                        <h2 className='item-detail-price'>{props.price.toLocaleString()}원</h2>
+                        {menuSelectContainer}
+                        {itemPrice}
                     </div>
                     {GetType}
                     <div className='item-detail-cart-container'>

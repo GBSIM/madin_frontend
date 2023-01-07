@@ -268,8 +268,7 @@ function CartMenu(props) {
 
     let menuName;
     let menuPrice;
-    if (props.option != "basic") {
-        console.log(props.option);
+    if (props.option["name"] !== "basic") {
         menuName = <span className='cart-menu-name'>{props.name} {props.option["name"]}</span>
         menuPrice =
             <h3 className='cart-menu-price'>
@@ -325,7 +324,6 @@ function DeleteWindow(props) {
                     "menuId": props.id
                 }
             }).then((res) => {
-                console.log(res);
                 const user = res.data.user;
                 dispath(saveCart(user["cart"]));
                 props.closeEvent();
