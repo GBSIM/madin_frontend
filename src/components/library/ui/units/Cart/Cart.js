@@ -105,7 +105,11 @@ export default function Cart(props) {
     let totalPrice = 0;
     props.cart.map((menu) => {
         if (menu["isChecked"]) {
-            totalPrice = totalPrice + menu["price"] * menu["quantity"];
+            if (menu["option"]["name"] === "basic") {
+                totalPrice = totalPrice + menu["price"] * menu["quantity"];
+            } else {
+                totalPrice = totalPrice + menu["option"]["price"] * menu["quantity"];
+            }
         }
     })
 
