@@ -13,7 +13,7 @@ import { changePage } from './_reducers/nav';
 import Main from './components/views/Main/Main';
 import Present from './components/views/Present/Present';
 import Pickup from './components/views/Pickup/Pickup';
-import DeliveryCart from './components/views/Cart/DeliveryCart';
+import OrderCart from './components/views/Cart/OrderCart';
 import DeliveryOrder from './components/views/Order/DeliveryOrder';
 import UserOrder from './components/views/User/UserOrder';
 import UserShipping from './components/views/User/UserShipping';
@@ -33,9 +33,7 @@ function App() {
       dispatch(changePage('pickup'));
     } else if (window.location.pathname === "/present") {
       dispatch(changePage('present'));
-    } else if (window.location.pathname === "/cart/devliery") {
-      dispatch(changePage('main'));
-    } else if (window.location.pathname === "/order/devliery") {
+    } else if (window.location.pathname === "/cart") {
       dispatch(changePage('main'));
     } else if (window.location.pathname === "/user") {
       dispatch(changePage('user'));
@@ -58,9 +56,7 @@ function App() {
     dispatch(changePage('pickup'));
   } else if (window.location.pathname === "/present") {
     dispatch(changePage('present'));
-  } else if (window.location.pathname === "/cart/delivery") {
-    dispatch(changePage('main'));
-  } else if (window.location.pathname === "/order/delivery") {
+  } else if (window.location.pathname === "/cart") {
     dispatch(changePage('main'));
   } else if (window.location.pathname === "/user") {
     dispatch(changePage('user'));
@@ -82,7 +78,7 @@ function App() {
           <Route exact path="/main" element={<Main/>} />
           <Route exact path="/present" element={<Present/>} />
           <Route exact path="/pickup" element={<Pickup/>} />
-          <Route exact path="/cart/delivery" element={<DeliveryCart/>} />
+          <Route exact path="/cart" element={<OrderCart/>} />
           <Route exact path="/order/delivery" element={<DeliveryOrder/>} />
           <Route exact path="/user/order" element={<UserOrder/>} />
           <Route exact path="/user" element={<UserOrder/>} />

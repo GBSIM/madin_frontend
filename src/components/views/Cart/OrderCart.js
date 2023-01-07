@@ -1,5 +1,5 @@
 import './Cart.css';
-import './DeliveryCart.css';
+import './OrderCart.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -12,7 +12,7 @@ import { changePage } from '../../../_reducers/nav'
 import Header from '../../library/ui/components/Header/Header';
 import Cart from '../../library/ui/units/Cart/Cart';
 
-export default function DeliveryCart() {
+export default function OrderCart() {
     const dispath = useDispatch();
     const navigate = useNavigate();
     const moveToMain = () => {

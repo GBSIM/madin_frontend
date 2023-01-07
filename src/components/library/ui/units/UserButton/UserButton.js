@@ -100,25 +100,7 @@ function UserLogoutButton() {
 function UserCart(props) {
     const navigate = useNavigate();
     const moveToCart = () => {
-        let cartName;
-        switch (window.location.pathname) {
-            case "/":
-                cartName='delivery';
-                break;
-            case "/main":
-                cartName='delivery';
-                break;
-            case "/present":
-                cartName='present';
-                break;
-            case "/pickup":
-                cartName='pickup';
-                break;
-            default:
-                cartName='delivery';   
-        }
-        
-        navigate('/cart/'+cartName);
+        navigate('/cart');
         window.scrollTo(0,0);
     }
     let CartNumber;
@@ -157,26 +139,8 @@ function UserLike() {
 
 export function MobileUserCart(props) {
     const navigate = useNavigate();
-    const moveToCart = () => {
-        let cartName;
-        switch (window.location.pathname) {
-            case "/":
-                cartName='delivery';
-                break;
-            case "/main":
-                cartName='delivery';
-                break;
-            case "/present":
-                cartName='present';
-                break;
-            case "/pickup":
-                cartName='pickup';
-                break;
-            default:
-                cartName='delivery';   
-        }
-        
-        navigate('/cart/'+cartName);
+    const moveToCart = () => {        
+        navigate('/cart');
         window.scrollTo(0,0);
     }
     let CartNumber;
