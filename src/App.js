@@ -14,7 +14,7 @@ import Main from './components/views/Main/Main';
 import Present from './components/views/Present/Present';
 import Pickup from './components/views/Pickup/Pickup';
 import OrderCart from './components/views/Cart/OrderCart';
-import DeliveryOrder from './components/views/Order/DeliveryOrder';
+import Order from './components/views/Order/Order';
 import UserOrder from './components/views/User/UserOrder';
 import UserShipping from './components/views/User/UserShipping';
 import UserCoupon from './components/views/User/UserCoupon';
@@ -79,7 +79,7 @@ function App() {
           <Route exact path="/present" element={<Present/>} />
           <Route exact path="/pickup" element={<Pickup/>} />
           <Route exact path="/cart" element={<OrderCart/>} />
-          <Route exact path="/order/delivery" element={<DeliveryOrder/>} />
+          <Route exact path="/order" element={<Order/>} />
           <Route exact path="/user/order" element={<UserOrder/>} />
           <Route exact path="/user" element={<UserOrder/>} />
           <Route exact path="/user/shipping" element={<UserShipping/>} />

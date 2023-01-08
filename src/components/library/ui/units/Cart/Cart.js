@@ -39,7 +39,7 @@ export default function Cart(props) {
             </div>
     }
 
-    const setAllChecked = async() => {
+    const setAllMenusChecked = async() => {
         const token = getCookie('token');
         if (token) {
             await axios.patch('https://api.madinbakery.com/user/cart',{
@@ -55,7 +55,7 @@ export default function Cart(props) {
         }
     }
 
-    const setAllUnchecked = async() => {
+    const setAllMenusUnchecked = async() => {
         const token = getCookie('token');
         if (token) {
             await axios.patch('https://api.madinbakery.com/user/cart',{
@@ -71,18 +71,18 @@ export default function Cart(props) {
         }
     }
 
-    let AllSelectButton;
+    let AllMenusSelectButton;
     if (!isAllChecked) {
-        AllSelectButton = 
-            <button className='cart-all-select-button' onClick={()=>setAllChecked()}>
+        AllMenusSelectButton = 
+            <button className='cart-all-select-button' onClick={()=>setAllMenusChecked()}>
                 <img className='cart-all-select-button-image' 
                     alt='check' 
                     src={require('../../../icons/check_grey.png')}></img>
                 <span className='cart-all-select-button-text'>전체선택</span>
             </button>
     } else {
-        AllSelectButton = 
-        <button className='cart-all-select-button' onClick={()=>setAllUnchecked()}>
+        AllMenusSelectButton = 
+        <button className='cart-all-select-button' onClick={()=>setAllMenusUnchecked()}>
             <img className='cart-all-select-button-image' 
                 alt='check' 
                 src={require('../../../icons/check_orange.png')}></img>
@@ -114,21 +114,7 @@ export default function Cart(props) {
     })
 
     const moveToOrder = () => {
-        let cartName;
-        switch (window.location.pathname) {
-            case "/cart/delivery":
-                cartName='delivery';
-                break;
-            case "/cart/present":
-                cartName='present';
-                break;
-            case "/cart/pickup":
-                cartName='pickup';
-                break;
-            default:
-                cartName='delivery';   
-        }
-        navigate('/order/'+cartName);
+        navigate('/order');
         window.scrollTo(0,0);
     }
 
@@ -150,7 +136,7 @@ export default function Cart(props) {
             <h1 className='cart-title'>장바구니</h1>
             <div style={{'minHeight':'30px'}}></div>
             <div className='cart-all-select-button-container'>
-                {AllSelectButton}
+                {AllMenusSelectButton}
             </div>
             <div style={{'minHeight':'10px'}}></div>
             <div style={{'width':'100%','minHeight':'1px','background':'#c6c6c6'}}></div>

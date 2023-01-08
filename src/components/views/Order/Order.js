@@ -1,5 +1,4 @@
 import './Order.css';
-import './DeliveryOrder.css';
 
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,7 +16,7 @@ import Orderer from '../../library/ui/units/Orderer/Orderer';
 import Payment from '../../library/ui/units/Payment/Payment';
 import OrderButton from '../../library/ui/units/OrderButton/OrderButton';
 
-export default function DeliveryOrder() {
+export default function Order() {
     const dispath = useDispatch();
 
     const { isLogined, name, email, phone, cart, shippings } = useSelector(state => state.user);
