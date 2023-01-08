@@ -21,6 +21,7 @@ export default function Likes(props) {
                 image={menu["imageUrl"]}
                 name={menu["name"]}
                 price={menu["price"]}
+                options={menu["options"]}
                 key={'like_menu_'+String(index)}></Like>
         ))
     }
@@ -88,7 +89,8 @@ function Like(props) {
                     name={props.name}
                     price={props.price}
                     closeEvent={closeMenuAddWindow}
-                    menuId={props.menuId}></MenuAddWindow>
+                    menuId={props.menuId}
+                    options={props.options}></MenuAddWindow>
                 <DeleteWindow
                     isOn={isMenuDeleteWindowOn}
                     id={props.menuId}
