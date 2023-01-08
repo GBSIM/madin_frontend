@@ -150,55 +150,49 @@ export default function ItemDetail(props) {
 
     let typeText;
     let GetType;
+    let typeTitle;
+    let type;
+    let typeIntro1;
+    let typeIntro2;
     switch(props.type) {
         case "delivery":
+            typeTitle = "배송"
+            type = "택배배송";
+            typeIntro1 = "14시 전 주문은 당일 배송 시작";
+            typeIntro2 = "배송은 하루~이틀 걸려요.";
             typeText = "배송주문 상품";
-            GetType =
-                <div className='item-detail-get-type-container'>
-                    <span className='item-detail-get-type-title'>배송</span>
-                    <div className='item-detail-get-type-right-container'>
-                        <span className='item-detail-get-type'>택배배송</span>
-                        <span className='item-detail-get-type-intro'>14시 전 주문은 당일 배송 시작</span>
-                        <span className='item-detail-get-type-intro'>배송은 하루~이틀 걸려요.</span>
-                    </div>
-                </div>
             break;
         case "present":
+            typeTitle = "선물"
+            type = "퀵 배송";
+            typeIntro1 = "받으시고 싶은 날짜 최소 일주일 전에 주문해주세요.";
+            typeIntro2 = "해당 날짜에 퀵으로 보내드려요.";
             typeText = "선물주문 상품";
-            GetType =
-            <div className='item-detail-get-type-container'>
-                <span className='item-detail-get-type-title'>선물</span>
-                <div className='item-detail-get-type-right-container'>
-                    <span className='item-detail-get-type'>퀵 배송</span>
-                    <span className='item-detail-get-type-intro'>받으시고 싶은 날짜 최소 일주일 전에 주문해주세요.</span>
-                    <span className='item-detail-get-type-intro'>해당 날짜에 퀵으로 보내드려요.</span>
-                </div>
-            </div>
             break;
         case "pickup":
+            typeTitle = "픽업"
+            type = "가게로 픽업";
+            typeIntro1 = "주문 시 원하는 날짜와 시간을 선택해주세요.";
+            typeIntro2 = "시간에 맞춰 가게에 들러주세요.";
             typeText = "픽업주문 상품";
-            GetType =
-            <div className='item-detail-get-type-container'>
-                <span className='item-detail-get-type-title'>픽업</span>
-                <div className='item-detail-get-type-right-container'>
-                    <span className='item-detail-get-type'>가게로 픽업</span>
-                    <span className='item-detail-get-type-intro'>주문 시 원하는 날짜와 시간을 선택해주세요.</span>
-                    <span className='item-detail-get-type-intro'>시간에 맞춰 가게에 들러주세요.</span>
-                </div>
-            </div>
             break;
         default:
+            typeTitle = "배송"
+            type = "택배배송";
+            typeIntro1 = "14시 전 주문은 당일 배송 시작";
+            typeIntro2 = "배송은 하루~이틀 걸려요.";
             typeText = "배송주문 상품";
-            GetType =
-            <div className='item-detail-get-type-container'>
-                <span className='item-detail-get-type-title'>배송</span>
-                <div className='item-detail-get-type-right-container'>
-                    <span className='item-detail-get-type'>택배배송</span>
-                    <span className='item-detail-get-type-intro'>14시 전 주문은 당일 배송 시작</span>
-                    <span className='item-detail-get-type-intro'>배송은 하루~이틀 걸려요.</span>
-                </div>
-            </div>
     }
+
+    GetType =
+        <div className='item-detail-get-type-container'>
+            <span className='item-detail-get-type-title'>{typeTitle}</span>
+            <div className='item-detail-get-type-right-container'>
+                <span className='item-detail-get-type'>{type}</span>
+                <span className='item-detail-get-type-intro'>{typeIntro1}</span>
+                <span className='item-detail-get-type-intro'>{typeIntro2}</span>
+            </div>
+        </div>
 
     let MenuAddAlarm;
     if (isMenuAddAlarmOn) {
