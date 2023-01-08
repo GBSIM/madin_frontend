@@ -1,4 +1,4 @@
-import './DeleteWindow.css';
+import './CartMenuDeleteWindow.css';
 
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -29,16 +29,16 @@ export default function CartMenuDeleteWindow(props) {
 
     if (props.isOn) {
         return (
-            <div className='delete-window-container'>
-                <div className='delete-window'>
-                    <span className='delete-window-guide'>장바구니에서 삭제하시겠어요?</span>
+            <div className='cart-menu-delete-window-container'>
+                <div className='cart-menu-delete-window'>
+                    <span className='cart-menu-delete-window-guide'>장바구니에서 삭제하시겠어요?</span>
                     <div style={{'minHeight':'60px'}}></div>
-                    <button className='delete-window-delete-button' onClick={() => deleteMenu()}>
-                        <span className='delete-window-delete-button-text'>삭제하기</span>
+                    <button className='cart-menu-delete-window-delete-button' onClick={() => deleteMenu()}>
+                        <span className='cart-menu-delete-window-delete-button-text'>삭제하기</span>
                     </button>
                     <div style={{'minHeight':'10px'}}></div>
-                    <button className='delete-window-cancel-button' onClick={() => {props.closeEvent()}}>
-                        <span className='delete-window-cancel-button-text'>닫기</span>
+                    <button className='cart-menu-delete-window-cancel-button' onClick={() => {props.closeEvent()}}>
+                        <span className='cart-menu-delete-window-cancel-button-text'>닫기</span>
                     </button>
                 </div>
             </div>
