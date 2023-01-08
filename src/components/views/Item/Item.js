@@ -29,7 +29,7 @@ export default function Item({ match }) {
             setMenuName(response.data.menu["name"]);
             setPrice(response.data.menu["price"]);
             setIntro(response.data.menu["intro"]);
-            setType(response.data.menu["type"]);
+            setType(response.data.menu["orderType"]);
             setImage(response.data.menu["imageUrl"]);
             setOptions(response.data.menu["options"]);
             if (response.data.menu["options"]["name"] !== "basic") {

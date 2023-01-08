@@ -11,6 +11,7 @@ import { SocialLoginBox } from '../LoginButton/LoginButton';
 
 export default function ItemDetail(props) {
     const dispath = useDispatch();
+
     const [ quantity, setQuantity ] = useState(1);
     const [ isSocialLoginBoxDisplayOn, setSocialLoginBoxDisplayOn ] = useState(false);
     const [isMenuAddAlarmOn, setMenuAddAlarmOn] = useState(false);
@@ -166,11 +167,11 @@ export default function ItemDetail(props) {
             typeText = "선물주문 상품";
             GetType =
             <div className='item-detail-get-type-container'>
-                <span className='item-detail-get-type-title'>배송</span>
+                <span className='item-detail-get-type-title'>선물</span>
                 <div className='item-detail-get-type-right-container'>
-                    <span className='item-detail-get-type'>택배배송</span>
-                    <span className='item-detail-get-type-intro'>14시 전 주문은 당일 배송 시작</span>
-                    <span className='item-detail-get-type-intro'>배송은 하루~이틀 걸려요.</span>
+                    <span className='item-detail-get-type'>퀵 배송</span>
+                    <span className='item-detail-get-type-intro'>받으시고 싶은 날짜 최소 일주일 전에 주문해주세요.</span>
+                    <span className='item-detail-get-type-intro'>해당 날짜에 퀵으로 보내드려요.</span>
                 </div>
             </div>
             break;
@@ -178,11 +179,11 @@ export default function ItemDetail(props) {
             typeText = "픽업주문 상품";
             GetType =
             <div className='item-detail-get-type-container'>
-                <span className='item-detail-get-type-title'>배송</span>
+                <span className='item-detail-get-type-title'>픽업</span>
                 <div className='item-detail-get-type-right-container'>
-                    <span className='item-detail-get-type'>택배배송</span>
-                    <span className='item-detail-get-type-intro'>14시 전 주문은 당일 배송 시작</span>
-                    <span className='item-detail-get-type-intro'>배송은 하루~이틀 걸려요.</span>
+                    <span className='item-detail-get-type'>가게로 픽업</span>
+                    <span className='item-detail-get-type-intro'>주문 시 원하는 날짜와 시간을 선택해주세요.</span>
+                    <span className='item-detail-get-type-intro'>시간에 맞춰 가게에 들러주세요.</span>
                 </div>
             </div>
             break;
