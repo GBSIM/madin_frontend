@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import { getCookie } from '../Cookie/Cookie';
 import { saveCart } from '../../../../../_reducers/user';
-import { SocialLoginBox } from '../LoginButton/LoginButton';
+import SocialLoginBox from '../LoginButton/SocialLoginBox';
 
 export default function Menu(props) {
     const { isLogined } = useSelector(state => state.user);

@@ -7,7 +7,7 @@ import axios from 'axios';
 import { getCookie } from '../Cookie/Cookie';
 import { saveUserInfo } from '../../../../../_reducers/user';
 
-import { SocialLoginBox } from '../LoginButton/LoginButton';
+import SocialLoginBox from '../LoginButton/SocialLoginBox';
 
 export default function ItemDetail(props) {
     const dispath = useDispatch();

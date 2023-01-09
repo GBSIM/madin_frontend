@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { changePage } from '../../../../../_reducers/nav';
 
 import IconNavButton from '../../units/IconNavButton/IconNavButton';
-import { SocialLoginBox } from '../../units/LoginButton/LoginButton';
+import SocialLoginBox from '../../units/LoginButton/SocialLoginBox';
 
 export default function Footer(props) {
     return (
