@@ -1,7 +1,7 @@
 import './LoginButton.css';
 import './SocialLoginBox.css';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 import { loginWithKakao } from './KakaoLogin';
 import { loginWidthNaver } from './NaverLogin';
